@@ -20,10 +20,10 @@ document noted (approvingly), "One can code in the Tidyverse while
 knowing very little R."
 
 Note that, in using the term "Tidyverse," I am not including
-pre-existing projects by Hadley Wickham, e.g. **ggplot2** (which I use a
-lot).  I also am not really including  **dplyr**, which though Tidy, has
-similar functionality to Hadley earlier non-Tidy version **plyr**. 
-
+pre-existing projects by Hadley Wickham, e.g. **ggplot2**, which I use a
+lot and is not Tidy.  I also am not really including  **dplyr**, which
+though Tidy, has similar functionality to Hadley earlier non-Tidy
+version **plyr**. 
 
 Instead, I am referring to things such as tibbles and
 pipes.  I am especially concerned about the plethora of 
