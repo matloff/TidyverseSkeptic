@@ -13,7 +13,7 @@ originator, Hadley Wickham.  I have been interacting with them from the
 beginning, when the firm consisted of only founder JJ Allaire and ace
 developer Joe Cheng.  I highly praise the firm to my students, and I use
 and recommend Hadley's **ggplot2** package (though I don't consider it
-part of the Tidyverse).
+part of the Tidyverse, having been developed well before Tidy).
 
 Nevertheless, I believe that RStudio took a wrong turn when it decided
 to promote the Tidyverse, which has led to a situation in which the very
@@ -25,15 +25,62 @@ beginning, having used R's predecessor S before that.  I've
 published several books that use R, and am currently (2019) the Editor-in-
 Chief of the *R Journal*.
 
+# dplry vs. data.table
+
+The **dplyr** package, is a featured app of the Tidyverse developed by
+Hadley, so I'll use this as an example at several points in this essay.
+
+**Dplyr** borrowed a number of ideas from the earlier **data.table** by
+Matt Dowle.  One of Hadley's major motivations was to give the user a
+more "English-like" interface.
+
+Unfortunately, **dplyr** is much, much slower than
+**data.table** on large datasets.  Here are some of the
+timing examples, for various operations, on the [H20 site]
+(https://h2oai.github.io/db-benchmark/)
+(in seconds):
+
+<table border="1">
+<tr>  <td>dplr</td>  <td>data.table</td>  </tr> 
+<tr> <td>37.3</td>  <td>9.07</td> </tr>
+<tr> <td>95.5</td>  <td>9.20</td> </tr>
+<tr> <td>496</td>  <td>11.9</td> </tr>
+</table>
+
+The differences are even starker in
+[this study](http://www.win-vector.com/blog/2019/05/timing-working-with-a-row-or-a-column-from-a-data-frame/)
+by the consulting firm Win-Vec LLC, e.g.
+
+![alt text](https://i0.wp.com/www.win-vector.com/blog/wp-content/uploads/2019/05/unnamed-chunk-1-2.png)
+
+showing that **dplyr** can be extremely slow even relative to base-R,
+thus even worse relative to **data.table**.
+
+RStudio, a commercial entity, is heavily engaged in educational
+activities, both with its own courses and in interacting with teachers
+of R.  It has heavily promoted **dplyr**.  Meanwhile, RStudio and its
+allies have typically ignored **data.table** in these promotions, e.g.
+not mentioning it in their timing comparisons, and painting it as beyond
+the reach of nonprogrammers.
+
+RStudio is after all a for-profit business, so such treatment of
+**data.table** is just good business practice.  But R is an open-source
+language, and these actions have harmed R, as advocates of other
+languages, notably Python, constantly denigrate R as being slow on large
+datasets.
+
 # Teachability
 
-Teaching has been a keen interest of mine since my college days.
-I've been a teacher of stat and computers for many years, and have
-won various teaching awards, but it goes far beyond that; I really am
-intensely interested in how people learn, from little kids to older
-adults.  Among other things, I've taught English As a Second Language to
-immigrant adults, most of whom have had less than a high school
-education.
+Teaching has been a keen interest of mine since my college days.  I've
+been a teacher of stat and computers for many years, and have won
+various teaching awards.  My book, *Statistical Regression and
+Classification: from Linear Models to Machine Learning*, was the
+recipient of the 2017 Ziegal Prize.
+ 
+But it goes far beyond that; I really am intensely interested in how
+people learn, from little kids to older adults.  Among other things,
+I've taught English As a Second Language to immigrant adults, most of
+whom have had less than a high school education.
 
 From this background, I strongly question the claim made 
 by Tidyverse advocates that it facilitates the teaching
