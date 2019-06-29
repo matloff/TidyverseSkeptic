@@ -4,7 +4,7 @@ An opinionated view of the Tidyverse "dialect" of the R language.
 ### Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
 
 
-Note:  This essay is somewhat blunt, and since it involves the
+Note:  This essay is somewhat frank, and since it involves the
 Tidyverse, is implicitly and sometimes explicitly about RStudio. I hope
 it is polite and taken as constructive criticism.  
 
@@ -75,17 +75,34 @@ Teaching has been a keen interest of mine since my college days.  I've
 been a teacher of stat and computers for many years, and have won
 various teaching awards.  My book, *Statistical Regression and
 Classification: from Linear Models to Machine Learning*, was the
-recipient of the 2017 Ziegal Prize.
+recipient of the 2017 Ziegel Award.
  
 But it goes far beyond that; I really am intensely interested in how
 people learn, from little kids to older adults.  Among other things,
 I've taught English As a Second Language to immigrant adults, most of
 whom have had less than a high school education.
 
-From this background, I strongly question the claim made 
-by Tidyverse advocates that it facilitates the teaching
-of R to beginning programmers.  There has been no study of this claim,
-and I think the perceived success is psychological, a Bandwagon Effect.
+## The claim
+
+From this background, I strongly question the claim made by Tidyverse
+advocates that it facilitates the teaching of R to beginning
+programmers, as opposed to teaching base-R.  (I regard both **dplyr**
+and **data.table** as advanced topics; neither is suitable for
+beginners.)
+
+There has been no study of this claim.  Advocates often provide
+testimonials from students like "I learned R using Tidyverse, and now am
+productive in R!" -- which says nothing at all about the teachability of
+base-R.  (It is ironic that advocates who present such statements are
+statisticians, who ought to know the need for a control group.)
+
+I think the perceived success is psychological.  There is a Bandwagon Effect
+at work, and even a hint of cult-like behavior.
+I've even seen statements on Twitter from "graduates" of Tidyverse
+training who actually apologize because their code was not Tidy.
+
+## Making learning harder, not easier
+
 On the contrary, I believe it is quite the opposite, i.e. using the
 Tidyverse makes things more difficult for learners without prior
 programming background.  
@@ -94,33 +111,58 @@ As noted, the students are being asked to learn a much larger volume of
 material, which is clearly bad pedagogy.  See also ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
-60!  The "star" of the Tidyverse, **dplyr** consists of over 400
+60!  The "star" of the Tidyverse, **dplyr**, consists of over 400
 functions, and while a user need not use more than a fraction of them,
-the high complexity is clear.
+the high complexity is clear.  Every time a user needs some variant of
+an operation, she must sift through those hundreds of functions for one
+suited to her current need.
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
 more complex technology, instead of data frames, a simpler one.
 
+## Syntax comparison and teachability
+
+Again, the claim is that the Tidyverse is more teachable because of its
+"English-like" syntax, while they dismiss **data.table**'s syntax as
+opaque.
+
+.  Here is a comparison (adapted from
+[here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/):
+We'll use R's built-in **mtcars** dataset.
+
+``` r
+mtdt <- as.data.table(mtcars)
+mtdt[cyl == 6]  # data.table syntax
+mttb <- as_tibble(mtcars)
+filter(mttb,cyl == 6)  # dplyr syntax
+```
+
+Is there really any difference?  Can't beginners, even without
+programming background, quickly adapt to either one after seeing a few
+examples?  As I said earlier, even those who claim high teachability for
+**dply** do readily agree that their students could also easily pick up
+**data.table**, or for that matter my preference base-R, given some
+examples.
+
+And what of the fact that we have the English word *filter* above?
+Granted, it looks nice, but English can be misleading or mystifying in a
+computer context.  Even an experienced programmer would not be able to
+guess what the **dply** function **mutate()** does, for instance.
+
+## Is dplyr needed for teaching?
+
 In discussions with those who report success in using the Tidyverse to
-teach beginnng programmers, I ask whether their students are incapable
+teach beginning programmers, I ask whether their students are incapable
 of learning just base-R.  They readily concede that the answer is no.
 Indeed, before the Tidyverse, throngs of people were learning base-R
 without any prior programming background.
+
+## The proper status of the Tidyverse
 
 Again, I am certainly not saying one should only use base R; on the
 contrary, CRAN is a major advantage of R, which I use extensively.
 But the Tidyverse should be considered advanced R, not for beginners,
 just as is the case for most complex CRAN packages.
-
-# Performance
-
-As even RStudio concedes, the major components of the Tidyverse,
-**dplyr** and **pipes**, can run very slowly compared to even base-R,
-let alone the **data.table**, the non-Tidy alternative to **dplyr**
-(which preceding the latter chronologically).  According to [a
-study](http://www.win-vector.com/blog/2019/05/timing-working-with-a-row-or-a-column-from-a-data-frame/)
-by the consulting firm Win-Vector, **dplyr** can be hundreds of times
-slower than base-R, thus even worse relative to **data.table**.
 
 # R's Status As an Open-Source Language
 
