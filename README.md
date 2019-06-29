@@ -1,8 +1,7 @@
 # TidyverseSkeptic
 An opinionated view of the Tidyverse "dialect" of the R language.
 
-### Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of
-Statistics at UCD)
+### Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
 
 
 Note:  This essay is somewhat blunt, and since it involves the
