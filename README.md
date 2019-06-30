@@ -31,7 +31,7 @@ journal.)
 
 # dplry vs. data.table
 
-The **dplyr** package, is a featured app of the Tidyverse developed by
+The **dplyr** package is a featured app of the Tidyverse developed by
 Hadley, so I'll use this as an example at several points in this essay.
 
 **Dplyr** borrowed a number of ideas from the earlier **data.table** by
@@ -42,7 +42,7 @@ Unfortunately, **dplyr** is much, much slower than
 **data.table** on large datasets.  Here are some of the
 timing examples, for various operations, on the 
 [H2O site](https://h2oai.github.io/db-benchmark/)
-(times in seconds):
+(times in seconds; see above URL for details):
 
 <table border="1">
 <tr>  <td>dplr</td>  <td>data.table</td>  </tr> 
@@ -71,14 +71,15 @@ RStudio is after all a for-profit business, so such treatment of
 **data.table** is just good business practice.  But R is an open-source
 language, and these actions have harmed R, as advocates of other
 languages, notably Python, constantly denigrate R as being slow on large
-datasets.  Actually, **data.table** is extremely fast, but those who
-view R through the RStudio lens are unaware of it.
+datasets.  Actually, **data.table** is extremely fast (and is faster
+than Python's Pandas), but those who view R through the RStudio lens are
+unaware of it.
 
 # Teachability
 
 Teaching has been a keen interest of mine since my college days.  I've
 been a teacher of stat and computers for many years, and have won
-various teaching awards.  My book, *Statistical Regression and
+various teaching awards.  My textbook, *Statistical Regression and
 Classification: from Linear Models to Machine Learning*, was the
 recipient of the 2017 Ziegel Award.
  
@@ -98,11 +99,12 @@ beginners.)
 There has been no study of this claim.  Advocates often provide
 testimonials from students like "I learned R using Tidyverse, and now am
 productive in R!" -- which says nothing at all about the teachability of
-base-R.  (It is ironic that advocates who present such statements are
-statisticians, who ought to know the need for a control group.)
+base-R in comparison.  (It is ironic that advocates who present such
+statements are statisticians, who ought to know the need for a control
+group.)
 
 I think the perceived success is psychological.  There is a Bandwagon
-Effect at work, and even a hint of cult-like behavior.  I've even seen
+Effect at work, and even a hint of cult-like behavior.  I've seen
 statements on Twitter from "graduates" of Tidyverse training who
 actually apologize because their code did not use the Tidyverse.  
 
@@ -115,10 +117,10 @@ from Tidy code.
 ### Making learning harder, not easier
 
 On the contrary, I believe quite the opposite is the case, i.e. using
-the Tidyverse makes things more difficult for learners without prior
+the Tidyverse makes things *more* difficult for learners without prior
 programming background.  
 
-As noted, the students are being asked to learn a much larger volume of
+Tidyverse students are being asked to learn a much larger volume of
 material, which is clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
@@ -137,7 +139,7 @@ Again, the claim is that the Tidyverse is more teachable because of its
 "English-like" syntax, while they dismiss **data.table**'s syntax as
 opaque.
 
-Here is a comparison (adapted from
+Below is a comparison (adapted from
 [here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
 We'll use R's built-in **mtcars** dataset.
 
@@ -178,8 +180,8 @@ b <- g(a)
 h(b)
 ```
 
-And much more important, even advocates of pipes concede that pipes make
-debugging more difficult; my style above lends itself easily to
+And much more importantly, even advocates of pipes concede that pipes make
+debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
 
 ### Is dplyr needed or even desirable for teaching?
