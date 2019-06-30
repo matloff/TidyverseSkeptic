@@ -13,7 +13,8 @@ originator, Hadley Wickham.  I have been interacting with them from the
 beginning, when the firm consisted of only founder JJ Allaire and ace
 developer Joe Cheng.  I highly praise the firm to my students, and I use
 and recommend Hadley's **ggplot2** package (though I don't consider it
-part of the Tidyverse, having been developed well before Tidy).
+part of the Tidyverse, having been developed well before Tidy and
+thematically unrelated).
 
 Nevertheless, I believe that RStudio took a wrong turn when it decided
 to promote the Tidyverse, which has led to a situation in which the very
@@ -101,11 +102,13 @@ statisticians, who ought to know the need for a control group.)
 I think the perceived success is psychological.  There is a Bandwagon
 Effect at work, and even a hint of cult-like behavior.  I've even seen
 statements on Twitter from "graduates" of Tidyverse training who
-actually apologize because their code did not use the Tidyverse.  I see
-many who, being justly impressed with **ggplot2**, mistakenly think that
-the package can only be used from Tidy code.  (RStudio portrays the
-package as being part of the Tidyverse, but it was developed much
-earlier, and does not follow the Tidy philosophy.)
+actually apologize because their code did not use the Tidyverse.  
+
+RStudio portrays **ggplot2** as being part of the Tidyverse, but it was
+developed much earlier, and does not follow the Tidy philosophy.  But as
+a result of such inclusion, I see many users who, being justly impressed
+with **ggplot2**, mistakenly think that the package can only be used
+from Tidy code.  
 
 ### Making learning harder, not easier
 
@@ -231,6 +234,17 @@ CRAN code will find their contribution is considered useless; academics
 submitting research manuscripts or grant proposals will find that Tidy
 reviewers give them low scores.  In short, R will have to bend to
 RStudio's wishes.
+
+An open-source project involves a people spending a large amount of time
+developing the project for free, no pay. Thus, for a commercial entity
+to then swoop down and exploit all that free labor for its own profit is
+fraught with peril.  To then take over the product as its own
+is unconscionable.
+
+The first major firm to become involved in R was Revolution Analytics
+(now part of Microsoft).  There was much concern in the R community over
+Revo's potential negative impact on R, but instead, they were model
+corporate citizens.
 
 As noted, I know and admire the people at RStudio, *but a commercial
 entity should not have such undue, unilateral influence on an
