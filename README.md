@@ -9,7 +9,7 @@ Tidyverse, is implicitly and sometimes explicitly about RStudio. I hope
 it is polite and taken as constructive criticism.  
 
 I like and admire the RStudio people, including the Tidyverse
-originator, Hadley Wickham, and always supported them, both
+originator, Hadley Wickham, and have always supported them, both
 privately and
 [publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).  I have been interacting with them from the
 beginning, when the firm consisted of only founder JJ Allaire and ace
