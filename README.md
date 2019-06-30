@@ -22,8 +22,9 @@ health of the language is at stake.
 [My bio is here.](http://heather.cs.ucdavis.edu/matloff.html)
 Specifically in terms of R, I've been an R user and developer since near the 
 beginning, having used R's predecessor S before that.  I've 
-published several books that use R, and am currently (2019) the Editor-in-
-Chief of the *R Journal*.
+published several books that use R, and am currently (2019) the 
+Editor-in-Chief of the *R Journal*.  (Hadley is a former EiC on the
+journal.)
 
 # dplry vs. data.table
 
@@ -36,9 +37,9 @@ more "English-like" interface.
 
 Unfortunately, **dplyr** is much, much slower than
 **data.table** on large datasets.  Here are some of the
-timing examples, for various operations, on the [H20 site]
-(https://h2oai.github.io/db-benchmark/)
-(in seconds):
+timing examples, for various operations, on the 
+[H2O site](https://h2oai.github.io/db-benchmark/)
+(times in seconds):
 
 <table border="1">
 <tr>  <td>dplr</td>  <td>data.table</td>  </tr> 
@@ -67,7 +68,8 @@ RStudio is after all a for-profit business, so such treatment of
 **data.table** is just good business practice.  But R is an open-source
 language, and these actions have harmed R, as advocates of other
 languages, notably Python, constantly denigrate R as being slow on large
-datasets.
+datasets.  Actually, **data.table** is extremely fast, but those who
+view R through the RStudio lens are unaware of it.
 
 # Teachability
 
@@ -78,7 +80,7 @@ Classification: from Linear Models to Machine Learning*, was the
 recipient of the 2017 Ziegel Award.
  
 But it goes far beyond that; I really am intensely interested in how
-people learn, from little kids to older adults.  Among other things,
+people learn, from children to middle-aged adults.  Among other things,
 I've taught English As a Second Language to immigrant adults, most of
 whom have had less than a high school education.
 
@@ -96,19 +98,23 @@ productive in R!" -- which says nothing at all about the teachability of
 base-R.  (It is ironic that advocates who present such statements are
 statisticians, who ought to know the need for a control group.)
 
-I think the perceived success is psychological.  There is a Bandwagon Effect
-at work, and even a hint of cult-like behavior.
-I've even seen statements on Twitter from "graduates" of Tidyverse
-training who actually apologize because their code was not Tidy.
+I think the perceived success is psychological.  There is a Bandwagon
+Effect at work, and even a hint of cult-like behavior.  I've even seen
+statements on Twitter from "graduates" of Tidyverse training who
+actually apologize because their code did not use the Tidyverse.  I see
+many who, being justly impressed with **ggplot2**, mistakenly think that
+the package can only be used from Tidy code.  (RStudio portrays the
+package as being part of the Tidyverse, but it was developed much
+earlier, and does not follow the Tidy philosophy.)
 
 ### Making learning harder, not easier
 
-On the contrary, I believe it is quite the opposite, i.e. using the
-Tidyverse makes things more difficult for learners without prior
+On the contrary, I believe quite the opposite is the case, i.e. using
+the Tidyverse makes things more difficult for learners without prior
 programming background.  
 
 As noted, the students are being asked to learn a much larger volume of
-material, which is clearly bad pedagogy.  See also ["The Tidyverse
+material, which is clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
 60!  The "star" of the Tidyverse, **dplyr**, consists of over 400
@@ -126,8 +132,8 @@ Again, the claim is that the Tidyverse is more teachable because of its
 "English-like" syntax, while they dismiss **data.table**'s syntax as
 opaque.
 
-.  Here is a comparison (adapted from
-[here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/):
+Here is a comparison (adapted from
+[here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
 We'll use R's built-in **mtcars** dataset.
 
 ``` r
@@ -139,8 +145,8 @@ filter(mttb,cyl == 6)  # dplyr syntax
 
 Is there really any difference?  Can't beginners, even without
 programming background, quickly adapt to either one after seeing a few
-examples?  As I said earlier, even those who claim high teachability for
-**dply** do readily agree that their students could also easily pick up
+examples?  Even those who claim high teachability for **dply** do
+readily agree that their students could also easily pick up
 **data.table**, or for that matter my preference base-R, given some
 examples.
 
@@ -153,13 +159,13 @@ The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
 the function composition **h(g(f(x)))** as
 
 ``` r
-f(x) %*%  g() %*% h
+f(x) %*%  g() %*% h()
 ```
 
-Again, the pitch made is "English," in this case reading left-to-right.
-And again, one might question just how valuable that is, but in any
-event, personally tend to write such code left-to-right anyway,
-*without* using pipes:
+Again, the pitch made is that this is "English," in this case reading
+left-to-right.  But again, one might question just how valuable that is,
+and in any event, I personally tend to write such code left-to-right
+anyway, *without* using pipes:
 
 ``` r
 a <- f(x)
@@ -168,31 +174,31 @@ h(b)
 ```
 
 And much more important, even advocates of pipes concede that pipes make
-debugging more difficult.  And again, for large problems, piped code is
-slower.
+debugging more difficult; my style above lends itself easily to
+debugging.  And again, for large problems, piped code is slower.
 
 ### Is dplyr needed or even desirable for teaching?
 
-In discussions with those who report success in using the Tidyverse to
-teach beginning programmers, I ask whether their students are incapable
-of learning just base-R.  They readily concede that the answer is no.
-Indeed, before the Tidyverse, throngs of people were learning base-R
-without any prior programming background.
+As I said earlier, in discussions with those who report success in using
+the Tidyverse to teach beginning programmers, I ask whether their
+students are incapable of learning just base-R.  They readily concede
+that the answer is no.  Indeed, before the Tidyverse, throngs of people
+were learning base-R without any prior programming background.
 
 The Tidyverse advocates also claim that the "English" in **dplyr** makes
 the code easier to read.  To me, that is missing the point; as any
 instructor of software engineering can tell you, the best way to make
 code readable is to use REAL English, in good, meaningful code comments.
 
-Moreover, the Tidyverse can be difficult to debug, and run very slowly
-on large datasets.
+As also mentioned, the Tidyverse can be difficult to debug, and run very
+slowly on large datasets.
 
 In short, in my view there is no advantage to teaching R through the
 Tidyverse, and some significant disadvantages.
 
 ### The proper status of the Tidyverse in teaching
 
-Again, I am certainly not saying one should only use base R; on the
+I am certainly not saying one should only use base R; on the
 contrary, CRAN is a major advantage of R, which I use extensively.
 But the Tidyverse should be considered advanced R, not for beginners,
 just as is the case for most complex CRAN packages.
@@ -219,9 +225,9 @@ been especially active in the education realm.
 Given these dynamics, we will eventually, maybe rather soon, reach a
 point at which most R users will be Tidy, and have indeed "Never heard
 of Matt Dowle." This will make things very difficult for the non-Tidy R
-people: Job seekers who are excellent R coders will find that they are
-dismissed out of hand by Tidy interviewers; authors of non-Tidy CRAN
-code will find their contribution is considered useless; academics
+people: Non-Tidy job seekers who are excellent R coders will find that
+they are dismissed out of hand by Tidy interviewers; authors of non-Tidy
+CRAN code will find their contribution is considered useless; academics
 submitting research manuscripts or grant proposals will find that Tidy
 reviewers give them low scores.  In short, R will have to bend to
 RStudio's wishes.
