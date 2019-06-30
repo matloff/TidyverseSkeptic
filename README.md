@@ -67,9 +67,14 @@ allies have typically ignored **data.table** in these promotions, e.g.
 not mentioning it in their timing comparisons, and painting it as beyond
 the reach of nonprogrammers.
 
+Hadley did belatedly develop an interface, **dtplyr**, in 2016, 
+2 years after introducing **dplyr** and 8 years
+after **data.table**.  And even this is 
+[slow](http://www.win-vector.com/blog/2019/06/data-table-is-much-better-than-you-have-been-told/).
+
 RStudio is after all a for-profit business, so such treatment of
 **data.table** is just good business practice.  But R is an open-source
-language, and these actions have harmed R, as advocates of other
+language, and these actions have harmed R. Advocates of other
 languages, notably Python, constantly denigrate R as being slow on large
 datasets.  Actually, **data.table** is extremely fast (and is faster
 than Python's Pandas), but those who view R through the RStudio lens are
@@ -128,7 +133,8 @@ author says *inter alia* that he uses "only" 60 Tidyverse functions --
 functions, and while a user initially need not use more than a small
 fraction of them, the high complexity is clear.  Every time a user needs
 some variant of an operation, she must sift through those hundreds of
-functions for one suited to her current need.
+functions for one suited to her current need.  By contrast, if she knows
+base-R (not difficult), she can handle any situation.
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
 more complex technology, instead of data frames, a simpler one.
@@ -225,9 +231,13 @@ of RStudio on R.
 The reader may say, "If you don't like the Tidyverse, you don't have to
 use it."  Sadly, that is not the reality here.  Hadley declared his
 intention to essentially replace R with Tidy in his talk in the 2016
-useR! conference.  The Tidyverse is a vigorous promotional effort by
-RStudio that has come to dominate the R world.  As mentioned, it has
-been especially active in the education realm.  
+useR! conference (as did RStudio ally Roger Peng in the 2018 useR!).
+The Tidyverse is a vigorous promotional effort by RStudio that has come
+to dominate the R world.  As mentioned, the firm has been especially
+active in the education realm, including gifts of funding and licensed
+software, and support for conferences.  Well-intentioned and useful, to
+be sure, but with the conscious effect of increasing the firm's
+influence, and some would argue, power.  
 
 Given these dynamics, we will eventually, maybe rather soon, reach a
 point at which most R users will be Tidy, and have indeed "Never heard
