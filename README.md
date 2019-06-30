@@ -114,21 +114,21 @@ a result of such inclusion, I see many users who, being justly impressed
 with **ggplot2**, mistakenly think that the package can only be used
 from Tidy code.  
 
-### Making learning harder, not easier
+### Tidyverse makes learning harder, not easier
 
-On the contrary, I believe quite the opposite is the case, i.e. using
-the Tidyverse makes things *more* difficult for learners without prior
-programming background.  
+Contrary to the Tidy advocates' claim, I believe using the Tidyverse
+makes things *more* difficult for learners without prior programming
+background.  
 
 Tidyverse students are being asked to learn a much larger volume of
 material, which is clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
 60!  The "star" of the Tidyverse, **dplyr**, consists of over 400
-functions, and while a user need not use more than a fraction of them,
-the high complexity is clear.  Every time a user needs some variant of
-an operation, she must sift through those hundreds of functions for one
-suited to her current need.
+functions, and while a user initially need not use more than a small
+fraction of them, the high complexity is clear.  Every time a user needs
+some variant of an operation, she must sift through those hundreds of
+functions for one suited to her current need.
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
 more complex technology, instead of data frames, a simpler one.
