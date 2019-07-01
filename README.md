@@ -29,14 +29,15 @@ published several books that use R, and am currently (2019) the
 Editor-in-Chief of the *R Journal*.  (Hadley is a former EiC on the
 journal.)
 
-# dplry vs. data.table
+# dplyr vs. data.table
 
 The **dplyr** package is a featured app of the Tidyverse developed by
 Hadley, so I'll use this as an example at several points in this essay.
 
 **Dplyr** borrowed a number of ideas from the earlier **data.table** by
 Matt Dowle.  One of Hadley's major motivations was to give the user a
-more "English-like" interface.
+more "English-like" interface.  (Note: I regard both **dplyr** and
+**data.table** as advanced topics; neither is suitable for beginners.)
 
 Unfortunately, **dplyr** is much, much slower than
 **data.table** on large datasets.  Here are some of the
@@ -93,12 +94,12 @@ people learn, from children to middle-aged adults.  Among other things,
 I've taught English As a Second Language to immigrant adults, most of
 whom have had less than a high school education.
 
-### The claim
+### The Tidyverse advocates' claim
 
 From this background, I strongly question the claim made by Tidyverse
 advocates that it facilitates the teaching of R to beginning
-programmers, as opposed to teaching base-R.  (I regard both **dplyr**
-and **data.table** as advanced topics; neither is suitable for
+programmers, as opposed to teaching base-R.  (Again, I regard both
+**dplyr** and **data.table** as advanced topics; neither is suitable for
 beginners.)
 
 There has been no study of this claim.  Advocates often provide
@@ -113,11 +114,11 @@ Effect at work, and even a hint of cult-like behavior.  I've seen
 statements on Twitter from "graduates" of Tidyverse training who
 actually apologize because their code did not use the Tidyverse.  
 
-RStudio portrays **ggplot2** as being part of the Tidyverse, but it was
+RStudio counts **ggplot2** as being part of the Tidyverse, but it was
 developed much earlier, and does not follow the Tidy philosophy.  But as
 a result of such inclusion, I see many users who, being justly impressed
 with **ggplot2**, mistakenly think that the package can only be used
-from Tidy code.  
+from Tidy code.  This illustrates the mindset that has developed.
 
 ### Tidyverse makes learning harder, not easier
 
@@ -130,11 +131,15 @@ material, which is clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
 60!  The "star" of the Tidyverse, **dplyr**, consists of over 400
-functions, and while a user initially need not use more than a small
-fraction of them, the high complexity is clear.  Every time a user needs
-some variant of an operation, she must sift through those hundreds of
-functions for one suited to her current need.  By contrast, if she knows
-base-R (not difficult), she can handle any situation.
+functions, and another featured Tidyverse package, **purrr**, has 177.
+While a user initially need not use more than a small fraction of them,
+the high complexity is clear.  Every time a user needs some variant of
+an operation, she must sift through those hundreds of functions for one
+suited to her current need.  
+
+By contrast, if she knows base-R (not difficult), she can handle any
+situation.  The old adage applies: "Give a man a fish, and he can eat
+for a day. Teach him how to fish, and he can eat for a lifetime."
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
 more complex technology, instead of data frames, a simpler one.
@@ -158,7 +163,7 @@ filter(mttb,cyl == 6)  # dplyr syntax
 
 Is there really any difference?  Can't beginners, even without
 programming background, quickly adapt to either one after seeing a few
-examples?  Even those who claim high teachability for **dply** do
+examples?  Even those who claim high teachability for **dplyr** do
 readily agree that their students could also easily pick up
 **data.table**, or for that matter my preference base-R, given some
 examples.
@@ -166,7 +171,7 @@ examples.
 And what of the fact that we have the English word *filter* above?
 Granted, it looks nice, but English can be misleading or mystifying in a
 computer context.  Even an experienced programmer would not be able to
-guess what the **dply** function **mutate()** does, for instance.
+guess what the **dplyr** function **mutate()** does, for instance.
 
 The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
 the function composition **h(g(f(x)))** as
@@ -209,7 +214,16 @@ slowly on large datasets.
 In short, in my view there is no advantage to teaching R through the
 Tidyverse, and some significant disadvantages.
 
-### The proper status of the Tidyverse in teaching
+### Summary:  the proper status of the Tidyverse in teaching
+
+I think it is a mistake to feature the Tidyverse in teaching R, for thse
+reasons:
+
+1.  Complexity and volume.
+
+2.  Difficulty in debugging.
+
+3.  Inadequate generalizability.
 
 I am certainly not saying one should only use base R; on the
 contrary, CRAN is a major advantage of R, which I use extensively.
@@ -219,7 +233,7 @@ just as is the case for most complex CRAN packages.
 # R's Status As an Open-Source Language
 
 In the [SatRday LA conference](https://losangeles2019.satrdays.org/),
-April 6, 2019, a speaker who was actually explaining the value of
+April 6, 2019, a speaker who was actually explaining the advantages of
 **data.table** in large datasets said that package "was created by Matt
 Doyle [sic].  Who's that?  No one knows who he is."  He repeated later,
 "No one has ever heard of Matt Doyle."  Actually, many in the audience
