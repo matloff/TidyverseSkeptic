@@ -130,7 +130,7 @@ Tidyverse students are being asked to learn a much larger volume of
 material, which is clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
-60!  The "star" of the Tidyverse, **dplyr**, consists of over 400
+60!  The "star" of the Tidyverse, **dplyr**, consists of 263
 functions, and another featured Tidyverse package, **purrr**, has 177.
 While a user initially need not use more than a small fraction of them,
 the high complexity is clear.  Every time a user needs some variant of
@@ -237,15 +237,19 @@ April 6, 2019, a speaker who was actually explaining the advantages of
 **data.table** in large datasets said that package "was created by Matt
 Doyle [sic].  Who's that?  No one knows who he is."  He repeated later,
 "No one has ever heard of Matt Doyle."  Actually, many in the audience
-had indeed heard of Matt Dowle, but in that speaker's world -- the 
+had indeed heard of Matt Dowle, but in that speaker's world -- the
 RStudio-educated world" -- his statement about lack of name recognition
-for Matt was sadly accurate.  Such is the huge and rapidly growing impact
-of RStudio on R.
+for Matt was sadly accurate.  Such is the huge and rapidly growing
+impact of RStudio on R.  The reader may say, "If you don't like the
+Tidyverse, you don't have to use it."  Sadly, that is not the reality
+here, given RStudio's dominance.
 
-The reader may say, "If you don't like the Tidyverse, you don't have to
-use it."  Sadly, that is not the reality here.  Hadley declared his
-intention to essentially replace R with Tidy in his talk in the 2016
-useR! conference (as did RStudio ally Roger Peng in the 2018 useR!).
+Hadley's [talk](https://t.co/7Ey27asCH4) in the 2016 useR! conference
+amounted to a manifesto, calling for R to modernize along Tidy lines.
+He conceded that this would involve "short-term pain," yet believed it
+to be very much worthwhile.  Again, given RStudio's dominance, this
+revolution in R was sure to follow, which it has.
+  
 The Tidyverse is a vigorous promotional effort by RStudio that has come
 to dominate the R world.  As mentioned, the firm has been especially
 active in the education realm, including gifts of funding and licensed
@@ -267,7 +271,7 @@ An open-source project involves a people spending a large amount of time
 developing the project for free, no pay. Thus, for a commercial entity
 to then swoop down and exploit all that free labor for its own profit is
 fraught with peril.  To then take over the product as its own
-is unconscionable.
+is unconscionable, again even if well-intentioned.
 
 The first major firm to become involved in R was Revolution Analytics
 (now part of Microsoft).  There was much concern in the R community over
