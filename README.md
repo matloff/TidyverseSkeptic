@@ -131,7 +131,7 @@ material, which is clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
 60!  The "star" of the Tidyverse, **dplyr**, consists of 263
-functions, and another featured Tidyverse package, **purrr**, has 177.
+functions. 
 While a user initially need not use more than a small fraction of them,
 the high complexity is clear.  Every time a user needs some variant of
 an operation, she must sift through those hundreds of functions for one
@@ -140,6 +140,15 @@ suited to her current need.
 By contrast, if she knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."
+
+Another featured Tidyverse package, the *functional programming*
+(FP)-oriented library **purrr**, has 177 functions.  Again the point
+about complexity applies. Even more importantly, top university Computer
+Science Departments have shifted away from teaching their introductory
+programming courses using functional programming paradigm to the more
+traditional Python, as they deem FP to be more abstract and challenging.
+It would then seem that using FP to each non-programmers learning R is
+even more unwise.
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
 more complex technology, instead of data frames, a simpler one.
@@ -271,7 +280,10 @@ An open-source project involves a people spending a large amount of time
 developing the project for free, no pay. Thus, for a commercial entity
 to then swoop down and exploit all that free labor for its own profit is
 fraught with peril.  To then take over the product as its own
-is unconscionable, again even if well-intentioned.
+is unconscionable.  I have no doubt that RStudio was well-intentioned in
+this, sincerely believing in the Tidyverse, but many do not share this
+view, and RStudio should have worked with the R Core Group (see below),
+rather than taking action on its own.
 
 The first major firm to become involved in R was Revolution Analytics
 (now part of Microsoft).  There was much concern in the R community over
@@ -292,6 +304,8 @@ future health of R, in spite of undoubtedly being well-intentioned.
 RStudio is a great company, staffed by many talented people.  In my
 opinion, their one failing has been to run off on their own, rather than
 adhering to the norms of open-source projects.  
+
+# Recommendations
 
 In my view, RStudio can easily remedy the problem.  It can:
 
