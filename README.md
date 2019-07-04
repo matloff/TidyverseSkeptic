@@ -177,7 +177,8 @@ The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
 the function composition **h(g(f(x)))** as
 
 ``` r
-f(x) %*%  g() %*% h()
+f(x) %>%  g() %>% h()
+
 ```
 
 Again, the pitch made is that this is "English," in this case reading
