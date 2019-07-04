@@ -147,7 +147,7 @@ about complexity applies. Even more importantly, top university Computer
 Science Departments have shifted away from teaching their introductory
 programming courses using functional programming paradigm to the more
 traditional Python, as they deem FP to be more abstract and challenging.
-It would then seem that using FP to each non-programmers learning R is
+It would then seem that using FP to teach non-programmers learning R is
 even more unwise.
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
