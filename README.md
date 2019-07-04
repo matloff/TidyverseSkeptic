@@ -1,12 +1,13 @@
 # TidyverseSkeptic
-An opinionated view of the Tidyverse "dialect" of the R language.
+An opinionated view of the Tidyverse "dialect" of the R language, and
+its promotion by RStudio.
 
 ## Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
 
 
-Note:  This essay is somewhat frank, and since it involves the
-Tidyverse, is implicitly and sometimes explicitly about RStudio. I hope
-it is polite and taken as constructive criticism.  
+Note:  This essay is somewhat frank, and since it involves the the very
+popular Tidyverse and RStudio. I hope it is polite and taken as
+constructive criticism.  
 
 I like and admire the RStudio people, including the Tidyverse
 originator, Hadley Wickham, and have always supported them, both
@@ -28,6 +29,49 @@ beginning, having used R's predecessor S before that.  I've
 published several books that use R, and am currently (2019) the 
 Editor-in-Chief of the *R Journal*.  (Hadley is a former EiC on the
 journal.)
+
+# Summary
+
+1. The Tidyverse arose from the desire to have a set of packages that
+   are consistent with each other, a "purist" philosophy that appeals,
+for instance, to computer scientists.  The Tidyverse also borrows from
+other "purist" computer science philosophies, notably *functional
+programming*.
+
+2. In heavily promoting the Tidyverse, especially in the education
+   realm, RStudio, with its dominance in the R field, is developing an
+entire new generation of R users whose skills in base-R are superficial
+at best, and who -- most importantly -- feel that R *is* the Tidyverse.
+
+3. Regardless of being well-intentioned, RStudio is molding R into its
+   own desired image. That new generation will often be biased against 
+non-Tidyverse job seekers, non-Tidyverse CRAN packages, and
+academics who submit non-Tidyverse research papers and grant proposals.
+In these efforts, RStudio has engaged in an end-run around the governing
+body of the R language.
+
+4. RStudio's promotion of the Tidyverse has alarmingly impeded the
+   progress and adoption of technologically superior packages, notably
+**data.table**. Most in the "Tidyverse generation" are unaware of
+anything outside the Tidyverse.  
+
+5. RStudio's development of the Tidyverse is a good thing, and those who
+   like its philosophy should use it.  My objection is in Point 3 above.
+I would give as an example the fact that R has various object-oriented
+programming (OOP) paradigms to choose from, such as S3, S4 and R6.  I
+think it's great that, e.g., R6 is available, but I don't want to be
+forced to use it. (Just an example; both the Tidyverse and I use S3.)
+
+6. For the above reasons, RStudio is essentially operating as a
+   monopolist ("essentially" because it is an unorthodox market). Though
+again this is well-intentioned, the adverse impacts are grave.
+
+7. A major reason offered by RStudio for promoting the Tidyverse is that
+   it makes R easier to teach to non-programmers. I would argue that the
+Tidyverse makes R *harder* to learn for this group.
+
+8. RStudio can easily remedy the situation.  I have recommendations at
+   the end of this essay.
 
 # dplyr vs. data.table
 
