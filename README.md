@@ -225,7 +225,7 @@ Tidyverse, and some significant disadvantages.
 
 ### Summary:  the proper status of the Tidyverse in teaching
 
-I think it is a mistake to feature the Tidyverse in teaching R, for thse
+I think it is a mistake to feature the Tidyverse in teaching R, for these
 reasons:
 
 1.  Complexity and volume.
