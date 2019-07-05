@@ -20,7 +20,7 @@ part of the Tidyverse, having been developed well before Tidy and
 thematically unrelated).
 
 In other words, I absolutely don't consider RStudio to be some evil
-cabal.  I state at various places in this essay that I think their
+cabal.  I state at various places in this essay that I think their 
 actions have been well-intentioned.  Nevertheless, I believe that
 RStudio took a wrong turn when it decided to promote the Tidyverse,
 which has led to a situation in which the very health of the language is
@@ -39,45 +39,56 @@ journal.)
    are consistent with each other, a "purist" philosophy that appeals,
 for instance, to computer scientists.  The Tidyverse also borrows from
 other "purist" computer science philosophies, notably *functional
-programming*.  Unfortunately, the price of purity is (a) increased
-complexity and abstraction, making code more prone to error, as well as
-(b) a sacrifice in performance.  Ironically, though consistency of
-interface is a goal, new versions of Tidy libraries are often
-incompatible with older ones.
+programming*.  
 
-2. In heavily promoting the Tidyverse, especially in the education
+2.  Unfortunately, the price of purity is (a) increased complexity and
+    abstraction, making code more prone to error, as well as (b) a
+sacrifice in performance.  Ironically, though consistency of interface
+is a goal, new versions of Tidy libraries are often incompatible with
+older ones, a very serious problem in the software engineering world.
+
+3. In heavily promoting the Tidyverse, especially in the education
    realm, RStudio, with its dominance in the R field, is developing an
 entire new generation of R users whose skills in base-R are superficial
 at best, and who -- most importantly -- feel that R *is* the Tidyverse.
 
-3. Regardless of being well-intentioned, RStudio is molding R into its
-   own desired image. That new generation will often be biased against 
-non-Tidyverse job seekers, non-Tidyverse CRAN packages, and
-academics who submit non-Tidyverse research papers and grant proposals.
-In these efforts, RStudio has engaged in an end-run around the governing
+4. Regardless of being well-intentioned, RStudio is molding R into its
+   own desired image.  That new generation will come to dominate the
+community, treating Tidyverse as the "real" base, and viewing the actual
+base-R as something akin to assembly language.  This might be fine if
+the R community were unified in viewing Tidyverse as a high-level
+improvement, but many do not; they are not fans of the syntax and so on,
+and as noted, are worried about the slow performance of Tidy.
+
+5.  That new generation will often be biased against non-Tidyverse job
+    seekers, non-Tidyverse CRAN packages, and academics who submit
+non-Tidyverse data science research papers and grant proposals.  They
+will have no choice but to bend to RStudio's wishes.  Then
+RStudio will have succeeded in an end-run around the governing
 body of the R language.
-
-4. RStudio's promotion of the Tidyverse has alarmingly impeded the
-   progress and adoption of technologically superior packages, notably
-**data.table**. Most in the "Tidyverse generation" are unaware of
-anything outside the Tidyverse.  
-
-5. RStudio's development of the Tidyverse is a good thing, and those who
-   like its philosophy should use it.  My objection is in Point 3 above.
-I would give as an example the fact that R has various object-oriented
-programming (OOP) paradigms to choose from, such as S3, S4 and R6.  I
-think it's great that, e.g., R6 is available, but I don't want to be
-forced to use it. (Just an example; both the Tidyverse and I use S3.)
 
 6. For the above reasons, RStudio is essentially operating as a
    monopolist ("essentially" because it is an unorthodox market). Though
 again this is well-intentioned, the adverse impacts are grave.
 
-7. A major reason offered by RStudio for promoting the Tidyverse is that
+7. One key example of the pernicious effects of this monopolistic
+   situation is that RStudio's promotion of the Tidyverse has alarmingly
+impeded the progress and adoption of technologically superior packages,
+notably **data.table**. Most in the "Tidyverse generation" are unaware
+of anything outside the Tidyverse.  
+
+8. RStudio's development of the Tidyverse is a good thing, and those who
+   like its philosophy should use it.  My objection is in Point 5 above.
+I would give as an example the fact that R has various object-oriented
+programming (OOP) paradigms to choose from, such as S3, S4 and R6.  I
+think it's great that, e.g., R6 is available, but I don't want to be
+forced to use it. (Just an example; both the Tidyverse and I use S3.)
+
+9. A major reason offered by RStudio for promoting the Tidyverse is that
    it makes R easier to teach to non-programmers. I would argue that the
 Tidyverse makes R *harder* to learn for this group.
 
-8. RStudio can easily remedy the situation.  I have recommendations at
+10. RStudio can easily remedy the situation.  I have recommendations at
    the end of this essay.
 
 # dplyr vs. data.table
@@ -290,14 +301,11 @@ Doyle [sic].  Who's that?  No one knows who he is."  He repeated later,
 "No one has ever heard of Matt Doyle."  Actually, many in the audience
 had indeed heard of Matt Dowle, but in that speaker's world -- the
 RStudio-educated world" -- his statement about lack of name recognition
-for Matt was sadly accurate.  
-
-Such is the huge and rapidly growing impact of RStudio on R.  The reader
-may say, "If you don't like the Tidyverse, you don't have to use it."
-Sadly, that is not the reality here, given RStudio's dominance.
+for Matt was sadly accurate.  Such is the impact of RStudio on the
+field.
 
 Hadley's [talk](https://t.co/7Ey27asCH4) in the 2016 useR! conference
-amounted to a manifesto, calling for R to modernize along Tidy lines.
+amounted to a manifesto, calling for R to "modernize" along Tidy lines.
 He conceded that this would involve "short-term pain," yet believed it
 to be very much worthwhile.  Again, given RStudio's dominance, this
 revolution in R was sure to follow, which it has.
@@ -310,21 +318,22 @@ event," offers Tidy tutorials at all R conferences, and so on.
 Well-intentioned and useful, to be sure, but with the conscious effect
 of increasing the firm's influence, and some would argue, power.  
 
-A good way to understand the intent of RStudio to bring all of R to the
-Tidy world is the **broom** package.  Titled "Convert Statistical
-Analysis Objects into Tidy Tibbles, its goal is to convert the output of
+A good example of the intent of RStudio to bring all of R to the Tidy
+world is the **broom** package.  Titled "Convert Statistical Analysis
+Objects into Tidy Tibbles," its goal is to convert the output of
 numerous packages into Tidy form.
 
 "Testimonials" are legion.  Non-programmers who take Tidy-based R
 courses are delighted that they can now do some data analysis, and
-praise the Tidyverse without realizing they have nothing to compare it
-to.
+praise the Tidyverse without realizing they have no basis for comparison 
+to base-R.
 
 RStudio counts **ggplot2** as being part of the Tidyverse, but it was
 developed much earlier, and does not follow the Tidy philosophy.  But as
 a result of such inclusion, I see many users who, being justly impressed
 with **ggplot2**, mistakenly think that the package can only be used
-from Tidy code.  This illustrates the mindset that has developed.
+from Tidy code and thus is an advantage of being Tidy.  This illustrates
+the mindset that has developed.
 
 And there is a Bandwagon Effect at work, and even a hint of cult-like
 behavior.  I've seen statements on Twitter from "graduates" of Tidyverse
@@ -344,18 +353,19 @@ of Matt Dowle." This will make things very difficult for the non-Tidy R
 people: Non-Tidy job seekers who are excellent R coders will find that
 they are dismissed out of hand by Tidy interviewers; authors of non-Tidy
 CRAN code will find their contribution is considered useless; academics
-submitting research manuscripts or grant proposals will find that Tidy
-reviewers give them low scores.  In short, R will have to bend to
-RStudio's wishes.
+submitting data science research manuscripts or grant proposals will
+find that Tidy reviewers give them low scores.  In short, R will have to
+bend to RStudio's wishes.
 
 *This is classical monopolistic behavior.*  Of course, the market here,
 an open source project dominated by a commercial entity, is uncharted
-waters in the legal sense, but in the economic sense, this is exactly
+waters in the legal sense.  But in the economic sense, this is exactly
 what is occurring, whether a conscious goal of RStudio or not.
 
 Aside from price, again probably not an issue here, a highly insidious
 consequence of monopolies is the stifling of innovation.  The case of
 **data.table** discussed above is a fine case in point.
+
 An open-source project involves a people spending a large amount of time
 developing the project for free, no pay. Thus, for a commercial entity
 to then swoop down and exploit all that free labor for its own profit is
@@ -366,9 +376,9 @@ view, and RStudio should have worked with the R Core Group (see below),
 rather than taking action on its own.
 
 The first major firm to become involved in R was Revolution Analytics
-(now part of Microsoft).  There was much concern in the R community over
-Revo's potential negative impact on R, but instead, they were model
-corporate citizens.
+(now part of Microsoft).  There was much concern in the R community at
+the time over Revo's potential negative impact on R, but instead, they
+turned out to be model corporate citizens.
 
 As noted, I know and admire the people at RStudio, *but a commercial
 entity should not have such undue, unilateral influence on an
@@ -387,10 +397,11 @@ adhering to the norms of open-source projects.
 
 # Recommendations
 
-In my view, RStudio can easily remedy the problem.  It can:
+In my view, RStudio can easily remedy the problem.  It can take the
+following anti-monopolistic actions:
 
 1.  Promote the teaching of base-R to beginners, treating the Tidyverse
-    as an advanced topic.
+    as an advanced topic.  The book, *R for Everyone: Advanced Analytics and Graphics* (second ed.t), by Jared Lander does exactly this!
 
 2.  In the various RStudio Web pages on writing fast R code, give
     **data.table** equal time.
