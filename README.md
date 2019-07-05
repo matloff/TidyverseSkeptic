@@ -230,7 +230,7 @@ The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
 the function composition **h(g(f(x)))** as
 
 ``` r
-f(x) %*%  g() %*% h()
+f(x) %>%  g() %>% h()
 ```
 
 Again, the pitch made is that this is "English," in this case reading
@@ -269,7 +269,7 @@ Tidyverse, and some significant disadvantages.
 
 ### Summary:  the proper status of the Tidyverse in teaching
 
-I think it is a mistake to feature the Tidyverse in teaching R, for thse
+I think it is a mistake to feature the Tidyverse in teaching R, for these
 reasons:
 
 1.  Complexity and volume.
