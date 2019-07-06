@@ -401,7 +401,8 @@ In my view, RStudio can easily remedy the problem.  It can take the
 following anti-monopolistic actions:
 
 1.  Promote the teaching of base-R to beginners, treating the Tidyverse
-    as an advanced topic.  The book, *R for Everyone: Advanced Analytics and Graphics* (second ed.t), by Jared Lander does exactly this!
+    as an advanced topic.  The book, *R for Everyone: Advanced Analytics
+and Graphics* (second ed.), by Jared Lander does exactly this!
 
 2.  In the various RStudio Web pages on writing fast R code, give
     **data.table** equal time.
