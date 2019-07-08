@@ -314,8 +314,7 @@ revolution in R was sure to follow, which it has.
 The Tidyverse is a vigorous promotional effort by RStudio that has come
 to dominate the R world.  As mentioned, the firm has been especially
 active in the education realm, including gifts of funding and licensed
-software, and support for conferences.  It runs the Tidy Tuesday "social
-event," offers Tidy tutorials at all R conferences, and so on.
+software, and support for conferences.  It offers Tidy tutorials at all R conferences, and so on.
 Well-intentioned and useful, to be sure, but with the conscious effect
 of increasing the firm's influence, and some would argue, power.  
 
