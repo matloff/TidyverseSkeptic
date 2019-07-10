@@ -76,7 +76,7 @@ again this is well-intentioned, the adverse impacts are grave.
 impeded the progress and adoption of technologically superior packages,
 notably **data.table**. Most in the "Tidyverse generation" are unaware
 of anything outside the Tidyverse.  For instance, Hadley's book, *R for
-Data Science*, with Garrett Grolemund, does not mention **data.table**.
+Data Science*, with Garrett Grolemund, barely mentions **data.table**.
 
 8. RStudio's development of the Tidyverse is a good thing, and those who
    like its philosophy should use it.  My objection is in Point 5 above.
