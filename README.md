@@ -75,7 +75,8 @@ again this is well-intentioned, the adverse impacts are grave.
    situation is that RStudio's promotion of the Tidyverse has alarmingly
 impeded the progress and adoption of technologically superior packages,
 notably **data.table**. Most in the "Tidyverse generation" are unaware
-of anything outside the Tidyverse.  
+of anything outside the Tidyverse.  For instance, Hadley's book, *R for
+Data Science*, with Garrett Grolemund, does not mention **data.table**.
 
 8. RStudio's development of the Tidyverse is a good thing, and those who
    like its philosophy should use it.  My objection is in Point 5 above.
@@ -318,9 +319,10 @@ be sure, but with the conscious effect of increasing the firm's
 influence, and some would argue, power.  
 
 A good example of the intent of RStudio to bring all of R to the Tidy
-world is the **broom** package.  Titled "Convert Statistical Analysis
-Objects into Tidy Tibbles," its goal is to convert the output of
-numerous packages into Tidy form.
+world is the **broom** package (not written by RStudio, but featured on
+their Web site).  Titled "Convert Statistical Analysis Objects into Tidy
+Tibbles," its goal is to convert the output of numerous packages into
+Tidy form.
 
 "Testimonials" are legion.  Non-programmers who take Tidy-based R
 courses are delighted that they can now do some data analysis, and
@@ -346,15 +348,20 @@ they must teach the "latest."
 
 ### Adverse Impact
 
-Given these dynamics, we will eventually, maybe rather soon, reach a
-point at which most R users will be Tidy, and have indeed "Never heard
-of Matt Dowle." This will make things very difficult for the non-Tidy R
-people: Non-Tidy job seekers who are excellent R coders will find that
-they are dismissed out of hand by Tidy interviewers; authors of non-Tidy
-CRAN code will find their contribution is considered useless; academics
-submitting data science research manuscripts or grant proposals will
-find that Tidy reviewers give them low scores.  In short, R will have to
-bend to RStudio's wishes.
+Tidyverse advocate Roger Peng commented in his 2018 useR! address,
+"It will be interesting to see how things evolve, and whether the
+community can sustain multiple ways of programming.  I think that it
+can, but that's my opinion." But this seems overly optimistic.
+
+Given the dynamics described above, we will eventually, maybe rather
+soon, reach a point at which most R users will be Tidy, and have indeed
+"Never heard of Matt Dowle." This will make things very difficult for
+the non-Tidy R people: Non-Tidy job seekers who are excellent R coders
+will find that they are dismissed out of hand by Tidy interviewers;
+authors of non-Tidy CRAN code will find their contribution is considered
+useless; academics submitting data science research manuscripts or grant
+proposals will find that Tidy reviewers give them low scores.  In short,
+R will have to bend to RStudio's wishes.
 
 *This is classical monopolistic behavior.*  Of course, the market here,
 an open source project dominated by a commercial entity, is uncharted
