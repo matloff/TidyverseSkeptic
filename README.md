@@ -131,10 +131,61 @@ allies have typically ignored **data.table** in these promotions, e.g.
 not mentioning it in their timing comparisons, and painting it as beyond
 the reach of nonprogrammers.
 
-Hadley did belatedly develop an interface, **dtplyr**, in 2016, 
+~~Hadley did belatedly develop an interface, **dtplyr**, in 2016,
 2 years after introducing **dplyr** and 8 years
-after **data.table**.  And even this is 
-[slow](http://www.win-vector.com/blog/2019/06/data-table-is-much-better-than-you-have-been-told/).
+after **data.table**.  And even this is
+[slow](http://www.win-vector.com/blog/2019/06/data-table-is-much-better-than-you-have-been-told/).~~
+
+**Correction: Hadley developed a data.table interface in the first week of
+commits to the dplyr git repository.**
+
+**On the first day, the 28th of October 2012, Hadley
+[wrote himself a note](https://github.com/tidyverse/dplyr/commit/cd3610ffa669992179b91bf94b47a258a0ed46e4#diff-a4d09d97aa766a0390267edbe213c200R13):**
+
+```
+Email Matt Dowle about data.table.
+```
+
+**Perhaps because Hadley knew data.table was fast, as he had noted in the
+[first ever commit](https://github.com/tidyverse/dplyr/commit/80dc69b144711ec095db1d62cf0b73e09560eaf0#diff-000f1ff5556798d7926075d271bc445eR28):**
+
+```
+# baseball2 <- data.table(baseball)
+# system.time(baseball2[, list(n = length(year), m = n + 1), by = id])
+# # ~ 0.007 - holy shit that's fast
+# # but now only ~10x faster than summarise_by
+# setkey(baseball2, id)
+# system.time(baseball2[, length(year), by = id])
+# # ~ 0.002 - even more insanely fast
+```
+
+**Four days later Hadley set an
+[explicit goal to interface with data.table](https://github.com/tidyverse/dplyr/commit/f15225cab6ac0975738a5239916f31b58db043bc#diff-2497d31026051b62826c217280a9813fR6).**
+
+```
+`dplyr` is the next iteration of plyr with the following goals:
+
+* Move towards a grammar of data manipulation
+* Support alternative data stores (data.table, sql, hive, ...)
+* Be much much faster
+* Focus on the most useful/common operations: ddply, ldply, dlply
+```
+
+**Hadley committed the
+[first implementation](https://github.com/tidyverse/dplyr/commit/55486481c6bc463eaefe3d87a8b63db9fcacd0b1#diff-000f1ff5556798d7926075d271bc445eR55)
+of a dplyr verb with a data.table backend the following day.**
+
+```
+summarise_by.source_data_table <- function(source, group, calls,
+                                           env = parent.frame()) {
+  by_call <- as.call(c(quote(list), group))
+  list_call <- as.call(c(quote(list), calls))
+
+   dt_call <- substitute(source$obj[, calls, by = by],
+    list(calls = list_call, by = by_call))
+  eval(dt_call)
+}
+```
 
 RStudio is after all a for-profit business, so such treatment of
 **data.table** is just good business practice.  But R is an open-source
