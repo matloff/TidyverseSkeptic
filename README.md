@@ -172,7 +172,7 @@ base-R in comparison.  (It is ironic that advocates who present such
 statements are statisticians, who ought to know the need for a control
 group.)
 
-### Tidyverse makes learning harder, not easier
+### Tidyverse makes learning harder, due to adding much complexity
 
 Contrary to the Tidy advocates' claim, I believe using the Tidyverse
 makes things *more* difficult for learners without prior programming
@@ -193,17 +193,32 @@ By contrast, if she knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."
 
+### Tibbles
+
+Similarly, it is bad pedagogy to force students to learn tibbles, a
+more complex technology, instead of data frames, a simpler one.
+
+### Use of functional programming 
+
 Another featured Tidyverse package, the *functional programming*
 (FP)-oriented library **purrr**, has 177 functions.  Again the point
 about complexity applies. Even more importantly, top university Computer
 Science Departments have shifted away from teaching their introductory
 programming courses using functional programming paradigm to the more
-traditional Python, as they deem FP to be more abstract and challenging.
-It would then seem that using FP to teach non-programmers learning R is
-even more unwise.
+traditional Python, in part because they deem FP to be more abstract and
+challenging.
 
-Similarly, it is bad pedagogy to force students to learn tibbles, a
-more complex technology, instead of data frames, a simpler one.
+An interesting discussion of the topic is in [Charavarty and
+Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz).
+They too believe FP in its standard form in introductory programming
+classes is unsuitable even for CS majors.  It would then seem that using
+FP to teach non-programmers learning R is even more unwise.
+
+Note that even if taught in a modified FP form, their goals are
+antithetical to those of R learners.  They list three goals, one of
+which is "Introduce the essential concepts of computing (the theoretical
+aspect)," certainly not desirable for teaching R in general, let alone
+for teaching R to those with no coding experience.
 
 ### Syntax comparison and teachability
 
@@ -256,6 +271,15 @@ And much more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
 
+Furthermore, it is my understanding that the RStudio IDE is not merely a
+tool helping people to write and run code, but also is designed to
+facilitate writing code using Tidyverse products in particular.  One can
+click through certain **dplyr** actions, then click for input to a pipe
+and so on.  To me, this makes the coding process much murkier rather
+than illuminating.  It would increase the chance of undetected errors, and
+leave the student with the feeling that they do not fully understand the
+process, which likely is true.
+
 ### Is dplyr needed or even desirable for teaching?
 
 As I said earlier, in discussions with those who report success in using
@@ -274,6 +298,17 @@ slowly on large datasets.
 
 In short, in my view there is no advantage to teaching R through the
 Tidyverse, and some significant disadvantages.
+
+### The diversity claim
+
+One of the claims made by Tidyverse advocates -- indeed for many, the
+*main* claim -- is that teaching R using Tidy makes learning easier for
+women and minorities.  In essence, the view is that R must be "dumbed
+down" for these groups.  As a long-time ardent, active supporter of social
+justice, I find this claim insulting to women and minoritties, and
+again, not accurate.
+
+
 
 ### Summary:  the proper status of the Tidyverse in teaching
 
@@ -365,8 +400,13 @@ R will have to bend to RStudio's wishes.
 
 *This is classical monopolistic behavior.*  Of course, the market here,
 an open source project dominated by a commercial entity, is uncharted
-waters in the legal sense.  But in the economic sense, this is exactly
-what is occurring, whether a conscious goal of RStudio or not.
+waters in the legal sense.  But in the (non-price) economic sense, this
+is exactly what is occurring, whether a conscious goal of RStudio or
+not.
+
+Furthering accentuating the monopolistic aspect is the fact, mentioned
+above, that the RStudio IDE specifically facilitates use of Tidyverse
+tools.
 
 Aside from price, again probably not an issue here, a highly insidious
 consequence of monopolies is the stifling of innovation.  The case of
