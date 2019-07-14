@@ -299,6 +299,13 @@ slowly on large datasets.
 In short, in my view there is no advantage to teaching R through the
 Tidyverse, and some significant disadvantages.
 
+### The RStudio IDE itself
+
+Though not the Tidyverse itself, the RStudio IDE is actually another
+obstacle to learning.  Even the excellent online course by [R-Ladies
+Sydney](https://threadreaderapp.com/thread/1119025557830684673.html),
+notes that RStudio can be "overwhelming."
+
 ### The diversity claim
 
 One of the claims made by Tidyverse advocates -- indeed for many, the
