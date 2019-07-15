@@ -220,7 +220,7 @@ which is "Introduce the essential concepts of computing (the theoretical
 aspect)," certainly not desirable for teaching R in general, let alone
 for teaching R to those with no coding experience.
 
-### Syntax comparison and teachability
+### The English issue
 
 Again, the claim is that the Tidyverse is more teachable because of its
 "English-like" syntax, while they dismiss **data.table**'s syntax as
@@ -248,6 +248,77 @@ And what of the fact that we have the English word *filter* above?
 Granted, it looks nice, but English can be misleading or mystifying in a
 computer context.  Even an experienced programmer would not be able to
 guess what the **dplyr** function **mutate()** does, for instance.
+
+Moreover, the Tidy advocates don't like even the English in base-R, the
+"apply" functions.  Furthermore, it is very tellling that many have
+never even heard of the most powerful one, **tapply()**.  For instance, in a
+[Web
+page](https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html)
+claiming Tidy makes for more code, there is this example:
+
+``` r
+tidyverse
+
+mtcars %>% 
+  group_by(cyl, gear) %>% 
+  summarise(mpg.mean = mean(mpg),
+            mpg.sd = sd(mpg),
+            wt.mean = mean(wt),
+            wt.sd = sd(wt)) %>% 
+  ungroup() # remove any groupings from downstream analysis
+base R
+
+# First operate in the data.frame by group (split-apply)
+mtcars_by <- by(mtcars, 
+   INDICES = list(mtcars$cyl, mtcars$gear),
+   FUN = function(x){
+     data.frame(cyl = unique(x$cyl),
+                gear = unique(x$gear),
+                mpg.mean = mean(x$mpg),
+                mpg.sd = sd(x$mpg),
+                wt.mean = mean(x$wt),
+                wt.sd = sd(x$wt))
+   })
+
+# Then combine the results into a data.frame
+do.call(rbind, mtcars_by)
+```
+
+The output of the Tidy version is
+
+``` r
+# A tibble: 8 x 6
+    cyl  gear mpg.mean mpg.sd wt.mean  wt.sd
+  <dbl> <dbl>    <dbl>  <dbl>   <dbl>  <dbl>
+1     4     3     21.5 NA        2.46 NA    
+2     4     4     26.9  4.81     2.38  0.601
+3     4     5     28.2  3.11     1.83  0.443
+4     6     3     19.8  2.33     3.34  0.173
+5     6     4     19.8  1.55     3.09  0.413
+6     6     5     19.7 NA        2.77 NA    
+7     8     3     15.0  2.77     4.10  0.768
+8     8     5     15.4  0.566    3.37  0.283
+```
+
+Yet the above lengthy R code can be done much more compactly. E.g 
+
+``` r
+with(mtcars,tapply(mpg,list(cyl,gear),function(x) c(mean(x),sd(x)))
+```
+
+with output 
+
+``` r
+      3      4    5
+4 21.50 26.925 28.2
+6 19.75 19.750 19.7
+8 15.05     NA 15.4
+```
+
+Not only is the code highly compact, but also the output is nicer, in
+table form.
+
+### Pipes
 
 The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
 the function composition **h(g(f(x)))** as
