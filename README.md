@@ -254,7 +254,7 @@ Moreover, the Tidy advocates don't like even the English in base-R, the
 never even heard of the most powerful one, **tapply()**.  For instance, in a
 [Web
 page](https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html)
-claiming Tidy makes for more code, there is this example:
+claiming Tidy makes for more compact code, there is this example:
 
 ``` r
 tidyverse
