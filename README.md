@@ -303,7 +303,7 @@ The output of the Tidy version is
 Yet the above lengthy R code can be done much more compactly. E.g 
 
 ``` r
-with(mtcars,tapply(mpg,list(cyl,gear),function(x) c(mean(x),sd(x)))
+with(mtcars,tapply(mpg,list(cyl,gear),mean))
 ```
 
 with output 
