@@ -182,12 +182,24 @@ Tidyverse students are being asked to learn a much larger volume of
 material, which is clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
-60!  The "star" of the Tidyverse, **dplyr**, consists of 263
-functions. 
+60!  The "star" of the Tidyverse, **dplyr**, consists of 263 functions.
 While a user initially need not use more than a small fraction of them,
 the high complexity is clear.  Every time a user needs some variant of
 an operation, she must sift through those hundreds of functions for one
 suited to her current need.  
+
+As Matt Dowle [pointed
+out](https://twitter.com/MattDowle/status/1142001162230489088),
+
+> It isn't one function mutate that you combine in a pipe.  Its mutate,
+> mutate_, mutate_all, mutate_at, mutate_each, mutate_each_, mutate_if,
+> transmute, transmute_, transmute_all, transmute_at and transmute_if.
+> And you're telling me you don't need a manual to learn all those?
+
+The Tidiers' reply was essentially the standard, "But there is
+consistent syntax for all those functions," which is nice, but the
+salient fact is that the user must learn the *semantics* of all those
+functions.
 
 By contrast, if she knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
@@ -254,7 +266,7 @@ Moreover, the Tidy advocates don't like even the English in base-R, the
 never even heard of the most powerful one, **tapply()**.  For instance, in a
 [Web
 page](https://tavareshugo.github.io/data_carpentry_extras/base-r_tidyverse_equivalents/base-r_tidyverse_equivalents.html)
-claiming Tidy makes for more compact code, there is this example:
+comparing Tidy to base-R, there is this example:
 
 ``` r
 tidyverse
