@@ -352,7 +352,9 @@ h(b)
 
 And much more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
-debugging.  And again, for large problems, piped code is slower.
+debugging.  And again, for large problems, 
+[piped code is
+slower](https://github.com/matloff/TidyverseSkeptic/issues/10#issuecomment-511770556).
 
 Furthermore, it is my understanding that the RStudio IDE is not merely a
 tool helping people to write and run code, but also is designed to
