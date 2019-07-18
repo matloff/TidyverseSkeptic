@@ -223,10 +223,10 @@ more complex technology, instead of data frames, a simpler one.
 Another featured Tidyverse package, the *functional programming*
 (FP)-oriented library **purrr**, has 177 functions.  Again the point
 about complexity applies. Even more importantly, top university Computer
-Science Departments have shifted away from teaching their introductory
-programming courses using functional programming paradigm to the more
-traditional Python, in part because they deem FP to be more abstract and
-challenging.
+Science (CS) Departments have shifted away from teaching their
+introductory programming courses using functional programming paradigm
+to the more traditional Python, in part because they deem FP to be more
+abstract and challenging.
 
 An interesting discussion of the topic is in [Charavarty and
 Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz).
@@ -234,10 +234,10 @@ They too believe FP in its standard form in introductory programming
 classes is unsuitable even for CS majors.  It would then seem that using
 FP to teach non-programmers learning R is even more unwise.
 
-Note that even if taught in a modified FP form, their goals are
+Note that even if taught in a modified FP form, the authors' goals are
 antithetical to those of R learners.  They list three goals, one of
-which is "Introduce the essential concepts of computing (the theoretical
-aspect)," certainly not desirable for teaching R in general, let alone
+which is to "Introduce the essential [theoretical] concepts of 
+computing," certainly not desirable for teaching R in general, let alone
 for teaching R to those with no coding experience.
 
 ### The English issue
@@ -414,7 +414,7 @@ One of the claims made by Tidyverse advocates -- indeed for many, the
 *main* claim -- is that teaching R using Tidy makes learning easier for
 women and minorities.  In essence, the view is that R must be "dumbed
 down" for these groups.  As a long-time ardent, active supporter of social
-justice, I find this claim insulting to women and minoritties, and
+justice, I find this claim insulting to women and minorities, and
 again, not accurate.
 
 
