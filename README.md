@@ -286,6 +286,7 @@ mtcars %>%
             wt.mean = mean(wt),
             wt.sd = sd(wt)) %>% 
   ungroup() # remove any groupings from downstream analysis
+
 base R
 
 # First operate in the data.frame by group (split-apply)
@@ -338,6 +339,25 @@ with output
 Not only is the code highly compact, but also the output is nicer, in
 table form.  (If desired in data frame form, the output can be run
 through **as.data.frame(as.table())**.)
+
+### Back to reality
+
+It is absolutely untenable to argue that
+
+``` r
+mtcars %>% 
+  group_by(cyl, gear) %>% 
+  summarise(mpg.mean = mean(mpg)) %>% 
+  ungroup() 
+```
+
+is easier to learn than
+
+``` r
+with(mtcars,tapply(mpg,list(cyl,gear),mean))
+```
+
+### Code readability
 
 The Tidyverse advocates also claim that the "English" in **dplyr** makes
 the code easier to read.  To me, that is missing the point; as any
