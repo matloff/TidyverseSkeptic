@@ -96,6 +96,8 @@ Tidyverse makes R *harder* to learn for this group.
 
 The **dplyr** package is a featured app of the Tidyverse developed by
 Hadley, so I'll use this as an example at several points in this essay.
+Note, though, that it is merely an example, not the core point of this
+essay.
 
 **Dplyr** borrowed a number of ideas from the earlier **data.table** by
 Matt Dowle.  One of Hadley's major motivations was to give the user a
@@ -171,6 +173,12 @@ productive in R!" -- which says nothing at all about the teachability of
 base-R in comparison.  (It is ironic that advocates who present such
 statements are statisticians, who ought to know the need for a control
 group.)
+
+Moreover, in discussions with those who report success in using
+the Tidyverse to teach beginning programmers, I ask whether their
+students are incapable of learning just base-R.  They readily concede
+that the answer is no.  Indeed, before the Tidyverse, throngs of people
+were learning base-R without any prior programming background.
 
 ### Tidyverse makes learning harder, due to adding much complexity
 
@@ -328,7 +336,13 @@ with output
 ```
 
 Not only is the code highly compact, but also the output is nicer, in
-table form.
+table form.  (If desired in data frame form, the output can be run
+through **as.data.frame(as.table())**.)
+
+The Tidyverse advocates also claim that the "English" in **dplyr** makes
+the code easier to read.  To me, that is missing the point; as any
+instructor of software engineering can tell you, the best way to make
+code readable is to use REAL English, in good, meaningful code comments.
 
 ### Pipes
 
@@ -366,29 +380,11 @@ than illuminating.  It would increase the chance of undetected errors, and
 leave the student with the feeling that they do not fully understand the
 process, which likely is true.
 
-### Is dplyr needed or even desirable for teaching?
-
-As I said earlier, in discussions with those who report success in using
-the Tidyverse to teach beginning programmers, I ask whether their
-students are incapable of learning just base-R.  They readily concede
-that the answer is no.  Indeed, before the Tidyverse, throngs of people
-were learning base-R without any prior programming background.
-
-The Tidyverse advocates also claim that the "English" in **dplyr** makes
-the code easier to read.  To me, that is missing the point; as any
-instructor of software engineering can tell you, the best way to make
-code readable is to use REAL English, in good, meaningful code comments.
-
-As also mentioned, the Tidyverse can be difficult to debug, and run very
-slowly on large datasets.
-
-In short, in my view there is no advantage to teaching R through the
-Tidyverse, and some significant disadvantages.
-
 ### The RStudio IDE itself
 
 Though not the Tidyverse itself, the RStudio IDE is actually another
-obstacle to learning.  Even the excellent online course by [R-Ladies
+obstacle to learning.  Granted, students do like a colorful, clickable
+interface, but even the excellent online course by [R-Ladies
 Sydney](https://threadreaderapp.com/thread/1119025557830684673.html),
 notes that RStudio can be "overwhelming."
 
