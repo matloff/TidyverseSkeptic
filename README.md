@@ -75,7 +75,7 @@ RStudio does not directly benefit monetarily from the Tidyverse, but it
 is a classical monopoly in terms dominance of a single product, unfair
 competition and stifled innovation.  Though again this is
 well-intentioned and the severity of the dominance is not yet complete,
-but adverse impacts are very serious and worsening.
+the adverse impacts are very serious and worsening.
 
 7. **The popularity of the Tidyverse is thus not a case a superior product
    rising to the top in a free market**.  RStudio has seven or eight
@@ -505,7 +505,7 @@ pitch Tidy with the aforementione testimonials.  If you were an
 instructor whose students have found R difficult -- for programming IS
 difficult, no matter what language and tools are used -- and are told
 that Tidy is the solution, wouldn't you feel the urge to use it?  Only
-the most hype-skeptics would say, "Wait a minute..."
+the hype-skeptics would say, "Wait a minute..."
 
 ### Adverse Impact
 
@@ -521,10 +521,17 @@ the non-Tidy R people: Non-Tidy job seekers who are excellent R coders
 will find that they are dismissed out of hand by Tidy interviewers;
 authors of non-Tidy CRAN code will find their contribution is considered
 useless; academics submitting data science research manuscripts or grant
-proposals will find that Tidy reviewers give them low scores.  In short,
-R will have to bend to RStudio's wishes.
+proposals will find that Tidy reviewers give them low scores.  **In short,
+R will have to bend to RStudio's wishes**.
+6. For the above reasons, **RStudio is essentially operating as a
+   monopolist**.  It is not a financial monopoly, since R is free and
+RStudio does not directly benefit monetarily from the Tidyverse, but it
+is a classical monopoly in terms dominance of a single product, unfair
+competition and stifled innovation.  Though again this is
+well-intentioned and the severity of the dominance is not yet complete,
+the adverse impacts are very serious and worsening.
 
-*This is classical monopolistic behavior.*  Of course, the market here,
+**This is classical monopolistic behavior.**  Of course, the market here,
 an open source project dominated by a commercial entity, is uncharted
 waters in the legal sense.  But in the (non-price) economic sense, this
 is exactly what is occurring, whether a conscious goal of RStudio or
