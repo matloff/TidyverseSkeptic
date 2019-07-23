@@ -192,6 +192,30 @@ students are incapable of learning just base-R.  They readily concede
 that the answer is no.  Indeed, before the Tidyverse, throngs of people
 were learning base-R without any prior programming background.
 
+### An untenable argument
+
+In a base-R vs. Tidy comparison on the Web (see link below), the
+following Tidy code is presented:
+
+``` r
+mtcars %>% 
+  group_by(cyl, gear) %>% 
+  summarise(mpg.mean = mean(mpg)) %>% 
+  ungroup() 
+```
+
+The same result with base-R is
+
+``` r
+with(mtcars,tapply(mpg,list(cyl,gear),mean))
+```
+
+It is absolutely untenable to argue that the Tidy version, using three
+different functions, is easier for beginners to learn than the base-R
+version, using just a single function.  (The **with()** call is there
+just to save typing.)  And this is not a clever trick; it is the
+standard, straightforward way to use **tapply()**.
+
 ### Tidyverse makes learning harder, due to adding much complexity
 
 Contrary to the Tidy advocates' claim, I believe using the Tidyverse
@@ -354,7 +378,7 @@ through **as.data.frame(as.table())**.)
 
 ### Back to reality
 
-It is absolutely untenable to argue that
+Again, it is absolutely untenable to argue that
 
 ``` r
 mtcars %>% 
@@ -538,9 +562,9 @@ tools.  **This is classical monopolistic behavior**, mirroring the
 behavior of Microsoft in the anti-trust legal cases brought against the
 firm some years ago.
 
-Aside from price, again probably not an issue here, a highly insidious
-consequence of monopolies is the stifling of innovation.  The case of
-**data.table** discussed above is a fine case in point.
+As noted, a highly insidious consequence of monopolies is the stifling
+of innovation.  The case of **data.table** discussed above is a fine
+case in point.
 
 An open-source project involves a people spending a large amount of time
 developing the project for free, no pay. Thus, for a commercial entity
