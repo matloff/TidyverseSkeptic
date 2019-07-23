@@ -452,13 +452,13 @@ just as is the case for most complex CRAN packages.
 ### The Long Arm of RStudio
 
 In the [SatRday LA conference](https://losangeles2019.satrdays.org/),
-April 6, 2019, a speaker who was actually explaining the advantages of
-**data.table** in large datasets said that package "was created by Matt
+April 6, 2019, a speaker who was actually explaining the *advantages* of
+**data.table** in large datasets joked that package "was created by Matt
 Doyle [sic].  Who's that?  No one knows who he is."  He repeated later,
 "No one has ever heard of Matt Doyle."  Actually, many in the audience
 had indeed heard of Matt Dowle, but in that speaker's world -- the
 RStudio-educated world" -- his statement about lack of name recognition
-for Matt was sadly accurate.  Such is the impact of RStudio on the
+for Matt was sadly accurate, epitomizing the impact of RStudio on the
 field.
 
 Hadley's [talk](https://t.co/7Ey27asCH4) in the 2016 useR! conference
@@ -499,8 +499,13 @@ Tidyverse.  One post I saw came from a person who panicked because she
 had written a **for** loop rather than employ Tidyverse's functional
 programming package **purrr**.  
 
-And of course many who teach R want to join Bandwagon as well, feeling
-they must teach the "latest."
+And of course many who teach R want to join the Bandwagon as well, feeling
+they must teach the "latest."  RStudio's educational outreach people
+pitch Tidy with the aforementione testimonials.  If you were an
+instructor whose students have found R difficult -- for programming IS
+difficult, no matter what language and tools are used -- and are told
+that Tidy is the solution, wouldn't you feel the urge to use it?  Only
+the most hype-skeptics would say, "Wait a minute..."
 
 ### Adverse Impact
 
