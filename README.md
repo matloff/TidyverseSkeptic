@@ -523,23 +523,20 @@ authors of non-Tidy CRAN code will find their contribution is considered
 useless; academics submitting data science research manuscripts or grant
 proposals will find that Tidy reviewers give them low scores.  **In short,
 R will have to bend to RStudio's wishes**.
-6. For the above reasons, **RStudio is essentially operating as a
-   monopolist**.  It is not a financial monopoly, since R is free and
+
+For the above reasons, **RStudio is essentially operating as a
+monopolist**.  It is not a financial monopoly, since R is free and
 RStudio does not directly benefit monetarily from the Tidyverse, but it
 is a classical monopoly in terms dominance of a single product, unfair
-competition and stifled innovation.  Though again this is
+competition (see below) and stifled innovation.  Though again this is
 well-intentioned and the severity of the dominance is not yet complete,
 the adverse impacts are very serious and worsening.
 
-**This is classical monopolistic behavior.**  Of course, the market here,
-an open source project dominated by a commercial entity, is uncharted
-waters in the legal sense.  But in the (non-price) economic sense, this
-is exactly what is occurring, whether a conscious goal of RStudio or
-not.
-
 Furthering accentuating the monopolistic aspect is the fact, mentioned
 above, that the RStudio IDE specifically facilitates use of Tidyverse
-tools.
+tools.  **This is classical monopolistic behavior**, mirroring the
+behavior of Microsoft in the anti-trust legal cases brought against the
+firm some years ago.
 
 Aside from price, again probably not an issue here, a highly insidious
 consequence of monopolies is the stifling of innovation.  The case of
