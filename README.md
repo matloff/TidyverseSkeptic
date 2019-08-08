@@ -81,10 +81,11 @@ non-Tidyverse data science research papers and grant proposals.  **The
 non-Tidiers will have no choice but to bend to RStudio's wishes.**  
 
 7. For the above reasons, **RStudio is essentially operating as a
-   monopolist.**  It's not a monopoly in the financial sense -- Tidyverse
-is not directly enhancing RStudio's profitability -- and, as noted, is not
-intentional, but the result is classicly monopolistic, in the sense of
-one product dominating a market.  The adverse impacts are grave.
+   monopolist.**  It's not a monopoly in the financial sense --
+Tidyverse is not directly enhancing RStudio's profitability -- and, as
+noted, is not intentional, but the result is classicly monopolistic, in
+the sense of one product dominating a market, stifling innovation etc.
+The adverse impacts are very serious and worsening.
 
 8. One key example of the pernicious effects of this monopolistic
    situation is that RStudio's promotion of the Tidyverse has alarmingly
@@ -368,15 +369,20 @@ being justly impressed with **ggplot2**, mistakenly think that the
 package can only be used from Tidy code and thus is an advantage of
 being Tidy.  This illustrates the mindset that has developed.
 
-And there is a Bandwagon Effect at work, and even a hint of cult-like
-behavior.  I've seen statements on Twitter from "graduates" of Tidyverse
-training who actually apologize because their code did not use the
-Tidyverse.  One post I saw came from a person who panicked because she
-had written a **for** loop rather than employ Tidyverse's functional
-programming package **purrr**.  
+There is a Bandwagon Effect at work, and of course many who teach R want
+to join Bandwagon as well, feeling they must teach the "latest."
 
-And of course many who teach R want to join Bandwagon as well, feeling
-they must teach the "latest."
+There is even behavior of the type one sees in cults.  I've seen
+statements on Twitter from "graduates" of Tidyverse training who
+actually apologize because their code did not use the Tidyverse.  One
+post I saw came from a person who panicked with guilt because she had
+written a **for** loop rather than employ Tidyverse's functional
+programming package **purrr**.  In another tweet, the poster was angry
+because there was a name conflict between a long-established R function
+and one in the Tidyverse; he demanded that the original authors change
+the name, oblivious to the fact that theirs long preceded Tidyverse.
+Any criticism of the Tidyverse on Twitter is pounced upon by the
+loyalists, often with vitriolic tones.
 
 ### Adverse Impact
 
