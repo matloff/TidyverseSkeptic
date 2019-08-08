@@ -12,14 +12,13 @@ constructive criticism.
 I like and admire the RStudio people, including the Tidyverse
 originator, Hadley Wickham, and have always supported them, both
 privately and
-[publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).  I have been interacting with them from the
-beginning, when the firm consisted of only founder JJ Allaire and ace
-developer Joe Cheng.  I highly praise the firm to my students, and I use
-and recommend Hadley's **ggplot2** package (though I don't consider it
-part of the Tidyverse, having been developed well before Tidy and
-thematically unrelated). I sometimes use **stringr** (though
-unfortunately I also often find it has the same shortcomings as
-**paste()** etc. in base R), and on occasion **devtools** has been an
+[publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
+I have been interacting with them from the beginning, when the firm
+consisted of only founder JJ Allaire and ace developer Joe Cheng.  I
+highly praise the firm to my students, and I use and recommend Hadley's
+**ggplot2** package (though I don't consider it part of the Tidyverse,
+having been developed well before Tidy and thematically unrelated). I
+sometimes use **stringr**, and on occasion **devtools** has been an
 absolute lifesaver for me.
 
 In other words, I absolutely don't consider RStudio to be some evil
@@ -46,8 +45,8 @@ programming*.  **The latter is abstract and theoretical,
 difficult even for CS students, hence arguably an unwise approach for
 nonprogrammer students of R.**
 
-2.  Another price of purity is increased complexity and
-    abstraction, making code more prone to error (as well as a
+2.  **Another price of purity is increased complexity and
+    abstraction**, making code more prone to error (as well as a
 sacrifice in performance).  Ironically, though consistency of interface
 is a goal, new versions of Tidy libraries are often incompatible with
 older ones, a very serious problem in the software engineering world.
@@ -72,8 +71,9 @@ base-R as something akin to assembly language.  One major RStudio
 employee who asked to discuss this document with me referred to non-Tidy
 packages as being in the legacy realm.  All this might be fine if the R
 community were unified in viewing Tidyverse as a high-level improvement,
-but many do not; they are not impressed by the syntax and so on, and as
-noted, are worried about the slow performance of Tidy.
+but many do not. They are not impressed by the syntax and so on, and as
+noted, are worried about the slow performance of Tidy; some view Tidy as
+a gimmick.
 
 6.  That new generation will often be biased against non-Tidyverse job
     seekers, non-Tidyverse CRAN packages, and academics who submit
@@ -89,13 +89,13 @@ The adverse impacts are very serious and worsening.
 
 8. One key example of the pernicious effects of this monopolistic
    situation is that RStudio's promotion of the Tidyverse has alarmingly
-impeded the progress and adoption of technologically superior packages,
+**impeded the progress and adoption of technologically superior packages**,
 notably **data.table**. Most in the "Tidyverse generation" are unaware
 of anything outside the Tidyverse.  For instance, Hadley's book, *R for
 Data Science*, with Garrett Grolemund, barely mentions **data.table**.
 
 9. A major reason offered by RStudio for promoting the Tidyverse is
-    that it makes R easier to teach to non-programmers. The claim is
+    that it makes R easier to teach to non-programmers. They point out 
 that this group will just be doing data analysis, rather than becoming
 professional R programmers, and Tidy is a better vehicle for teaching
 that.  **I would argue that, on the contrary, the Tidyverse makes R
@@ -149,21 +149,22 @@ by the consulting firm Win-Vec LLC, e.g.
 showing that **dplyr** can be extremely slow even relative to base-R,
 thus even worse relative to **data.table**.
 
-RStudio, a commercial entity, is heavily engaged in educational
-activities, both with its own courses and in interacting with teachers
-of R.  It has heavily promoted **dplyr**.  Meanwhile, RStudio and its
-allies have typically ignored **data.table** in these promotions, e.g.
-not mentioning it in their timing comparisons, and painting it as beyond
-the reach of nonprogrammers.
+Matt's **data.table** package in a sense helped to "save" R.  At one
+point there were major concerns that R could not handle Big Data, with
+calls from some in favor of Python instead.  The **data.table** package
+showed that R could do quite well in large datasets.  This really aided
+in R's being adopted by various large companies, and likely played some
+role in the creation of the R Consortium, which funds R projects.
+
+Yet, RStudio, which as noted is heavily engaged in educational activities, 
+both with its own courses and in interacting with teachers of R, has 
+promoted its own product, **dplyr**, largely ignoring its rival,
+**data.table**.  This is natural for a commercial entity, but in 
+this case RStudio has a special responsibility as a dominant business in 
+an open-source project. 
 
 Hadley did develop an interface, **dtplyr**, but even this is 
 [slow](http://www.win-vector.com/blog/2019/06/data-table-is-much-better-than-you-have-been-told/).
-
-These actions harm the reputation of R. Advocates of other languages,
-notably Python, constantly denigrate R as being slow on Big Data.
-Actually, **data.table** is extremely fast (and is faster than Python's
-Pandas), but those who view R through the RStudio lens are unaware of
-it.
 
 # Teachability
 
@@ -178,12 +179,17 @@ people learn, from children to middle-aged adults.  Among other things,
 I've taught English As a Second Language to immigrant adults, most of
 whom have had less than a high school education.
 
+In discussing teaching, I am taking the target audience here to be
+people who wish to use R for data analysis, not those who wish to become
+professional R programmers.
+
 ### The Tidyverse advocates' claim
 
-From this background, I strongly question the claim made by Tidyverse
-advocates that it facilitates the teaching of R to non-programmers, as
-opposed to teaching base-R.  (Again, I regard both **dplyr** and
-**data.table** as advanced topics; neither is suitable for beginners.)
+As a lifelong passionate teacher, I strongly question the claim made by
+Tidyverse advocates that it facilitates the teaching of R to
+non-programmers, as opposed to teaching them base-R.  (Again, I regard
+both **dplyr** and **data.table** as advanced topics; neither is
+suitable for beginners.)
 
 There has been no study of this claim.  Advocates often provide
 testimonials from students like "I learned R using Tidyverse, and now am
@@ -195,7 +201,7 @@ group.)
 ### Tidyverse makes learning harder, due to adding much complexity 
 
 Contrary to the Tidy advocates' claim, I believe using the Tidyverse
-makes things *more* difficult for learners without prior programming
+makes things more *difficult* for learners without prior programming
 background.  
 
 Tidyverse students are being asked to learn a much larger volume of
@@ -205,10 +211,10 @@ author says *inter alia* that he uses "only" 60 Tidyverse functions --
 60!  The "star" of the Tidyverse, **dplyr**, consists of 263
 functions. 
 
-While a user initially need not use more than a small fraction of them,
-the high complexity is clear.  Every time a user needs some variant of
-an operation, she must sift through those hundreds of functions for one
-suited to her current need.  
+While a user initially need not use more than a small fraction of those
+functions, the high complexity is clear.  Every time a user needs some
+variant of an operation, she must sift through those hundreds of
+functions for one suited to her current need.  
 
 Tidy advocates say the uniformity of interface in all those functions
 makes learning them easier.  Uniform *syntax* is nice, yes, but the fact
@@ -221,13 +227,14 @@ user must sift through this.
 As Matt Dowle [pointed
 out](https://twitter.com/MattDowle/status/1142001162230489088),
 
-> It isn't one function **mutate** that you combine in a pipe.  Its
-> mutate, **mutate_**, **mutate_all**, **mutate_at**, **mutate_each**,
+> It isn't one function **mutate** that you combine in a pipe.  It's
+> **mutate**, **mutate_**, **mutate_all**, **mutate_at**, **mutate_each**,
 > **mutate_each_**, **mutate_if**, **transmute**, **transmute_**,
 > **transmute_all**, **transmute_at** and **transmute_if**.  And you're
 > telling me you don't need a manual to learn all those?
 
-Having a common syntax is thus the least of the user's worries.
+Having a common syntax thus does not compensate for this extensive
+complexity.
 
 By contrast, if this user knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
@@ -254,8 +261,7 @@ advanced topic, not for beginners with no coding background.
 ### The English issue
 
 Again, the point most emphasized by Tidyverse advocates is that the
-Tidyverse is more teachable because of its "English-like" syntax, while
-they dismiss **data.table**'s syntax as opaque.
+Tidyverse is more teachable because of its "English-like" syntax. 
 
 Below is a comparison (adapted from
 [here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
@@ -282,8 +288,9 @@ guess what the **dplyr** function **mutate()** does, for instance.
 
 Ironically, the Tidyverse advocates' worst criticism of base-R is aimed
 at functions that do have English names, the "apply" family.  I
-encounter many who make a point of declaring that they would never use
-any function from this family.
+encounter many who proudly make a point of declaring that they would
+never use any function from this family.  Such rigidity seems irrational
+to me.
 
 ### Pipes
 
@@ -309,6 +316,13 @@ And much more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
 
+Moreover, what if the function **h()** above has just two arguments,
+rather than one?  Pipes can't be used there.
+
+So, while I may agree with the Tidiers' preference for "left to right"
+execution, it can be done without pipes (as I do), and I see no benefit
+to them.
+
 ### Code readability
 
 The Tidyverse advocates also claim that the "English" in **dplyr** makes
@@ -317,14 +331,6 @@ point; as any instructor of software engineering can tell you, the best
 way to make code readable is to use REAL English, in good, meaningful
 code comments.  (And this is just as important, if not more so, for
 nonprogrammers.)
-
-### The RStudio IDE itself
-
-Though not the Tidyverse itself, the RStudio IDE is actually another
-obstacle to learning.  Granted, students do like a colorful, clickable
-interface, but even the excellent online course by [R-Ladies
-Sydney](https://threadreaderapp.com/thread/1119025557830684673.html),
-notes that RStudio can be "overwhelming."
 
 ### The diversity claim
 
@@ -344,7 +350,8 @@ that the answer is no.  Indeed, before the Tidyverse, throngs of people
 were learning base-R without any prior programming background.
 
 As also mentioned, the Tidyverse can be difficult to debug, and run very
-slowly on large datasets.
+slowly on large datasets.  The perceived benefit of being "English-like"
+is illusory.
 
 In short, in my view there is no advantage to teaching R through the
 Tidyverse, and some significant disadvantages.
@@ -373,17 +380,16 @@ April 6, 2019, a speaker who was actually explaining the advantages of
 Doyle [sic].  Who's that?  No one knows who he is."  He repeated later,
 "No one has ever heard of Matt Doyle."  Actually, many in the audience
 had indeed heard of Matt Dowle, but in that speaker's world -- the
-RStudio-educated world" -- his statement about lack of name recognition
+RStudio-educated world -- his statement about lack of name recognition
 for Matt was sadly accurate.  Such is the impact of RStudio on the
 field.
 
-Hadley has written that base-R was mostly written 20 years ago, and that
-the R Core Group, which is the body governing R, is very conservative.
-Hadley's [talk](https://t.co/7Ey27asCH4) in the 2016 useR! conference
-amounted to a manifesto, calling for R to "modernize" along Tidy lines.
-He conceded that this would involve "short-term pain," yet believed it
-to be very much worthwhile.  Again, given RStudio's dominance, this
-revolution in R was sure to follow, which it has.
+Hadley notes that base-R was mostly written 20 years ago.  Hadley's
+[talk](https://t.co/7Ey27asCH4) in the 2016 useR! conference amounted to
+a manifesto, calling for R to "modernize" along Tidy lines.  He conceded
+that this would involve "short-term pain," yet believed it to be very
+much worthwhile.  Again, given RStudio's dominance, this revolution in R
+was sure to follow, which it has.
   
 The Tidyverse is a vigorous promotional effort by RStudio that has come
 to dominate the R world.  As mentioned, the firm has been especially
@@ -402,15 +408,14 @@ who views non-Tidy packages as legacy.
 
 "Testimonials" are legion.  Non-programmers who take Tidy-based R
 courses are delighted that they can now do some data analysis, and
-praise the Tidyverse without realizing they have no basis for comparison 
-to base-R, **data.table** and so on.
-
-RStudio counts **ggplot2** as being part of the Tidyverse, but it was
-developed much earlier, and does not generally follow the Tidy
-philosophy.  But as a result of such inclusion, I see many users who,
-being justly impressed with **ggplot2**, mistakenly think that the
-package can only be used from Tidy code and thus is an advantage of
-being Tidy.  This illustrates the mindset that has developed.
+praise the Tidyverse without realizing they have no basis for comparison
+to base-R, **data.table** and so on.  RStudio counts **ggplot2** as
+being part of the Tidyverse, but it was developed much earlier, and does
+not generally follow the Tidy philosophy.  But as a result of such
+inclusion, I see many users who, being justly impressed with
+**ggplot2**, mistakenly think that the package can only be used from
+Tidy code and thus is an advantage of being Tidy.  This illustrates the
+mindset that has developed.
 
 There is a Bandwagon Effect at work, and of course many who teach R want
 to join Bandwagon as well, feeling they must teach the "latest."
@@ -473,7 +478,7 @@ entity should not have such undue, unilateral influence on an
 open-source project.*  
 
 It should be noted that neither Hadley nor anyone else one from RStudio
-is in the elite, 20-member R Core Group, which controls the development
+is in the elite, 20-member R Core Group, which guides the development
 of the language.  The Tidyverse thus is tantamount to an *end-run around
 the leaders of this open-source project*.  As any expert in
 organizational behavior will tell you, this does not augur well for the
