@@ -280,6 +280,11 @@ Granted, it looks nice, but English can be misleading or mystifying in a
 computer context.  Even an experienced programmer would not be able to
 guess what the **dplyr** function **mutate()** does, for instance.
 
+Ironically, the Tidyverse advocates' worst criticism of base-R is aimed
+at functions that do have English names, the "apply" family.  I
+encounter many who make a point of declaring that they would never use
+any function from this family.
+
 ### Pipes
 
 The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
@@ -303,11 +308,6 @@ h(b)
 And much more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
-
-Ironically, the Tidyverse advocates' worst criticism of base-R is aimed
-at functions that do have English names, the "apply" family.  I
-encounter many who make a point of declaring that they would never use
-any function from this family.
 
 ### Code readability
 
