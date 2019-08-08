@@ -280,6 +280,8 @@ Granted, it looks nice, but English can be misleading or mystifying in a
 computer context.  Even an experienced programmer would not be able to
 guess what the **dplyr** function **mutate()** does, for instance.
 
+### Pipes
+
 The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
 the function composition **h(g(f(x)))** as
 
@@ -302,7 +304,38 @@ And much more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
 
-### Is the Tidyverse needed or even desirable for teaching?
+Ironically, the Tidyverse advocates' worst criticism of base-R is aimed
+at functions that do have English names, the "apply" family.  I
+encounter many who make a point of declaring that they would never use
+any function from this family.
+
+### Code readability
+
+The Tidyverse advocates also claim that the "English" in **dplyr** makes
+the code easier to *read*, not just write.  To me, that is missing the
+point; as any instructor of software engineering can tell you, the best
+way to make code readable is to use REAL English, in good, meaningful
+code comments.  (And this is just as important, if not more so, for
+nonprogrammers.)
+
+### The RStudio IDE itself
+
+Though not the Tidyverse itself, the RStudio IDE is actually another
+obstacle to learning.  Granted, students do like a colorful, clickable
+interface, but even the excellent online course by [R-Ladies
+Sydney](https://threadreaderapp.com/thread/1119025557830684673.html),
+notes that RStudio can be "overwhelming."
+
+### The diversity claim
+
+One of the claims made by Tidyverse advocates -- indeed for many, the
+*main* claim -- is that teaching R using Tidy makes learning easier for
+women and minorities.  In essence, the view is that R must be "dumbed
+down" for these groups.  As a long-time ardent, active supporter of social
+justice, I find this claim insulting to women and minorities, and
+again, not accurate.
+
+### Summary:  the proper status of the Tidyverse in teaching
 
 As I said earlier, in discussions with those who report success in using
 the Tidyverse to teach beginning programmers, I ask whether their
@@ -310,19 +343,11 @@ students are incapable of learning just base-R.  They readily concede
 that the answer is no.  Indeed, before the Tidyverse, throngs of people
 were learning base-R without any prior programming background.
 
-The Tidyverse advocates also claim that the "English" in **dplyr** makes
-the code easier to read.  To me, that is missing the point; as any
-instructor of software engineering can tell you, the best way to make
-code readable is to use REAL English, in good, meaningful code comments.
-(And this is just as important, if not more so, for nonprogrammers.)
-
 As also mentioned, the Tidyverse can be difficult to debug, and run very
 slowly on large datasets.
 
 In short, in my view there is no advantage to teaching R through the
 Tidyverse, and some significant disadvantages.
-
-### Summary:  the proper status of the Tidyverse in teaching
 
 I think it is a mistake to feature the Tidyverse in teaching R to
 beginners, for these reasons:
@@ -400,7 +425,8 @@ because there was a name conflict between a long-established R function
 and one in the Tidyverse; he demanded that the original authors change
 the name, oblivious to the fact that theirs long preceded Tidyverse.
 Any criticism of the Tidyverse on Twitter is pounced upon by the
-loyalists, often with vitriolic tones.
+loyalists, often with vitriolic tones.  And they have mantras, e.g.
+"Tidyverse showed me the fluidity of data!"
 
 ### Adverse Impact
 
