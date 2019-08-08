@@ -192,7 +192,7 @@ base-R in comparison.  (It is ironic that advocates who present such
 statements are statisticians, who ought to know the need for a control
 group.)
 
-### Tidyverse makes learning harder, not easier
+### Tidyverse makes learning harder, due to adding much complexity 
 
 Contrary to the Tidy advocates' claim, I believe using the Tidyverse
 makes things *more* difficult for learners without prior programming
@@ -204,6 +204,7 @@ Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
 60!  The "star" of the Tidyverse, **dplyr**, consists of 263
 functions. 
+
 While a user initially need not use more than a small fraction of them,
 the high complexity is clear.  Every time a user needs some variant of
 an operation, she must sift through those hundreds of functions for one
@@ -217,9 +218,22 @@ between **summarize()**, **summarize_each()**, **summarize_at()** and
 **summarize_if()**?  Under which circumstances should each be used?  The
 user must sift through this.
 
+As Matt Dowle [pointed
+out](https://twitter.com/MattDowle/status/1142001162230489088),
+
+> It isn't one function **mutate** that you combine in a pipe.  Its
+> mutate, **mutate_**, **mutate_all**, **mutate_at**, **mutate_each**,
+> **mutate_each_**, **mutate_if**, **transmute**, **transmute_**,
+> **transmute_all**, **transmute_at** and **transmute_if**.  And you're
+> telling me you don't need a manual to learn all those?
+
+Having a common syntax is thus the least of the user's worries.
+
 By contrast, if this user knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."
+
+### Use of functional programming
 
 Another featured Tidyverse package, the *functional programming*
 (FP)-oriented library **purrr**, has 177 functions.  Again the point
@@ -230,14 +244,18 @@ the more traditional Python, as they deem FP to be more abstract and
 challenging.  It would then seem that using FP to teach non-programmers
 learning R is even more unwise.
 
+### Tibbles
+
 Similarly, it is bad pedagogy to force students to learn tibbles, a
-more complex technology, instead of data frames, a simpler one.  
+more complex technology, instead of data frames, a simpler one.  The
+types of situations that tibbles are meant to address should be an
+advanced topic, not for beginners with no coding background.
 
-### Syntax comparison and teachability
+### The English issue
 
-Again, the claim is that the Tidyverse is more teachable because of its
-"English-like" syntax, while they dismiss **data.table**'s syntax as
-opaque.
+Again, the point most emphasized by Tidyverse advocates is that the
+Tidyverse is more teachable because of its "English-like" syntax, while
+they dismiss **data.table**'s syntax as opaque.
 
 Below is a comparison (adapted from
 [here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
