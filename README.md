@@ -286,12 +286,6 @@ Granted, it looks nice, but English can be misleading or mystifying in a
 computer context.  Even an experienced programmer would not be able to
 guess what the **dplyr** function **mutate()** does, for instance.
 
-Ironically, the Tidyverse advocates' worst criticism of base-R is aimed
-at functions that do have English names, the "apply" family.  I
-encounter many who proudly make a point of declaring that they would
-never use any function from this family.  Such rigidity seems irrational
-to me.
-
 ### Pipes
 
 The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
@@ -406,6 +400,8 @@ Tibbles," its goal is to convert the output of numerous packages into
 Tidy form.  I mentioned earlier a conversation with an RStudio employee
 who views non-Tidy packages as legacy.
 
+### The nature of support for the Tidyverse
+
 "Testimonials" are legion.  Non-programmers who take Tidy-based R
 courses are delighted that they can now do some data analysis, and
 praise the Tidyverse without realizing they have no basis for comparison
@@ -413,12 +409,22 @@ to base-R, **data.table** and so on.  RStudio counts **ggplot2** as
 being part of the Tidyverse, but it was developed much earlier, and does
 not generally follow the Tidy philosophy.  But as a result of such
 inclusion, I see many users who, being justly impressed with
-**ggplot2**, mistakenly think that the package can only be used from
-Tidy code and thus is an advantage of being Tidy.  This illustrates the
+**ggplot2**, mistakenly think that the package is Tidy
+and thus is an advantage of being Tidy.  This illustrates the
 mindset that has developed.
 
-There is a Bandwagon Effect at work, and of course many who teach R want
-to join Bandwagon as well, feeling they must teach the "latest."
+There is a Bandwagon Effect at work, not only for the Tidyverse but for
+RStudio in general.  Many new R users, being educated in Tidy/RStudio,
+assume both are "standard."  An
+[interview](https://www.r-bloggers.com/heather-turner-the-user-2014-interview/)
+of prominent R developer Heather Turner, for instance, gushes in
+amazement that 
+
+> Her description of how she accomplishes her work is fascinating –
+> including the fact that she prefers Emacs over RStudio!
+
+Similarly, many who teach R want to join Bandwagon as well, feeling they
+must teach the "latest."
 
 There is even behavior of the type one sees in cults.  I've seen
 statements on Twitter from "graduates" of Tidyverse training who
@@ -431,7 +437,16 @@ and one in the Tidyverse; he demanded that the original authors change
 the name, oblivious to the fact that theirs long preceded Tidyverse.
 Any criticism of the Tidyverse on Twitter is pounced upon by the
 loyalists, often with vitriolic tones.  And they have mantras, e.g.
-"Tidyverse showed me the fluidity of data!"
+"Tidyverse showed me the fluidity of data!"  
+
+One sees this especially in the Tidyiers' view of R's "apply" family of
+functions.  For Tidy supporters, the biggest virtue is its English-like
+syntax.  Yet Ironically, the Tidyverse advocates' worst criticism of
+base-R is aimed at functions that do have English names, the "apply"
+family.  For some reason, **tapply()** is especially odious to them.  I
+encounter many who proudly make a point of declaring that they would
+never use any function from the "apply" family.  Such rigidity seems
+irrational to me.
 
 ### Adverse Impact
 
