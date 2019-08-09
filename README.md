@@ -359,6 +359,16 @@ beginners, for these reasons:
 
 3.  Inadequate generalizability.
 
+To me, the proper placement of Tidy in R courses should be:
+
+* **dplyr:** Taught, along with **data.table**, at the Intermediate R
+  level.
+
+* **purrr:** Taught only at the Advanced level.
+
+* pipes: Taught at the Intermediate level, for understanding code that
+  uses it, but not recommended.
+
 I am certainly not saying one should only use base R; on the
 contrary, CRAN is a major advantage of R, which I use extensively.
 But the Tidyverse should be considered advanced R, not for beginners,
@@ -441,7 +451,7 @@ loyalists, often with vitriolic tones.  And they have mantras, e.g.
 
 One sees this especially in the Tidyiers' view of R's "apply" family of
 functions.  For Tidy supporters, the biggest virtue is its English-like
-syntax.  Yet Ironically, the Tidyverse advocates' worst criticism of
+syntax.  Yet ironically, the Tidyverse advocates' worst criticism of
 base-R is aimed at functions that do have English names, the "apply"
 family.  For some reason, **tapply()** is especially odious to them.  I
 encounter many who proudly make a point of declaring that they would
