@@ -240,6 +240,12 @@ By contrast, if this user knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."
 
+### The tapply() Function
+
+One of the most commonly-used functions in R is **tapply()**.  As
+noted below, for some reason Tidy advocates hate this function, but
+arguably it is perfect for R beginnnrs.
+
 Consider the **tapply()** function in base R.  A common example in
 tutorials on the Tidyverse involves R's **mtcars** dataset.  The goal is
 to find mean miles per gallon, grouped by number of cylinders.  The Tidy
@@ -251,14 +257,54 @@ mtcars %>%
    summarize(mean(mpg))
 ```
 
-Clear enough, yes, but the base-R version is just a straightforward
-application of **tapply()**:
+Here is the base-R version:
 
 ``` r
 tapply(mtcars$mpg,mtcars$cyl,mean)
 ```
 
-Why learn two functions instead of one?
+Both are simple.  Both are easily grasped by beginners. After being
+presented with some examples, beginner have no trouble using them in new
+of similar type.
+
+It's instructive to look at what happens when one groups by two aspects:
+
+``` r
+> mtcars %>%
++ group_by(cyl,gear) %>%
++ summarize(mean(mpg))
+# A tibble: 8 x 3
+# Groups:   cyl [3]
+    cyl  gear `mean(mpg)`
+  <dbl> <dbl>       <dbl>
+1     4     3        21.5
+2     4     4        26.9
+3     4     5        28.2
+4     6     3        19.8
+5     6     4        19.8
+6     6     5        19.7
+7     8     3        15.0
+8     8     5        15.4
+> tapply(mtcars$mpg,list(mtcars$cyl,mtcars$gear),mean)
+      3      4    5
+4 21.50 26.925 28.2
+6 19.75 19.750 19.7
+8 15.05     NA 15.4
+```
+
+With **tapply()**, students do have to be told that in the case of more
+than one grouping variable, they need to surround the variables with
+'list'.  Again, once they are given examples, students have no trouble
+with this.
+
+But look at the form of the output:  The Tidy version outputs a tibble,
+rather hard to read, while **tapply()** outputs a table.  the latter
+form is exactly what many students need in their applications, e.g.
+social science research.
+
+Moreover, the **tapply()** output is more informative, letting the user
+know that there were no 8-cyliner, 3-speed cars, again the kind of thing
+that is quite meaningful in many applications of R.
 
 ### Use of functional programming
 
@@ -496,13 +542,33 @@ can, but that's my opinion." But this seems overly optimistic.
 
 Given the dynamics described above, we will eventually, maybe rather
 soon, reach a point at which most R users will be Tidy, and have indeed
-"Never heard of Matt Dowle." This will make things very difficult for
+"Never heard of Matt Dowle." 
+
+
+This will make things very difficult for
 the non-Tidy R people: Non-Tidy job seekers who are excellent R coders
 will find that they are dismissed out of hand by Tidy interviewers;
 authors of non-Tidy CRAN code will find their contribution is considered
 useless; academics submitting data science research manuscripts or grant
 proposals will find that Tidy reviewers give them low scores.  In short,
 R will have to bend to RStudio's wishes.
+
+For instance, the authors of 
+[*Getting Started with R* (2nd ed.)](http://r4all.org/books/gswr2/)
+stressed in [a
+tweet](https://twitter.com/GSwithR/status/996830294367002625) that
+their book is "Tidyverse compliant," and on their Web page note the
+changes they made in their second edition:
+
+> RStudio has emerged as a brilliant cross-platform interface to working
+> with R. Furthermore, Hadley Wickham and colleagues, have developed
+> several add-on packages including as dplyr, tidyr and ggplot2 that not
+> only provide consistent and intuitive ways to work with your data, but
+> are emerging as industry standards (academic and non-academic).
+
+> We couldn’t afford to ignore these developments. The second edition
+> thus dispenses entirely with classic methods of using R, and instead embraces
+> RStudio along with dplyr, tidyr and ggplot2.
 
 *This is classical monopolistic behavior.*  It's not a monopoly in the
 financial sense, as Tidyverse is not directly enhancing RStudio's
