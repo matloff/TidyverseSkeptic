@@ -240,6 +240,26 @@ By contrast, if this user knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."
 
+Consider the **tapply()** function in base R.  A common example in
+tutorials on the Tidyverse involves R's **mtcars** dataset.  The goal is
+to find mean miles per gallon, grouped by number of cylinders.  The Tidy
+code offered is
+
+``` r
+mtcars %>%
+   group_by(cyl) %>% 
+   summarize(mean(mpg))
+```
+
+Clear enough, yes, but the base-R version is just a straightforward
+application of **tapply()**:
+
+``` r
+tapply(mtcars$mpg,mtcars$cyl,mean)
+```
+
+Why learn two functions instead of one?
+
 ### Use of functional programming
 
 Another featured Tidyverse package, the *functional programming*
