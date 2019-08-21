@@ -252,15 +252,13 @@ challenging.
 
 An interesting discussion of the topic is in [Charavarty and
 Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz).
-They too believe FP in its standard form in introductory programming
-classes is unsuitable even for CS majors.  It would then seem that using
-FP to teach non-programmers learning R is even more unwise.
-
-Note that even if taught in a modified FP form, the authors' goals are
-antithetical to those of R learners.  The authors list three goals, one
-of which is to "Introduce the essential [theoretical] concepts of
-computing," certainly not desirable for teaching R in general, let alone
-for teaching R to those with no coding experience.
+Though they support using FP in introductory programming classes for CS
+majors,  the authors' goals are antithetical to those of R learners.
+The authors list three goals, one of which is to "Introduce the
+essential [theoretical] concepts of computing," certainly not desirable
+for teaching R in general, let alone for teaching R to those with no
+coding experience.  They also concede that a key concept in FP,
+*recursion*, is a "signficant obstacle" even for CS students.  
 
 ### Tibbles
 
