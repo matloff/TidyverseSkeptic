@@ -563,7 +563,7 @@ useless; academics submitting data science research manuscripts or grant
 proposals will find that Tidy reviewers give them low scores.  In short,
 R will have to bend to RStudio's wishes.
 
-For instance, the authors of 
+For instance, the [R4All](http://r4all.org/) authors of 
 [*Getting Started with R* (2nd ed.)](http://r4all.org/books/gswr2/)
 stressed in [a
 tweet](https://twitter.com/GSwithR/status/996830294367002625) that
