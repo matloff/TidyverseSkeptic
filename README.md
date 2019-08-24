@@ -328,11 +328,24 @@ here.
 
 Another featured Tidyverse package, the *functional programming*
 (FP)-oriented library **purrr**, has 177 functions.  Again the point
-about complexity applies. Even more importantly, top university Computer
-Science Departments have shifted away from teaching their introductory
-programming courses using the FP paradigm, in favor of
-the more traditional Python, as they deem FP to be more abstract and
-challenging.  
+about complexity applies.  
+
+At the basic level, FP is merely replacing loops by calls to FP
+functions.  R's **apply** family, plus **Reduce()**, **Map()** and
+**Filter()** should be considered FP.
+
+In many cases, using such functions is the right solution.  But the
+indiscriminate use of FP, advocated by many Tidiers, to replace *all*
+loops is clearly overdoing it, and makes things especially difficult for
+beginners.
+
+Worse, we again have the "too many functions to learn" problem as we saw
+with **dplyr** above.  
+
+It is worth noting that top university Computer Science Departments have
+shifted away from teaching their introductory programming courses using
+the FP paradigm, in favor of the more traditional Python, as they deem
+FP to be more abstract and challenging.  
 
 An interesting discussion of the topic is in [Charavarty and
 Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz).
@@ -343,6 +356,73 @@ essential [theoretical] concepts of computing," certainly not desirable
 for teaching R in general, let alone for teaching R to those with no
 coding experience.  They also concede that a key concept in FP,
 *recursion*, is a "signficant obstacle" even for CS students.  
+
+### purrr vs. base-R example 
+
+Again, let's use an **mtcars** example taken from
+[an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
+solution:
+
+``` r
+mtcars %>%
+  split(.$cyl) %>%
+  map(~ lm(mpg ~ wt, data = .)) %>%
+  map(summary) %>%
+  map_dbl("r.squared")
+
+# output
+4         6         8 
+0.5086326 0.4645102 0.4229655
+```
+
+Here's base-R:
+
+``` r
+lmr2 <- function(mtcSubset) {
+   lmout <- lm(mpg ~ wt,data=mtcSubset)
+   summary(lmout)$r.squared
+}
+u <- split(mtcars,mtcars$cyl)
+sapply(u,lmr2)
+
+# output
+        4         6         8 
+0.5086326 0.4645102 0.4229655 
+```
+
+The first thing to note is that this is a more complex example than our
+earlier ones, and thus *both examples are more complex than before*.
+But I would submit that the Tidy version is harder to learn than the
+base-R one.  
+
+That first call to **map()** is tricky to get right, quite contrary to
+the Tidiers' claim that Tidy syntax is intuitive.
+
+Much more concerning, though, is the third 'map' call.  Here we have a
+*variant* of **map()**, namely **map_dbl()**.  This the an illustration
+of the "too many functions to learn" problem we saw earlier with
+**dlyr**.  Behold:
+
+``` r
+> ls(package:purrr,pattern='map*')
+ [1] "as_mapper"      "imap"           "imap_chr"       "imap_dbl"      
+ [5] "imap_dfc"       "imap_dfr"       "imap_int"       "imap_lgl"      
+ [9] "imap_raw"       "invoke_map"     "invoke_map_chr" "invoke_map_dbl"
+[13] "invoke_map_df"  "invoke_map_dfc" "invoke_map_dfr" "invoke_map_int"
+[17] "invoke_map_lgl" "invoke_map_raw" "lmap"           "lmap_at"       
+[21] "lmap_if"        "map"            "map_at"         "map_call"      
+[25] "map_chr"        "map_dbl"        "map_depth"      "map_df"        
+[29] "map_dfc"        "map_dfr"        "map_if"         "map_int"       
+[33] "map_lgl"        "map_raw"        "map2"           "map2_chr"      
+[37] "map2_dbl"       "map2_df"        "map2_dfc"       "map2_dfr"      
+[41] "map2_int"       "map2_lgl"       "map2_raw"       "pmap"          
+[45] "pmap_chr"       "pmap_dbl"       "pmap_df"        "pmap_dfc"      
+[49] "pmap_dfr"       "pmap_int"       "pmap_lgl"       "pmap_raw"      
+```
+
+By contrast, in the base-R version, we indeed stuck to base-R!  There
+are only four main functions to learn in the 'apply' family:  **apply()**,
+**lapply()**, **sapply()** and **tapply()**.
 
 ### Tibbles
 
@@ -367,7 +447,6 @@ mtdt[cyl == 6]  # data.table syntax
 mttb <- as_tibble(mtcars)
 filter(mttb,cyl == 6)  # dplyr syntax
 ```
-
 Is there really any difference?  Can't beginners, even without
 programming background, quickly adapt to either one after seeing a few
 examples?  Even those who claim high teachability for **dplyr** do
@@ -379,6 +458,10 @@ And what of the fact that we have the English word *filter* above?
 Granted, it looks nice, but English can be misleading or mystifying in a
 computer context.  Even an experienced programmer would not be able to
 guess what the **dplyr** function **mutate()** does, for instance.
+
+Furthemore, as noted below, the Tidy advocates don't like the many
+base-R functions whose names *do* use English, e.g.\ **aggregate()** and
+**merge()**.  Clearly, then, English is not the core issue.
 
 ### Pipes
 
@@ -511,12 +594,13 @@ an RStudio employee who views non-Tidy packages as legacy.
 courses are delighted that they can now do some data analysis, and
 praise the Tidyverse without realizing they have no basis for comparison
 to base-R, **data.table** and so on.  RStudio counts **ggplot2** as
-being part of the Tidyverse, but it was developed much earlier, and does
-not generally follow the Tidy philosophy.  But as a result of such
-inclusion, I see many users who, being justly impressed with
-**ggplot2**, mistakenly think that the package is Tidy
-and thus is an advantage of being Tidy.  This illustrates the
-mindset that has developed.
+being part of the Tidyverse, but it was developed much earlier, and
+[does not generally follow the Tidy
+philosophy.](https://community.rstudio.com/t/why-cant-ggplot2-use/4372)
+But as a result of such inclusion, I see many users who, being justly
+impressed with **ggplot2**, mistakenly think that the package is Tidy
+and thus is an advantage of being Tidy.  This illustrates the mindset
+that has developed.
 
 There is a Bandwagon Effect at work, not only for the Tidyverse but for
 RStudio in general.  Many new R users, being educated in Tidy/RStudio,
