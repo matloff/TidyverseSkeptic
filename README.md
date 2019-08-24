@@ -37,7 +37,7 @@ journal.)
 
 # Summary
 
-1. The Tidyverse arose from the desire to have a set of packages that
+1. The Tidyverse arose from the desire to have a set of functions/packages that
    are consistent with each other, a "purist" philosophy that appeals,
 for instance, to computer scientists.  The Tidyverse also borrows from
 other "purist" computer science (CS) philosophies, notably *functional
@@ -71,9 +71,9 @@ base-R as something akin to assembly language.  One major RStudio
 employee who asked to discuss this document with me referred to non-Tidy
 packages as being in the legacy realm.  All this might be fine if the R
 community were unified in viewing Tidyverse as a high-level improvement,
-but many do not. They are not impressed by the syntax and so on, and as
-noted, are worried about the slow performance of Tidy; some view Tidy as
-a gimmick.
+but many do not. They are not impressed by the consistent syntax and so
+on, and as noted, are worried about the slow performance of Tidy; some
+view Tidy as a gimmick.
 
 6.  That new generation will often be biased against non-Tidyverse job
     seekers, non-Tidyverse CRAN packages, and academics who submit
