@@ -240,7 +240,7 @@ By contrast, if this user knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."
 
-### The tapply() Function
+### Case Study: the tapply() Function
 
 One of the most commonly-used functions in R is **tapply()**.  As
 noted below, for some reason Tidy advocates hate this function, but
@@ -298,13 +298,23 @@ than one grouping variable, they need to surround the variables with
 with this.
 
 But look at the form of the output:  The Tidy version outputs a tibble,
-rather hard to read, while **tapply()** outputs a table.  the latter
-form is exactly what many students need in their applications, e.g.
-social science research.
+rather hard to read, while **tapply()** outputs an R matrix, printed out
+as a two-way table.  The latter form is exactly what many students need
+in their applications, e.g.  social science research.  
+
+In searching through the hundreds of functions in **dplyr**, it is not
+clear to me which one, if any, can convert that Tidy output to a tabular
+view.  If there is one, the fact that one is not easily identifiable
+illustrates my point above the Tidy is actually very bloated, not
+suitable for beginners.
 
 Moreover, the **tapply()** output is more informative, letting the user
 know that there were no 8-cyliner, 3-speed cars, again the kind of thing
 that is quite meaningful in many applications of R.
+
+So, in terms of clarity and learnability, the Tidy and base-R versions
+in this paricular example are both good.  In terms of usability, I'd
+give base-R the win here. 
 
 ### Use of functional programming
 
@@ -553,7 +563,7 @@ useless; academics submitting data science research manuscripts or grant
 proposals will find that Tidy reviewers give them low scores.  In short,
 R will have to bend to RStudio's wishes.
 
-For instance, the authors of 
+For instance, the [R4All](http://r4all.org/) authors of 
 [*Getting Started with R* (2nd ed.)](http://r4all.org/books/gswr2/)
 stressed in [a
 tweet](https://twitter.com/GSwithR/status/996830294367002625) that
