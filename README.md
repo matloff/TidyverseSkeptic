@@ -51,18 +51,20 @@ sacrifice in performance).  Ironically, though consistency of interface
 is a goal, new versions of Tidy libraries are often incompatible with
 older ones, a very serious problem in the software engineering world.
 
-3. In heavily promoting the Tidyverse, especially in the education
-   realm, RStudio, with its dominance in the R field, is developing an
-entire new generation of R users whose skills in base-R are superficial
-at best, and who -- most importantly -- feel that R *is* the Tidyverse.
-
-4. The dominance of the commercial entity RStudio in an open-source
+3. The dominance of the commercial entity RStudio in an open-source
    project is key:  **It is NOT the case that Tidyverse rose to
 prominence due to sheer quality in a free market of ideas.**  Hadley has 7
 or 8 programmers working full time on Tidy, and as noted, RStudio
 engages in aggressive educational outreach, heavily promoting Tidy.
 This is not how open-source projects usually work, where participants
 work in their free time.
+
+4. In heavily promoting the Tidyverse, especially in the education
+   realm, RStudio, with its dominance in the R field, is developing an
+entire new generation of R users whose skills in base-R are superficial
+at best, and who -- most importantly -- feel that R *is* the Tidyverse.
+This will shape the evolution of the language itself, in undesirable
+ways.
 
 5. **Regardless of being well-intentioned, RStudio is molding R into its
    own desired image.**  That new generation will come to dominate the
@@ -71,9 +73,9 @@ base-R as something akin to assembly language.  One major RStudio
 employee who asked to discuss this document with me referred to non-Tidy
 packages as being in the legacy realm.  All this might be fine if the R
 community were unified in viewing Tidyverse as a high-level improvement,
-but many do not. They are not impressed by the consistent syntax and so
-on, and as noted, are worried about the slow performance of Tidy; some
-view Tidy as a gimmick.
+but many do not. They are not impressed by the much-vaunted consistent
+syntax and so on, and as noted, are worried about the slow performance
+of Tidy; some view Tidy as a gimmick.
 
 6.  That new generation will often be biased against non-Tidyverse job
     seekers, non-Tidyverse CRAN packages, and academics who submit
@@ -119,13 +121,14 @@ that, e.g., R6 is available, but I don't want to be forced to use it.
 
 The **dplyr** package is a featured app of the Tidyverse developed by
 Hadley, so I'll use this as an example at several points in this essay.
+
 (This is merely an example; **dplyr** vs. **data.table** is NOT the
-primary theme of this essay.)
+primary theme of this essay.  Note too that I regard both **dplyr** and
+**data.table** as advanced topics; neither is suitable for beginners.)
 
 **Dplyr** borrowed a number of ideas from the earlier **data.table** by
 Matt Dowle.  One of Hadley's major motivations was to give the user a
-more "English-like" interface.  (Note: I regard both **dplyr** and
-**data.table** as advanced topics; neither is suitable for beginners.)
+more "English-like" interface.  
 
 Unfortunately, **dplyr** is much, much slower than
 **data.table** on large datasets.  Here are some of the
@@ -150,11 +153,12 @@ showing that **dplyr** can be extremely slow even relative to base-R,
 thus even worse relative to **data.table**.
 
 Matt's **data.table** package in a sense helped to "save" R.  At one
-point there were major concerns that R could not handle Big Data, with
-calls from some in favor of Python instead.  The **data.table** package
-showed that R could do quite well in large datasets.  This really aided
-in R's being adopted by various large companies, and likely played some
-role in the creation of the R Consortium, which funds R projects.
+point a few years ago there were major concerns that R could not handle
+Big Data, with calls from some in favor of Python instead.  The
+**data.table** package showed that R could do quite well in large
+datasets.  This really aided in R's being adopted by various large
+companies, and likely played some role in the creation of the R
+Consortium, an industry-sponsored organizational that funds R projects.
 
 Yet, RStudio, which as noted is heavily engaged in educational activities, 
 both with its own courses and in interacting with teachers of R, has 
@@ -231,12 +235,13 @@ out](https://twitter.com/MattDowle/status/1142001162230489088),
 > **mutate**, **mutate_**, **mutate_all**, **mutate_at**, **mutate_each**,
 > **mutate_each_**, **mutate_if**, **transmute**, **transmute_**,
 > **transmute_all**, **transmute_at** and **transmute_if**.  And you're
-> telling me you don't need a manual to learn all those?
+> telling me [because of consistency of the user
+> interfaces] you don't need a manual to learn all those?
 
 Having a common syntax thus does not compensate for this extensive
 complexity.
 
-By contrast, if this user knows base-R (not difficult), she can handle any
+By contrast, if the user knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."
 
@@ -244,12 +249,11 @@ for a day. Teach him how to fish, and he can eat for a lifetime."
 
 One of the most commonly-used functions in R is **tapply()**.  As
 noted below, for some reason Tidy advocates hate this function, but
-arguably it is perfect for R beginnnrs.
+arguably it is perfect for R beginners.
 
-Consider the **tapply()** function in base R.  A common example in
-tutorials on the Tidyverse involves R's **mtcars** dataset.  The goal is
-to find mean miles per gallon, grouped by number of cylinders.  The Tidy
-code offered is
+Consider a common example in tutorials on the Tidyverse, involving R's
+**mtcars** dataset.  The goal is to find mean miles per gallon, grouped
+by number of cylinders.  The Tidy code offered is
 
 ``` r
 mtcars %>%
@@ -264,8 +268,11 @@ tapply(mtcars$mpg,mtcars$cyl,mean)
 ```
 
 Both are simple.  Both are easily grasped by beginners. After being
-presented with some examples, beginner have no trouble using them in new
-of similar type.
+presented with some examples, beginners have no trouble using them in new
+of similar type.  The Tidy version requires two function calls rather
+than one for base-R.  But again, both versions are simple, so let's call
+it a tie.  But is it certainly not the case that the Tidy version is
+*easier* to learn.
 
 It's instructive to look at what happens when one groups by two aspects:
 
@@ -305,16 +312,17 @@ in their applications, e.g.  social science research.
 In searching through the hundreds of functions in **dplyr**, it is not
 clear to me which one, if any, can convert that Tidy output to a tabular
 view.  If there is one, the fact that one is not easily identifiable
-illustrates my point above the Tidy is actually very bloated, not
+illustrates my point above that Tidy is actually very bloated, not
 suitable for beginners.
 
-Moreover, the **tapply()** output is more informative, letting the user
-know that there were no 8-cyliner, 3-speed cars, again the kind of thing
-that is quite meaningful in many applications of R.
+Moreover, the **tapply()** output is more informative in a second sense,
+letting the user know that there were no 8-cyliner, 3-speed cars, again
+the kind of thing that is quite meaningful in many applications.
 
 So, in terms of clarity and learnability, the Tidy and base-R versions
-in this paricular example are both good.  In terms of usability, I'd
-give base-R the win here. 
+in this paricular example are both good, again showing that Tidy is not
+easier to learn.  And In terms of usability, I'd give base-R the win
+here. 
 
 ### Use of functional programming
 
@@ -348,9 +356,10 @@ advanced topic, not for beginners with no coding background.
 Again, the point most emphasized by Tidyverse advocates is that the
 Tidyverse is more teachable because of its "English-like" syntax. 
 
-Below is a comparison (adapted from
+Below is a comparison of the "English" **dplyr** to the "non-English"
+**data.table** (adapted from
 [here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
-We'll use R's built-in **mtcars** dataset.
+We'll again use R's built-in **mtcars** dataset.
 
 ``` r
 mtdt <- as.data.table(mtcars)
@@ -395,8 +404,9 @@ And much more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
 
-Moreover, what if the function **h()** above has just two arguments,
-rather than one?  Pipes can't be used there.
+Moreover, what if the function **h()** above has two arguments,
+rather than just one, with each argument requiring functional
+composition?  Pipes can't be used there.
 
 So, while I may agree with the Tidiers' preference for "left to right"
 execution, it can be done without pipes (as I do), and I see no benefit
@@ -492,8 +502,8 @@ A good example of the intent of RStudio to bring all of R to the Tidy
 world is the **broom** package (not written by RStudio, but featured on
 their Web site).  Titled "Convert Statistical Analysis Objects into Tidy
 Tibbles," its goal is to convert the output of numerous packages into
-Tidy form.  I mentioned earlier a conversation with an RStudio employee
-who views non-Tidy packages as legacy.
+Tidy form, i.e. to "Tidy-fy" R.  I mentioned earlier a conversation with
+an RStudio employee who views non-Tidy packages as legacy.
 
 ### The nature of support for the Tidyverse
 
@@ -541,7 +551,7 @@ base-R is aimed at functions that do have English names, the "apply"
 family.  For some reason, **tapply()** is especially odious to them.  I
 encounter many who proudly make a point of declaring that they would
 never use any function from the "apply" family.  Such rigidity seems
-irrational to me.
+irrational to me, and symptomatic of the mentality that has developed.
 
 ### Adverse Impact
 
@@ -554,14 +564,13 @@ Given the dynamics described above, we will eventually, maybe rather
 soon, reach a point at which most R users will be Tidy, and have indeed
 "Never heard of Matt Dowle." 
 
-
-This will make things very difficult for
-the non-Tidy R people: Non-Tidy job seekers who are excellent R coders
-will find that they are dismissed out of hand by Tidy interviewers;
-authors of non-Tidy CRAN code will find their contribution is considered
-useless; academics submitting data science research manuscripts or grant
-proposals will find that Tidy reviewers give them low scores.  In short,
-R will have to bend to RStudio's wishes.
+This will make things very difficult for the non-Tidy R people: Non-Tidy
+job seekers who are excellent R coders will find that they are dismissed
+out of hand by Tidy interviewers; authors of non-Tidy CRAN code will
+find their contribution is considered useless; academics submitting data
+science research manuscripts or grant proposals will find that Tidy
+reviewers give them low scores.  In short, R will have to bend to
+RStudio's wishes.
 
 For instance, the [R4All](http://r4all.org/) authors of 
 [*Getting Started with R* (2nd ed.)](http://r4all.org/books/gswr2/)
@@ -601,7 +610,8 @@ rather than taking action on its own.
 The first major firm to become involved in R was Revolution Analytics
 (now part of Microsoft).  There was much concern in the R community at
 the time over Revo's potential negative impact on R, but instead, they
-turned out to be model corporate citizens.
+turned out to be model corporate citizens.  Ever since they began
+heavily promoting the Tidyverse, RStudio has failed this criterion.
 
 As noted, I know and admire the people at RStudio, *but a commercial
 entity should not have such undue, unilateral influence on an
