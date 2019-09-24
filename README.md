@@ -587,17 +587,23 @@ The Tidyverse advocates also claim that the "English" in **dplyr** makes
 the code easier to *read*, not just write.  To me, that is missing the
 point; as any instructor of software engineering can tell you, the best
 way to make code readable is to use REAL English, in good, meaningful
-code comments.  (And this is just as important, if not more so, for
-nonprogrammers.)
+code comments.  And this is just as important, if not more so, for
+nonprogrammers.
+
+See my [R style guide](http://github.com/matloff/R-Style-Guide) for more on
+readability issues.
 
 ### The diversity claim
 
 One of the claims made by Tidyverse advocates -- indeed for many, the
 *main* claim -- is that teaching R using Tidy makes learning easier for
-women and minorities.  In essence, the view is that R must be "dumbed
-down" for these groups.  As a long-time ardent, active supporter of social
-justice, I find this claim insulting to women and minorities, and
-again, not accurate.
+women and minorities.  One often sees R Ladies workshops on Tidy, and
+frequent claims along the lines of "The Tidyverse has brought large
+numbers of women and underrepresented groups into R."
+
+In essence, the view is that R must be "dumbed down" for these groups.
+As a long-time ardent, active supporter of social justice, I find this
+claim insulting to women and minorities, and again, not accurate.
 
 ### Summary:  the proper status of the Tidyverse in teaching
 
@@ -656,8 +662,8 @@ Hadley notes that base-R was mostly written 20 years ago.  Hadley's
 [talk](https://t.co/7Ey27asCH4) in the 2016 useR! conference amounted to
 a manifesto, calling for R to "modernize" along Tidy lines.  He conceded
 that this would involve "short-term pain," yet believed it to be very
-much worthwhile.  Again, given RStudio's dominance, this revolution in R
-was sure to follow, which it has.
+much worthwhile.  Again, given RStudio's dominance and zealous promotion
+of Tidy, this revolution in R was sure to follow, which it has.
   
 The Tidyverse is a vigorous promotional effort by RStudio that has come
 to dominate the R world.  As mentioned, the firm has been especially
@@ -672,7 +678,7 @@ world is the **broom** package (not written by RStudio, but featured on
 their Web site).  Titled "Convert Statistical Analysis Objects into Tidy
 Tibbles," its goal is to convert the output of numerous packages into
 Tidy form, i.e. to "Tidy-fy" R.  I mentioned earlier a conversation with
-an RStudio employee who views non-Tidy packages as legacy.
+an RStudio principal who views non-Tidy packages as legacy.
 
 ### The nature of support for the Tidyverse
 
@@ -707,11 +713,11 @@ actually apologize because their code did not use the Tidyverse.  One
 post I saw came from a person who panicked with guilt because she had
 written a **for** loop rather than employ Tidyverse's functional
 programming package **purrr**.  In another tweet, the poster was angry
-because there was a name conflict between a long-established R function
-and one in the Tidyverse; he demanded that the original authors change
-the name, oblivious to the fact that theirs long preceded Tidyverse.
-Any criticism of the Tidyverse on Twitter is pounced upon by the
-loyalists, often with vitriolic tones.  And they have mantras, e.g.
+because there was a name conflict between a long-established R function,
+**select()**, and one in the Tidyverse; he demanded that the original
+authors change the name, oblivious to the fact that theirs long preceded
+Tidyverse.  Any criticism of the Tidyverse on Twitter is pounced upon by
+the loyalists, often with vitriolic tones.  And they have mantras, e.g.
 "Tidyverse showed me the fluidity of data!"  
 
 One sees this especially in the Tidyiers' view of R's "apply" family of
@@ -762,7 +768,8 @@ changes they made in their second edition:
 *This is classical monopolistic behavior.*  It's not a monopoly in the
 financial sense, as Tidyverse is not directly enhancing RStudio's
 profitability, and, as noted, is not intentional. But the result is
-classicly monopolistic, in the sense of one product dominating a market.  
+classicly monopolistic, in the sense of one product dominating a market,
+and attendant ills. 
 
 A highly insidious consequence of monopolies is the stifling of
 innovation.  The case of **data.table** discussed above is a fine case
