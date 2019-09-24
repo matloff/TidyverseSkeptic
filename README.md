@@ -13,19 +13,18 @@ I like and admire the RStudio people, including the Tidyverse
 originator, Hadley Wickham, and have always supported them, both
 privately and
 [publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
-I have been interacting with them from the beginning, when the firm
+They and I have been interacting from the beginning, when the firm
 consisted of only founder JJ Allaire and ace developer Joe Cheng.  I
 highly praise the firm to my students, and I use and recommend Hadley's
-**ggplot2** package (though I don't consider it part of the Tidyverse,
-having been developed well before Tidy and thematically unrelated). I
-sometimes use **stringr**, and on occasion **devtools** has been an
-absolute lifesaver for me.
+**ggplot2** package (though I don't consider it part of the Tidyverse;
+see below).  I sometimes use **stringr**, and on occasion **devtools**
+has been an absolute lifesaver for me.
 
 In other words, I absolutely don't consider RStudio to be some evil
 cabal.  I state at various places in this essay that I think their 
 actions have been well-intentioned.  Nevertheless, I believe that
 RStudio took a wrong turn when it decided to promote the Tidyverse,
-which has led to a situation in which the very health of the language is
+which has led to a situation in which the unity and health of the language is
 at stake.
 
 [My bio is here.](http://heather.cs.ucdavis.edu/matloff.html)
@@ -53,11 +52,12 @@ older ones, a very serious problem in the software engineering world.
 
 3. The dominance of the commercial entity RStudio in an open-source
    project is key:  **It is NOT the case that Tidyverse rose to
-prominence due to sheer quality in a free market of ideas.**  Hadley has 7
-or 8 programmers working full time on Tidy, and as noted, RStudio
-engages in aggressive educational outreach, heavily promoting Tidy.
-This is not how open-source projects usually work, where participants
-work in their free time.
+prominence due to sheer quality in a free market of ideas.**  Instead,
+that prominence arose from the deep-pocket resources and, especially,
+the heavy promotion by RStudio.  Hadley has 7 or 8 programmers working
+full time on Tidy, and as noted, RStudio engages in aggressive
+educational outreach, promoting Tidy.  This is not how open-source
+projects usually work, where participants work in their free time.
 
 4. In heavily promoting the Tidyverse, especially in the education
    realm, RStudio, with its dominance in the R field, is developing an
@@ -69,23 +69,23 @@ ways.
 5. **Regardless of being well-intentioned, RStudio is molding R into its
    own desired image.**  That new generation will come to dominate the
 community, treating Tidyverse as the "real" base, and viewing the actual
-base-R as something akin to assembly language.  One major RStudio
-employee who asked to discuss this document with me referred to non-Tidy
-packages as being in the legacy realm.  All this might be fine if the R
-community were unified in viewing Tidyverse as a high-level improvement,
-but many do not. They are not impressed by the much-vaunted consistent
-syntax and so on, and as noted, are worried about the slow performance
-of Tidy; some view Tidy as a gimmick.
+base-R as something akin to assembly language.  One RStudio principal
+who asked to discuss this document with me referred to non-Tidy packages
+as being in the legacy realm.  All this might be fine if the R community
+were unified in viewing Tidyverse as a high-level improvement, but many
+do not. They are not impressed by the much-vaunted consistent syntax and
+so on, and as noted, are worried about the slow performance of Tidy;
+some view Tidy as a gimmick.
 
 6.  That new generation will often be biased against non-Tidyverse job
     seekers, non-Tidyverse CRAN packages, and academics who submit
 non-Tidyverse data science research papers and grant proposals.  **The
-non-Tidiers will have no choice but to bend to RStudio's wishes.**  
+non-Tidyers will have no choice but to bend to RStudio's wishes.**  
 
 7. For the above reasons, **RStudio is essentially operating as a
    monopolist.**  It's not a monopoly in the financial sense --
 Tidyverse is not directly enhancing RStudio's profitability -- and, as
-noted, is not intentional, but the result is classicly monopolistic, in
+noted, is not intentional. But the result is classicly monopolistic, in
 the sense of one product dominating a market, stifling innovation etc.
 The adverse impacts are very serious and worsening.
 
@@ -96,7 +96,7 @@ notably **data.table**. Most in the "Tidyverse generation" are unaware
 of anything outside the Tidyverse.  For instance, Hadley's book, *R for
 Data Science*, with Garrett Grolemund, barely mentions **data.table**.
 
-9. A major reason offered by RStudio for promoting the Tidyverse is
+9. A major claim made by RStudio for promoting the Tidyverse is
     that it makes R easier to teach to non-programmers. They point out 
 that this group will just be doing data analysis, rather than becoming
 professional R programmers, and Tidy is a better vehicle for teaching
@@ -117,6 +117,24 @@ that, e.g., R6 is available, but I don't want to be forced to use it.
 11. **RStudio can easily remedy the situation.**  I have recommendations at
    the end of this essay.
 
+# Tidyverse vs. ggplot2
+
+RStudio bills the **ggplot2** graphics package as being part of the
+Tidyverse.  Though again, as a commercial entityr, this is a natural
+marketing move on RStudio's part, it is inaccurate and misleading.
+
+- Inaccurate, as **ggplot2** preceded Tidy by about 7 years, and does
+  not use Tidy principles.
+
+- Misleading, because the (genuine) "Ooh! Ah!" qualtity of the package
+  "sells" beginners on the Tidyverse.  I often hear them make statements
+like, "I love the Tidyverse, because I can create nice graphics." They
+believe the package relies on the Tidyverse, which is certainly not the
+case.  We non-Tidyers use **ggplot2** all the time.
+
+There are similar problems with RStudio presenting the **string**
+package as Tidy, even though it predates Tidy by about 5 years, etc.
+
 # dplyr vs. data.table
 
 The **dplyr** package is a featured app of the Tidyverse developed by
@@ -128,7 +146,7 @@ primary theme of this essay.  Note too that I regard both **dplyr** and
 
 **Dplyr** borrowed a number of ideas from the earlier **data.table** by
 Matt Dowle.  One of Hadley's major motivations was to give the user a
-more "English-like" interface.  
+more "English-like" interface (a point to which I'll return shortly).  
 
 Unfortunately, **dplyr** is much, much slower than
 **data.table** on large datasets.  Here are some of the
@@ -152,7 +170,7 @@ by the consulting firm Win-Vec LLC, e.g.
 showing that **dplyr** can be extremely slow even relative to base-R,
 thus even worse relative to **data.table**.
 
-Matt's **data.table** package in a sense helped to "save" R.  At one
+**Matt's data.table package in a sense helped to "save" R**.  At one
 point a few years ago there were major concerns that R could not handle
 Big Data, with calls from some in favor of Python instead.  The
 **data.table** package showed that R could do quite well in large
@@ -193,14 +211,16 @@ As a lifelong passionate teacher, I strongly question the claim made by
 Tidyverse advocates that it facilitates the teaching of R to
 non-programmers, as opposed to teaching them base-R.  (Again, I regard
 both **dplyr** and **data.table** as advanced topics; neither is
-suitable for beginners.)
+suitable for beginners.  On the other hand, I think teaching beginners
+**ggplot2** is fine, but point out that it is not part of the
+Tidyverse.)
 
-There has been no study of this claim.  Advocates often provide
-testimonials from students like "I learned R using Tidyverse, and now am
-productive in R!" -- which says nothing at all about the teachability of
-base-R in comparison.  (It is ironic that advocates who present such
-statements are statisticians, who ought to know the need for a control
-group.)
+There has been no study of Tidy advocates' teachability claim.
+Advocates often provide testimonials from students like "I learned R
+using Tidyverse, and now am productive in R!" -- which says nothing at
+all about the teachability of base-R in comparison.  (It is ironic that
+advocates who present such statements are statisticians, who ought to
+know the need for a control group.)
 
 ### Tidyverse makes learning harder, due to adding much complexity 
 
@@ -228,6 +248,16 @@ between **summarize()**, **summarize_each()**, **summarize_at()** and
 **summarize_if()**?  Under which circumstances should each be used?  The
 user must sift through this.
 
+As [this excellent side-by-side tutorial](https://atrebas.github.io/post/2019-03-03-datatable-dplyr) notes, **data.table** consists of a single function that can be used in a highly versatile manner, while in **dplyr**,
+
+<blockquote>
+
+...the syntax of dplyr is based on five main functions (filter(), arrange(),
+select(), mutate(), summarise()) and group_by() + their scoped variants
+(suffixed with _all, _at, or _if) + a bunch of helper functions.
+
+</blockquote>
+
 As Matt Dowle [pointed
 out](https://twitter.com/MattDowle/status/1142001162230489088),
 
@@ -238,12 +268,13 @@ out](https://twitter.com/MattDowle/status/1142001162230489088),
 > telling me [because of consistency of the user
 > interfaces] you don't need a manual to learn all those?
 
-Having a common syntax thus does not compensate for this extensive
+Having a common syntax thus does not compensate for this dizzying
 complexity.
 
 By contrast, if the user knows base-R (not difficult), she can handle any
 situation.  The old adage applies: "Give a man a fish, and he can eat
-for a day. Teach him how to fish, and he can eat for a lifetime."
+for a day. Teach him how to fish, and he can eat for a lifetime."  The
+same is true for **data.table**.
 
 ### Case Study: the tapply() Function
 
@@ -268,11 +299,11 @@ tapply(mtcars$mpg,mtcars$cyl,mean)
 ```
 
 Both are simple.  Both are easily grasped by beginners. After being
-presented with some examples, beginners have no trouble using them in new
-of similar type.  The Tidy version requires two function calls rather
-than one for base-R.  But again, both versions are simple, so let's call
-it a tie.  But is it certainly not the case that the Tidy version is
-*easier* to learn.
+presented with some examples, beginners have no trouble using them in a
+new setting of similar type.  The Tidy version requires two function
+calls rather than one for base-R.  But again, both versions are simple,
+so let's call it a tie.  But is it certainly not the case that the Tidy
+version is *easier* to learn.
 
 It's instructive to look at what happens when one groups by two aspects:
 
@@ -310,10 +341,10 @@ as a two-way table.  The latter form is exactly what many students need
 in their applications, e.g.  social science research.  
 
 In searching through the hundreds of functions in **dplyr**, it is not
-clear to me which one, if any, can convert that Tidy output to a tabular
-view.  If there is one, the fact that one is not easily identifiable
-illustrates my point above that Tidy is actually very bloated, not
-suitable for beginners.
+clear to me which one, if any, can convert that Tidy output to the very
+informative tabular view that **tapply()** provides.  If there is one,
+the fact that one is not easily identifiable illustrates my point above
+that Tidy is actually very bloated, not suitable for beginners.
 
 Moreover, the **tapply()** output is more informative in a second sense,
 letting the user know that there were no 8-cyliner, 3-speed cars, again
@@ -335,7 +366,7 @@ functions.  R's **apply** family, plus **Reduce()**, **Map()** and
 **Filter()** should be considered FP.
 
 In many cases, using such functions is the right solution.  But the
-indiscriminate use of FP, advocated by many Tidiers, to replace *all*
+indiscriminate use of FP, advocated by many Tidyers, to replace *all*
 loops is clearly overdoing it, and makes things especially difficult for
 beginners.
 
@@ -396,7 +427,7 @@ But I would submit that the Tidy version is harder to learn than the
 base-R one.  
 
 That first call to **map()** is tricky to get right, quite contrary to
-the Tidiers' claim that Tidy syntax is intuitive.
+the Tidyers' claim that Tidy syntax is intuitive.
 
 Much more concerning, though, is the third 'map' call.  Here we have a
 *variant* of **map()**, namely **map_dbl()**.  This the an illustration
@@ -424,6 +455,25 @@ By contrast, in the base-R version, we indeed stuck to base-R!  There
 are only four main functions to learn in the 'apply' family:  **apply()**,
 **lapply()**, **sapply()** and **tapply()**.
 
+By the way, the scourge of the Tidyers,**tapply()**, makes for an even
+simpler solution:
+
+``` r
+> lmr3 <- function(mtcarsRows) {
++    lmout <- lm(mpg ~ wt,data=mtcars[mtcarsRows,])
++ summary(lmout)$r.squared
++ }
+> tapply(1:nrow(mtcars),mtcars$cyl,lmr3)
+        4         6         8 
+0.5086326 0.4645102 0.4229655 
+```
+
+Let's agree to not count this version in our above comparison to Tidy,
+as it involves something of a "trick," that first argument in the call
+to **tapply()**.  Really, this is such a common use case that it
+should be taught to students too.  But even without out, I claim a win
+for base-R using the previous version.
+
 ### Tibbles
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
@@ -441,18 +491,17 @@ Below is a comparison of the "English" **dplyr** to the "non-English"
 [here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
 We'll again use R's built-in **mtcars** dataset.
 
-``` r
-mtdt <- as.data.table(mtcars)
-mtdt[cyl == 6]  # data.table syntax
-mttb <- as_tibble(mtcars)
-filter(mttb,cyl == 6)  # dplyr syntax
-```
+``` r 
+mtdt <- as.data.table(mtcars) mtdt[cyl == 6]  # data.table syntax
+mttb <- as_tibble(mtcars) filter(mttb,cyl == 6)  # dplyr syntax 
+``` 
+
 Is there really any difference?  Can't beginners, even without
 programming background, quickly adapt to either one after seeing a few
 examples?  Even those who claim high teachability for **dplyr** do
 readily agree that their students could also easily pick up
-**data.table**, or for that matter my preference base-R, given some
-examples.
+**data.table**, or for that matter my preference for beginners, base-R,
+given some examples.
 
 And what of the fact that we have the English word *filter* above?
 Granted, it looks nice, but English can be misleading or mystifying in a
@@ -460,7 +509,7 @@ computer context.  Even an experienced programmer would not be able to
 guess what the **dplyr** function **mutate()** does, for instance.
 
 Furthemore, as noted below, the Tidy advocates don't like the many
-base-R functions whose names *do* use English, e.g.\ **aggregate()** and
+base-R functions whose names *do* use English, e.g. **aggregate()** and
 **merge()**.  Clearly, then, English is not the core issue.
 
 ### Pipes
@@ -483,15 +532,52 @@ b <- g(a)
 h(b)
 ```
 
-And much more importantly, even advocates of pipes concede that pipes make
-debugging more difficult; by contrast, my style above lends itself easily to
-debugging.  And again, for large problems, piped code is slower.
+As a long-time teacher of programming languages (C, C++, Java, Pascal,
+Python, R, assembly language, etc.), I find this troubling.  The piped
+version hides the fact that **g()** and **h()** have an argument, which
+is invisible in the pipe expression.  
+
+Or if **w()** say, were to have two arguments, the first one being used
+in the pipe, that argument would be hidden, making it appear that there
+is only one argument:
+
+``` r
+> w <- function(u,v) u+2*v
+> 3 %>% w(5)
+[1] 13
+```
+
+Here **w()** has 2 arguments, but it looks like 1.
+
+And what if we want that 3 to play the role of **v**, not **u**?  Yes,
+**magrittr** has a way to do that, the "dot" notation:
+
+``` r
+> 3 %>% w(5,.)
+[1] 11
+```
+
+But that is yet another example of my point, that **Tidy is burdening
+the R learner with extra, unnecessary complexity**.  Indeed, just as
+**dplyr**, with 263 functions, is far too complex for beginners, so are
+pipes.  There are so many variations to learn that Hadley's *Advanced R*
+book devotes a full chapter to pipes, 3415 words.  
+
+As noted before, a beginner need learn only a small fraction of that
+material, but the above example of the dot notation is certainly not an
+advanced case.  Again, each time the beginner is confronted with a new
+situation, she must sift through the myriad variants, of **dplyr**,,
+**purrr**, pipes or whatever.
 
 Moreover, what if the function **h()** above has two arguments,
 rather than just one, with each argument requiring functional
 composition?  Pipes can't be used there.
 
-So, while I may agree with the Tidiers' preference for "left to right"
+And much more importantly, even advocates of pipes concede that pipes make
+debugging more difficult; by contrast, my style above lends itself easily to
+debugging.  And again, for large problems, piped code is slower.
+
+So, while I may agree with the Tidyers' preference for "left to right"
 execution, it can be done without pipes (as I do), and I see no benefit
 to them.
 
