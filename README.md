@@ -250,13 +250,11 @@ user must sift through this.
 
 As [this excellent side-by-side tutorial](https://atrebas.github.io/post/2019-03-03-datatable-dplyr) notes, **data.table** consists of a single function that can be used in a highly versatile manner, while in **dplyr**,
 
-<blockquote>
+> ...the syntax of dplyr is based on five main functions (filter(), arrange(),
+> select(), mutate(), summarise()) and group_by() + their scoped variants
+> (suffixed with _all, _at, or _if) + a bunch of helper functions.
 
-...the syntax of dplyr is based on five main functions (filter(), arrange(),
-select(), mutate(), summarise()) and group_by() + their scoped variants
-(suffixed with _all, _at, or _if) + a bunch of helper functions.
-
-</blockquote>
+That's a lot of functions to learn!
 
 As Matt Dowle [pointed
 out](https://twitter.com/MattDowle/status/1142001162230489088),
@@ -560,20 +558,20 @@ And what if we want that 3 to play the role of **v**, not **u**?  Yes,
 But that is yet another example of my point, that **Tidy is burdening
 the R learner with extra, unnecessary complexity**.  Indeed, just as
 **dplyr**, with 263 functions, is far too complex for beginners, so are
-pipes.  There are so many variations to learn that Hadley's *Advanced R*
-book devotes a full chapter to pipes, 3415 words.  
+pipes.  There are so many variations to learn that Hadley's *R for Data
+Science* book devotes a full chapter to pipes, 3415 words.  
 
 As noted before, a beginner need learn only a small fraction of that
-material, but the above example of the dot notation is certainly not an
-advanced case.  Again, each time the beginner is confronted with a new
-situation, she must sift through the myriad variants, of **dplyr**,,
-**purrr**, pipes or whatever.
+material at first, but the above example of the dot notation is
+certainly not an advanced case.  Again, each time the beginner is
+confronted with a new situation, she must sift through the myriad
+variants, of **dplyr**,, **purrr**, pipes or whatever.
 
 Moreover, what if the function **h()** above has two arguments,
 rather than just one, with each argument requiring functional
 composition?  Pipes can't be used there.
 
-And much more importantly, even advocates of pipes concede that pipes make
+And even more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
 
