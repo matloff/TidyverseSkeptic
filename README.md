@@ -120,7 +120,7 @@ that, e.g., R6 is available, but I don't want to be forced to use it.
 # Tidyverse vs. ggplot2
 
 RStudio bills the **ggplot2** graphics package as being part of the
-Tidyverse.  Though again, as a commercial entityr, this is a natural
+Tidyverse.  Though again, as a commercial entity, this is a natural
 marketing move on RStudio's part, it is inaccurate and misleading.
 
 - Inaccurate, as **ggplot2** preceded Tidy by about 7 years, and does
@@ -132,7 +132,7 @@ like, "I love the Tidyverse, because I can create nice graphics." They
 believe the package relies on the Tidyverse, which is certainly not the
 case.  We non-Tidyers use **ggplot2** all the time.
 
-There are similar problems with RStudio presenting the **string**
+There are similar problems with RStudio presenting the **stringr**
 package as Tidy, even though it predates Tidy by about 5 years, etc.
 
 # dplyr vs. data.table
@@ -424,11 +424,11 @@ earlier ones, and thus *both examples are more complex than before*.
 But I would submit that the Tidy version is harder to learn than the
 base-R one.  
 
-That first call to **map()** is tricky to get right, quite contrary to
-the Tidyers' claim that Tidy syntax is intuitive.
+That first call to **map()** in the Tidy version is tricky to get right,
+quite contrary to the Tidyers' claim that Tidy syntax is intuitive.
 
 Much more concerning, though, is the third 'map' call.  Here we have a
-*variant* of **map()**, namely **map_dbl()**.  This the an illustration
+*variant* of **map()**, namely **map_dbl()**.  This is an illustration
 of the "too many functions to learn" problem we saw earlier with
 **dlyr**.  Behold:
 
@@ -469,7 +469,7 @@ simpler solution:
 Let's agree to not count this version in our above comparison to Tidy,
 as it involves something of a "trick," that first argument in the call
 to **tapply()**.  Really, this is such a common use case that it
-should be taught to students too.  But even without out, I claim a win
+should be taught to students too.  But even without it, I claim a win
 for base-R using the previous version.
 
 ### Tibbles
@@ -490,8 +490,8 @@ Below is a comparison of the "English" **dplyr** to the "non-English"
 We'll again use R's built-in **mtcars** dataset.
 
 ``` r 
-mtdt <- as.data.table(mtcars) mtdt[cyl == 6]  # data.table syntax
-mttb <- as_tibble(mtcars) filter(mttb,cyl == 6)  # dplyr syntax 
+mtdt <- as.data.table(mtcars);  mtdt[cyl == 6]  # data.table syntax
+mttb <- as_tibble(mtcars);  filter(mttb,cyl == 6)  # dplyr syntax 
 ``` 
 
 Is there really any difference?  Can't beginners, even without
@@ -531,9 +531,9 @@ h(b)
 ```
 
 As a long-time teacher of programming languages (C, C++, Java, Pascal,
-Python, R, assembly language, etc.), I find this troubling.  The piped
-version hides the fact that **g()** and **h()** have an argument, which
-is invisible in the pipe expression.  
+Python, R, assembly language, etc.), I find the promotion of pipes
+troubling.  The piped version hides the fact that **g()** and **h()**
+have an argument, which is invisible in the pipe expression.  
 
 Or if **w()** say, were to have two arguments, the first one being used
 in the pipe, that argument would be hidden, making it appear that there
@@ -565,7 +565,7 @@ As noted before, a beginner need learn only a small fraction of that
 material at first, but the above example of the dot notation is
 certainly not an advanced case.  Again, each time the beginner is
 confronted with a new situation, she must sift through the myriad
-variants, of **dplyr**,, **purrr**, pipes or whatever.
+variants, of **dplyr**, **purrr**, pipes or whatever.
 
 Moreover, what if the function **h()** above has two arguments,
 rather than just one, with each argument requiring functional
@@ -718,7 +718,7 @@ Tidyverse.  Any criticism of the Tidyverse on Twitter is pounced upon by
 the loyalists, often with vitriolic tones.  And they have mantras, e.g.
 "Tidyverse showed me the fluidity of data!"  
 
-One sees this especially in the Tidyiers' view of R's "apply" family of
+One sees this especially in the Tidyers' view of R's "apply" family of
 functions.  For Tidy supporters, the biggest virtue is its English-like
 syntax.  Yet ironically, the Tidyverse advocates' worst criticism of
 base-R is aimed at functions that do have English names, the "apply"
