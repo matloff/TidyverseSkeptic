@@ -705,7 +705,7 @@ amazement that
 Similarly, many who teach R want to join Bandwagon as well, feeling they
 must teach the "latest."
 
-There is even behavior of the type one sees in cults.  I've seen
+There is often behavior of the type one sees in cults.  I've seen
 statements on Twitter from "graduates" of Tidyverse training who
 actually apologize because their code did not use the Tidyverse.  One
 post I saw came from a person who panicked with guilt because she had
@@ -717,6 +717,27 @@ authors change the name, oblivious to the fact that theirs long preceded
 Tidyverse.  Any criticism of the Tidyverse on Twitter is pounced upon by
 the loyalists, often with vitriolic tones.  And they have mantras, e.g.
 "Tidyverse showed me the fluidity of data!"  
+
+As noted, some analysts like the Tidyverse from a theoretical point of
+view, such as a conviction that functional programming is the best
+approach to coding.  But for many others, Tidy is indeed a Bandwagon
+that they jump blindly, without understanding the issues.
+
+At the aforementioned SatRday conference, for instance, one of the
+speakers was a recent math graduate, now working in the business world.
+She emphasized that she likes functional programming because she can
+view it as the concept of functional composition in math, as in the 
+example **h(g(f(x)))**.  But as explained in our discussion of pipes above,
+the claimed benefit of pipes is that one can use them to AVOID doing
+functional composition.
+
+This blind faith extends to other RStudio products, such as RMarkdown.
+On Tidy follower on Twitter, for example, mistakenly thought that one
+cannot write reproducible code -- code that give the same result no
+matter when or where it is run -- unless one uses RMarkdown.  This of
+course is quite false; RMarkdown is neither necessary nor sufficient for
+reproducibility.  But the poster had apparently heard "Use RMarkdown for
+reproducibilty," and took it more literally than even RStudio meant it.
 
 One sees this especially in the Tidyers' view of R's "apply" family of
 functions.  For Tidy supporters, the biggest virtue is its English-like
