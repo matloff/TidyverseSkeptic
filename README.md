@@ -732,7 +732,7 @@ the claimed benefit of pipes is that one can use them to AVOID doing
 functional composition.
 
 This blind faith extends to other RStudio products, such as RMarkdown.
-On Tidy follower on Twitter, for example, mistakenly thought that one
+One Tidy follower on Twitter, for example, mistakenly thought that one
 cannot write reproducible code -- code that give the same result no
 matter when or where it is run -- unless one uses RMarkdown.  This of
 course is quite false; RMarkdown is neither necessary nor sufficient for
