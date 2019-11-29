@@ -834,17 +834,27 @@ For instance, the [R4All](http://r4all.org/) authors of
 stressed in [a
 tweet](https://twitter.com/GSwithR/status/996830294367002625) that
 their book is "Tidyverse compliant," and on their Web page note the
-changes they made in their second edition:
+changes they made in their second edition (emphasis added):
 
 > RStudio has emerged as a brilliant cross-platform interface to working
 > with R. Furthermore, Hadley Wickham and colleagues, have developed
 > several add-on packages including as dplyr, tidyr and ggplot2 that not
 > only provide consistent and intuitive ways to work with your data, but
-> are emerging as industry standards (academic and non-academic).
+> are emerging as **industry standards** (academic and non-academic).
 
 > We couldn’t afford to ignore these developments. The second edition
 > thus dispenses entirely with classic methods of using R, and instead embraces
 > RStudio along with dplyr, tidyr and ggplot2.
+
+Similarly, a statement by the "bootcamp" Dataquest:
+
+> Longtime Dataquest users may know that we’ve actually offered R
+> courses for some time, but our old courses weren’t up to **modern R
+> standards**.  They didn’t make use of popular tidyverse packages like
+> ggplot2 or teach students to work in RStudio, but these skills are now
+> **industry-standard** for doing data science with R...
+
+(Note the characterization of **ggplot2** is "Tidyverse.")
 
 *This is classical monopolistic behavior.*  It's not a monopoly in the
 financial sense, as Tidyverse is not directly enhancing RStudio's
