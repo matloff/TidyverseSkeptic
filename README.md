@@ -97,7 +97,10 @@ ways.
 community, treating Tidyverse as the "real" base, and viewing the actual
 base-R as something akin to assembly language.  One RStudio principal
 who asked to discuss this document with me referred to non-Tidy packages
-as being in the legacy realm.  All this might be fine if the R community
+as being in the "legacy" realm.  In other words, he expects that
+all future packages will eventually be wrtten in Tidy. 
+
+    All this might be fine if the R community
 were unified in viewing Tidyverse as a high-level improvement, but many
 do not. They are not impressed by the much-vaunted consistent syntax and
 so on, and are worried about the slow performance of Tidy;
@@ -239,12 +242,12 @@ Contrary to the Tidy advocates' claim, I believe using the Tidyverse
 makes things more *difficult* for learners without prior programming
 background.  
 
-Tidyverse students are being asked to learn a much larger volume of
-material, which is clearly bad pedagogy.  See ["The Tidyverse
+**There is a serious problem of cognitive overload.** Tidyverse students
+are being asked to learn a much larger volume of material, which is
+clearly bad pedagogy.  See ["The Tidyverse
 Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
 author says *inter alia* that he uses "only" 60 Tidyverse functions --
-60!  The "star" of the Tidyverse, **dplyr**, consists of 263
-functions. 
+60!  The "star" of the Tidyverse, **dplyr**, consists of 263 functions. 
 
 While a user initially need not use more than a small fraction of those
 functions, the high complexity is clear.  Every time a user needs some
@@ -664,7 +667,7 @@ readability issues.
 
 One of the claims made by Tidyverse advocates -- indeed for many, the
 *main* claim -- is that teaching R using Tidy makes learning easier for
-women and minorities.  One often sees R Ladies workshops on Tidy, and
+women and minorities.  One often sees R Ladies workshops promoting Tidy, and
 frequent claims along the lines of "The Tidyverse has brought large
 numbers of women and underrepresented groups into R."
 
@@ -693,21 +696,6 @@ to feature the Tidyverse in teaching R to beginners, for these reasons:
 2.  Difficulty in debugging.
 
 3.  Inadequate generalizability.
-
-To me, the proper placement of Tidy in R courses should be:
-
-* **dplyr:** Taught, along with **data.table**, at the Intermediate R
-  level.
-
-* **purrr:** Taught only at the Advanced level.
-
-* pipes: Taught at the Intermediate level, for understanding code that
-  uses it, but not recommended.
-
-I am certainly not saying one should only use base R; on the
-contrary, CRAN is a major advantage of R, which I use extensively.
-But the Tidyverse should be considered advanced R, not for beginners,
-just as is the case for most complex CRAN packages.
 
 # R'S STATUS AS AN OPEN-SOURCE LANGUAGE
 
@@ -896,6 +884,32 @@ opinion, their one failing has been to run off on their own, rather than
 adhering to the norms of open-source projects.  
 
 # RECOMMENDATIONS
+
+*Teaching:*
+
+Courses in R, **especially those aimed an nonprogrammers**, should
+develop a solid grounding in base-R as first priority.
+
+The proper placement of Tidy in R courses should be:
+
+* **dplyr:** Taught, along with **data.table**, at the Intermediate R
+  level.
+
+* **purrr:** Taught only at the Advanced level.
+
+* pipes: Taught at the Intermediate level, and presented as an *option*
+  that some students may find useful in some situations (as opposed to
+being presented as *the* way one should work).
+
+I am certainly not saying one should only use base R; on the
+contrary, CRAN is a major advantage of R, which I use extensively,
+and to which R beginners should definitely be exposed.
+
+But the Tidyverse should be considered advanced R, not for beginners,
+just as is the case for most complex CRAN packages, and should be
+presented, as noted, as an *option*, not as *they* way.
+
+*The role of RStudio:*
 
 In my view, RStudio can easily remedy the problem.  It can take the
 following actions to greatly ameliorate the "monopolistic" problems:
