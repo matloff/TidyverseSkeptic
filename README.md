@@ -4,7 +4,7 @@ its promotion by RStudio.
 
 ## Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
 
-*Disclaimer:*
+# Disclaimer
 
 This essay is somewhat frank, involving the very popular Tidyverse and
 RStudio. I hope it is polite and taken as constructive criticism.  
