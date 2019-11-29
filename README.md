@@ -647,9 +647,12 @@ And even more importantly, even advocates of pipes concede that pipes make
 debugging more difficult; by contrast, my style above lends itself easily to
 debugging.  And again, for large problems, piped code is slower.
 
-So, while I may agree with the Tidyers' preference for "left to right"
-execution, it can be done without pipes (as I do), and I see no benefit
-to them.
+The benefit of pipes claimed by the Tidyers is the "left to right"
+execution.  They conceded that one can achieve this without pipes, but
+stress that this comes at the expense of setting up variables for the
+intermediate results.  That's a valid point, but is that small gain
+worth the increased cognitive load on R learners, increased debugging
+problems and so on?  To me it clearly is not.
 
 ### Code readability
 
