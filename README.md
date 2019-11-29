@@ -216,8 +216,8 @@ I've taught English As a Second Language to immigrant adults, most of
 whom have had less than a high school education.
 
 In discussing teaching, I am taking the target audience here to be
-people who wish to use R for data analysis, not those who wish to become
-professional R programmers.
+**nonprogrammers who wish to use R for data analysis**, not those who wish
+to become professional R programmers.
 
 ### The Tidyverse advocates' claim
 
@@ -230,11 +230,32 @@ suitable for beginners.  On the other hand, I think teaching beginners
 Tidyverse.)
 
 There has been no study of Tidy advocates' teachability claim.
-Advocates often provide testimonials from students like "I learned R
-using Tidyverse, and now am productive in R!" -- which says nothing at
-all about the teachability of base-R in comparison.  (It is ironic that
-advocates who present such statements are statisticians, who ought to
-know the need for a control group.)
+Advocates often provide testimonials from students like 
+
+* "I learned R using Tidyverse, and now am productive in R" 
+
+* "I like the English-like nature of the Tidyverse"
+
+* "I can make beautiful graphics with the Tidyverse"
+
+* "Tidyverse showed me the fluidity of data"
+
+Advocates who are instructors will echo those statements, and add, e.g.
+
+* "Base-R is good for professional programmers, but the Tidyverse is the
+  best R learning tool for non-techies who just want to do data
+analysis"
+
+* "The Tidyverse is **modern** R, the state of the art"
+
+* "R was created by statisticians, for statisticians.  But we are data
+  scientists, mainly interested in producing graphs and tables"
+
+All of these statements are either misleading, irrelevant to the
+teachability issue, or downright meaningless.  They say nothing at all
+about the teachability of base-R in comparison to Tidy.  (It is ironic
+that advocates who present such statements are data scientists, who
+ought to know the need for a control group.)
 
 ### Tidyverse makes learning harder, due to adding much complexity 
 
