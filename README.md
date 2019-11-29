@@ -246,10 +246,10 @@ Advocates who are instructors will echo those statements, and add, e.g.
   best R learning tool for non-techies who just want to do data
 analysis"
 
-* "The Tidyverse is **modern** R, the state of the art"
-
 * "R was created by statisticians, for statisticians.  But we are data
   scientists, mainly interested in producing graphs and tables"
+
+* "The Tidyverse is **modern** R, for the rest of us"
 
 All of these statements are either misleading, irrelevant to the
 teachability issue, or downright meaningless.  They say nothing at all
