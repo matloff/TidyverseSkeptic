@@ -55,21 +55,23 @@ journal.)
    are consistent with each other, a "purist" philosophy that appeals,
 for instance, to computer scientists.  The Tidyverse also borrows from
 other "purist" computer science (CS) philosophies, notably *functional
-programming*.  The latter is abstract and theoretical,
+programming* (FP).  The latter is abstract and theoretical,
 difficult even for CS students, so **Tidy is an unwise approach for
 nonprogrammer students of R.**
 
 2.  **Another price of purity is increased complexity and
     abstraction**, making code more prone to error (as well as a
-sacrifice in performance).  Ironically, though consistency of interface
-is a goal, new versions of Tidy libraries are often incompatible with
-older ones, a very serious problem in the software engineering world.
+sacrifice in performance).  
 
-3.  Indeed, the **Tidyverse is general is far too complex for learners
+3.  In fact, the **Tidyverse is general is far too complex for learners
     without prior coding background**, causing what psychologists call
 <i>cognitive overload</i>.
 
-4. Thus, contrary to the claim made by RStudio for promoting the Tidyverse is
+4.  Indeed, even many Tidy advocates concede that it is in various
+    senses often more difficult to write Tidy code than base-R.  Even
+Hadley says "it may take a while to wrap your head around [FP]."
+
+5. Thus, contrary to the claim made by RStudio for promoting the Tidyverse is
     that it makes R easier to teach to non-programmers, 
 **I would argue that, on the contrary, the Tidyverse makes R
 *harder* to learn for this group.**
@@ -491,7 +493,27 @@ mtcars %>%
 0.5086326 0.4645102 0.4229655
 ```
 
-Here's base-R:
+There are several major points to note here:
+
+* The R learner here must learn two different map functions for this
+  particular example, and a dozen others for even basic use. This is an
+excellent example of Tidy's cognitive overload problem.  Actually,
+**purrr** has 52 different map functions!  (See below.)
+
+* The first '~' in that first map call is highly nonintuitive.  Even
+  experienced programmers would not be able to guess what it does. This
+is starkly counter to the Tidyers' claim that Tidy is more intuitive and
+English-like.
+
+* Tidy, in its obsession to avoid R's standard '$' symbol, is hiding the
+  fact that **summary()** yields an S3 object with component
+**r.squared**.  The hapless students would rightly ask, "Where did that
+'r.squared' come from?"  
+
+The fact is, **R beginners would be much better off writing a loop here,
+avoiding the conceptually more challenging FP.** But even if the
+instructor believes the beginner *must* learn FP, the base-R version is
+far easier:
 
 ``` r
 lmr2 <- function(mtcSubset) {
@@ -500,30 +522,14 @@ lmr2 <- function(mtcSubset) {
 }
 u <- split(mtcars,mtcars$cyl)
 sapply(u,lmr2)
-
-# output
-        4         6         8 
-0.5086326 0.4645102 0.4229655 
 ```
 
-The first thing to note is that this is a more complex example than our
-earlier ones, and thus *both examples are more complex than before*.
-But I would submit that the Tidy version is harder to learn than the
-base-R one.  
+Here **lmr2()** is defined explicitly, as opposed to the Tidy version, with
+its inscrutable '~' within the **map()** call.
 
-That first call to **map()** in the Tidy version, with the extra tilde
-symbol, is certainly NOT intuitive, a putative major selling point
-of Tidy.  
-
-And Tidy, in its obsession to avoid R's standard '$' symbol, is hiding
-the fact that **summary()** yields an S3 object with comoonent
-**r.squared**.  The hapless students would rightly ask, "Where did that
-'r.squared' come from?"  How can this be good pedagogy?
-
-Much more concerning, though, is the third 'map' call.  Here we have a
-*variant* of **map()**, namely **map_dbl()**.  This is an illustration
-of the "too many functions to learn" problem we saw earlier with
-**dlyr**.  Behold:
+As noted, the Tidy version shown earlier  is an illustration of the "too
+many functions to learn," cognitive overload, problem we saw earlier
+with **dplyr**.  Behold:
 
 ``` r
 > ls(package:purrr,pattern='map*')
@@ -546,31 +552,18 @@ By contrast, in the base-R version, we indeed stuck to base-R!  There
 are only four main functions to learn in the 'apply' family:  **apply()**,
 **lapply()**, **sapply()** and **tapply()**.
 
-By the way, the scourge of the Tidyers,**tapply()**, makes for an even
-simpler solution:
-
-``` r
-> lmr3 <- function(mtcarsRows) {
-+    lmout <- lm(mpg ~ wt,data=mtcars[mtcarsRows,])
-+ summary(lmout)$r.squared
-+ }
-> tapply(1:nrow(mtcars),mtcars$cyl,lmr3)
-        4         6         8 
-0.5086326 0.4645102 0.4229655 
-```
-
-Let's agree to not count this version in our above comparison to Tidy,
-as it involves something of a "trick," that first argument in the call
-to **tapply()**.  Really, this is such a common use case that it
-should be taught to students too.  But even without it, I claim a win
-for base-R using the previous version.
-
 ### Tibbles
 
 Similarly, it is bad pedagogy to force students to learn tibbles, a
 more complex technology, instead of data frames, a simpler one.  The
 types of situations that tibbles are meant to address should be an
 advanced topic, not for beginners with no coding background.
+
+Those advanced situations involve data frames in which row/column
+elements are not *atomic* objects, i.e.\ not simple numbers, character
+strings or logical values.  **This is a "straw man" set up by the Tidy
+advocates'**; R beginners are very unlikely to encounter data frames of
+this type.
 
 ### The English issue
 
