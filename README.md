@@ -35,19 +35,19 @@ journal.)
 
 # SECTIONS:
 
-* Summary
+* [Summary](#summ)
 
-* Tidyverse vs. ggplot2, stringr etc.
+* [Tidyverse vs. ggplot2, stringr etc.](#notTidy)
 
-* dplyr vs. data.table
+* [dplyr vs. data.table](#dpt)
 
-* Teachability (to me, the most important issue) 
+* [Teachability](#teachable) (to me, the most important issue) 
 
-* R's Status as an Open-Source Language
+* [R's Status as an Open-Source Language](#status)
 
-* Recommendations
+* [Recommendations](#recs)
 
-# SUMMARY
+# <a name="summ"> </a> SUMMARY 
 
 ### Teachability
 
@@ -68,8 +68,8 @@ sacrifice in performance).
 <i>cognitive overload</i>.
 
 4.  Indeed, even many Tidy advocates concede that it is in various
-    senses often more difficult to write Tidy code than base-R.  Even
-Hadley says "it may take a while to wrap your head around [FP]."
+    senses often more difficult to write Tidy code than base-R.  
+Hadley says, for instance, "it may take a while to wrap your head around [FP]."
 
 5. Thus, contrary to the claim made by RStudio for promoting the Tidyverse is
     that it makes R easier to teach to non-programmers, 
@@ -126,7 +126,7 @@ notably **data.table**. Most in the "Tidyverse generation" are unaware
 of anything outside the Tidyverse.  Hadley's book, *R for
 Data Science*, with Garrett Grolemund, barely mentions **data.table**.
 
-# TIDYVERSE VS. GGPLOT2, STRINGR ETC.
+# <a name="notTidy"> </a> TIDYVERSE VS. GGPLOT2, STRINGR ETC.
 
 RStudio bills the **ggplot2** graphics package as being part of the
 Tidyverse.  Though again, as a commercial entity, this is a natural
@@ -151,7 +151,7 @@ that we non-Tidyers use all the time.
 There are similar problems with RStudio presenting the **stringr**
 package as Tidy, even though it predates Tidy by about 5 years, etc.
 
-# DPLYR vs. DATA.TABLE
+# <a name="dpt"> </a> DPLYR vs. DATA.TABLE
 
 The **dplyr** package is a featured app of the Tidyverse developed by
 Hadley, so I'll use this as an example at several points in this essay.
@@ -204,7 +204,7 @@ an open-source project.
 Hadley did develop an interface, **dtplyr**, but even this is 
 [slow](http://www.win-vector.com/blog/2019/06/data-table-is-much-better-than-you-have-been-told/).
 
-# TEACHABILITY
+# <a name="teachable" </a> TEACHABILITY
 
 Teaching has been a keen interest of mine since my college days.  I've
 been a teacher of stat and computers for many years, and have won
@@ -714,7 +714,7 @@ to feature the Tidyverse in teaching R to beginners, for these reasons:
 
 3.  Inadequate generalizability.
 
-# R'S STATUS AS AN OPEN-SOURCE LANGUAGE
+# <a name="status" </a> R'S STATUS AS AN OPEN-SOURCE LANGUAGE
 
 ### The Long Arm of RStudio
 
@@ -910,7 +910,7 @@ RStudio is a great company, staffed by many talented people.  In my
 opinion, their one failing has been to run off on their own, rather than
 adhering to the norms of open-source projects.  
 
-# RECOMMENDATIONS
+# <a name="recs" <a/> RECOMMENDATIONS
 
 *Teaching:*
 
