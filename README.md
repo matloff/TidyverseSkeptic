@@ -202,9 +202,9 @@ this case RStudio has a special responsibility as a dominant business in
 an open-source project. 
 
 Hadley did develop an interface, **dtplyr**, but even this is 
-[slow](http://www.win-vector.com/blog/2019/06/data-table-is-much-better-than-you-have-been-told/).
+[slow](http://www.win-vector.com/blog/2019/06/data-table-is-much-better-than-you-have-been-told/).  All sides agree that this is due to **dplyr** sticking to the FP approach.
 
-# <a name="teachable" </a> TEACHABILITY
+# <a name="teachable"> </a> TEACHABILITY
 
 Teaching has been a keen interest of mine since my college days.  I've
 been a teacher of stat and computers for many years, and have won
@@ -438,12 +438,13 @@ learn" problem as we saw with **dplyr** above.
 
 At the basic level, FP is merely replacing loops by calls to FP
 functions.  R's **apply** family, plus **Reduce()**, **Map()** and
-**Filter()** should be considered FP.
+**Filter()** should be considered FP.  In many cases, using such
+functions is the right solution.  But the indiscriminate use of FP,
+advocated by many Tidyers, to replace *all* loops is clearly overdoing
+it, and makes things especially difficult for beginners.
 
-In many cases, using such functions is the right solution.  But the
-indiscriminate use of FP, advocated by many Tidyers, to replace *all*
-loops is clearly overdoing it, and makes things especially difficult for
-beginners.
+This is clear *a priori* -- **FP involves writing functions, a skill that
+most beginners take a long time to develop well.**
 
 It is worth noting that top university Computer Science Departments have
 shifted away from teaching their introductory programming courses using
@@ -714,7 +715,7 @@ to feature the Tidyverse in teaching R to beginners, for these reasons:
 
 3.  Inadequate generalizability.
 
-# <a name="status" </a> R'S STATUS AS AN OPEN-SOURCE LANGUAGE
+# <a name="status"> </a> R'S STATUS AS AN OPEN-SOURCE LANGUAGE
 
 ### The Long Arm of RStudio
 
@@ -910,7 +911,7 @@ RStudio is a great company, staffed by many talented people.  In my
 opinion, their one failing has been to run off on their own, rather than
 adhering to the norms of open-source projects.  
 
-# <a name="recs" <a/> RECOMMENDATIONS
+# <a name="recs"> <a/> RECOMMENDATIONS
 
 *Teaching:*
 
