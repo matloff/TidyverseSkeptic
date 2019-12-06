@@ -718,6 +718,8 @@ to feature the Tidyverse in teaching R to beginners, for these reasons:
 
 ### The Long Arm of RStudio
 
+*Ignorance of the non-RStudio world:*
+
 In the [SatRday LA conference](https://losangeles2019.satrdays.org/),
 April 6, 2019, a speaker who was actually explaining the advantages of
 **data.table** in large datasets said that package "was created by Matt
@@ -727,6 +729,8 @@ had indeed heard of Matt Dowle, but in that speaker's world -- the
 RStudio-educated world -- his statement about lack of name recognition
 for Matt was sadly accurate.  Such is the impact of RStudio on the
 field.
+
+*Huge promotion efforts by RStudio:*
 
 Hadley notes that base-R was mostly written 20 years ago.  Hadley's
 [talk](https://t.co/7Ey27asCH4) in the 2016 useR! conference amounted to
@@ -754,6 +758,8 @@ an RStudio principal who views non-Tidy packages as "legacy."
 
 ### The nature of support for the Tidyverse
 
+*Testimonials:*
+
 "Testimonials" are legion.  Non-programmers who take Tidy-based R
 courses are delighted that they can now do some data analysis, and
 praise the Tidyverse without realizing they have no basis for comparison
@@ -768,11 +774,16 @@ impressed with **ggplot2**, mistakenly think that the package is Tidy
 and thus is an advantage of being Tidy.  This illustrates the mindset
 that has developed.
 
+*A Bandwagon Effect:*
+
 There is a Bandwagon Effect at work, not only for the Tidyverse but for
 RStudio in general.  Many new R users, being educated in Tidy/RStudio,
-assume both are "standard."  An
-[interviewer](https://www.r-bloggers.com/heather-turner-the-user-2014-interview/)
-of prominent R developer Heather Turner, for instance, gushed in
+assume both are "standard," and anything from RStudio is unquestioningly
+accepted as the proper way to do things.  
+
+One example of this view of RStudio as the "industry standard" arose in
+an [interviewe](https://www.r-bloggers.com/heather-turner-the-user-2014-interview/)
+of prominent R developer Heather Turner, where the interviewe gushed in
 amazement that 
 
 > Her description of how she accomplishes her work is fascinating –
@@ -781,30 +792,6 @@ amazement that
 shocked that a major figure in R would not use RStudio.  Similarly, many
 who teach R want to join Bandwagon as well, feeling they must teach the
 "latest" (or as noted, the perceived "industry standard").
-
-There is often behavior of the type one sees in cults.  I've seen
-statements on Twitter from "graduates" of Tidyverse training who
-actually apologize because their code did not use the Tidyverse.  One
-post I saw came from a person who panicked with guilt because she had
-written a **for** loop rather than employ Tidyverse's functional
-programming package **purrr**.  In another tweet, the poster was angry
-because there was a name conflict between a long-established R function,
-**select()**, and one in the Tidyverse; he demanded that the original
-authors change the name, oblivious to the fact that theirs long preceded
-Tidyverse.  
-
-As is typical with cults, they have mantras, e.g.  "Tidyverse showed me the
-fluidity of data!"  When asked what the mantras mean, many cannot offer
-an explanation.  
-
-Also cult-like, any criticism of the Tidyverse is pounced upon by the
-loyalists, often with vitriolic tones.  Sadly, some in RStudio itself
-have Twitter-blocked some of the critics, abruptly ending frank but
-civil conversation.  (In my case, one major RStudio developer 
-[made quite a show of
-it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
-tweeting a screen shot in which "You have blocked this user" is
-repeated dozens of times.)
 
 As noted, some analysts like the Tidyverse from a theoretical point of
 view, such as a conviction that functional programming is the best
@@ -835,6 +822,32 @@ family.  For some reason, **tapply()** is especially odious to them.  I
 encounter many who proudly make a point of declaring that they would
 never use any function from the "apply" family.  Such rigidity seems
 irrational to me, and symptomatic of the mentality that has developed.
+
+*Cult-like, "circle the wagons" behavior:*
+
+There is often behavior of the type one sees in cults.  I've seen
+statements on Twitter from "graduates" of Tidyverse training who
+actually apologize because their code did not use the Tidyverse.  One
+post I saw came from a person who panicked with guilt because she had
+written a **for** loop rather than employ Tidyverse's functional
+programming package **purrr**.  In another tweet, the poster was angry
+because there was a name conflict between a long-established R function,
+**select()**, and one in the Tidyverse; he demanded that the original
+authors change the name, oblivious to the fact that theirs long preceded
+Tidyverse.  As is typical with cults, they have mantras, e.g.
+"Tidyverse showed me the fluidity of data!"  When asked what the mantras
+mean, many cannot offer an explanation.  
+
+Any criticism of the Tidyverse in Twitter is pounced upon by the
+loyalists, often with vitriolic tones.  Granted, Twitter is a
+rough-and-tumble forum, but sadly, some in RStudio itself
+have Twitter-blocked some of the critics, abruptly ending frank but
+civil conversation.  (In my case, one major RStudio developer 
+[made quite a show of
+it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
+tweeting a screen shot in which "You have blocked this user" is
+repeated dozens of times.)  Given RStudio's considering itself a leader
+in the R community, such behavior is improper and counterproductive.
 
 ### Adverse Impact
 
