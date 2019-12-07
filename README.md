@@ -42,6 +42,8 @@ journal.)
 
 * [Teachability](#teachable) (to me, the most important issue) 
 
+* [Divdersity issues](#divers) 
+
 * [R's Status as an Open-Source Language](#status)
 
 * [Recommendations](#recs)
@@ -321,6 +323,22 @@ situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."  The
 same is true for **data.table**.
 
+*What Tidy promoters want R beginners NOT to learn:;*
+
+The Tidyers make a point of avoiding the most basic parts of base-R:
+
+* the '$' operator
+
+* '[[ ]]'
+
+* loops
+
+* logical expressions
+
+They would argue that this "simplifies" the learning process, but
+actually it forces beginners to come up with more complex, less
+intuitive and harder-to-read solutions.
+
 ### Case Study: the tapply() Function
 
 One of the most commonly-used functions in R is **tapply()**.  As
@@ -479,7 +497,7 @@ learners of R to "wrap their heads around" **purrr**.
 
 Again, let's use an **mtcars** example taken from
 [an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
-solution:
+solution, from the online help page for **map()**:
 
 ``` r
 mtcars %>%
@@ -505,10 +523,21 @@ excellent example of Tidy's cognitive overload problem.  Actually,
 is starkly counter to the Tidyers' claim that Tidy is more intuitive and
 English-like.
 
-* Tidy, in its obsession to avoid R's standard '$' symbol, is hiding the
-  fact that **summary()** yields an S3 object with component
-**r.squared**.  The hapless students would rightly ask, "Where did that
-'r.squared' come from?"  
+* Tidy, in its obsession to avoid R's standard '$' symbol, is causing
+  all kinds of chaos and confusion here.
+
+    The hapless student would naturally ask, "Where does that expression
+'summary' come from?"  It would appear that **map()** is being called on
+a nonexistent variable, **summary**.  In actuality, base-R's
+**summary()** function is being called on the previous computation
+behind the scenes.  Again, highly nonintuitive, and NOT stated in the
+online help page.
+
+    The poor student is further baffled by the call to **map_dbl()**.
+Where did that 'r.squared' come from?  Again, Tidy is hiding the
+fact that **summary()** yields an S3 object with component
+**r.squared**.  Yes, sometimes it is helpful to hide the details, but
+not if it confuses beginners.
 
 The fact is, **R beginners would be much better off writing a loop here,
 avoiding the conceptually more challenging FP.** But even if the
@@ -592,7 +621,7 @@ Granted, it looks nice, but English can be misleading or mystifying in a
 computer context.  Even an experienced programmer would not be able to
 guess what the **dplyr** function **mutate()** does, for instance.
 
-Furthemore, as noted below, the Tidy advocates don't like the many
+Furthermore, as noted below, the Tidy advocates don't like the many
 base-R functions whose names *do* use English, e.g. **aggregate()** and
 **merge()**.  Clearly, then, English is not the core issue.
 
@@ -680,18 +709,6 @@ nonprogrammers.
 See my [R style guide](http://github.com/matloff/R-Style-Guide) for more on
 readability issues.
 
-### The diversity claim
-
-One of the claims made by Tidyverse advocates -- indeed for many, the
-*main* claim -- is that teaching R using Tidy makes learning easier for
-women and minorities.  One often sees R Ladies workshops promoting Tidy, and
-frequent claims along the lines of "The Tidyverse has brought large
-numbers of women and underrepresented groups into R."
-
-In essence, the view is that R must be "dumbed down" for these groups.
-As a long-time ardent, active supporter of social justice, I find this
-claim insulting to women and minorities, and again, not accurate.
-
 ### Summary:  the proper status of the Tidyverse in teaching
 
 As I said earlier, in discussions with those who report success in using
@@ -713,6 +730,31 @@ to feature the Tidyverse in teaching R to beginners, for these reasons:
 2.  Difficulty in debugging.
 
 3.  Inadequate generalizability.
+
+# <a name="divers"> </a> DIVERSITY ISSUES
+
+Around the mid-2010s, RStudio began a major effort to bring more women
+into R.  Later, they also added underrepresented minorities to this,
+but their focus remains on gender, especially in its support of the R
+Ladies groups.
+
+The firm deserves major credit for this.  There are, however, two
+concerning issues here:
+
+* One of the claims made by Tidyverse advocates -- indeed for many, the
+*main* claim -- is that teaching R using Tidy makes learning easier for
+women and minorities.  One often sees R Ladies workshops promoting Tidy, and
+frequent claims along the lines of "The Tidyverse has brought large
+numbers of women and underrepresented groups into R."
+
+    In essence, the view is that R must be "dumbed down" for these groups.
+As a long-time ardent, active supporter of social justice, I find this
+claim insulting to women and minorities, and again, not accurate.
+
+* By especially promoting Tidy to women and minorities, RStudio is
+  making it more difficult for these groups to make real contributions
+to R.  It is impossible for someone to write a CRAN package or write an
+R book without solid knowledge of base-R.
 
 # <a name="status"> </a> R'S STATUS AS AN OPEN-SOURCE LANGUAGE
 
