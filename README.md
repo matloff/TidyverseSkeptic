@@ -90,6 +90,10 @@ writing CRAN packages, authoring books and so on.
 
 ### RStudio's role in R, an open source project
 
+* Any economist -- or just plain common sense -- will tell you that
+  RStudio's status as a moneyed commercial entity in a free, open source
+project is bound to have profound changes on that project. 
+
 * The dominance of the commercial entity RStudio in an open-source
    project is key:  **It is NOT the case that Tidyverse rose to
 prominence due to sheer quality in a free market of ideas.**  Instead,
@@ -946,7 +950,7 @@ encounter many who proudly make a point of declaring that they would
 never use any function from the "apply" family.  Such rigidity seems
 irrational to me, and symptomatic of the mentality that has developed.
 
-*Cult-like, "circle the wagons" behavior:*
+*Cult-like behavior:*
 
 There is often behavior of the type one sees in cults.  I've seen
 statements on Twitter from "graduates" of Tidyverse training who
@@ -961,16 +965,18 @@ Tidyverse.  As is typical with cults, they have mantras, e.g.
 "Tidyverse showed me the fluidity of data!"  When asked what the mantras
 mean, many cannot offer an explanation.  
 
+### "Circle the wagons" behavior
+
 Any criticism of the Tidyverse in Twitter is pounced upon by the
 loyalists, often with vitriolic tones.  Granted, Twitter is a
-rough-and-tumble forum, but sadly, some in RStudio itself
-have Twitter-blocked some of the critics, abruptly ending frank but
-civil conversation.  (In my case, one major RStudio developer 
-[made quite a show of
-it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
-tweeting a screen shot in which "You have blocked this user" is
-repeated dozens of times.)  Given RStudio's considering itself a leader
-in the R community, such behavior is improper and counterproductive.
+rough-and-tumble forum, but sadly, some in RStudio itself have
+Twitter-blocked some of the critics, abruptly ending frank but civil
+conversation.  In my case, one major RStudio developer [made quite a
+show of it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
+tweeting a screen shot in which "You have blocked this user" is repeated
+dozens of times.  **Given RStudio's considering itself a leader in the R
+community, such childish, spiteful behavior is improper and
+counterproductive.**
 
 ### Adverse Impact
 
