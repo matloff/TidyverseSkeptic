@@ -1019,6 +1019,19 @@ Similarly, a statement by the "bootcamp" Dataquest:
 (Note the false characterization of **ggplot2** as being part of the
  "Tidyverse.")
 
+In a [December 2019
+tweet](https://twitter.com/kaz_yos/status/1203408440607068163), a
+researcher wrote about a popular book, *Introductory Statistics with R*
+by Peter Dalgaard,
+
+> This now obsolete book was my introduction to biostatistics and R. I’m
+> not sure if there is a better book with epidemiologically oriented
+> examples these days.
+
+This is especially remarkable in that it's a book on *statistics*, not
+R.  The R language only plays a supporting role.  Thus the notion that
+this book is now "obsolete" is shocking, and untenable.
+
 *This is classical monopolistic behavior.*  It's not a monopoly in the
 financial sense, as Tidyverse is not directly enhancing RStudio's
 profitability, and, as noted, is not intentional. But the result is
