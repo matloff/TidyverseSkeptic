@@ -52,12 +52,17 @@ journal.)
 
 ### Teachability
 
+* My biggest concern is involves teaching of R.  **Tidy makes it more
+  DIFFICULT for nonprogrammer learners of R to become proficient in the
+language**.
+
 * The Tidyverse arose from the desire to have a set of functions/packages that
    are consistent with each other, a "purist" philosophy that appeals,
 for instance, to computer scientists.  The Tidyverse also borrows from
 other "purist" computer science (CS) philosophies, notably *functional
 programming* (FP).  The latter is abstract and theoretical,
-difficult even for CS students, so **Tidy is an unwise approach for
+**difficult even for CS students**, and thus it is clear 
+**Tidy is an unwise approach for
 nonprogrammer students of R.**
 
 *  **Another price of purity is increased complexity and
@@ -76,6 +81,12 @@ Hadley says, for instance, "it may take a while to wrap your head around [FP]."
     that it makes R easier to teach to non-programmers, 
 **I would argue that, on the contrary, the Tidyverse makes R
 *harder* to learn for this group.**
+
+* RStudio has done an admirable job in bringing more women and
+  underrepresented minorities into R.  Yet by saddling them with the
+complicated Tidyverse system, RStudio has made it more difficult for
+these groups to make contributions to the language, in the form of
+writing CRAN packages, authoring books and so on.
 
 ### RStudio's role in R, an open source project
 
