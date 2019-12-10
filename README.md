@@ -42,7 +42,7 @@ journal.)
 
 * [Teachability](#teachable) (to me, the most important issue) 
 
-* [Divdersity issues](#divers) 
+* [Diversity issues](#divers) 
 
 * [R's Status as an Open-Source Language](#status)
 
@@ -334,7 +334,7 @@ situation.  The old adage applies: "Give a man a fish, and he can eat
 for a day. Teach him how to fish, and he can eat for a lifetime."  The
 same is true for **data.table**.
 
-*What Tidy promoters want R beginners NOT to learn:;*
+### What Tidy promoters want R beginners NOT to learn
 
 The Tidyers make a point of avoiding the most basic parts of base-R:
 
@@ -346,9 +346,52 @@ The Tidyers make a point of avoiding the most basic parts of base-R:
 
 * logical expressions
 
+* **plot()** and the associated basic graphics functions
+
 They would argue that this "simplifies" the learning process, but
 actually it forces beginners to come up with more complex, less
 intuitive and harder-to-read solutions.
+
+### Case Study: Redoing Dalgaard
+
+Here is a quick example of the complexity of Tidy, and its consequent
+unsuitability for use in teaching nonprogrammer learners of R.
+
+A researcher tweeted in December 2019 that an introductory statistics
+book by Peter Dalgaard is "now obsolete," because it uses base-R rather
+than Tidy.  (Details later on in this essay.) I replied that I thought
+the assertion that all books using R must now be revised to become
+Tidy-compliant" was outrageous.  I added that if he wished to use the
+book in his classes, he could write up Tidy versions of the code from
+the book, and give it to his students as a supplement.  Think what that
+would involve.
+
+Consider, for instance, an innocuous line like
+
+``` r
+> hist(Nile)
+```
+
+i.e. drawing a simple histogram of R's built-in Nile dataset.  
+
+This is something the instructor could have students do in the very
+first lesson.  Easy!  By contrast, the Tidy crowd forbids use of base-R
+plots, insisting on using **ggplot2** (which again is not Tidy, but is
+considered as such by the Tidy advocates).  To be Tidy
+the instructor would have to do something like
+
+``` r
+> library(ggplot2)
+> dn <- data.frame(Nile)
+> ggplot(dn) + geom_histogram(aes(Nile),dn)
+```
+
+Here the instructor would have a ton of things to explain -- packages,
+data frames, **ggplot()**, the **aes** argument and so on -- 
+and thus she could definitely NOT present it in the first lesson.
+
+Again, the Tidyverse is simply too complex for R learners without coding
+background.
 
 ### Case Study: the tapply() Function
 
@@ -567,6 +610,18 @@ sapply(u,lmr2)
 Here **lmr2()** is defined explicitly, as opposed to the Tidy version, with
 its inscrutable '~' within the **map()** call.
 
+In a [Twitter discussion](https://twitter.com/dgkeyes/status/1200532987000971264)
+of the above example, a Tidy advocate protested that the above **purrr** code was not 
+appropriate for learners:
+
+> Sure, but my original tweet was about teaching newbies. Your example is
+> not really relevant to that because it's about a VERY complex concept.
+
+Exactly my point!  **Newbies should write this as a loop, NOT using
+purrr**.  But the Tidy promoters don't want learners to use loops.
+So the instructor using Tidy simply would avoid giving students such an
+example, whereas it would be easy for the base-R instructor to do so.
+
 As noted, the Tidy version shown earlier  is an illustration of the "too
 many functions to learn," cognitive overload, problem we saw earlier
 with **dplyr**.  Behold:
@@ -627,14 +682,29 @@ readily agree that their students could also easily pick up
 **data.table**, or for that matter my preference for beginners, base-R,
 given some examples.
 
-And what of the fact that we have the English word *filter* above?
-Granted, it looks nice, but English can be misleading or mystifying in a
-computer context.  Even an experienced programmer would not be able to
-guess what the **dplyr** function **mutate()** does, for instance.
+We saw earlier that the **purrr** example,
 
-Furthermore, as noted below, the Tidy advocates don't like the many
-base-R functions whose names *do* use English, e.g. **aggregate()** and
-**merge()**.  Clearly, then, English is not the core issue.
+``` r
+mtcars %>%
+  split(.$cyl) %>%
+  map(~ lm(mpg ~ wt, data = .)) %>%
+  map(summary) %>%
+  map_dbl("r.squared")
+```
+
+would be baffling even to experienced (but non-R) programmers, starkly
+contradicting the claimed "English-like clarity" of Tidy.  And the
+**dplyr** meaning of **mutate** is nowhere near its English meaning, and
+again, would not be guessed even by a non-R professional programmer.
+
+In other words, though students may say they like the "English" aspect
+of Tidy, the benefit is illusory.  They could become more proficient in
+R, **more quickly**, learning base-R than Tidy.
+
+By the way, as noted below, the Tidy advocates don't like the many
+base-R functions whose names *do* use English, e.g. **plot()**,
+**lines()**,  **aggregate()** and **merge()**.  Clearly, then, English
+is not the core issue.
 
 ### Pipes
 
@@ -946,7 +1016,8 @@ Similarly, a statement by the "bootcamp" Dataquest:
 > ggplot2 or teach students to work in RStudio, but these skills are now
 > **industry-standard** for doing data science with R...
 
-(Note the characterization of **ggplot2** is "Tidyverse.")
+(Note the false characterization of **ggplot2** as being part of the
+ "Tidyverse.")
 
 *This is classical monopolistic behavior.*  It's not a monopoly in the
 financial sense, as Tidyverse is not directly enhancing RStudio's
