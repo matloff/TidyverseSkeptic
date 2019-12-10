@@ -1,5 +1,5 @@
 # TidyverseSkeptic
-An opinionated view of the Tidyverse "dialect" of the R language, and
+An alternate view of the Tidyverse "dialect" of the R language, and
 its promotion by RStudio.
 
 ## Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
@@ -52,7 +52,7 @@ journal.)
 
 ### Teachability
 
-1. The Tidyverse arose from the desire to have a set of functions/packages that
+* The Tidyverse arose from the desire to have a set of functions/packages that
    are consistent with each other, a "purist" philosophy that appeals,
 for instance, to computer scientists.  The Tidyverse also borrows from
 other "purist" computer science (CS) philosophies, notably *functional
@@ -60,26 +60,26 @@ programming* (FP).  The latter is abstract and theoretical,
 difficult even for CS students, so **Tidy is an unwise approach for
 nonprogrammer students of R.**
 
-2.  **Another price of purity is increased complexity and
+*  **Another price of purity is increased complexity and
     abstraction**, making code more prone to error (as well as a
 sacrifice in performance).  
 
-3.  In fact, the **Tidyverse is general is far too complex for learners
+*  In fact, the **Tidyverse is general is far too complex for learners
     without prior coding background**, causing what psychologists call
 <i>cognitive overload</i>.
 
-4.  Indeed, even many Tidy advocates concede that it is in various
+*  Indeed, even many Tidy advocates concede that it is in various
     senses often more difficult to write Tidy code than base-R.  
 Hadley says, for instance, "it may take a while to wrap your head around [FP]."
 
-5. Thus, contrary to the claim made by RStudio for promoting the Tidyverse is
+* Thus, contrary to the claim made by RStudio for promoting the Tidyverse is
     that it makes R easier to teach to non-programmers, 
 **I would argue that, on the contrary, the Tidyverse makes R
 *harder* to learn for this group.**
 
 ### RStudio's role in R, an open source project
 
-4. The dominance of the commercial entity RStudio in an open-source
+* The dominance of the commercial entity RStudio in an open-source
    project is key:  **It is NOT the case that Tidyverse rose to
 prominence due to sheer quality in a free market of ideas.**  Instead,
 that prominence arose from the deep-pocket resources of, and especially,
@@ -88,14 +88,14 @@ full time on Tidy, and RStudio engages in aggressive educational
 outreach, promoting Tidy.  This is not how open-source projects usually
 work, where participants work in their free time.
 
-5. In heavily promoting the Tidyverse, especially in the education
+* In heavily promoting the Tidyverse, especially in the education
    realm, RStudio, with its dominance in the R field, is developing an
 entire new generation of R users whose skills in base-R are superficial
 at best, and who -- most importantly -- feel that R *is* the Tidyverse.
 This will shape the evolution of the language itself, in undesirable
 ways.
 
-6. **Regardless of being well-intentioned, RStudio is molding R into its
+* **Regardless of being well-intentioned, RStudio is molding R into its
    own desired image.**  That new generation will come to dominate the
 community, treating Tidyverse as the "real" base, and viewing the actual
 base-R as something akin to assembly language.  One RStudio principal
@@ -109,7 +109,7 @@ do not. They are not impressed by the much-vaunted consistent syntax and
 so on, and are worried about the slow performance of Tidy;
 some view Tidy as a gimmick.
 
-7.  That new generation will often be biased against non-Tidyverse job
+*  That new generation will often be biased against non-Tidyverse job
     seekers, non-Tidyverse CRAN packages, and academics who submit
 non-Tidyverse data science research papers and grant proposals.  **The
 non-Tidyers will have no choice but to bend to RStudio's wishes.**  Thus
@@ -120,7 +120,7 @@ classicly monopolistic, in the sense of one product dominating a market,
 stifling innovation etc.  The adverse impacts are very serious and
 worsening.
 
-9. One key example of the pernicious effects of this monopolistic
+* One key example of the pernicious effects of this monopolistic
    situation is that RStudio's promotion of the Tidyverse has alarmingly
 **impeded the progress and adoption of technologically superior packages**,
 notably **data.table**. Most in the "Tidyverse generation" are unaware
