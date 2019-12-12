@@ -323,9 +323,7 @@ Having a common syntax thus does not compensate for this dizzying
 complexity.  As even one Tidy enthusiast
 [conceded](https://twitter.com/tobar_with_R/status/1190974351060934657):
 
-> Sometimes doing in the tidyverse is just one command (eg count)
-> sometimes several commands like the tapply equivalent above. But when
-> you come up with a clean, understandable code is obvious you'll feel
+> ...when you come up with a clean, understandable code...you'll feel
 > more rewarded
 
 The poster concedes that coming up with a nice Tidy solution make
@@ -348,8 +346,6 @@ The Tidyers make a point of avoiding the most basic parts of base-R:
 
 * loops
 
-* logical expressions
-
 * **plot()** and the associated basic graphics functions
 
 They would argue that this "simplifies" the learning process, but
@@ -365,12 +361,15 @@ A researcher tweeted in December 2019 that an introductory statistics
 book by Peter Dalgaard is "now obsolete," because it uses base-R rather
 than Tidy.  (Details later on in this essay.) I replied that I thought
 the assertion that all books using R must now be revised to become
-Tidy-compliant" was outrageous.  I added that if he wished to use the
-book in his classes, he could write up Tidy versions of the code from
-the book, and give it to his students as a supplement.  Think what that
-would involve.
+Tidy-compliant" was outrageous.  
 
-Consider, for instance, an innocuous line like
+I added that if he wished to use the book in his classes, he could write
+up Tidy versions of the code from the book, and give it to his students
+as a supplement.  Think what that would involve, how much extra
+complexity it would add to the poor students.
+
+Consider, for instance, an innocuous line like (not in the Dalgaard
+book)
 
 ``` r
 > hist(Nile)
@@ -394,8 +393,29 @@ Here the instructor would have a ton of things to explain -- packages,
 data frames, **ggplot()**, the **aes** argument and so on -- 
 and thus she could definitely NOT present it in the first lesson.
 
+Here's an example from the book:
+
+``` r
+> thue2 <- subset(thuesen,blood.glucose < 7)
+```
+
+This could easily be in the base-R instructor's second lesson, if not
+the first.  For Tidy, though, this would have to be changed to
+
+``` r
+> library(dplyr)
+> thue2 <- thue2 %>% filter(blood.glucose < 7)
+```
+
+Here the instructor would first have to teach the pipe operator '%>%',
+again extra complexity.  And in so doing, she would probably emphasize
+the "left to right" flow of pipes, but the confused students would then
+wonder why, after that left-to-right flow, there is suddenly a
+right-to-left flow, with the '<-'.  (For some reason, the Tidy people
+don't seem to use R's '->' op.)
+
 Again, the Tidyverse is simply too complex for R learners without coding
-background.
+background.  **It slows down their learning process.**
 
 ### Case Study: the tapply() Function
 
