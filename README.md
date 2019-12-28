@@ -95,13 +95,13 @@ writing CRAN packages, authoring books and so on.
 project is bound to have profound changes on that project. 
 
 * The dominance of the commercial entity RStudio in an open-source
-   project is key:  **It is NOT the case that Tidyverse rose to
+  project is key:  **It is NOT the case that Tidyverse rose to
 prominence due to sheer quality in a free market of ideas.**  Instead,
-that prominence arose from the deep-pocket resources of, and especially,
-the heavy promotion by, RStudio.  Hadley has 7 or 8 programmers working
-full time on Tidy, and RStudio engages in aggressive educational
-outreach, promoting Tidy.  This is not how open-source projects usually
-work, where participants work in their free time.
+that prominence arose from heavy promotion by RStudio.  Hadley has 7 or
+8 programmers working full time on Tidy, and RStudio engages in
+aggressive educational outreach, promoting Tidy.  This is not how
+open-source projects usually work, where participants work in their free
+time.
 
 * In heavily promoting the Tidyverse, especially in the education
    realm, RStudio, with its dominance in the R field, is developing an
