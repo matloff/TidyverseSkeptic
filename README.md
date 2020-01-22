@@ -396,6 +396,7 @@ and thus she could definitely NOT present it in the first lesson.
 Here's an example from the book:
 
 ``` r
+> library(ISwR)
 > thue2 <- subset(thuesen,blood.glucose < 7)
 ```
 
@@ -404,7 +405,8 @@ the first.  For Tidy, though, this would have to be changed to
 
 ``` r
 > library(dplyr)
-> thue2 <- thue2 %>% filter(blood.glucose < 7)
+> library(ISwR)
+> thue2 <- thuesen %>% filter(blood.glucose < 7)
 ```
 
 Here the instructor would first have to teach the pipe operator '%>%',
@@ -568,7 +570,7 @@ Even Hadley, in *R for Data Science*, says:
 
 Actually, most non-FP languages allow passing one function to another,
 but yes it is a powerful tool, worth the investment of time -- *for the
-experienced R programmer*.  But again, it's wrong to foce nonprogrammer
+experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" **purrr**.
 
 ### purrr vs. base-R example 
