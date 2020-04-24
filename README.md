@@ -116,7 +116,7 @@ community, treating Tidyverse as the "real" base, and viewing the actual
 base-R as something akin to assembly language.  One RStudio principal
 who asked to discuss this document with me referred to non-Tidy packages
 as being in the "legacy" realm.  In other words, he expects that
-all future packages will eventually be wrtten in Tidy. 
+all future packages will eventually be written in Tidy.
 
     All this might be fine if the R community
 were unified in viewing Tidyverse as a high-level improvement, but many
@@ -131,7 +131,7 @@ non-Tidyers will have no choice but to bend to RStudio's wishes.**  Thus
 RStudio is essentially operating as a monopolist.  It's not a monopoly
 in the financial sense -- Tidyverse is not directly enhancing RStudio's
 profitability -- and, as noted, is not intentional. But the result is
-classicly monopolistic, in the sense of one product dominating a market,
+classically monopolistic, in the sense of one product dominating a market,
 stifling innovation etc.  The adverse impacts are very serious and
 worsening.
 
@@ -158,7 +158,7 @@ component, and he wishes he had designed the package around pipes.
 of any package Hadley has ever written, inclusion of **ggplot2** in the
 Tidyverse is factually incorrect.
 
-- Misleading, because the (genuine) "Ooh! Ah!" qualtity of the
+- Misleading, because the (genuine) "Ooh! Ah!" quality of the
   **ggplot2** package "sells" beginners on the Tidyverse.  I often hear
 them make statements like, "I love the Tidyverse, because I can create
 nice graphics."  They don't realize that it's a non-Tidy package
@@ -488,8 +488,8 @@ the fact that one is not easily identifiable illustrates my point above
 that Tidy is actually very bloated, not suitable for beginners.
 
 Moreover, the **tapply()** output is more informative in a second sense,
-letting the user know that there were no 8-cyliner, 4-speed cars, again
-the kind of thing that is quite meaningful in many applications.  
+letting the user know that there were no 8-cylinder, 4-speed cars, again
+the kind of thing that is quite meaningful in many applications.
 
 Actually, the Tidy version can be modified in order to notice that empty
 group:
@@ -520,7 +520,7 @@ Tidy documentation, and which would further complicate things for R
 beginners even if it were documented.
 
 So, in terms of clarity and learnability, the Tidy and base-R versions
-in this paricular example are both good, again showing that Tidy is not
+in this particular example are both good, again showing that Tidy is not
 easier to learn.  And In terms of usability, I'd give base-R the win
 here. 
 
@@ -553,8 +553,8 @@ majors,  the authors' goals are antithetical to those of R learners.
 The authors list three goals, one of which is to teach theoretical
 computer science, certainly not desirable for teaching R in general, let
 alone for teaching R to those with no coding experience.  They also
-concede that a key concept in FP, *recursion*, is a "signficant
-obstacle" even for CS students.  
+concede that a key concept in FP, *recursion*, is a "significant
+obstacle" even for CS students.
 
 If FP is tough for CS students, it makes no sense to have nonprogrammer
 learners of R use it.
@@ -568,7 +568,7 @@ Even Hadley, in *R for Data Science*, says:
 
 Actually, most non-FP languages allow passing one function to another,
 but yes it is a powerful tool, worth the investment of time -- *for the
-experienced R programmer*.  But again, it's wrong to foce nonprogrammer
+experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" **purrr**.
 
 ### purrr vs. base-R example 
@@ -929,9 +929,9 @@ assume both are "standard," and anything from RStudio is unquestioningly
 accepted as the proper way to do things.  
 
 One example of this view of RStudio as the "industry standard" arose in
-an [interviewe](https://www.r-bloggers.com/heather-turner-the-user-2014-interview/)
-of prominent R developer Heather Turner, where the interviewe gushed in
-amazement that 
+an [interview](https://www.r-bloggers.com/heather-turner-the-user-2014-interview/)
+of prominent R developer Heather Turner, where the interviewer gushed in
+amazement that
 
 > Her description of how she accomplishes her work is fascinating –
 > including the fact that she prefers Emacs over RStudio!
@@ -943,7 +943,7 @@ who teach R want to join Bandwagon as well, feeling they must teach the
 As noted, some analysts like the Tidyverse from a theoretical point of
 view, such as a conviction that functional programming is the best
 approach to coding.  But for many others, Tidy is indeed a Bandwagon
-that they jump blindly, without understanding the issues.
+that they jump onto blindly, without understanding the issues.
 
 At the aforementioned SatRday conference, for instance, one of the
 speakers was a recent math graduate, now working in the business world.
@@ -1061,8 +1061,8 @@ this book is now "obsolete" is shocking, and untenable.
 *This is classical monopolistic behavior.*  It's not a monopoly in the
 financial sense, as Tidyverse is not directly enhancing RStudio's
 profitability, and, as noted, is not intentional. But the result is
-classicly monopolistic, in the sense of one product dominating a market,
-and attendant ills. 
+classically monopolistic, in the sense of one product dominating a market,
+and attendant ills.
 
 A highly insidious consequence of monopolies is the stifling of
 innovation.  The case of **data.table** discussed above is a fine case
@@ -1085,10 +1085,10 @@ heavily promoting the Tidyverse, RStudio has failed this criterion.
 
 As noted, I know and admire the people at RStudio, *but a commercial
 entity should not have such undue, unilateral influence on an
-open-source project.*  
+open-source project.*
 
 It should be noted that neither Hadley nor anyone else one from RStudio
-is a memner of the elite, 20-member R Core Group, which guides the development
+is a member of the elite, 20-member R Core Group, which guides the development
 of the language.  The Tidyverse thus is tantamount to an *end-run around
 the leaders of this open-source project*.  As any expert in
 organizational behavior will tell you, this does not augur well for the
