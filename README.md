@@ -7,7 +7,7 @@ its promotion by RStudio.
 # NOTE: This Is the Short Form
 
 To me, the main problem with the Tidyverse is teachability.  I believe
-that teaching beginners with no coding backgroun is actually **impeded**
+that teaching beginners with no coding background is actually **impeded**
 by the use of the Tidyverse instead of base-R.  This short form here
 consists of extraction of the teachability aspects of my
 TidyverseSkeptic essay.  The full document, addressing other issues, is
