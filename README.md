@@ -79,7 +79,9 @@ Hadley says, for instance, "it may take a while to wrap your head around [FP]."
 complicated Tidyverse system, RStudio has made it more difficult for
 these groups to make contributions to the language, in the form of
 writing CRAN packages, authoring books and so on, which require good
-facility with base-R even if the code is largely Tidyverse.
+facility with base-R even if the code is largely Tidyverse.  This of
+course is true for anyone, not just those in these groups, but it's sad
+that RStudio is hurting the very people it wants to help.
 
 # <a name="teachable"> </a> TEACHABILITY
 
