@@ -119,13 +119,13 @@ i.e. drawing a simple histogram of R's built-in Nile River dataset.
 This is in the very first lesson in my tutorial.  Easy!  By contrast,
 the Tidy crowd forbids use of base-R plots, insisting on using
 **ggplot2** (which again is not Tidy, but is considered as such by the
-Tidy advocates).  To be Tidy the instructor would have to do something
+Tidy advocates). To be Tidy the instructor would have to do something
 like
 
 ``` r
 > library(ggplot2)
 > dn <- data.frame(Nile)
-> ggplot(dn) + geom_histogram(aes(Nile),dn)
+> ggplot(dn) + geom_histogram(aes(Nile))
 ```
 
 Here the instructor would have a ton of things to explain -- packages,
@@ -155,12 +155,12 @@ In 231 pages, vectors are mentioned just briefly, with no coverage of subscipts.
 
 A researcher tweeted in December 2019 that an introductory statistics
 book by Peter Dalgaard is "now obsolete," because it uses base-R rather
-than Tidy.  Think of what an update to Tidy would involve, how much extra
-complexity it would impose on the students.  Here is an example from the
+than Tidy. Think of what an update to Tidy would involve, how much extra
+complexity it would impose on the students. Here is an example from the
 book:
 
 ``` r
-> thue2 <- subset(thuesen,blood.glucose < 7)
+> thue2 <- subset(thuesen, blood.glucose < 7)
 ```
 
 This could easily be in the base-R instructor's second lesson, if not
@@ -168,7 +168,7 @@ the first.  For Tidy, though, this would have to be changed to
 
 ``` r
 > library(dplyr)
-> thue2 <- thue2 %>% filter(blood.glucose < 7)
+> thue2 <- thuesen %>% filter(blood.glucose < 7)
 ```
 
 Here the instructor would first have to teach the pipe operator '%>%',
@@ -300,7 +300,7 @@ mtcars %>%
 Here is the base-R version:
 
 ``` r
-tapply(mtcars$mpg,mtcars$cyl,mean)
+tapply(mtcars$mpg, mtcars$cyl, mean)
 ```
 
 Both are simple.  Both are easily grasped by beginners. After being
@@ -314,7 +314,7 @@ It's instructive to look at what happens when one groups by two aspects:
 
 ``` r
 > mtcars %>%
-+ group_by(cyl,gear) %>%
++ group_by(cyl, gear) %>%
 + summarize(mean(mpg))
 # A tibble: 8 x 3
 # Groups:   cyl [3]
@@ -328,7 +328,7 @@ It's instructive to look at what happens when one groups by two aspects:
 6     6     5        19.7
 7     8     3        15.0
 8     8     5        15.4
-> tapply(mtcars$mpg,list(mtcars$cyl,mtcars$gear),mean)
+> tapply(mtcars$mpg, list(mtcars$cyl, mtcars$gear), mean)
       3      4    5
 4 21.50 26.925 28.2
 6 19.75 19.750 19.7
@@ -362,7 +362,7 @@ group:
 > mtcars$cyl <- as.factor(mtcars$cyl)
 > mtcars$gear <- as.factor(mtcars$gear)
 > mtcars %>% 
-+    group_by(cyl,gear,.drop=FALSE) %>% 
++    group_by(cyl, gear, .drop=FALSE) %>% 
 +    summarize(mean(mpg))
 # A tibble: 9 x 3
 # Groups:   cyl [3]
@@ -432,7 +432,7 @@ Even Hadley, in *R for Data Science*, says:
 
 Actually, most non-FP languages allow passing one function to another,
 but yes it is a powerful tool, worth the investment of time -- *for the
-experienced R programmer*.  But again, it's wrong to foce nonprogrammer
+experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" **purrr**.
 
 ### purrr vs. base-R example 
@@ -488,11 +488,12 @@ far easier:
 
 ``` r
 lmr2 <- function(mtcSubset) {
-   lmout <- lm(mpg ~ wt,data=mtcSubset)
+   lmout <- lm(mpg ~ wt, data = mtcSubset)
    summary(lmout)$r.squared
 }
-u <- split(mtcars,mtcars$cyl)
-sapply(u,lmr2)
+u <- split(mtcars, mtcars$cyl)
+# sapply(u, lmr2) # or better ...
+vapply(u, lmr2, numeric(1)) # ... explicit type like map_dbl
 ```
 
 Here **lmr2()** is defined explicitly, as opposed to the Tidy version, with
@@ -533,7 +534,7 @@ with **dplyr**.  Behold:
 
 By contrast, in the base-R version, we indeed stuck to base-R!  There
 are only four main functions to learn in the 'apply' family:  **apply()**,
-**lapply()**, **sapply()** and **tapply()**.
+**lapply()**, **vapply**, **sapply()** and **tapply()**.
 
 ### Tibbles
 
@@ -555,12 +556,14 @@ Tidyverse is more teachable because of its "English-like" syntax.
 
 Below is a comparison of the "English" **dplyr** to the "non-English"
 **data.table** (adapted from
-[here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
+[here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/))
+and **base-R** versions:
 We'll again use R's built-in **mtcars** dataset.
 
 ``` r 
+mtcars[mtcars$cyl == 6, ] # base R syntax
 mtdt <- as.data.table(mtcars);  mtdt[cyl == 6]  # data.table syntax
-mttb <- as_tibble(mtcars);  filter(mttb,cyl == 6)  # dplyr syntax 
+mttb <- as_tibble(mtcars);  filter(mttb,cyl == 6)  # dplyr syntax
 ``` 
 
 Is there really any difference?  Can't beginners, even without
@@ -600,10 +603,10 @@ The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
 the function composition **h(g(f(x)))** as
 
 ``` r
-f(x) %>%  g() %>% h()
+f(x) %>% g() %>% h()
 ```
 
-Again, the pitch made is that this is "English," in this case in the
+Again, the pitch made is that this is "English", in this case in the
 sense of reading left-to-right.  But again, one might question just how
 valuable that is, and in any event, I personally tend to write such code
 left-to-right anyway, *without* using pipes:
@@ -624,7 +627,7 @@ in the pipe, that argument would be hidden, making it appear that there
 is only one argument:
 
 ``` r
-> w <- function(u,v) u+2*v
+> w <- function(u, v) u+2*v
 > 3 %>% w(5)
 [1] 13
 ```
@@ -635,7 +638,7 @@ And what if we want that 3 to play the role of **v**, not **u**?  Yes,
 **magrittr** has a way to do that, the "dot" notation:
 
 ``` r
-> 3 %>% w(5,.)
+> 3 %>% w(5, .)
 [1] 11
 ```
 
@@ -725,7 +728,7 @@ and to which R beginners should definitely be exposed.
 
 But the Tidyverse should be considered advanced R, not for beginners,
 just as is the case for most complex CRAN packages, and should be
-presented, as noted, as an *option*, not as *they* way.
+presented, as noted, as an *option*, not as *the* way.
 
 *The role of RStudio:*
 
