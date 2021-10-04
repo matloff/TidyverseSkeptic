@@ -34,6 +34,8 @@ at various places in this essay that I think their actions have been
 well-intentioned.  Nevertheless, I believe that **RStudio took a wrong
 turn when it decided to promote the Tidyverse**, which has led to a
 situation in which the unity and health of the language is at stake.
+And as noted, I think the Tidyverse is particularly harmful for
+beginning learners who have no prior coding background.
 
 [My bio is here.](http://heather.cs.ucdavis.edu/matloff.html)
 Specifically in terms of R, I've been an R user and developer since near the 
@@ -53,35 +55,25 @@ language**.
 for instance, to computer scientists.  The Tidyverse also borrows from
 other "purist" computer science (CS) philosophies, notably *functional
 programming* (FP).  The latter is abstract and theoretical,
-**difficult even for CS students**, and thus it is clear 
-**Tidy is an unwise approach for
-nonprogrammer students of R.**
+DIFFICULT EVEN FOR CS STUDENTS, and thus it is clear that **Tidy 
+is an unwise approach for nonprogrammer students of R.**
 
-*  **Another price of purity is increased complexity and
-    abstraction**, making code more prone to error (as well as a
-sacrifice in performance).  
-
-*  In fact, the **Tidyverse is general is far too complex for learners
+*  In other words, the **Tidyverse is general is far too complex for learners
     without prior coding background**, causing what psychologists call
 <i>cognitive overload</i>.
 
 *  Indeed, even many Tidy advocates concede that it is in various
-    senses often more difficult to write Tidy code than base-R.  
-Hadley says, for instance, "it may take a while to wrap your head around [FP]."
-
-* Thus, contrary to the claim made by RStudio for promoting the Tidyverse is
-    that it makes R easier to teach to non-programmers, 
-**I would argue that, on the contrary, the Tidyverse makes R
-*harder* to learn for this group.**
+    senses often more difficult to write Tidy code than base-R.  Hadley 
+    says, for instance, "it may take a while to wrap your head around [FP]."
 
 * RStudio has done an admirable job in bringing more women and
   underrepresented minorities into R.  Yet by saddling them with the
-complicated Tidyverse system, RStudio has made it more difficult for
-these groups to make contributions to the language, in the form of
-writing CRAN packages, authoring books and so on, which require good
-facility with base-R even if the code is largely Tidyverse.  This of
-course is true for anyone, not just those in these groups, but it's sad
-that RStudio is hurting the very people it wants to help.
+  complicated Tidyverse system, RStudio has made it more difficult for
+  these groups to make contributions to the language, in the form of
+  writing CRAN packages, authoring books and so on, which require good
+  facility with base-R even if the code is largely Tidyverse.  This of
+  course is equally true for anyone, not just those in these groups, but
+  it's sad that RStudio is hurting the very people it wants to help.
 
 # <a name="teachable"> </a> TEACHABILITY
 
@@ -149,7 +141,11 @@ As a concrete example of this Tidy point of view, consider the book
 *Getting Started with R*, by Beckerman *et al*, Oxford University Press,
 second edition, 2017.  The book makes a point of being 
 ["Tidyverse compliant"](https://twitter.com/GSwithR/status/996830294367002625).
-In 231 pages, vectors are mentioned just briefly, with no coverage of subscipts.
+In 231 pages, vectors are mentioned just briefly, with no coverage of 
+subscripts.
+
+In other words, **even after one lesson, the base-R learner would be way
+ahead of her Tidy counterparts.**
 
 ### Case Study: Dalgaard book
 
@@ -186,11 +182,6 @@ background.  **It slows down their learning process.**
 As a lifelong passionate teacher, I strongly question the claim made by
 Tidyverse advocates that it facilitates the teaching of R to
 non-programmers, as opposed to teaching them base-R.  
-
-(I regard both **dplyr** and **data.table** as advanced topics; neither
-is suitable for beginners.  On the other hand, I think teaching
-beginners **ggplot2** is fine, but point out again that it is not part
-of the Tidyverse.)
 
 There has been no study of Tidy advocates' teachability claim.
 Advocates often provide testimonials from students like 
@@ -234,7 +225,7 @@ author says *inter alia* that he uses "only" 60 Tidyverse functions --
 60!  The "star" of the Tidyverse, **dplyr**, consists of 263 functions. 
 
 While a user initially need not use more than a small fraction of those
-functions, the high complexity is clear.  Every time a user needs some
+263 functions, the high complexity is clear.  Every time a user needs some
 variant of an operation, she must sift through those hundreds of
 functions for one suited to her current need.  
 
@@ -283,9 +274,10 @@ intuitive and harder-to-read solutions.
 
 ### Case Study: the tapply() Function
 
-One of the most commonly-used functions in R is **tapply()**.  As
-noted below, for some reason Tidy advocates hate this function, but
-arguably it is perfect for R beginners.
+One of the most commonly-used functions in base-R is **tapply()**.  As
+noted below, for some reason Tidy advocates deeply hate this function, but
+arguably it is perfect for R beginners.  
+Indeed, for many, **tapply()** epitomizes what's wrong with base-R.
 
 Consider a common example in tutorials on the Tidyverse, involving R's
 **mtcars** dataset.  The goal is to find mean miles per gallon, grouped
@@ -304,13 +296,15 @@ tapply(mtcars$mpg,mtcars$cyl,mean)
 ```
 
 Both are simple.  Both are easily grasped by beginners. After being
-presented with some examples, beginners have no trouble using them in a
-new setting of similar type.  The Tidy version requires two function
-calls rather than one for base-R.  But again, both versions are simple,
-so let's call it a tie.  But is it certainly not the case that the Tidy
-version is *easier* to learn.
+presented with some examples, beginners have no trouble using either of
+them in a new setting of similar type.  The Tidy version requires two
+function calls rather than one for base-R.  But again, both versions are
+simple, so let's call it a tie.  But is it certainly not the case that
+the Tidy version is *easier* to learn.
 
-It's instructive to look at what happens when one groups by two aspects:
+Again, so far, a tie.  But it's instructive to look at what happens when
+one groups by two aspects, **cyl** and **gear**, rather than just
+**cyl** as above.:
 
 ``` r
 > mtcars %>%
@@ -356,7 +350,7 @@ letting the user know that there were no 8-cyliner, 4-speed cars, again
 the kind of thing that is quite meaningful in many applications.  
 
 Actually, the Tidy version can be modified in order to notice that empty
-group:
+group.  Then things get really bad for Tidy:
 
 ``` r
 > mtcars$cyl <- as.factor(mtcars$cyl)
@@ -379,31 +373,48 @@ group:
 9 8     5            15.4
 ```
 
-Note the need to convert to factors, something not mentioned in the
-Tidy documentation, and which would further complicate things for R
-beginners even if it were documented.
+There's trouble for R beginners right away, in the need to convert to
+factors, something not mentioned in the Tidy documentation, and which
+would further complicate things for R beginners even if it were
+documented.
 
-So, in terms of clarity and learnability, the Tidy and base-R versions
-in this paricular example are both good, again showing that Tidy is not
-easier to learn.  And In terms of usability, I'd give base-R the win
-here. 
+This illustrates why one Tidy advocate dismissed my example of grouping
+by two factors as "advanced," not suitable for a discussion of how R
+beginners learn.  It IS advanced for Tidy learners.  But it's clear that
+for base-R learners, it's not advanced at all.  Indeed, examples like
+this are standard fare in base-R courses.
+
+I'd give base-R the clear win for teaching purposes here. 
 
 ### Use of functional programming
 
-Another featured Tidyverse package, the *functional programming*
-(FP)-oriented library **purrr**, has 177 functions.  Again the point
-about complexity applies;  we again have the "too many functions to
-learn" problem as we saw with **dplyr** above.  
+If there is one aspect of the Tidy-vs.-base-R debate that in my
+demonstrates the problem with Tidy, it's that
+Tidy advocates want R beginners to avoid loops.  Indeed, those
+advocates may not even teach loops at all in a basic course.
 
-At the basic level, FP is merely replacing loops by calls to FP
-functions.  R's **apply** family, plus **Reduce()**, **Map()** and
-**Filter()** should be considered FP.  In many cases, using such
-functions is the right solution.  But the indiscriminate use of FP,
-advocated by many Tidyers, to replace *all* loops is clearly overdoing
-it, and makes things especially difficult for beginners.
+The Tidiers want R beginners to use functional programming (FP) instead
+of loops.  But even they agree that the concept of functions is one of
+the hardest for beginners to learn.  **Thus it makes no sense to force
+beginners to use a the tough concept of FP in lieu of the much more
+natural loops approach.**  FP does have its place, but it should be
+taught as an advanced topic.
 
-This is clear *a priori* -- **FP involves writing functions, a skill that
-most beginners take a long time to develop well.**
+An anti-loops mentality has become the Tidy advocates' test of whether
+one is a "true believer" in the Tidy philosophy.  I've seen Twitter
+posts in which R learners actually apologize for using loops.  And in
+[another tweet](https://twitter.com/cynthiahqy/status/1444871989152280578),
+the author proudly cites the loop-free nature of her code, but her
+wording shows (rightly) that this was difficult to achieve:
+
+> Excited and a bit nervous to share some initial work on a #tidyverse
+> inspired #rstats 📦 for wrangling data from different classifications
+> (e.g. trade/labour) into consistent panels WITHOUT FOR-LOOPS
+
+The author does claim that the FP format is clearer for data wrangling.
+That's debatable -- the proper remedy is always to put an outline of
+one's code in comment lines -- but at the very least, this again shows that
+**FP makes the learning process harder for beginners.**
 
 It is worth noting that top university Computer Science Departments have
 shifted away from teaching their introductory programming courses using
@@ -432,8 +443,8 @@ Even Hadley, in *R for Data Science*, says:
 
 Actually, most non-FP languages allow passing one function to another,
 but yes it is a powerful tool, worth the investment of time -- *for the
-experienced R programmer*.  But again, it's wrong to foce nonprogrammer
-learners of R to "wrap their heads around" **purrr**.
+experienced R programmer*.  But again, it's wrong to force nonprogrammer
+learners of R to "wrap their heads around" FP.
 
 ### purrr vs. base-R example 
 
@@ -455,10 +466,11 @@ mtcars %>%
 
 There are several major points to note here:
 
-* The R learner here must learn two different map functions for this
+* The R learner here must learn two different FP map functions for this
   particular example, and a dozen others for even basic use. This is an
 excellent example of Tidy's cognitive overload problem.  Actually,
-**purrr** has 52 different map functions!  (See below.)
+the Tidyverse FP package, **purrr**, has 52 different map functions!  
+(See below.)
 
 * The first '~' in that first map call is highly nonintuitive.  Even
   experienced programmers would not be able to guess what it does. This
@@ -470,15 +482,15 @@ English-like.
 
     The hapless student would naturally ask, "Where does that expression
 'summary' come from?"  It would appear that **map()** is being called on
-a nonexistent variable, **summary**.  In actuality, base-R's
-**summary()** function is being called on the previous computation
+a nonexistent variable, **summary**.  In actuality, base-R's **summary()** 
+function is being called on the previous computation
 behind the scenes.  Again, highly nonintuitive, and NOT stated in the
 online help page.
 
     The poor student is further baffled by the call to **map_dbl()**.
 Where did that 'r.squared' come from?  Again, Tidy is hiding the
-fact that **summary()** yields an S3 object with component
-**r.squared**.  Yes, sometimes it is helpful to hide the details, but
+fact that **summary()** yields an S3 object with component **r.squared**.  
+Yes, sometimes it is helpful to hide the details, but
 not if it confuses beginners.
 
 The fact is, **R beginners would be much better off writing a loop here,
@@ -505,48 +517,28 @@ appropriate for learners:
 > Sure, but my original tweet was about teaching newbies. Your example is
 > not really relevant to that because it's about a VERY complex concept.
 
-Exactly my point!  **Newbies should write this as a loop, NOT using
-purrr**.  But the Tidy promoters don't want learners to use loops.
+Exactly my point!  **Newbies should write this as a plain loop, NOT using
+purrr** or even base-R's FP constructs.  Then it won't be advanced at
+all.
+
+But the Tidy promoters don't want learners to use loops.
 So the instructor using Tidy simply would avoid giving students such an
 example, whereas it would be easy for the base-R instructor to do so.
 
-As noted, the Tidy version shown earlier  is an illustration of the "too
-many functions to learn," cognitive overload, problem we saw earlier
-with **dplyr**.  Behold:
-
-``` r
-> ls(package:purrr,pattern='map*')
- [1] "as_mapper"      "imap"           "imap_chr"       "imap_dbl"      
- [5] "imap_dfc"       "imap_dfr"       "imap_int"       "imap_lgl"      
- [9] "imap_raw"       "invoke_map"     "invoke_map_chr" "invoke_map_dbl"
-[13] "invoke_map_df"  "invoke_map_dfc" "invoke_map_dfr" "invoke_map_int"
-[17] "invoke_map_lgl" "invoke_map_raw" "lmap"           "lmap_at"       
-[21] "lmap_if"        "map"            "map_at"         "map_call"      
-[25] "map_chr"        "map_dbl"        "map_depth"      "map_df"        
-[29] "map_dfc"        "map_dfr"        "map_if"         "map_int"       
-[33] "map_lgl"        "map_raw"        "map2"           "map2_chr"      
-[37] "map2_dbl"       "map2_df"        "map2_dfc"       "map2_dfr"      
-[41] "map2_int"       "map2_lgl"       "map2_raw"       "pmap"          
-[45] "pmap_chr"       "pmap_dbl"       "pmap_df"        "pmap_dfc"      
-[49] "pmap_dfr"       "pmap_int"       "pmap_lgl"       "pmap_raw"      
-```
-
-By contrast, in the base-R version, we indeed stuck to base-R!  There
-are only four main functions to learn in the 'apply' family:  **apply()**,
-**lapply()**, **sapply()** and **tapply()**.
 
 ### Tibbles
 
-Similarly, it is bad pedagogy to force students to learn tibbles, a
-more complex technology, instead of data frames, a simpler one.  The
-types of situations that tibbles are meant to address should be an
-advanced topic, not for beginners with no coding background.
+Similarly, it is bad pedagogy to force students to learn tibbles, a more
+complex technology, instead of data frames, a simpler one.  The types of
+"nonorthogonal" situations that tibbles are meant to address should be
+an advanced topic, not for beginners with no coding background.
 
 Those advanced situations involve data frames in which row/column
-elements are not *atomic* objects, i.e.\ not simple numbers, character
+elements are not *atomic* objects, i.e. not simple numbers, character
 strings or logical values.  **This is a "straw man" set up by the Tidy
 advocates'**; R beginners are very unlikely to encounter data frames of
-this type.
+this type.  Indeed, most if not all R textbooks do not even have
+examples of this kind of data.
 
 ### The English issue
 
@@ -617,7 +609,9 @@ h(b)
 As a long-time teacher of programming languages (C, C++, Java, Pascal,
 Python, R, assembly language, etc.), I find the promotion of pipes
 troubling.  The piped version hides the fact that **g()** and **h()**
-have an argument, which is invisible in the pipe expression.  
+have an argument, which is invisible in the pipe expression.  This adds
+confusion to the already-difficult process of learning the functions
+concept.
 
 Or if **w()** say, were to have two arguments, the first one being used
 in the pipe, that argument would be hidden, making it appear that there
@@ -645,7 +639,7 @@ the R learner with extra, unnecessary complexity**.  Indeed, just as
 pipes.  There are so many variations to learn that Hadley's *R for Data
 Science* book devotes a full chapter to pipes, 3415 words.  
 
-As noted before, a beginner need learn only a small fraction of that
+Granted, a beginner need learn only a small fraction of that
 material at first, but the above example of the dot notation is
 certainly not an advanced case.  Again, each time the beginner is
 confronted with a new situation, she must sift through the myriad
@@ -678,63 +672,3 @@ nonprogrammers.
 See my [R style guide](http://github.com/matloff/R-Style-Guide) for more on
 readability issues.
 
-### Summary:  the proper status of the Tidyverse in teaching
-
-As I said earlier, in discussions with those who report success in using
-the Tidyverse to teach beginning programmers, I ask whether their
-students are incapable of learning just base-R.  They readily concede
-that the answer is no.  Indeed, before the Tidyverse, throngs of people
-were learning base-R without any prior programming background.
-
-As also mentioned, the Tidyverse can be difficult to debug, and run very
-slowly on large datasets.  The perceived benefit of being "English-like"
-is illusory.
-
-In short, in my view there is no advantage to teaching R through the
-Tidyverse, and some significant disadvantages.  I think it is a mistake
-to feature the Tidyverse in teaching R to beginners, for these reasons:
-
-1.  Complexity and volume of the presented material.
-
-2.  Difficulty in debugging.
-
-3.  Inadequate generalizability.
-
-
-## RECOMMENDATIONS
-
-*Teaching:*
-
-Courses in R, **especially those aimed an nonprogrammers**, should
-develop a solid grounding in base-R as first priority.
-
-The proper placement of Tidy in R courses should be:
-
-* **dplyr:** Taught, along with **data.table**, at the Intermediate R
-  level.
-
-* **purrr:** Taught only at the Advanced level.
-
-* pipes: Taught at the Intermediate level, and presented as an *option*
-  that some students may find useful in some situations (as opposed to
-being presented as *the* way one should work).
-
-I am certainly not saying one should only use base R; on the
-contrary, CRAN is a major advantage of R, which I use extensively,
-and to which R beginners should definitely be exposed.
-
-But the Tidyverse should be considered advanced R, not for beginners,
-just as is the case for most complex CRAN packages, and should be
-presented, as noted, as an *option*, not as *they* way.
-
-*The role of RStudio:*
-
-In my view, RStudio can easily remedy the problem.  It can take the
-following actions to greatly ameliorate the "monopolistic" problems:
-
-1.  Promote the teaching of base-R to beginners, treating the Tidyverse
-    as an advanced topic.  The popular book, *R for Everyone: Advanced
-Analytics and Graphics* (second ed.), by Jared Lander does exactly this!
-
-2.  In the various RStudio Web pages on writing fast R code, give
-    **data.table** equal time.
