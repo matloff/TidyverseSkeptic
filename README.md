@@ -275,9 +275,9 @@ intuitive and harder-to-read solutions.
 ### Case Study: the tapply() Function
 
 One of the most commonly-used functions in base-R is **tapply()**.  As
-noted below, for some reason Tidy advocates deeply hate this function, but
-arguably it is perfect for R beginners.  
-Indeed, for many, **tapply()** epitomizes what's wrong with base-R.
+noted below, for some reason Tidy advocates deeply hate this function. 
+Indeed, for many of them, **tapply()** epitomizes what's wrong with base-R.
+But it is perfect for R beginners.  
 
 Consider a common example in tutorials on the Tidyverse, involving R's
 **mtcars** dataset.  The goal is to find mean miles per gallon, grouped
