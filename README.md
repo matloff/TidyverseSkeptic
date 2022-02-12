@@ -389,7 +389,7 @@ I'd give base-R the clear win for teaching purposes here.
 ### Use of functional programming
 
 If there is one aspect of the Tidy-vs.-base-R debate that in my
-demonstrates the problem with Tidy, it's that
+opinions demonstrates the problem with Tidy, it's that
 Tidy advocates want R beginners to avoid loops.  Indeed, those
 advocates may not even teach loops at all in a basic course.
 
