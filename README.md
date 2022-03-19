@@ -48,6 +48,8 @@ R, and leaves them less able to productively.
   STUDENTS, and thus it is clear that **Tidy is an unwise approach for
   nonprogrammer students of R.**
 
+* A major problem with Tidy for R beginners is *cognitive overload*.
+
 *  In other words, the **Tidyverse is general is far too complex for learners
     without prior coding background**, causing what psychologists call
 <i>cognitive overload</i>.
