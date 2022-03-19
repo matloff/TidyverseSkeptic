@@ -27,20 +27,8 @@ highly praise the firm to my students, and I use and recommend
 Hadley's (non-Tidyverse) packages **ggplot2** and **stringr**, and 
 on occasion **devtools** has been an absolute lifesaver for me.
 
-In other words, I don't consider RStudio to be some evil cabal.  I state
-at various places in this essay that I think their actions have been
-well-intentioned.  Nevertheless, I believe that **RStudio took a wrong
-turn when it decided to promote the Tidyverse**, which has led to a
-situation in which the unity and health of the language is at stake.
-And as noted, I think the Tidyverse is particularly harmful for
-beginning learners who have no prior coding background.
+Nevertheless, I believe that **RStudio took a wrong turn when it decided to promote the Tidyverse** for beginning learners who have no prior coding background.
 
-[My bio is here.](http://heather.cs.ucdavis.edu/matloff.html)
-Specifically in terms of R, I've been an R user and developer since near the 
-beginning, having used R's predecessor S before that.  I've 
-published several books that use R, and have served as the 
-Editor-in-Chief of the *R Journal*.  (Hadley is a former EiC on the
-journal.)
 
 ## TEACHABILITY OVERVIEW
 
