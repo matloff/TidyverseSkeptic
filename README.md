@@ -1,18 +1,16 @@
 # TidyverseSkeptic
-An alternate view of the Tidyverse "dialect" of the R language, and
-its promotion by RStudio.
+Teach R in a kinder, gentler--and more productive--manner: Use base-R rather than the Tidyverse.
 
 ## Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
 
-# NOTE: This Is the Short Form
+# Bio
+I teach in the Computer Science Dept. at UC Davis, where I formerly was Professor of Statistics. I am an award-winning textbook author, teacher and public servant. See his[full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
-To me, the main problem with the Tidyverse is teachability.  I believe
-that teaching beginners with no coding backgroun is actually **impeded**
-by the use of the Tidyverse instead of base-R.  This short form here
-consists of extraction of the teachability aspects of my
-TidyverseSkeptic essay.  The full document, addressing other issues, is
-available
-[here](https://github.com/matloff/TidyverseSkeptic/blob/master/READMEFull.md).
+Specifically in terms of R, I have been an R user and developer since near the 
+beginning, having used R's predecessor S before that.  I've 
+published several books that use R, and have served as the 
+Editor-in-Chief of the *R Journal*.
+
 
 # Disclaimer
 
