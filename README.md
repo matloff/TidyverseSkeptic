@@ -28,22 +28,25 @@ Programming*, and I was one of the internal reviewers for Hadley's
 *Advanced R* (2nd. ed.).
 
 
-Nevertheless, I believe that **RStudio took a wrong turn when it decided to promote the Tidyverse** for beginning learners who have no prior coding background.
+Nevertheless, I believe that **RStudio took a wrong turn when it decided
+to promote the Tidyverse** for beginning learners who have no prior
+coding background.  Tidy makes it more difficult for noncoders to learn
+R, and leaves them less able to productively.
 
 
 ## TEACHABILITY OVERVIEW
 
-* My biggest concern is involves teaching of R.  **Tidy makes it more
-  DIFFICULT for nonprogrammer learners of R to become proficient in the
-language**.
+* Again, my focus here is on teaching R to those with little or no
+  coding background.
 
-* The Tidyverse arose from the desire to have a set of functions/packages that
-   are consistent with each other, a "purist" philosophy that appeals,
-for instance, to computer scientists.  The Tidyverse also borrows from
-other "purist" computer science (CS) philosophies, notably *functional
-programming* (FP).  The latter is abstract and theoretical,
-DIFFICULT EVEN FOR CS STUDENTS, and thus it is clear that **Tidy 
-is an unwise approach for nonprogrammer students of R.**
+* The Tidyverse arose from the desire to have a set of
+  functions/packages that are consistent with each other, a "purist"
+  philosophy that appeals, for instance, to computer scientists.  The
+  Tidyverse also borrows from other "purist" computer science (CS)
+  philosophies, notably *functional programming* (FP).  The latter is
+  abstract and theoretical, DIFFICULT EVEN FOR CS STUDENTS, and thus it
+  is clear that **Tidy is an unwise approach for nonprogrammer students
+  of R.**
 
 *  In other words, the **Tidyverse is general is far too complex for learners
     without prior coding background**, causing what psychologists call
