@@ -37,16 +37,16 @@ R, and leaves them less able to productively.
 ## TEACHABILITY OVERVIEW
 
 * Again, my focus here is on teaching R to those with little or no
-  coding background.
+  coding background.  I am *not* discussing teaching Computer Science
+  students. 
 
 * The Tidyverse arose from the desire to have a set of
   functions/packages that are consistent with each other, a "purist"
-  philosophy that appeals, for instance, to computer scientists.  The
-  Tidyverse also borrows from other "purist" computer science (CS)
-  philosophies, notably *functional programming* (FP).  The latter is
-  abstract and theoretical, DIFFICULT EVEN FOR CS STUDENTS, and thus it
-  is clear that **Tidy is an unwise approach for nonprogrammer students
-  of R.**
+  philosophy that appeals, for instance, to computer scientists.  In
+  particular, Tidy adopts the philosophy of *functional programming*
+  (FP).  The latter is abstract and theoretical, DIFFICULT EVEN FOR CS
+  STUDENTS, and thus it is clear that **Tidy is an unwise approach for
+  nonprogrammer students of R.**
 
 *  In other words, the **Tidyverse is general is far too complex for learners
     without prior coding background**, causing what psychologists call
