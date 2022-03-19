@@ -1,6 +1,6 @@
 # TidyverseSkeptic
 Teach R in a kinder, gentler--and more productive--manner: Use base-R 
-rather than the Tidyverse.  ...
+rather than the Tidyverse.  
 
 ## Dr. Norm Matloff, University of California, Davis:
 
@@ -12,7 +12,7 @@ published several books that use R, and have served as the
 Editor-in-Chief of the *R Journal*. My R tutorial for beginners, [fasteR](https://github.com/matloff/fasteR), has become my most popular GitHub repo.
 
 
-# Disclaimer
+# Kudos to RStudio
 
 This essay is somewhat frank, involving the very popular Tidyverse and
 RStudio. I hope it is polite and taken as constructive criticism.  

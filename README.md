@@ -12,10 +12,7 @@ published several books that use R, and have served as the
 Editor-in-Chief of the *R Journal*. My R tutorial for beginners, [fasteR](https://github.com/matloff/fasteR), has become my most popular GitHub repo.
 
 
-# Disclaimer
-
-This essay is somewhat frank, involving the very popular Tidyverse and
-RStudio. I hope it is polite and taken as constructive criticism.  
+# Kudos to RStudio, But with a Wrong Turn
 
 I like and admire the RStudio people, including the Tidyverse
 originator, Hadley Wickham, and have always supported them, both
