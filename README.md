@@ -4,12 +4,12 @@ Teach R in a kinder, gentler--and more productive--manner: Use base-R rather tha
 ## Dr. Norm Matloff, University of California, Davis
 
 # Bio
-I teach in the Computer Science Dept. at UC Davis, where I formerly was Professor of Statistics. I am an award-winning textbook author, teacher and public servant. See his[full bio](https://heather.cs.ucdavis.edu/matloff.html)
+I teach in the Computer Science Dept. at UC Davis, where I formerly was Professor of Statistics. I am an award-winning textbook author, teacher and public servant. See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
 Specifically in terms of R, I have been an R user and developer since near the 
 beginning, having used R's predecessor S before that.  I've 
 published several books that use R, and have served as the 
-Editor-in-Chief of the *R Journal*.
+Editor-in-Chief of the *R Journal*. My R tutorial for beginners, [fasteR](https://github.com/matloff/fasteR), has become my most popular GitHub repo.
 
 
 # Disclaimer
