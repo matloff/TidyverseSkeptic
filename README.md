@@ -23,6 +23,10 @@ consisted of only founder JJ Allaire and ace developer Joe Cheng.  I
 highly praise the firm to my students, and I use and recommend 
 Hadley's (non-Tidyverse) packages **ggplot2** and **stringr**, and 
 on occasion **devtools** has been an absolute lifesaver for me.
+Hadley was the internal reviewer for my book, *The Art of R
+Programming*, and I was one of the internal reviewers for Hadley's
+*Advanced R* (2nd. ed.).
+
 
 Nevertheless, I believe that **RStudio took a wrong turn when it decided to promote the Tidyverse** for beginning learners who have no prior coding background.
 
