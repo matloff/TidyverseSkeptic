@@ -1,8 +1,6 @@
 # TidyverseSkeptic
 Teach R in a kinder, gentler--and more productive--manner: Use base-R rather than the Tidyverse.
 
-## Norm Matloff, Prof. of Computer Science, UC Davis (former Prof. of Statistics at UCD)
-
 # Bio
 I teach in the Computer Science Dept. at UC Davis, where I formerly was Professor of Statistics. I am an award-winning textbook author, teacher and public servant. See his[full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
