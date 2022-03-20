@@ -1,4 +1,4 @@
-# Teach R in a Kinder, Gentler Manner: Use Base-R, Not the Tidyverse 111
+# Teach R in a Kinder, Gentler Manner: Use Base-R, Not the Tidyverse
 
 ## Author:  Prof. Norm Matloff, University of California, Davis
 
