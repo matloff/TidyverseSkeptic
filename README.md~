@@ -283,12 +283,23 @@ I'd give base-R the clear win for teaching purposes here.
 
 ## Case study:  Tidy text analysis
 
-Here is a more advanced example, from *Text Mining with R*, by Julia
+Here is an example from *Text Mining with R*, by Julia
 Silge of RStudio, and David Robinson. It's a great introduction to the
-text analysis field, and I myself have found the book useful.  But the
-example, which may be found
+text analysis field, and I myself have found the book useful.  
+
+This example, which may be found
 [here](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html),
-illustrates my concerns about debugging Tidy code.
+is a bit more involved than the previous ones, and thus better
+illustrates my concerns about debugging Tidy code.  Courses that teach
+using Tidy do very well for simple examples; this one is more complex,
+possibly in terms of writing the code, and definitely in terms of
+debugging.
+
+Debugging is something I've given a fair amount of thought to.  I even
+wrote a book on it, *The Art of Debugging* (NSP, 2008).  As noted
+earlier, noncoder R learners are the ones most in need of debugging
+skills, as they make th most errors.  Thus the example here is of high
+importance.
 
 The R package **janeaustenr** brings in full corpuses of six novels by
 that author:
@@ -348,32 +359,21 @@ original_books <- austen_books() %>%
 ```
 
 As noted, the Tidy version is more concise, and may well be preferred by
-seasoned R coders.  But the base-R version is indisputably easier to
-debug, a key point for noncoder R learners, who as notes, make the most
-errors.  
+seasoned R coders.  Even base-R enthusiasts would probably want to
+change some of this code to FP style. 
+But the base-R version is indisputably easier to
+debug, a key point for noncoder R learners, as noted. 
 
-Even base-R enthusiasts would probably want to change some of
-this code to FP style, but for R learners, the non-FP form of the above
-base-R code makes their lives much easier.
+This example epitomizes the problems with debugging Tidy code.  It is
+impossible to use the R **debug()** or **browser()** functions, let
+alone the RStudio IDE debugging tool, on the code as is.  Pipes are
+fundamentally unsuitable for use of debugging tools, and even just using
+**print()** statements is impossible.  In the base-R version, this is
+easy and straightforward.
 
-
-
-a more direct
-implementation of our instructions to the hypothetical clerk.  The
-**for** loop in particular is a direct implementation of the
-instructions to the clerk.  As such, it is easier for R beginners with
-little or no prior coding background.  This is important, as loops are
-anathema to Tidy true believers.  In my view, it is this point that
-epitomizes the problems with teaching Tidy to noncoders.
-
-This example also illustrates the problems with debugging Tidy code.  It
-is impossible to use the R **debug()** or **browser()** functions, let
-alone the RStudio IDE debugging tool, on the code as is.  In the base-R
-version, this is easy and straightforward.
-
-The **pipecleaner** package for debugging pipes is quite nice.  It is
-probably a bit too involved for R beginners.  Signifcantly,
-it also notes that 
+One partial remedy is the clever **pipecleaner** package for debugging
+pipes.  It works only up to a point, and is probably a bit too involved
+for R beginners.  Most signifcantly, the package writeup  also notes that 
 
 > Occasionally it is necessary to restructure code from a piped to an
 > unpiped form. Now burst_pipes makes this sort of restructuring
