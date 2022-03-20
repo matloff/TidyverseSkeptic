@@ -374,6 +374,20 @@ little or no prior coding background.  This is important, as loops are
 anathema to Tidy true believers.  In my view, it is this point that
 epitomizes the problems with teaching Tidy to noncoders.
 
+This example also illustrates the problems with debugging Tidy code.  It
+is impossible to use the R **debug()** or **browser()** functions, let
+alone the RStudio IDE debugging tool, on the code as is.  In the base-R
+version, this is easy and straightforward.
+
+The **pipecleaner** package for debugging pipes is quite nice.  It is
+probably a bit too involved for R beginners.  Signifcantly,
+it also notes that 
+
+> Occasionally it is necessary to restructure code from a piped to an
+> unpiped form. Now burst_pipes makes this sort of restructuring
+> simple...
+
+Pipes are simply not designed with debugging in mind.
 ## Case study:  purrr vs. base-R, cognitive overload
 
 Again, let's use an **mtcars** example taken from
