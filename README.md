@@ -283,13 +283,15 @@ I'd give base-R the clear win for teaching purposes here.
 
 ## Case study:  Tidy text analysis
 
-Here is a more advanced example, from *Text Mining with R*, by Julia
+Here is an example from *Text Mining with R*, by Julia
 Silge of RStudio, and David Robinson. It's a great introduction to the
-text analysis field, and I myself have found the book useful.  But the
-example, which may be found
+text analysis field, and I myself have found the book useful.  
+
+This example, which may be found
 [here](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html),
-illustrates my viewpoint of base-R being the better way to teach those
-withou coding background.
+is a bit more involved than the previous ones, and thus better
+illustrates my concerns about debugging Tidy code.  Courses that teach
+using Tidy do very well for simple examples; this one is more complex.
 
 The R package **janeaustenr** brings in full corpuses of six novels by
 that author:
@@ -319,38 +321,22 @@ typical rows in the desired result:
 "As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
 ``` 
 
-Imagine a pre-computer era, in which you wished to have a tabulation
-shown in the above output.  You have hired a clerk, and give the clerk
-instructions something like this:
-
-"Good Morning, clerk.  Here is some data, and I'd like you to
-organize it as follows:
-
-1.  For each book, make a table as follows.
-
-2.  Make a table showing the lines in the book, one line in the table
-    for each line in the book.
-
-3.  Also include columns in the table showing line and chapter numbers.
-
-4.  Combine those tables.
-
-Actually, these instructions map directly and naturally to base-R pseudocode:
+The base-R solution (details to be worked out, not important here) would
+follow this familiar pattern:
 
 ``` r
 
-books = split(by title)
-for (bk in books)
-   bookout <- bk  # the text lines
-   add line numbers
-   add chapter numbers
-combine all the bk data frames into one
-```
+processBooks(books) {
+   books = split(books,by title)
+   output <- NULL
+   for (bk in books)
+      bookout <- data.frame(bk=bk)  # the text lines
+      bookout$lineNums <- length(bk)
+      bookout$chapters <- getChaps(bk)
+      output <- rbind(output,bookout)
+   output
+}
 
-Here is the implementation:
-
-``` r
-(TBA)
 ```
 
 And here is the Tidy solution:
@@ -364,9 +350,18 @@ original_books <- austen_books() %>%
   ungroup()
 ```
 
-
 As noted, the Tidy version is more concise, and may well be preferred by
-seasoned R coders.  But the base-R version is a more direct
+seasoned R coders.  But the base-R version is indisputably easier to
+debug, a key point for noncoder R learners, who as notes, make the most
+errors.  
+
+Even base-R enthusiasts would probably want to change some of
+this code to FP style, but for R learners, the non-FP form of the above
+base-R code makes their lives much easier.
+
+
+
+a more direct
 implementation of our instructions to the hypothetical clerk.  The
 **for** loop in particular is a direct implementation of the
 instructions to the clerk.  As such, it is easier for R beginners with
