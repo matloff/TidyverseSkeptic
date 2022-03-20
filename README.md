@@ -38,7 +38,7 @@ coding background.  Tidy makes it more difficult for noncoders to learn
 R, and leaves them less able to productively.
 
 
-## TEACHABILITY OVERVIEW
+# Teachability overview
 
 * Again, my focus here is on teaching R to those with little or no
   coding background.  I am *not* discussing teaching Computer Science
@@ -79,7 +79,7 @@ Note again, that in discussing teaching, I am taking the target audience
 here to be **nonprogrammers who wish to use R for data analysis**, not
 those who wish to become professional R programmers.
 
-# Using Tidy Slows the Learning Process from Day 1
+# Using Tidy Hinders the Learning Process from Day 1
 
 ## Case Study: Teaching one's first lesson in R
 
@@ -165,109 +165,12 @@ don't seem to use R's '->' op.)
 Again, the Tidyverse is simply too complex for R learners without coding
 background.  **It slows down their learning process.**
 
-## Case study:  Tidy text analysis
+## Case study:  the mtcars dataset 
 
-### The Tidyverse advocates' claims
-
-As a lifelong passionate teacher, I strongly question the claim made by
-Tidyverse advocates that it facilitates the teaching of R to
-non-programmers, as opposed to teaching them base-R.  
-
-There has been no study of Tidy advocates' teachability claim.
-Advocates often provide testimonials from students like 
-
-* "I learned R using Tidyverse, and now am productive in R" 
-
-* "I like the English-like nature of the Tidyverse"
-
-* "I can make beautiful graphics with the Tidyverse"
-
-* "Tidyverse showed me the fluidity of data"
-
-Advocates who are instructors will echo those statements, and add, e.g.
-
-* "Base-R is good for professional programmers, but the Tidyverse is the
-  best R learning tool for non-techies who just want to do data
-analysis"
-
-* "R was created by statisticians, for statisticians.  But we are data
-  scientists, mainly interested in producing graphs and tables"
-
-* "The Tidyverse is **modern** R, for the rest of us"
-
-All of these statements are either misleading, irrelevant to the
-teachability issue, or downright meaningless.  They say nothing at all
-about the teachability of base-R in comparison to Tidy.  (It is ironic
-that advocates who present such statements are data scientists, who
-ought to know the need for a control group.)
-
-### Tidyverse makes learning harder, due to adding much complexity 
-
-Contrary to the Tidy advocates' claim, I believe using the Tidyverse
-makes things more *difficult* for learners without prior programming
-background.  
-
-**There is a serious problem of cognitive overload.** Tidyverse students
-are being asked to learn a much larger volume of material, which is
-clearly bad pedagogy.  See ["The Tidyverse
-Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
-author says *inter alia* that he uses "only" 60 Tidyverse functions --
-60!  The "star" of the Tidyverse, **dplyr**, consists of 263 functions. 
-
-While a user initially need not use more than a small fraction of those
-263 functions, the high complexity is clear.  Every time a user needs some
-variant of an operation, she must sift through those hundreds of
-functions for one suited to her current need.  
-
-Tidy advocates say the uniformity of interface in all those functions
-makes learning them easier.  Uniform *syntax* is nice, yes, but the fact
-remains that users must learn the *semantics* of the functions, i.e.
-what operations they perform.  What, for example, is the difference
-between **summarize()**, **summarize_each()**, **summarize_at()** and
-**summarize_if()**?  Under which circumstances should each be used?  The
-user must sift through this.
-
-As Matt Dowle, creator of **data.table**, [pointed
-out](https://twitter.com/MattDowle/status/1142001162230489088) about
-**dplyr**,
-
-> It isn't one function **mutate** that you combine in a pipe.  It's
-> **mutate**, **mutate_**, **mutate_all**, **mutate_at**, **mutate_each**,
-> **mutate_each_**, **mutate_if**, **transmute**, **transmute_**,
-> **transmute_all**, **transmute_at** and **transmute_if**.  And you're
-> telling me [because of consistency of the user
-> interfaces] you don't need a manual to learn all those?
-
-Having a common syntax thus does not compensate for this dizzying
-complexity. 
- 
-By contrast, if the user knows base-R (not difficult), she can handle
-any situation with just a few simple operations.  The old adage applies:
-"Give a man a fish, and he can eat for a day. Teach him how to fish, and
-he can eat for a lifetime."  
-
-### What Tidy promoters want R beginners NOT to learn
-
-The Tidyers make a point of avoiding the most basic parts of base-R:
-
-* the '$' operator
-
-* '[[ ]]'
-
-* loops
-
-* **plot()** and the associated basic graphics functions
-
-They would argue that this "simplifies" the learning process, but
-actually it forces beginners to come up with more complex, less
-intuitive and harder-to-read solutions.
-
-### Case Study: the tapply() Function
-
-One of the most commonly-used functions in base-R is **tapply()**.  As
-noted below, for some reason Tidy advocates deeply hate this function. 
-Indeed, for many of them, **tapply()** epitomizes what's wrong with base-R.
-But it is perfect for R beginners.  
+One of the most commonly-used functions in base-R is **tapply()**.  For
+some reason Tidy advocates deeply hate this function.  Indeed, for many
+of them, **tapply()** epitomizes what's wrong with base-R.  But it is
+perfect for R beginners.  
 
 Consider a common example in tutorials on the Tidyverse, involving R's
 **mtcars** dataset.  The goal is to find mean miles per gallon, grouped
@@ -376,67 +279,100 @@ this are standard fare in base-R courses.
 
 I'd give base-R the clear win for teaching purposes here. 
 
-### Use of functional programming
+## Case study:  Tidy text analysis
 
-If there is one aspect of the Tidy-vs.-base-R debate that in my
-opinion demonstrates the problem with Tidy, it's that
-Tidy advocates want R beginners to avoid loops.  Indeed, those
-advocates may not even teach loops at all in a basic course.
+Here is a more advanced example, from *Text Mining with R*, by Julia
+Silge of RStudio, and David Robinson. It's a great introduction to the
+text analysis field, and I myself have found the book useful.  But the
+example, which may be found
+[here](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html),
+illustrates my viewpoint of base-R being the better way to teach those
+withou coding background.
 
-The Tidiers want R beginners to use functional programming (FP) instead
-of loops.  But even they agree that the concept of functions is one of
-the hardest for beginners to learn.  **Thus it makes no sense to force
-beginners to use a the tough concept of FP in lieu of the much more
-natural loops approach.**  FP does have its place, but it should be
-taught as an advanced topic.
+The R package **janeaustenr** brings in full corpuses of six novels by
+that author:
 
-An anti-loops mentality has become the Tidy advocates' test of whether
-one is a "true believer" in the Tidy philosophy.  I've seen Twitter
-posts in which R learners actually apologize for using loops.  And in
-[another tweet](https://twitter.com/cynthiahqy/status/1444871989152280578),
-the author proudly cites the loop-free nature of her code, but her
-wording shows (rightly) that this was difficult to achieve:
+``` r
 
-> Excited and a bit nervous to share some initial work on a #tidyverse
-> inspired #rstats 📦 for wrangling data from different classifications
-> (e.g. trade/labour) into consistent panels WITHOUT FOR-LOOPS
+> library(janeaustenr)
+> books <- austen_books()
+> str(books)
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       73422 obs. of  2 variables:
+ $ text: chr  "SENSE AND SENSIBILITY" "" "by Jane Austen" "" ...
+ $ book: Factor w/ 6 levels "Sense & Sensibility",..: 1 1 1 1 1 1 1 1 1 1 ...
+...
+> books$text[22225]
+[1] "drink to our good journey."
 
-The author does claim that the FP format is clearer for data wrangling.
-That's debatable -- the proper remedy is always to put an outline of
-one's code in comment lines -- but at the very least, this again shows that
-**FP makes the learning process harder for beginners.**
+```
 
-It is worth noting that top university Computer Science Departments have
-shifted away from teaching their introductory programming courses using
-the FP paradigm, in favor of the more traditional Python, as they deem
-FP to be more abstract and challenging.  
 
-An interesting discussion of the topic is in [Charavarty and
-Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz).
-Though they support using FP in introductory programming classes for CS
-majors,  the authors' goals are antithetical to those of R learners.
-The authors list three goals, one of which is to teach theoretical
-computer science, certainly not desirable for teaching R in general, let
-alone for teaching R to those with no coding experience.  They also
-concede that a key concept in FP, *recursion*, is a "signficant
-obstacle" even for CS students.  
+The authors' first goal is to put all the books together, one row per
+line of a book, with line and chapter number.  Here are a couple of
+typical rows in the desired result:
 
-If FP is tough for CS students, it makes no sense to have nonprogrammer
-learners of R use it.
+``` r
+"children, the old Gentleman's days were comfort… Sense & Sens…    25       1
+...
+"As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
+``` 
 
-Even Hadley, in *R for Data Science*, says:
+Imagine a pre-computer era, in which you wished to have a tabulation
+shown in the above output.  You have hired a clerk, and give the clerk
+instructions something like this:
 
-> The idea of passing a function to another function is extremely powerful
-> idea, and it’s one of the behaviours that makes R a functional
-> programming language. It might take you a while to wrap your head around
-> the idea, but it’s worth the investment. 
+"Good Morning, clerk.  Here is some data, and I'd like you to
+organize it as follows:
 
-Actually, most non-FP languages allow passing one function to another,
-but yes it is a powerful tool, worth the investment of time -- *for the
-experienced R programmer*.  But again, it's wrong to force nonprogrammer
-learners of R to "wrap their heads around" FP.
+1.  For each book, make a table as follows.
 
-### purrr vs. base-R example 
+2.  Make a table showing the lines in the book, one line in the table
+    for each line in the book.
+
+3.  Also include columns in the table showing line and chapter numbers.
+
+4.  Combine those tables.
+
+Actually, these instructions map directly and naturally to base-R pseudocode:
+
+``` r
+
+books = split(by title)
+for (bk in books)
+   bookout <- bk  # the text lines
+   add line numbers
+   add chapter numbers
+combine all the bk data frames into one
+```
+
+Here is the implementation:
+
+``` r
+(TBA)
+```
+
+And here is the Tidy solution:
+
+``` r
+original_books <- austen_books() %>%
+  group_by(book) %>%
+  mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+                                                 ignore_case = TRUE)))) %>%
+  ungroup()
+```
+
+
+As noted, the Tidy version is more concise, and may well be preferred by
+seasoned R coders.  But the base-R version is a more direct
+implementation of our instructions to the hypothetical clerk.  The
+**for** loop in particular is a direct implementation of the
+instructions to the clerk.  As such, it is easier for R beginners with
+little or no prior coding background.  This is important, as loops are
+anathema to Tidy true believers.  In my view, it is this point that
+epitomizes the problems with teaching Tidy to noncoders.
+
+## Case study:  purrr vs. base-R, cognitive overload
 
 Again, let's use an **mtcars** example taken from
 [an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
@@ -514,6 +450,162 @@ all.
 But the Tidy promoters don't want learners to use loops.
 So the instructor using Tidy simply would avoid giving students such an
 example, whereas it would be easy for the base-R instructor to do so.
+
+### The Tidyverse advocates' claims
+
+As a lifelong passionate teacher, I strongly question the claim made by
+Tidyverse advocates that it facilitates the teaching of R to
+non-programmers, as opposed to teaching them base-R.  
+
+There has been no study of Tidy advocates' teachability claim.
+Advocates often provide testimonials from students like 
+
+* "I learned R using Tidyverse, and now am productive in R" 
+
+* "I like the English-like nature of the Tidyverse"
+
+* "I can make beautiful graphics with the Tidyverse"
+
+* "Tidyverse showed me the fluidity of data"
+
+Advocates who are instructors will echo those statements, and add, e.g.
+
+* "Base-R is good for professional programmers, but the Tidyverse is the
+  best R learning tool for non-techies who just want to do data
+analysis"
+
+* "R was created by statisticians, for statisticians.  But we are data
+  scientists, mainly interested in producing graphs and tables"
+
+* "The Tidyverse is **modern** R, for the rest of us"
+
+All of these statements are either misleading, irrelevant to the
+teachability issue, or downright meaningless.  They say nothing at all
+about the teachability of base-R in comparison to Tidy.  (It is ironic
+that advocates who present such statements are data scientists, who
+ought to know the need for a control group.)
+
+### Tidyverse makes learning harder, due to adding much complexity 
+
+Contrary to the Tidy advocates' claim, I believe using the Tidyverse
+makes things more *difficult* for learners without prior programming
+background.  
+
+**There is a serious problem of cognitive overload.** Tidyverse students
+are being asked to learn a much larger volume of material, which is
+clearly bad pedagogy.  See ["The Tidyverse
+Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
+author says *inter alia* that he uses "only" 60 Tidyverse functions --
+60!  The "star" of the Tidyverse, **dplyr**, consists of 263 functions. 
+
+While a user initially need not use more than a small fraction of those
+263 functions, the high complexity is clear.  Every time a user needs some
+variant of an operation, she must sift through those hundreds of
+functions for one suited to her current need.  
+
+Tidy advocates say the uniformity of interface in all those functions
+makes learning them easier.  Uniform *syntax* is nice, yes, but the fact
+remains that users must learn the *semantics* of the functions, i.e.
+what operations they perform.  What, for example, is the difference
+between **summarize()**, **summarize_each()**, **summarize_at()** and
+**summarize_if()**?  Under which circumstances should each be used?  The
+user must sift through this.
+
+As Matt Dowle, creator of **data.table**, [pointed
+out](https://twitter.com/MattDowle/status/1142001162230489088) about
+**dplyr**,
+
+> It isn't one function **mutate** that you combine in a pipe.  It's
+> **mutate**, **mutate_**, **mutate_all**, **mutate_at**, **mutate_each**,
+> **mutate_each_**, **mutate_if**, **transmute**, **transmute_**,
+> **transmute_all**, **transmute_at** and **transmute_if**.  And you're
+> telling me [because of consistency of the user
+> interfaces] you don't need a manual to learn all those?
+
+Having a common syntax thus does not compensate for this dizzying
+complexity. 
+ 
+By contrast, if the user knows base-R (not difficult), she can handle
+any situation with just a few simple operations.  The old adage applies:
+"Give a man a fish, and he can eat for a day. Teach him how to fish, and
+he can eat for a lifetime."  
+
+### What Tidy promoters want R beginners NOT to learn
+
+The Tidyers make a point of avoiding the most basic parts of base-R:
+
+* the '$' operator
+
+* '[[ ]]'
+
+* loops
+
+* **plot()** and the associated basic graphics functions
+
+They would argue that this "simplifies" the learning process, but
+actually it forces beginners to come up with more complex, less
+intuitive and harder-to-read solutions.
+
+
+### Use of functional programming
+
+If there is one aspect of the Tidy-vs.-base-R debate that in my
+opinion demonstrates the problem with Tidy, it's that
+Tidy advocates want R beginners to avoid loops.  Indeed, those
+advocates may not even teach loops at all in a basic course.
+
+The Tidiers want R beginners to use functional programming (FP) instead
+of loops.  But even they agree that the concept of functions is one of
+the hardest for beginners to learn.  **Thus it makes no sense to force
+beginners to use a the tough concept of FP in lieu of the much more
+natural loops approach.**  FP does have its place, but it should be
+taught as an advanced topic.
+
+An anti-loops mentality has become the Tidy advocates' test of whether
+one is a "true believer" in the Tidy philosophy.  I've seen Twitter
+posts in which R learners actually apologize for using loops.  And in
+[another tweet](https://twitter.com/cynthiahqy/status/1444871989152280578),
+the author proudly cites the loop-free nature of her code, but her
+wording shows (rightly) that this was difficult to achieve:
+
+> Excited and a bit nervous to share some initial work on a #tidyverse
+> inspired #rstats 📦 for wrangling data from different classifications
+> (e.g. trade/labour) into consistent panels WITHOUT FOR-LOOPS
+
+The author does claim that the FP format is clearer for data wrangling.
+That's debatable -- the proper remedy is always to put an outline of
+one's code in comment lines -- but at the very least, this again shows that
+**FP makes the learning process harder for beginners.**
+
+It is worth noting that top university Computer Science Departments have
+shifted away from teaching their introductory programming courses using
+the FP paradigm, in favor of the more traditional Python, as they deem
+FP to be more abstract and challenging.  
+
+An interesting discussion of the topic is in [Charavarty and
+Keller](https://www-ps.informatik.uni-kiel.de/~mh/reports/fdpe02/papers/paper15.ps.gz).
+Though they support using FP in introductory programming classes for CS
+majors,  the authors' goals are antithetical to those of R learners.
+The authors list three goals, one of which is to teach theoretical
+computer science, certainly not desirable for teaching R in general, let
+alone for teaching R to those with no coding experience.  They also
+concede that a key concept in FP, *recursion*, is a "signficant
+obstacle" even for CS students.  
+
+If FP is tough for CS students, it makes no sense to have nonprogrammer
+learners of R use it.
+
+Even Hadley, in *R for Data Science*, says:
+
+> The idea of passing a function to another function is extremely powerful
+> idea, and it’s one of the behaviours that makes R a functional
+> programming language. It might take you a while to wrap your head around
+> the idea, but it’s worth the investment. 
+
+Actually, most non-FP languages allow passing one function to another,
+but yes it is a powerful tool, worth the investment of time -- *for the
+experienced R programmer*.  But again, it's wrong to force nonprogrammer
+learners of R to "wrap their heads around" FP.
 
 
 ### Tibbles
