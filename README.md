@@ -2,7 +2,7 @@
 Teach R in a kinder, gentler--and more productive--manner: Use base-R 
 rather than the Tidyverse.  
 
-## Dr. Norm Matloff, University of California, Davis
+## Dr. Norm Matloff, University of California, Davis:
 
 I teach in the Computer Science Dept. at UC Davis, where I formerly was Professor of Statistics. I am an award-winning textbook author, teacher and public servant. See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
@@ -10,6 +10,11 @@ Specifically in terms of R, I have been an R user and developer since near the
 beginning, having used R's predecessor S before that.  I've 
 published several books that use R, and have served as the 
 Editor-in-Chief of the *R Journal*. My R tutorial for beginners, [fasteR](https://github.com/matloff/fasteR), has become my most popular GitHub repo.
+
+But it goes far beyond that; I really am intensely interested in how
+people learn, from children to middle-aged adults. Among other things,
+I've taught English As a Second Language, and have taught a short course
+to sixth-graders.
 
 
 # Kudos to RStudio, But with a Wrong Turn
@@ -27,7 +32,6 @@ Hadley was the internal reviewer for my book, *The Art of R
 Programming*, and I was one of the internal reviewers for Hadley's
 *Advanced R* (2nd. ed.).
 
-
 Nevertheless, I believe that **RStudio took a wrong turn when it decided
 to promote the Tidyverse** for beginning learners who have no prior
 coding background.  Tidy makes it more difficult for noncoders to learn
@@ -40,58 +44,44 @@ R, and leaves them less able to productively.
   coding background.  I am *not* discussing teaching Computer Science
   students. 
 
-* Tidy is concise, but that conciseness is far too abstract for
-  beginners.
+* Tidy is concise, but that conciseness is far too abstract for beginners.
 
-* Base-R may be a little wordier, but is far clearer.  Writing in base-R
+* Base-R may be a little wordier, but is far clearer. Writing in base-R
   is a direct, natural extension of how one would describe a task in
 plain English, say to a clerk.
 
-* Tidy's abstractness is due to philosophy of *functional programming*
-  (FP).  The latter is popular with many sophisticated computer
+* Tidy's abstractness is due to philosophy of functional programming
+  (FP). The latter is popular with many sophisticated computer
 scientists, but is difficult even for computer science students, thus
 unsuited for nonprogrammer students of R.
 
 * The FP philosophy replaces straightforward loops with abstract use of
-  functions.  Since functions are the most difficult aspect for noncoder
+  functions. Since functions are the most difficult aspect for noncoder
 R learners, FP is clearly not the right path for such learners.
 
-* A major problem with Tidy for R beginners is *cognitive overload*:
-  The basic operations contain myriad variants.  Though of course one
-need not learn them all, one needs some variants even for simple
-operations, e.g. pipes on functions of more than one argument/
+* A major problem with Tidy for R beginners is cognitive overload: The
+  basic operations contain myriad variants. Though of course one need
+not learn them all, one needs some variants even for simple operations,
+e.g. pipes on functions of more than one argument/
 
-*  Indeed, even many Tidy advocates concede that it is in various
-    senses often more difficult to write Tidy code than base-R.  Hadley 
-    says, for instance, "it may take a while to wrap your head around [FP]."
+* Indeed, even many Tidy advocates concede that it is in various senses
+  often more difficult to write Tidy code than base-R. Hadley says, for
+instance, "it may take a while to wrap your head around [FP]."
 
-*  Tidy advocates also concede that debugging Tidy code is difficult,
-   especially in the case of pipes.  Yet noncoder learners are the ones
+* Using Tidy to teach R results in it taking *more* time, to learn *les*.
+
+* Tidy advocates also concede that debugging Tidy code is difficult,
+  especially in the case of pipes. Yet noncoder learners are the ones
 who make the most mistakes, so it makes no sense to have them use a
 style that makes it difficult to track down their errors.
 
-# <a name="teachable"> </a> TEACHABILITY
+Note again, that in discussing teaching, I am taking the target audience
+here to be **nonprogrammers who wish to use R for data analysis**, not
+those who wish to become professional R programmers.
 
-Teaching has been a keen interest of mine since my college days.  I've
-been a teacher of stat and computers for many years, and have won
-various teaching awards.  My textbook, *Statistical Regression and
-Classification: from Linear Models to Machine Learning*, was the
-recipient of the 2017 Ziegel Award.
- 
-But it goes far beyond that; I really am intensely interested in how
-people learn, from children to middle-aged adults.  Among other things,
-I've taught English As a Second Language to immigrant adults, most of
-whom have had less than a high school education.
+# Using Tidy Slows the Learning Process from Day 1
 
-In discussing teaching, I am taking the target audience here to be
-**nonprogrammers who wish to use R for data analysis**, not those who wish
-to become professional R programmers.
-
-### Case Study: Teaching One's First Lesson in R
-
-The Tidyverse is just too complex for beginners.  Here some quick
-examples of the complexity of Tidy, and its consequent unsuitability for
-use in teaching nonprogrammer learners of R.
+## Case Study: Teaching one's first lesson in R
 
 Let's look at  my online R tutorial,
 [**fasteR**](http://github.com/matloff/fasteR)).  Consider, for
@@ -105,9 +95,12 @@ i.e. drawing a simple histogram of R's built-in Nile River dataset.
 
 This is in the very first lesson in my tutorial.  Easy!  By contrast,
 the Tidy crowd forbids use of base-R plots, insisting on using
-**ggplot2** (which again is not Tidy, but is considered as such by the
-Tidy advocates).  To be Tidy the instructor would have to do something
-like
+**ggplot2**.  I also prefer **ggplot2** to base-R graphics (though as
+explained below, it should not be considered part of the Tidyverse), but
+here we have a much more important goal--to give students an actual
+useful application of R right from the start.
+
+To be Tidy the instructor would have to do something like
 
 ``` r
 > library(ggplot2)
@@ -142,12 +135,12 @@ subscripts.
 In other words, **even after one lesson, the base-R learner would be way
 ahead of her Tidy counterparts.**
 
-### Case Study: Dalgaard book
+## Case study: Dalgaard book
 
 A researcher tweeted in December 2019 that an introductory statistics
 book by Peter Dalgaard is "now obsolete," because it uses base-R rather
 than Tidy.  Think of what an update to Tidy would involve, how much extra
-complexity it would impose on the students.  Here is an example from the
+complexity it would impose on the students.  Here is an early lesson from the
 book:
 
 ``` r
@@ -171,6 +164,8 @@ don't seem to use R's '->' op.)
 
 Again, the Tidyverse is simply too complex for R learners without coding
 background.  **It slows down their learning process.**
+
+## Case study:  Tidy text analysis
 
 ### The Tidyverse advocates' claims
 
