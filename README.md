@@ -9,7 +9,8 @@ I teach in the Computer Science Dept. at UC Davis, where I formerly was Professo
 Specifically in terms of R, I have been an R user and developer since near the 
 beginning, having used R's predecessor S before that.  I've 
 published several books that use R, and have served as the 
-Editor-in-Chief of the *R Journal*. My R tutorial for beginners, [fasteR](https://github.com/matloff/fasteR), has become my most popular GitHub repo.
+Editor-in-Chief of the *R Journal*. My R tutorial for beginners, [fasteR](https://github.com/matloff/fasteR), has become my most popular GitHub repo,
+with over 300 GitHub stars.
 
 But it goes far beyond that; I really am intensely interested in how
 people learn, from children to middle-aged adults. Among other things,
