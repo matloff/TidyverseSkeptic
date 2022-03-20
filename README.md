@@ -2,7 +2,7 @@
 Teach R in a kinder, gentler--and more productive--manner: Use base-R 
 rather than the Tidyverse.  
 
-## Dr. Norm Matloff, University of California, Davis:
+## Dr. Norm Matloff, University of California, Davis
 
 I teach in the Computer Science Dept. at UC Davis, where I formerly was Professor of Statistics. I am an award-winning textbook author, teacher and public servant. See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
@@ -40,32 +40,35 @@ R, and leaves them less able to productively.
   coding background.  I am *not* discussing teaching Computer Science
   students. 
 
-* The Tidyverse arose from the desire to have a set of
-  functions/packages that are consistent with each other, a "purist"
-  philosophy that appeals, for instance, to computer scientists.  In
-  particular, Tidy adopts the philosophy of *functional programming*
-  (FP).  The latter is abstract and theoretical, DIFFICULT EVEN FOR CS
-  STUDENTS, and thus it is clear that **Tidy is an unwise approach for
-  nonprogrammer students of R.**
+* Tidy is concise, but that conciseness is far too abstract for
+  beginners.
 
-* A major problem with Tidy for R beginners is *cognitive overload*.
+* Base-R may be a little wordier, but is far clearer.  Writing in base-R
+  is a direct, natural extension of how one would describe a task in
+plain English, say to a clerk.
 
-*  In other words, the **Tidyverse is general is far too complex for learners
-    without prior coding background**, causing what psychologists call
-<i>cognitive overload</i>.
+* Tidy's abstractness is due to philosophy of *functional programming*
+  (FP).  The latter is popular with many sophisticated computer
+scientists, but is difficult even for computer science students, thus
+unsuited for nonprogrammer students of R.
+
+* The FP philosophy replaces straightforward loops with abstract use of
+  functions.  Since functions are the most difficult aspect for noncoder
+R learners, FP is clearly not the right path for such learners.
+
+* A major problem with Tidy for R beginners is *cognitive overload*:
+  The basic operations contain myriad variants.  Though of course one
+need not learn them all, one needs some variants even for simple
+operations, e.g. pipes on functions of more than one argument/
 
 *  Indeed, even many Tidy advocates concede that it is in various
     senses often more difficult to write Tidy code than base-R.  Hadley 
     says, for instance, "it may take a while to wrap your head around [FP]."
 
-* RStudio has done an admirable job in bringing more women and
-  underrepresented minorities into R.  Yet by saddling them with the
-  complicated Tidyverse system, RStudio has made it more difficult for
-  these groups to make contributions to the language, in the form of
-  writing CRAN packages, authoring books and so on, which require good
-  facility with base-R even if the code is largely Tidyverse.  This of
-  course is equally true for anyone, not just those in these groups, but
-  it's sad that RStudio is hurting the very people it wants to help.
+*  Tidy advocates also concede that debugging Tidy code is difficult,
+   especially in the case of pipes.  Yet noncoder learners are the ones
+who make the most mistakes, so it makes no sense to have them use a
+style that makes it difficult to track down their errors.
 
 # <a name="teachable"> </a> TEACHABILITY
 
