@@ -167,7 +167,7 @@ don't seem to use R's '->' op.)
 Again, the Tidyverse is simply too complex for R learners without coding
 background.  **It slows down their learning process.**
 
-## Case study:  the mtcars dataset (tapply(), Part I)
+## Case study:  tapply(), Part I
 
 One of the most commonly-used functions in base-R is **tapply()**.  It's
 quite easy to teach beginners, by presenting its call form to them:

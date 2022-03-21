@@ -389,6 +389,11 @@ processBooks(books) {
    output
 }
 
+getChaps <- function() 
+{
+   ...
+}
+
 ```
 
 And here is the Tidy solution:
