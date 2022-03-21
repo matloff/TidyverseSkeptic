@@ -50,7 +50,7 @@ R, and leaves them less able to productively.
 
 * Base-R may be a little wordier, but is far clearer. Writing in base-R
   is a direct, natural extension of how one would describe a task in
-plain English, say to a clerk.
+plain English, say to a clerk. 
 
 * Tidy's abstractness is due to philosophy of functional programming
   (FP). The latter is popular with many sophisticated computer
@@ -289,22 +289,20 @@ data.frame(x=x) %>% filter(x > 8)
 That's a lot of machinery to implement one little vector operation, one
 that is of course quite common.
 
-Oddly, in the above article, Tidy advocates's only objection to brackets
-is that only the "naughty kids" use them:
-
-> ...one thing we have learned is that when we teach the tidyverse
-> consistently, the presence of base R patterns (e.g., using square
-> brackets to select columns instead of dplyr::select()) stands out.  An
-> assignment completed entirely with base R syntax (in a class where
-> tidyverse is being used) could signal a student who is less engaged
-> with the overall learning materials for the course.  
-
 ## Case study:  Tidy as an obstacle to R ststistical methods
 
-Most of the R statistical functions return S3 object, i.e. lists,
-accessible via '$'.  I would find it difficult to teach a course in
-linear regression, principal components, log-linear models and so o  to
-students who did not have solid prior experience with '$'.
+In the last section, we discussed the Tidyers' opposition to the '$' and
+brackets operations.  This is an obvious impediment to R's statistical
+operations. 
+
+Statistics in R is mainly are vector- and matrix-oriented.  (A matrix 
+is a special case of a vector.)  Thus we immediately see a problem with
+Tidy.
+
+Equally important, most of the R statistical functions return S3 object,
+i.e. lists, accessible via '$'.  I would find it difficult to teach a
+course in linear regression, principal components, log-linear models and
+so on to students who did not have solid prior experience with '$'.
 
 [Here](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/) is
 an example of bridging the gap between Tidy and statistics, by Claus
@@ -317,10 +315,10 @@ to each one?  That of course would be unrealistic.
 
 A fundamental problem, from my point of view, is that the RStudio people
 are not primarily statisticians.  Their focus is on developing software,
-which they do quite well, but they are not the types who sit around
-debating, for example, the propriety of p-values.  Statistics is not
-foremost on their radar screens, and I think this sad gap between Tidy
-and statistics is a result.
+primarily for data wrangling and graphics.  They do this quite well, but
+they are not the types who sit around debating, for example, the
+propriety of p-values.  Statistics is not foremost on their radar
+screens, and this sad gap between Tidy and statistics is a result.
 
 
 ## Case study:  tapply() (II)
