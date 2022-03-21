@@ -81,7 +81,7 @@ Note again, that in discussing teaching, I am taking the target audience
 here to be **nonprogrammers who wish to use R for data analysis**, not
 those who wish to become professional R programmers.
 
-# Using Tidy Hinders the Learning Process:  Case Studeies 
+# Using Tidy Hinders the Learning Process:  Case Studies 
 
 ## Case study: delayed learning (I)
 
@@ -289,17 +289,51 @@ data.frame(x=x) %>% filter(x > 8)
 That's a lot of machinery to implement one little vector operation, one
 that is of course quite common.
 
+Oddly, in the above article, Tidy advocates's only objection to brackets
+is that only the "naughty kids" use them:
+
+> ...one thing we have learned is that when we teach the tidyverse
+> consistently, the presence of base R patterns (e.g., using square
+> brackets to select columns instead of dplyr::select()) stands out.  An
+> assignment completed entirely with base R syntax (in a class where
+> tidyverse is being used) could signal a student who is less engaged
+> with the overall learning materials for the course.  
+
+## Case study:  Tidy as an obstacle to R ststistical methods
+
+Most of the R statistical functions return S3 object, i.e. lists,
+accessible via '$'.  I would find it difficult to teach a course in
+linear regression, principal components, log-linear models and so o  to
+students who did not have solid prior experience with '$'.
+
+[Here](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/) is
+an example of bridging the gap between Tidy and statistics, by Claus
+Wilke, who begins by reporting, "I’ve finally figured out how to perform a PCA using the tidyverse."  The answer is to use the **broom** package.
+
+As it was, even that package did not quite work, he said, though the
+development version did.  And what about the thousands of CRAN packages
+that return S3 objects?  Is **broom** going to provide a Tidy interface
+to each one?  That of course would be unrealistic.
+
+A fundamental problem, from my point of view, is that the RStudio people
+are not primarily statisticians.  Their focus is on developing software,
+which they do quite well, but they are not the types who sit around
+debating, for example, the propriety of p-values.  Statistics is not
+foremost on their radar screens, and I think this sad gap between Tidy
+and statistics is a result.
 
 
+## Case study:  tapply() (II)
 
-Again, so far, a tie.  But it's instructive to look at what happens when
-one groups by two aspects, **cyl** and **gear**, rather than just
-**cyl** as above.:
+Besides *learnability*, another goal for noncoder R learners is
+*usability.*  In this light, it's instructive to look at what happens
+when in the built-in **mtcars** dataset one groups by two aspects,
+**cyl** and **gear**, rather than just say **cyl**:
 
 ``` r
 > mtcars %>%
-+ group_by(cyl,gear) %>%
-+ summarize(mean(mpg))
+     group_by(cyl,gear) %>%
+        summarize(mean(mpg))
 # A tibble: 8 x 3
 # Groups:   cyl [3]
     cyl  gear `mean(mpg)`
@@ -312,6 +346,11 @@ one groups by two aspects, **cyl** and **gear**, rather than just
 6     6     5        19.7
 7     8     3        15.0
 8     8     5        15.4
+```
+
+Compare to base-R:
+
+``` r
 > tapply(mtcars$mpg,list(mtcars$cyl,mtcars$gear),mean)
       3      4    5
 4 21.50 26.925 28.2
@@ -346,8 +385,8 @@ group.  Then things get really bad for Tidy:
 > mtcars$cyl <- as.factor(mtcars$cyl)
 > mtcars$gear <- as.factor(mtcars$gear)
 > mtcars %>% 
-+    group_by(cyl,gear,.drop=FALSE) %>% 
-+    summarize(mean(mpg))
+     group_by(cyl,gear,.drop=FALSE) %>% 
+        summarize(mean(mpg))
 # A tibble: 9 x 3
 # Groups:   cyl [3]
   cyl   gear  `mean(mpg)`
@@ -366,7 +405,8 @@ group.  Then things get really bad for Tidy:
 There's trouble for R beginners right away, in the need to convert to
 factors, something not mentioned in the Tidy documentation, and which
 would further complicate things for R beginners even if it were
-documented.
+documented.  Furthermore, the instructor would need to explain the
+**drop=FALSE**
 
 This illustrates why one Tidy advocate dismissed my example of grouping
 by two factors as "advanced," not suitable for a discussion of how R
@@ -376,7 +416,7 @@ this are standard fare in base-R courses.
 
 I'd give base-R the clear win for teaching purposes here. 
 
-## Case study:  Tidy text analysis
+## Case study:  Tidy obstacles to debugging
 
 Here is an example from *Text Mining with R*, by Julia
 Silge of RStudio, and David Robinson. It's a great introduction to the
