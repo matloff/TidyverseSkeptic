@@ -169,33 +169,77 @@ background.  **It slows down their learning process.**
 
 ## Case study:  the mtcars dataset (tapply(), Part I)
 
-One of the most commonly-used functions in base-R is **tapply()**.  For
-some reason Tidy advocates deeply hate this function.  Indeed, for many
-of them, **tapply()** epitomizes what's wrong with base-R.  But it is
-perfect for R beginners.  
-
-Consider a common example in tutorials on the Tidyverse, involving R's
-**mtcars** dataset.  The goal is to find mean miles per gallon, grouped
-by number of cylinders.  The Tidy code offered is
+One of the most commonly-used functions in base-R is **tapply()**.  It's
+quite easy to teach beginners, by presenting its call form to them:
 
 ``` r
-mtcars %>%
-   group_by(cyl) %>% 
-   summarize(mean(mpg))
+tapply(what to split, how to split it, what to apply to the resulting chunks)
 ```
 
-Here is the base-R version:
+However, for some reason Tidy advocates deeply hate this function.
+Indeed, for many of them, **tapply()** epitomizes what's wrong with
+base-R.  
+
+Indeed, when the Tidyverse was first developed, Prof. Rogern Peng gave a
+keynote talk, *Teaching R to New Users--from tapply to the Tidyverse*,
+also presented as [a Web
+page](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/).
+Actually, **tapply()** is not mentioned in Dr. Peng's talk or in the
+printed version, but the title says it all:  One should teach Tidy, not
+**tapply()**.
+
+Surprisingly, though, in making his comparison of Tidy to base-R, his
+base-R example is **aggregate()**, not **tapply()**.  The complexity of
+**aggregate()** function makes for an unfair comparison, as **tapply()**
+is much simpler, and perfect for R beginners.  
+
+Here is an example from the Peng talk, using the built-in R dataset
+**airquality**:
 
 ``` r
-tapply(mtcars$mpg,mtcars$cyl,mean)
+group_by(airquality, Month) %>% 
+    summarize(o3 = mean(Ozone, na.rm = TRUE))
 ```
 
-Both are simple.  Both are easily grasped by beginners. After being
-presented with some examples, beginners have no trouble using either of
-them in a new setting of similar type.  The Tidy version requires two
-function calls rather than one for base-R.  But again, both versions are
-simple, so let's call it a tie.  But is it certainly not the case that
-the Tidy version is *easier* to learn.
+Here is the base-R version offered by Dr. Peng:
+
+``` r
+aggregate(airquality[, “Ozone”], 
+          list(Month = airquality[, “Month”]), 
+          mean, na.rm = TRUE)
+```
+
+Indeed, that base-R code would be difficult for R beginners.
+But here is the far easier base-R code, using **tapply()**:
+
+``` r
+tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
+```
+
+Both the Tidy and **tapply()** code are simple.  Both are easily grasped
+by beginners. After being presented with some examples, beginners have
+no trouble using either of them in a new setting of similar type.  The
+Tidy version requires two function calls rather than one for base-R.
+But again, both versions are simple, so let's call it a tie.  But is it
+certainly not the case that the Tidy version is *easier* to learn.
+
+Equally surprisingly, a similar unfair comparison was made later in
+[an article](https://arxiv.org/abs/2108.03510)
+by Tidy advocates, *An Educator's Perspective of the Tidyverse.*  This
+one is even more unfair.
+
+The dataset is loan data available in the **openintro** package.  Here
+is the Tidy code to preprocess the data:
+
+``` r
+loans <- openintro::loans full schema %>%
+   mutate(
+      homeownership = str to title(homeownership),
+      bankruptcy = if else(public record bankrupt >= 1, "Yes", "No")
+) %>%
+filter(annual income >= 10)
+```
+
 
 Again, so far, a tie.  But it's instructive to look at what happens when
 one groups by two aspects, **cyl** and **gear**, rather than just
@@ -343,6 +387,11 @@ processBooks(books) {
       bookout$chapters <- getChaps(bk)
       output <- rbind(output,bookout)
    output
+}
+
+getChaps <- function() 
+{
+   ...
 }
 
 ```
