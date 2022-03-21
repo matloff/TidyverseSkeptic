@@ -81,9 +81,9 @@ Note again, that in discussing teaching, I am taking the target audience
 here to be **nonprogrammers who wish to use R for data analysis**, not
 those who wish to become professional R programmers.
 
-# Using Tidy Hinders the Learning Process from Day 1
+# Using Tidy Hinders the Learning Process:  Case Studeies 
 
-## Case Study: Teaching one's first lesson in R
+## Case study: delayed learning (I)
 
 Let's look at  my online R tutorial,
 [**fasteR**](http://github.com/matloff/fasteR)).  Consider, for
@@ -137,7 +137,7 @@ subscripts.
 In other words, **even after one lesson, the base-R learner would be way
 ahead of her Tidy counterparts.**
 
-## Case study: Dalgaard book
+## Case study: delayed learning (II)
 
 A researcher tweeted in December 2019 that an introductory statistics
 book by Peter Dalgaard is "now obsolete," because it uses base-R rather
@@ -167,7 +167,7 @@ don't seem to use R's '->' op.)
 Again, the Tidyverse is simply too complex for R learners without coding
 background.  **It slows down their learning process.**
 
-## Case study:  tapply(), Part I
+## Case study:  tapply() (I)
 
 One of the most commonly-used functions in base-R is **tapply()**.  It's
 quite easy to teach beginners, by presenting its call form to them:
@@ -223,22 +223,83 @@ Tidy version requires two function calls rather than one for base-R.
 But again, both versions are simple, so let's call it a tie.  But is it
 certainly not the case that the Tidy version is *easier* to learn.
 
-Equally surprisingly, a similar unfair comparison was made later in
-[an article](https://arxiv.org/abs/2108.03510)
-by Tidy advocates, *An Educator's Perspective of the Tidyverse.*  This
-one is even more unfair.
+## Case study:  the $ sign and brackets
+
+Tidyers believe that two of the most basic operations in R, the \$ sign
+and bracketing, are harmful.  For instance, consider an example in
+[an article by Tidy advocates](https://arxiv.org/abs/2108.03510)
+by Tidy advocates, *An Educator's Perspective of the Tidyverse.* 
 
 The dataset is loan data available in the **openintro** package.  Here
 is the Tidy code to preprocess the data:
 
 ``` r
-loans <- openintro::loans full schema %>%
+
+loans <- openintro::loans_full_schema %>%
    mutate(
-      homeownership = str to title(homeownership),
-      bankruptcy = if else(public record bankrupt >= 1, "Yes", "No")
+      homeownership = str_to_title(homeownership),
+      bankruptcy = if_else(public_record_bankrupt >= 1, "Yes", "No")
 ) %>%
-filter(annual income >= 10)
+filter(annual_income >= 10)
+
 ```
+
+In base-R:
+
+``` r
+
+loans <- openintro::loans_full_schema
+loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
+
+
+```
+
+As noted earlier, one should not conflate conciseness with clarity.  But
+here the base-R code is both more concise *and* more straightforward.
+The Tidyers might even agree, except that the code uses '$'.  As the
+article puts it:
+
+> When using base R the variables in that data frame are commonly
+> accessed with the $ operator (e.g., loans$loan amount to access the
+> variable called loan amount in the data frame loans). Often, students
+> are tempted to access the loan amount variable in this example by
+> referring to it simply as loan amount and not specifying the name of
+> the data frame in which it lives. This results in a frustrating error:
+> object 'loan amount' not found.
+
+The simple solution to this "problem" is to explain it to students, and
+have them watch for it.  It would be impossible to have students avoid
+all possible errors, and again, this one is easy to remedy with proper
+advance warning.
+
+As to brackets, Tidy essentially ignores vectors.  Consider the
+following base-R coe:
+
+``` r
+x <- c(5,12,13,1)
+x[x > 8]
+```
+
+Probably the simplest way to do this in Tidy would be:
+
+``` r
+data.frame(x=x) %>% filter(x > 8)
+```
+
+That's a lot of machinery to implement one little vector operation, one
+that is of course quite common.
+
+Oddly, in the above article, Tidy advocates's only objection to brackets
+is that only the "naughty kids" use them:
+
+> ...one thing we have learned is that when we teach the tidyverse
+> consistently, the presence of base R patterns (e.g., using square
+> brackets to select columns instead of dplyr::select()) stands out.  An
+> assignment completed entirely with base R syntax (in a class where
+> tidyverse is being used) could signal a student who is less engaged
+> with the overall learning materials for the course.  
+
+
 
 
 Again, so far, a tie.  But it's instructive to look at what happens when
@@ -429,7 +490,8 @@ for R beginners.  Most signifcantly, the package writeup  also notes that
 > simple...
 
 Pipes are simply not designed with debugging in mind.
-## Case study:  purrr vs. base-R, cognitive overload
+
+## Case study:  cognitive overload
 
 Again, let's use an **mtcars** example taken from
 [an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
