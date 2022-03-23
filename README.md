@@ -59,27 +59,480 @@ unsuited for nonprogrammer students of R.
 
 * The FP philosophy replaces straightforward loops with abstract use of
   functions. Since functions are the most difficult aspect for noncoder
-R learners, FP is clearly not the right path for such learners.
+  R learners, FP is clearly not the right path for such learners.
 
 * A major problem with Tidy for R beginners is cognitive overload: The
   basic operations contain myriad variants. Though of course one need
-not learn them all, one needs some variants even for simple operations,
-e.g. pipes on functions of more than one argument/
+  not learn them all, one needs some variants even for simple operations,
+  e.g. pipes on functions of more than one argument.
 
 * Indeed, even many Tidy advocates concede that it is in various senses
   often more difficult to write Tidy code than base-R. Hadley says, for
-instance, "it may take a while to wrap your head around [FP]."
+  instance, "it may take a while to wrap your head around [FP]."
 
 * Using Tidy to teach R results in it taking *more* time, to learn *les*.
 
 * Tidy advocates also concede that debugging Tidy code is difficult,
   especially in the case of pipes. Yet noncoder learners are the ones
-who make the most mistakes, so it makes no sense to have them use a
-style that makes it difficult to track down their errors.
+  who make the most mistakes, so it makes no sense to have them use a
+  style that makes it difficult to track down their errors.
 
-Note again, that in discussing teaching, I am taking the target audience
-here to be **nonprogrammers who wish to use R for data analysis**, not
-those who wish to become professional R programmers.
+* The Tidyers confuse *concise* code with *easily
+  writeable/readable/debuggable/teachable* code.  The 
+  former does not imply the latter, and more often implies 
+  the opposite.
+
+* The obsession among many Tidyers that one must avoid writing loops,
+  the '$' operator, brackets and so on often results in obfuscated
+  code.
+
+* R courses using the Tidyverse often do rather little beyond their
+  canonical *data %>% group_by %>% mutate %>% summarize* paradigm.  That
+  leaves the learners less equipped to put R to real use, compared to
+  "graduates" of standard base-R courses.
+
+* Note again, that in discussing teaching, I am taking the target
+  audience here to be **nonprogrammers** who wish to use R for data
+  analysis.  Eventually, they may wish to make use of FP, but at the
+  crucial beginning stage, keep it simple, little or no fancy stuff.
+
+# Using Tidy Hinders the Learning Process:  Case Studies 
+
+## Case study: delayed learning (I)
+
+Let's look at  my online R tutorial,
+[**fasteR**](http://github.com/matloff/fasteR)).  Consider, for
+instance, an innocuous line like 
+
+``` r
+> hist(Nile)
+```
+
+i.e. drawing a simple histogram of R's built-in Nile River dataset.  
+
+This is in the very first lesson in my tutorial.  Easy!  By contrast,
+the Tidy crowd forbids use of base-R plots, insisting on using
+**ggplot2**.  I also prefer **ggplot2** to base-R graphics (though as
+explained below, it should not be considered part of the Tidyverse), but
+here we have a much more important goal--to give students an actual
+useful application of R right from the start.
+
+To be Tidy the instructor would have to do something like
+
+``` r
+> library(ggplot2)
+> dn <- data.frame(Nile)
+> ggplot(dn) + geom_histogram(aes(Nile),dn)
+```
+
+Here the instructor would have a ton of things to explain -- packages,
+data frames, **ggplot()**, the **aes** argument, the role of the '+'
+(it's not addition here) and so on -- and thus she could definitely NOT
+present it in the first lesson.
+
+Also in my very first lesson, I do
+
+``` r
+> mean(Nile[80:100])
+```
+
+printing the mean Nile River flow during a certain range of years.
+Incredibly, not only would this NOT be in a first lesson with Tidy, the
+students in a Tidy course may actually *never* learn how to do this.
+Typical Tidiers don't consider vectors very important for learners, let
+alone vector subscipts. 
+
+As a concrete example of this Tidy point of view, consider the book
+*Getting Started with R*, by Beckerman *et al*, Oxford University Press,
+second edition, 2017.  The book makes a point of being 
+["Tidyverse compliant"](https://twitter.com/GSwithR/status/996830294367002625).
+In 231 pages, vectors are mentioned just briefly, with no coverage of 
+subscripts.
+
+In other words, **even after one lesson, the base-R learner would be way
+ahead of her Tidy counterparts.**
+
+## Case study: delayed learning (II)
+
+A researcher tweeted in December 2019 that an introductory statistics
+book by Peter Dalgaard is "now obsolete," because it uses base-R rather
+than Tidy.  Think of what an update to Tidy would involve, how much extra
+complexity it would impose on the students.  Here is an early lesson from the
+book:
+
+``` r
+> thue2 <- subset(thuesen,blood.glucose < 7)
+```
+
+This could easily be in the base-R instructor's second lesson, if not
+the first.  For Tidy, though, this would have to be changed to
+
+``` r
+> library(dplyr)
+> thue2 <- thue2 %>% filter(blood.glucose < 7)
+```
+
+Here the instructor would first have to teach the pipe operator '%>%',
+again extra complexity.  And in so doing, she would probably emphasize
+the "left to right" flow of pipes, but the confused students would then
+wonder why, after that left-to-right flow, there is suddenly a
+right-to-left flow, with the '<-'.  (For some reason, the Tidy people
+don't seem to use R's '->' op.)
+
+Again, the Tidyverse is simply too complex for R learners without coding
+background.  **It slows down their learning process.**
+
+## Case study:  tapply() (I)
+
+One of the most commonly-used functions in base-R is **tapply()**.  It's
+quite easy to teach beginners, by presenting its call form to them:
+
+``` r
+tapply(what to split, how to split it, what to apply to the resulting chunks)
+```
+
+However, for some reason Tidy advocates deeply hate this function.
+Indeed, for many of them, **tapply()** epitomizes what's wrong with
+base-R.  
+
+Indeed, when the Tidyverse was first developed, Prof. Rogern Peng gave a
+keynote talk, *Teaching R to New Users--from tapply to the Tidyverse*,
+also presented as [a Web
+page](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/).
+Actually, **tapply()** is not mentioned in Dr. Peng's talk or in the
+printed version, but the title says it all:  One should teach Tidy, not
+**tapply()**.
+
+Surprisingly, though, in making his comparison of Tidy to base-R, his
+base-R example is **aggregate()**, not **tapply()**.  The complexity of
+**aggregate()** function makes for an unfair comparison, as **tapply()**
+is much simpler, and perfect for R beginners.  
+
+Here is an example from the Peng talk, using the built-in R dataset
+**airquality**:
+
+``` r
+group_by(airquality, Month) %>% 
+    summarize(o3 = mean(Ozone, na.rm = TRUE))
+```
+
+Here is the base-R version offered by Dr. Peng:
+
+``` r
+aggregate(airquality[, “Ozone”], 
+          list(Month = airquality[, “Month”]), 
+          mean, na.rm = TRUE)
+```
+
+Indeed, that base-R code would be difficult for R beginners.
+But here is the far easier base-R code, using **tapply()**:
+
+``` r
+tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
+```
+
+Both the Tidy and **tapply()** code are simple.  Both are easily grasped
+by beginners. After being presented with some examples, beginners have
+no trouble using either of them in a new setting of similar type.  The
+Tidy version requires two function calls rather than one for base-R.
+But again, both versions are simple, so let's call it a tie.  But is it
+certainly not the case that the Tidy version is *easier* to learn.
+
+## Case study:  the $ sign and brackets
+
+Tidyers believe that two of the most basic operations in R, the \$ sign
+and bracketing, are harmful.  For instance, consider an example in
+[an article by Tidy advocates](https://arxiv.org/abs/2108.03510)
+by Tidy advocates, *An Educator's Perspective of the Tidyverse.* 
+
+The dataset is loan data available in the **openintro** package.  Here
+is the Tidy code to preprocess the data:
+
+``` r
+
+loans <- openintro::loans_full_schema %>%
+   mutate(
+      homeownership = str_to_title(homeownership),
+      bankruptcy = if_else(public_record_bankrupt >= 1, "Yes", "No")
+) %>%
+filter(annual_income >= 10)
+
+```
+
+In base-R:
+
+``` r
+
+loans <- openintro::loans_full_schema
+loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
+
+
+```
+
+As noted earlier, one should not conflate conciseness with clarity.  But
+here the base-R code is both more concise *and* more straightforward.
+The Tidyers might even agree, except that the code uses '$'.  As the
+article puts it:
+
+> When using base R the variables in that data frame are commonly
+> accessed with the $ operator (e.g., loans$loan amount to access the
+> variable called loan amount in the data frame loans). Often, students
+> are tempted to access the loan amount variable in this example by
+> referring to it simply as loan amount and not specifying the name of
+> the data frame in which it lives. This results in a frustrating error:
+> object 'loan amount' not found.
+
+The simple solution to this "problem" is to explain it to students, and
+have them watch for it.  It would be impossible to have students avoid
+all possible errors, and again, this one is easy to remedy with proper
+advance warning.
+
+As to brackets, Tidy essentially ignores vectors.  Consider the
+following base-R coe:
+
+``` r
+x <- c(5,12,13,1)
+x[x > 8]
+```
+
+Probably the simplest way to do this in Tidy would be:
+
+``` r
+data.frame(x=x) %>% filter(x > 8)
+```
+
+That's a lot of machinery to implement one little vector operation, one
+that is of course quite common.
+
+## Case study:  Tidy as an obstacle to R statistical methods
+
+In the last section, we discussed the Tidyers' opposition to the '$' and
+brackets operations.  This is an obvious impediment to R's statistical
+operations. 
+
+Statistics in R is mainly are vector- and matrix-oriented.  (A matrix 
+is a special case of a vector.)  Thus we immediately see a problem with
+Tidy.
+
+Equally important, most of the R statistical functions return S3 object,
+i.e. lists, accessible via '$'.  I would find it difficult to teach a
+course in linear regression, principal components, log-linear models and
+so on to students who did not have solid prior experience with '$'.
+
+[Here](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/) is
+an example of bridging the gap between Tidy and statistics, by Claus
+Wilke, who begins by reporting, "I’ve finally figured out how to perform a PCA using the tidyverse."  The answer is to use the **broom** package.
+
+As it was, even that package did not quite work, he said, though the
+development version did.  And what about the thousands of CRAN packages
+that return S3 objects?  Is **broom** going to provide a Tidy interface
+to each one?  That of course would be unrealistic.
+
+A fundamental problem, from my point of view, is that the RStudio people
+are not primarily statisticians.  Their focus is on developing software,
+primarily for data wrangling and graphics.  They do this quite well, but
+they are not the types who sit around debating, for example, the
+propriety of p-values.  Statistics is not foremost on their radar
+screens, and this sad gap between Tidy and statistics is a result.
+
+
+## Case study:  tapply() (II)
+
+Besides *learnability*, another goal for noncoder R learners is
+*usability.*  In this light, it's instructive to look at what happens
+when in the built-in **mtcars** dataset one groups by two aspects,
+**cyl** and **gear**, rather than just say **cyl**:
+
+``` r
+> mtcars %>%
+     group_by(cyl,gear) %>%
+        summarize(mean(mpg))
+# A tibble: 8 x 3
+# Groups:   cyl [3]
+    cyl  gear `mean(mpg)`
+  <dbl> <dbl>       <dbl>
+1     4     3        21.5
+2     4     4        26.9
+3     4     5        28.2
+4     6     3        19.8
+5     6     4        19.8
+6     6     5        19.7
+7     8     3        15.0
+8     8     5        15.4
+```
+
+Compare to base-R:
+
+``` r
+> tapply(mtcars$mpg,list(mtcars$cyl,mtcars$gear),mean)
+      3      4    5
+4 21.50 26.925 28.2
+6 19.75 19.750 19.7
+8 15.05     NA 15.4
+```
+
+With **tapply()**, students do have to be told that in the case of more
+than one grouping variable, they need to surround the variables with
+'list'.  Again, once they are given examples, students have no trouble
+with this.
+
+But look at the form of the output:  The Tidy version outputs a tibble,
+rather hard to read, while **tapply()** outputs an R matrix, printed out
+as a two-way table.  The latter form is exactly what many students need
+in their applications, e.g.  social science research.  
+
+In searching through the hundreds of functions in **dplyr**, it is not
+clear to me which one, if any, can convert that Tidy output to the very
+informative tabular view that **tapply()** provides.  If there is one,
+the fact that one is not easily identifiable illustrates my point above
+that Tidy is actually very bloated, not suitable for beginners.
+
+Moreover, the **tapply()** output is more informative in a second sense,
+letting the user know that there were no 8-cyliner, 4-speed cars, again
+the kind of thing that is quite meaningful in many applications.  
+
+Actually, the Tidy version can be modified in order to notice that empty
+group.  Then things get really bad for Tidy:
+
+``` r
+> mtcars$cyl <- as.factor(mtcars$cyl)
+> mtcars$gear <- as.factor(mtcars$gear)
+> mtcars %>% 
+     group_by(cyl,gear,.drop=FALSE) %>% 
+        summarize(mean(mpg))
+# A tibble: 9 x 3
+# Groups:   cyl [3]
+  cyl   gear  `mean(mpg)`
+  <fct> <fct>       <dbl>
+1 4     3            21.5
+2 4     4            26.9
+3 4     5            28.2
+4 6     3            19.8
+5 6     4            19.8
+6 6     5            19.7
+7 8     3            15.0
+8 8     4           NaN  
+9 8     5            15.4
+```
+
+There's trouble for R beginners right away, in the need to convert to
+factors, something not mentioned in the Tidy documentation, and which
+would further complicate things for R beginners even if it were
+documented.  Furthermore, the instructor would need to explain the
+**drop=FALSE**
+
+This illustrates why one Tidy advocate dismissed my example of grouping
+by two factors as "advanced," not suitable for a discussion of how R
+beginners learn.  It IS advanced for Tidy learners.  But it's clear that
+for base-R learners, it's not advanced at all.  Indeed, examples like
+this are standard fare in base-R courses.
+
+I'd give base-R the clear win for teaching purposes here. 
+
+## Case study:  Tidy obstacles to debugging
+
+Here is an example from *Text Mining with R*, by Julia
+Silge of RStudio, and David Robinson. It's a great introduction to the
+text analysis field, and I myself have found the book useful.  
+
+This example, which may be found
+[here](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html),
+is a bit more involved than the previous ones, and thus better
+illustrates my concerns about debugging Tidy code.  Courses that teach
+using Tidy do very well for simple examples; this one is more complex,
+possibly in terms of writing the code, and definitely in terms of
+debugging.
+
+Debugging is something I've given a fair amount of thought to.  I even
+wrote a book on it, *The Art of Debugging* (NSP, 2008).  As noted
+earlier, noncoder R learners are the ones most in need of debugging
+skills, as they make th most errors.  Thus the example here is of high
+importance.
+
+The R package **janeaustenr** brings in full corpuses of six novels by
+that author:
+
+``` r
+
+> library(janeaustenr)
+> books <- austen_books()
+> str(books)
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       73422 obs. of  2 variables:
+ $ text: chr  "SENSE AND SENSIBILITY" "" "by Jane Austen" "" ...
+ $ book: Factor w/ 6 levels "Sense & Sensibility",..: 1 1 1 1 1 1 1 1 1 1 ...
+...
+> books$text[22225]
+[1] "drink to our good journey."
+
+```
+
+
+The authors' first goal is to put all the books together, one row per
+line of a book, with line and chapter number.  Here are a couple of
+typical rows in the desired result:
+
+``` r
+"children, the old Gentleman's days were comfort… Sense & Sens…    25       1
+...
+"As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
+``` 
+
+The base-R solution (details to be worked out, not important here) would
+follow this familiar pattern:
+
+``` r
+
+processBooks(books) {
+   books = split(books,by title)
+   output <- NULL
+   for (bk in books)
+      bookout <- data.frame(bk=bk)  # the text lines
+      bookout$lineNums <- length(bk)
+      bookout$chapters <- getChaps(bk)
+      output <- rbind(output,bookout)
+   output
+}
+
+getChaps <- function() 
+{
+   ...
+}
+
+```
+
+And here is the Tidy solution:
+
+``` r
+original_books <- austen_books() %>%
+  group_by(book) %>%
+  mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+                                                 ignore_case = TRUE)))) %>%
+  ungroup()
+```
+
+As noted, the Tidy version is more concise, and may well be preferred by
+seasoned R coders.  Even base-R enthusiasts would probably want to
+change some of this code to FP style. 
+But the base-R version is indisputably easier to
+debug, a key point for noncoder R learners, as noted. 
+
+This example epitomizes the problems with debugging Tidy code.  It is
+impossible to use the R **debug()** or **browser()** functions, let
+alone the RStudio IDE debugging tool, on the code as is.  Pipes are
+fundamentally unsuitable for use of debugging tools, and even just using
+**print()** statements is impossible.  In the base-R version, this is
+easy and straightforward.
+
+One partial remedy is the clever **pipecleaner** package for debugging
+pipes.  It works only up to a point, and is probably a bit too involved
+for R beginners.  Most signifcantly, the package writeup  also notes that 
+
+> Occasionally it is necessary to restructure code from a piped to an
+> unpiped form. Now burst_pipes makes this sort of restructuring
+> simple...
+
+Pipes are simply not designed with debugging in mind.
 
 # Using Tidy Hinders the Learning Process:  Case Studies 
 
@@ -519,7 +972,15 @@ for R beginners.  Most signifcantly, the package writeup  also notes that
 
 Pipes are simply not designed with debugging in mind.
 
-## Case study:  cognitive overload
+## Case study:  poor readability, cognitive overload
+
+As noted, R courses using the Tidyverse often do rather little beyond
+their canonical *data %>% group_by %>% mutate %>% summarize* paradigm.
+That leaves the learners less equipped to put R to real use, compared to
+"graduates" of standard base-R courses.
+
+Even more important, once one gets past that simple paradigm, Tidy runs
+into real problems.
 
 Again, let's use an **mtcars** example taken from
 [an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
@@ -540,15 +1001,15 @@ mtcars %>%
 There are several major points to note here:
 
 * The R learner here must learn two different FP map functions for this
-  particular example, and a dozen others for even basic use. This is an
-excellent example of Tidy's cognitive overload problem.  Actually,
-the Tidyverse FP package, **purrr**, has 52 different map functions!  
-(See below.)
+  particular example.  This is an
+  excellent example of Tidy's cognitive overload problem.  Actually,
+  the Tidyverse FP package, **purrr**, has 52 different map functions!  
+  (See below.)
 
-* The first '~' in that first map call is highly nonintuitive.  Even
-  experienced programmers would not be able to guess what it does. This
-is starkly counter to the Tidyers' claim that Tidy is more intuitive and
-English-like.
+* That "Tidy" code is a nightmare to read.  For instance, 
+  the first '~' in that first map call is highly nonintuitive.  This
+  is starkly counter to the Tidyers' claim that Tidy is more intuitive and
+  English-like.
 
 * Tidy, in its obsession to avoid R's standard '$' symbol, is causing
   all kinds of chaos and confusion here.
@@ -597,6 +1058,28 @@ all.
 But the Tidy promoters don't want learners to use loops.
 So the instructor using Tidy simply would avoid giving students such an
 example, whereas it would be easy for the base-R instructor to do so.
+
+Granted, loops can use their clarity if they are nested.  This can be
+ameliorated by using good comment lines and indenting, but it's fine to
+use functions---not in FP format, but simply as calls.  For learners,
+Use the format
+
+``` r
+for (outer loop specs) {
+   ...
+   w <- f(whatever)
+   ...
+}
+
+f <- function(something) 
+{
+   # the work of what would have been the inner loop goes here
+}
+```
+
+rather than say, one of the **apply()** or **purrr** functions.
+
+
 
 ### The Tidyverse advocates' claims
 
