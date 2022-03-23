@@ -340,6 +340,16 @@ Why would we deprive R learners of the very simple, direct and effective
 tools like this?  Just for the sake of "purity," implicit in the above
 quoted passage?
 
+The "naughty kids" aspect in the above quote,
+
+> An assignment completed entirely with base R syntax (in a class where
+> tidyverse is being used) could signal a student who is less engaged with
+> the overall learning materials for the course.
+
+sounds a bit authoritarian, and I've seen consequences.  For instance,
+one R learner proudly displayed on Twitter some code she had managed to
+write, but apologized for using a loop.
+
 
 
 ## Case study:  Tidy as an obstacle to R statistical methods
