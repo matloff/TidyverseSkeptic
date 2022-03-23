@@ -18,6 +18,13 @@ published several books that use R, and have served as the
 Editor-in-Chief of the *R Journal*. My R tutorial for beginners, [fasteR](https://github.com/matloff/fasteR), has become my most popular GitHub repo,
 with over 300 GitHub stars.
 
+# Note on ggplot2
+
+Though RStudio presents **ggplot2** as part of the Tidyverse, it
+predates Tidy and does not use the Tidy paradigm.  In my discussion
+here, my references to Tidy do not include **ggplot2**, a package of
+which I am an enthusiastic user and teacher.  More details later in this
+document.
 
 # Kudos to RStudio, But with a Wrong Turn
 
@@ -340,6 +347,10 @@ Why would we deprive R learners of the very simple, direct and effective
 tools like this?  Just for the sake of "purity," implicit in the above
 quoted passage?
 
+Students who are taught the Tidy version of the above and then are shown
+the base-R one will say, "Wow!  That's much easier.  Thanks for the
+shortcut."  This brings me to my next point.
+
 The "naughty kids" aspect in the above quote,
 
 > An assignment completed entirely with base R syntax (in a class where
@@ -348,7 +359,11 @@ The "naughty kids" aspect in the above quote,
 
 sounds a bit authoritarian, and I've seen consequences.  For instance,
 one R learner proudly displayed on Twitter some code she had managed to
-write, but apologized for using a loop.
+write, but she guiltily apologized for using a loop.
+
+What is also intriguing about the above quote is its seeming implication
+that such a student's use of base-R would be "taking the easy way out."
+But doesn't that mean base-R is easier?
 
 
 
