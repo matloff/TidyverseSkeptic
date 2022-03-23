@@ -300,6 +300,48 @@ data.frame(x=x) %>% filter(x > 8)
 That's a lot of machinery to implement one little vector operation, one
 that is of course quite common.
 
+## Case study:  an overly rigid philosophy
+
+It is disappointing that the Tidyers wish to replace base-R, rather than
+supplement it.  
+
+One of the most troubling aspects of the Tidy movement is their rigidity
+and insistence on "loyalty."  For instance, the above-cited *Educator's
+Perspective* article
+
+> one thing we have learned is that when we teach the tidyverse
+> consistently, the presence of base R patterns (e.g., using square
+> brackets to select columns instead of dplyr::select()) stands out.  An
+> assignment completed entirely with base R syntax (in a class where
+> tidyverse is being used) could signal a student who is less engaged with
+> the overall learning materials for the course.  
+
+Consider the following simple example:  Say we wish to add to the
+**mtcars** data a column consisting of the horsepower-to-weight ratio.
+
+In base-R, it is extremely simple:
+
+``` r
+mtcars$hwratio <- mtcars$hp / mtcars$wt
+```
+
+Want to add a column to a data frame?  Hey, just add it!
+
+But in Tidy:
+
+``` r
+mtcars %>% mutate(hwratio=hp/wt) -> mtcars
+```
+
+Still not terribly complex, but we're invoking some machinery -- piping,
+a function call, and reassigning to the original data frame.
+
+Why would we deprive R learners of the very simple, direct and effective
+tools like this?  Just for the sake of "purity," implicit in the above
+quoted passage?
+
+
+
 ## Case study:  Tidy as an obstacle to R statistical methods
 
 In the last section, we discussed the Tidyers' opposition to the '$' and
