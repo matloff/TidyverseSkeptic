@@ -603,6 +603,116 @@ ungroup()
 
    Pipes are simply not designed with debugging in mind.
 
+## Case study:  poor readability, cognitive overload
+
+As noted, R courses using the Tidyverse often do rather little beyond
+their canonical *data %>% group_by %>% mutate %>% summarize* paradigm.
+That leaves the learners less equipped to put R to real use, compared to
+"graduates" of standard base-R courses.
+
+Even more important, once one gets past that simple paradigm, Tidy runs
+into real problems.
+
+Again, let's use an **mtcars** example taken from
+[an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
+solution, from the online help page for **map()**:
+
+``` r
+mtcars %>%
+  split(.$cyl) %>%
+  map(~ lm(mpg ~ wt, data = .)) %>%
+  map(summary) %>%
+  map_dbl("r.squared")
+
+# output
+4         6         8 
+0.5086326 0.4645102 0.4229655
+```
+
+There are several major points to note here:
+
+* The R learner here must learn two different FP map functions for this
+  particular example.  This is an
+  excellent example of Tidy's cognitive overload problem.  Actually,
+  the Tidyverse FP package, **purrr**, has 52 different map functions!  
+  (See below.)
+
+* That "Tidy" code is a nightmare to read.  For instance, 
+  the first '~' in that first map call is highly nonintuitive.  This
+  is starkly counter to the Tidyers' claim that Tidy is more intuitive and
+  English-like.
+
+* Tidy, in its obsession to avoid R's standard '$' symbol, is causing
+  all kinds of chaos and confusion here.
+
+    The hapless student would naturally ask, "Where does that expression
+'summary' come from?"  It would appear that **map()** is being called on
+a nonexistent variable, **summary**.  In actuality, base-R's **summary()** 
+function is being called on the previous computation
+behind the scenes.  Again, highly nonintuitive, and NOT stated in the
+online help page.
+
+    The poor student is further baffled by the call to **map_dbl()**.
+Where did that 'r.squared' come from?  Again, Tidy is hiding the
+fact that **summary()** yields an S3 object with component **r.squared**.  
+Yes, sometimes it is helpful to hide the details, but
+not if it confuses beginners.
+
+The fact is, **R beginners would be much better off writing a loop here,
+avoiding the conceptually more challenging FP.** But even if the
+instructor believes the beginner *must* learn FP, the base-R version is
+far easier:
+
+``` r
+lmr2 <- function(mtcSubset) {
+   lmout <- lm(mpg ~ wt,data=mtcSubset)
+   summary(lmout)$r.squared
+}
+u <- split(mtcars,mtcars$cyl)
+sapply(u,lmr2)
+```
+
+Here **lmr2()** is defined explicitly, as opposed to the Tidy version, with
+its inscrutable '~' within the **map()** call.
+
+In a [Twitter discussion](https://twitter.com/dgkeyes/status/1200532987000971264)
+of the above example, a Tidy advocate protested that the above **purrr** code was not 
+appropriate for learners:
+
+> Sure, but my original tweet was about teaching newbies. Your example is
+> not really relevant to that because it's about a VERY complex concept.
+
+Exactly my point!  **Newbies should write this as a plain loop, NOT using
+purrr** or even base-R's FP constructs.  Then it won't be advanced at
+all.
+
+But the Tidy promoters don't want learners to use loops.
+So the instructor using Tidy simply would avoid giving students such an
+example, whereas it would be easy for the base-R instructor to do so.
+
+Granted, loops can use their clarity if they are nested.  This can be
+ameliorated by using good comment lines and indenting, but it's fine to
+use functions---not in FP format, but simply as calls.  For learners,
+Use the format
+
+``` r
+for (outer loop specs) {
+   ...
+   w <- f(whatever)
+   ...
+}
+
+f <- function(something) 
+{
+   # the work of what would have been the inner loop goes here
+}
+```
+
+rather than say, one of the **apply()** or **purrr** functions.
+
+
+
+
 # Other Issues
 
 ## ggplot2 vs. the Tidyverse
@@ -626,6 +736,33 @@ The **ggplot2** package had been enormously popular well before Tidy
 came along.  Clearly, RStudio saw that, and thus saw that a good way to
 sell the Tidyverse was to include the popular **ggplot2** in the
 definition of Tidy.
+
+That of course is fine, but it is misleading to speak of **ggplot2**
+(GGP2) as justification for using, especially teaching, the Tidyverse.  Note:
+
+* The GGP2 package was Hadley Wickham's PhD project, which
+  implemented Lee Wilkinson's *grammar of graphics* ideas.  Hadley
+  completed his dissertation in 2008, well before Tidy.
+
+* Even the Tidy advocacy article cited earlier, *An Educator's
+  Perspective*, notes that GGP2 was only brought under the Tidy
+  "umbrella" later on:
+
+    > Many of the core packages in the tidyverse were originally developed
+    > independently to address specific phases of the data science cycle, and
+    > subsequently came together under the tidyverse umbrella in 2016...
+
+* There is nothing "Tidy-ish" about GGP2.  It does not use pipes
+  (Hadley has said if he designed GGP2 today, he would base it on pipes).
+  It's not based on the Each Variable Is a Column, Each Datapoint Is a
+  Row Tidy credo.  It doesn't use an FP approach; contrary to FP
+  philosophy, which disallows *side effects*, a restriction adhered to
+  by **dplyr**, the '+' of GGP2 operates similarly to very base-R
+  operation **x$a <- b**.
+
+Again, GGP2 is a wonderful package, which I use and teach myself.  But
+it is not a reason to burden R learners with Tidy, i.e. FP, **dplyr**,
+**purrr** and so on.
 
 ### The Tidyverse advocates' claims
 
@@ -890,18 +1027,6 @@ And what if we want that 3 to play the role of **v**, not **u**?  Yes,
 > 3 %>% w(5,.)
 [1] 11
 ```
-
-But that is yet another example of my point, that **Tidy is burdening
-the R learner with extra, unnecessary complexity**.  Indeed, just as
-**dplyr**, with 263 functions, is far too complex for beginners, so are
-pipes.  There are so many variations to learn that Hadley's *R for Data
-Science* book devotes a full chapter to pipes, 3415 words.  
-
-Granted, a beginner need learn only a small fraction of that
-material at first, but the above example of the dot notation is
-certainly not an advanced case.  Again, each time the beginner is
-confronted with a new situation, she must sift through the myriad
-variants, of **dplyr**, **purrr**, pipes or whatever.
 
 Moreover, what if the function **h()** above has two arguments,
 rather than just one, with each argument requiring functional
