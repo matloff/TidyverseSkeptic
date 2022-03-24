@@ -14,191 +14,191 @@ with over 300 GitHub stars.
 
 But it goes far beyond that; I really am intensely interested in how
 people learn, from children to middle-aged adults. Among other things,
-       I've taught English As a Second Language, and have taught a short course
-       on probability to sixth-graders.
+I've taught English As a Second Language, and have taught a short course
+on probability to sixth-graders.
 
-       See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
+See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
 # Note on ggplot2
 
-       Though RStudio presents **ggplot2** as part of the Tidyverse, it
-       predates Tidy and does not use the Tidy paradigm.  In my discussion
-       here, my references to Tidy do not include **ggplot2**, a package of
-       which I am an enthusiastic user and teacher.  More details later in this
-       document.
+Though RStudio presents **ggplot2** as part of the Tidyverse, it
+predates Tidy and does not use the Tidy paradigm.  In my discussion
+here, my references to Tidy do not include **ggplot2**, a package of
+which I am an enthusiastic user and teacher.  More details later in this
+document.
 
 # Kudos to RStudio, But with a Wrong Turn
 
-       I like and admire the RStudio people, including the Tidyverse
-       originator, Hadley Wickham, and have always supported them, both
-       privately and
-       [publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
-       They and I have been interacting from the beginning, when the firm
-       consisted of only founder JJ Allaire and ace developer Joe Cheng.  I
-       highly praise the firm to my students, and I use and recommend 
-       Hadley's (non-Tidyverse) packages **ggplot2** and **stringr**, and 
-       on occasion **devtools** has been an absolute lifesaver for me.
-       Hadley was the internal reviewer for my book, *The Art of R
-       Programming*, and I was one of the internal reviewers for Hadley's
-       *Advanced R* (2nd. ed.).
+I like and admire the RStudio people, including the Tidyverse
+originator, Hadley Wickham, and have always supported them, both
+privately and
+[publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
+They and I have been interacting from the beginning, when the firm
+consisted of only founder JJ Allaire and ace developer Joe Cheng.  I
+highly praise the firm to my students, and I use and recommend 
+Hadley's (non-Tidyverse) packages **ggplot2** and **stringr**, and 
+on occasion **devtools** has been an absolute lifesaver for me.
+Hadley was the internal reviewer for my book, *The Art of R
+Programming*, and I was one of the internal reviewers for Hadley's
+*Advanced R* (2nd. ed.).
 
-       Nevertheless, I believe that **RStudio took a wrong turn when it decided
-       to promote the Tidyverse** for beginning learners who have no prior
-       coding background.  Tidy makes it more difficult for noncoders to learn
-       R, and leaves them less able to productively.
+Nevertheless, I believe that **RStudio took a wrong turn when it decided
+to promote the Tidyverse** for beginning learners who have no prior
+coding background.  Tidy makes it more difficult for noncoders to learn
+R, and leaves them less able to productively.
 
 
 # Teachability overview
 
-       * Again, my focus here is on teaching R to those with little or no
-       coding background.  I am *not* discussing teaching Computer Science
-       students. 
+* Again, my focus here is on teaching R to those with little or no
+coding background.  I am *not* discussing teaching Computer Science
+students. 
 
-       * Tidy is concise, but that conciseness is often far too abstract for beginners.
-       The Tidyers confuse *concise* code with *easily
-       writeable/readable/debuggable/teachable* code.  The 
-       former does not imply the latter, and more often implies 
-       the opposite.
+* Tidy is concise, but that conciseness is often far too abstract for beginners.
+The Tidyers confuse *concise* code with *easily
+writeable/readable/debuggable/teachable* code.  The 
+former does not imply the latter, and more often implies 
+the opposite.
 
-       * Tidy's abstractness is due to philosophy of functional programming
-       (FP). The latter is popular with many sophisticated computer
-       scientists, but is difficult even for computer science students, thus
-       unsuited for nonprogrammer students of R.
+* Tidy's abstractness is due to philosophy of functional programming
+(FP). The latter is popular with many sophisticated computer
+scientists, but is difficult even for computer science students, thus
+unsuited for nonprogrammer students of R.
 
-       * The FP philosophy replaces straightforward loops with abstract use of
-       functions. Since functions are the most difficult aspect for noncoder
-       R learners, FP is clearly not the right path for such learners.
+* The FP philosophy replaces straightforward loops with abstract use of
+functions. Since functions are the most difficult aspect for noncoder
+R learners, FP is clearly not the right path for such learners.
 
-       * A major problem with Tidy for R beginners is cognitive overload: The
-       basic operations contain myriad variants. Though of course one need
-       not learn them all, one needs some variants even for simple operations,
-       e.g. pipes on functions of more than one argument.
+* A major problem with Tidy for R beginners is cognitive overload: The
+basic operations contain myriad variants. Though of course one need
+not learn them all, one needs some variants even for simple operations,
+e.g. pipes on functions of more than one argument.
 
-       * Indeed, even many Tidy advocates concede that it is in various senses
-       often more difficult to write Tidy code than base-R. Hadley says, for
-       instance, "it may take a while to wrap your head around [FP]."
+* Indeed, even many Tidy advocates concede that it is in various senses
+often more difficult to write Tidy code than base-R. Hadley says, for
+instance, "it may take a while to wrap your head around [FP]."
 
-       * Using Tidy to teach R results in it taking *more* time to learn *less*.
-       The students learn a few **dplyr** verbs well, but that equips them to
-       do much less with R than a standard R beginners course would teach.
-       That leaves the learners less equipped to put R to real use, compared to
-       "graduates" of standard base-R courses.
+* Using Tidy to teach R results in it taking *more* time to learn *less*.
+The students learn a few **dplyr** verbs well, but that equips them to
+do much less with R than a standard R beginners course would teach.
+That leaves the learners less equipped to put R to real use, compared to
+"graduates" of standard base-R courses.
 
-       * Once one goes beyond the simple **mutate/select/filter/summarize**
-       level, Tidy programming can be of low readability.
+* Once one goes beyond the simple **mutate/select/filter/summarize**
+level, Tidy programming can be of low readability.
 
-       * Tidy advocates also concede that debugging Tidy code is difficult,
-       especially in the case of pipes. Yet noncoder learners are the ones
-       who make the most mistakes, so it makes no sense to have them use a
-       coding style that makes it difficult to track down their errors.
+* Tidy advocates also concede that debugging Tidy code is difficult,
+especially in the case of pipes. Yet noncoder learners are the ones
+who make the most mistakes, so it makes no sense to have them use a
+coding style that makes it difficult to track down their errors.
 
-       * The obsession among many Tidyers that one must avoid writing loops,
-       the '$' operator, brackets and so on often results in obfuscated
-       code.
+* The obsession among many Tidyers that one must avoid writing loops,
+the '$' operator, brackets and so on often results in obfuscated
+code.
 
-       * The refusal to teach '$' and the de-emphasis on, or even complete lack of
-       coverage of, R vectors is a major handicap for Tidy "graduates" to
-       making use of most of R's statistical functions and statistical packages.  
+* The refusal to teach '$' and the de-emphasis on, or even complete lack of
+coverage of, R vectors is a major handicap for Tidy "graduates" to
+making use of most of R's statistical functions and statistical packages.  
 
-       * Note once again, that in discussing teaching, I am taking the target
-       audience here to be **nonprogrammers** who wish to use R for data
-       analysis.  Eventually, they may wish to make use of FP, but at the
-       crucial beginning stage, keep it simple, little or no fancy stuff.
+* Note once again, that in discussing teaching, I am taking the target
+audience here to be **nonprogrammers** who wish to use R for data
+analysis.  Eventually, they may wish to make use of FP, but at the
+crucial beginning stage, keep it simple, little or no fancy stuff.
 
 # Using Tidy Hinders the Learning Process:  Case Studies 
 
 ## Case study: delayed learning (I)
 
-       Let's look at  my online R tutorial,
-       [**fasteR**](http://github.com/matloff/fasteR)).  Consider, for
-       instance, an innocuous line like 
+Let's look at  my online R tutorial,
+[**fasteR**](http://github.com/matloff/fasteR)).  Consider, for
+instance, an innocuous line like 
 
-   ``` r
+``` r
 > hist(Nile)
-   ```
+```
 
-   i.e. drawing a simple histogram of R's built-in Nile River dataset.  
+i.e. drawing a simple histogram of R's built-in Nile River dataset.  
 
-   This is in the very first lesson in my tutorial.  Easy!  By contrast,
-   the Tidy crowd forbids use of base-R plots, insisting on using
-   **ggplot2**.  I also prefer **ggplot2** to base-R graphics (though as
-         explained below, it should not be considered part of the Tidyverse), but
-   here we have a much more important goal--to give students an actual
-   useful application of R right from the start.
+This is in the very first lesson in my tutorial.  Easy!  By contrast,
+the Tidy crowd forbids use of base-R plots, insisting on using
+**ggplot2**.  I also prefer **ggplot2** to base-R graphics (though as
+      explained below, it should not be considered part of the Tidyverse), but
+here we have a much more important goal--to give students an actual
+useful application of R right from the start.
 
-   To be Tidy the instructor would have to do something like
+To be Tidy the instructor would have to do something like
 
-   ``` r
-   > library(ggplot2)
-   > dn <- data.frame(Nile)
+``` r
+> library(ggplot2)
+> dn <- data.frame(Nile)
 > ggplot(dn) + geom_histogram(aes(Nile),dn)
-   ```
+```
 
-   Here the instructor would have a ton of things to explain -- packages,
-   data frames, **ggplot()**, the **aes** argument, the role of the '+'
-   (it's not addition here) and so on -- and thus she could definitely NOT
-   present it in the first lesson.
+Here the instructor would have a ton of things to explain -- packages,
+data frames, **ggplot()**, the **aes** argument, the role of the '+'
+(it's not addition here) and so on -- and thus she could definitely NOT
+present it in the first lesson.
 
-   Also in my very first lesson, I do
+Also in my very first lesson, I do
 
-   ``` r
+``` r
 > mean(Nile[80:100])
-   ```
+```
 
-   printing the mean Nile River flow during a certain range of years.
-   Incredibly, not only would this NOT be in a first lesson with Tidy, the
-   students in a Tidy course may actually *never* learn how to do this.
-   Typical Tidiers don't consider vectors very important for learners, let
-   alone vector subscipts. 
+printing the mean Nile River flow during a certain range of years.
+Incredibly, not only would this NOT be in a first lesson with Tidy, the
+students in a Tidy course may actually *never* learn how to do this.
+Typical Tidiers don't consider vectors very important for learners, let
+alone vector subscipts. 
 
-   As a concrete example of this Tidy point of view, consider the book
-   *Getting Started with R*, by Beckerman *et al*, Oxford University Press,
-   second edition, 2017.  The book makes a point of being 
-   ["Tidyverse compliant"](https://twitter.com/GSwithR/status/996830294367002625).
-   In 231 pages, vectors are mentioned just briefly, with no coverage of 
-   subscripts.
+As a concrete example of this Tidy point of view, consider the book
+*Getting Started with R*, by Beckerman *et al*, Oxford University Press,
+second edition, 2017.  The book makes a point of being 
+["Tidyverse compliant"](https://twitter.com/GSwithR/status/996830294367002625).
+In 231 pages, vectors are mentioned just briefly, with no coverage of 
+subscripts.
 
-   In other words, **even after one lesson, the base-R learner would be way
-   ahead of her Tidy counterparts.**
+In other words, **even after one lesson, the base-R learner would be way
+ahead of her Tidy counterparts.**
 
 ## Case study: delayed learning (II)
 
-   A researcher tweeted in December 2019 that an introductory statistics
-   book by Peter Dalgaard is "now obsolete," because it uses base-R rather
-   than Tidy.  Think of what an update to Tidy would involve, how much extra
-   complexity it would impose on the students.  Here is an early lesson from the
-   book:
+A researcher tweeted in December 2019 that an introductory statistics
+book by Peter Dalgaard is "now obsolete," because it uses base-R rather
+than Tidy.  Think of what an update to Tidy would involve, how much extra
+complexity it would impose on the students.  Here is an early lesson from the
+book:
 
-   ``` r
+``` r
 > thue2 <- subset(thuesen,blood.glucose < 7)
-   ```
+```
 
-   This could easily be in the base-R instructor's second lesson, if not
-   the first.  For Tidy, though, this would have to be changed to
+This could easily be in the base-R instructor's second lesson, if not
+the first.  For Tidy, though, this would have to be changed to
 
-   ``` r
+``` r
    > library(dplyr)
 > thue2 <- thue2 %>% filter(blood.glucose < 7)
-   ```
+```
 
-   Here the instructor would first have to teach the pipe operator '%>%',
-   again extra complexity.  And in so doing, she would probably emphasize
-   the "left to right" flow of pipes, but the confused students would then
-   wonder why, after that left-to-right flow, there is suddenly a
-   right-to-left flow, with the '<-'.  (For some reason, the Tidy people
-         don't seem to use R's '->' op.)
+Here the instructor would first have to teach the pipe operator '%>%',
+again extra complexity.  And in so doing, she would probably emphasize
+the "left to right" flow of pipes, but the confused students would then
+wonder why, after that left-to-right flow, there is suddenly a
+right-to-left flow, with the '<-'.  (For some reason, the Tidy people
+don't seem to use R's '->' op.)
 
-   Again, the Tidyverse is simply too complex for R learners without coding
-   background.  **It slows down their learning process.**
+Again, the Tidyverse is simply too complex for R learners without coding
+background.  **It slows down their learning process.**
 
 ## Case study:  tapply() (I)
 
-   One of the most commonly-used functions in base-R is **tapply()**.  It's
-   quite easy to teach beginners, by presenting its call form to them:
+One of the most commonly-used functions in base-R is **tapply()**.  It's
+quite easy to teach beginners, by presenting its call form to them:
 
-   ``` r
+``` r
 tapply(what to split, how to split it, what to apply to the resulting chunks)
-   ```
+```
 
    However, for some reason Tidy advocates deeply hate this function.
    Indeed, for many of them, **tapply()** epitomizes what's wrong with
@@ -220,25 +220,25 @@ tapply(what to split, how to split it, what to apply to the resulting chunks)
    Here is an example from the Peng talk, using the built-in R dataset
    **airquality**:
 
-   ``` r
+``` r
    group_by(airquality, Month) %>% 
 summarize(o3 = mean(Ozone, na.rm = TRUE))
-   ```
+```
 
    Here is the base-R version offered by Dr. Peng:
 
-   ``` r
+``` r
 aggregate(airquality[, “Ozone”], 
       list(Month = airquality[, “Month”]), 
       mean, na.rm = TRUE)
-   ```
+```
 
    Indeed, that base-R code would be difficult for R beginners.
    But here is the far easier base-R code, using **tapply()**:
 
-   ``` r
+``` r
 tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
-   ```
+```
 
    Both the Tidy and **tapply()** code are simple.  Both are easily grasped
    by beginners. After being presented with some examples, beginners have
@@ -257,7 +257,7 @@ tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
    The dataset is loan data available in the **openintro** package.  Here
    is the Tidy code to preprocess the data:
 
-   ``` r
+``` r
 
    loans <- openintro::loans_full_schema %>%
    mutate(
@@ -266,17 +266,16 @@ tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
          ) %>%
 filter(annual_income >= 10)
 
-   ```
+```
 
    In base-R:
 
-   ``` r
+``` r
 
    loans <- openintro::loans_full_schema
    loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
 
-
-   ```
+```
 
    As noted earlier, one should not conflate conciseness with clarity.  But
    here the base-R code is both more concise *and* more straightforward.
@@ -299,16 +298,16 @@ filter(annual_income >= 10)
    As to brackets, Tidy essentially ignores vectors.  Consider the
    following base-R coe:
 
-   ``` r
+``` r
 x <- c(5,12,13,1)
    x[x > 8]
-   ```
+```
 
    Probably the simplest way to do this in Tidy would be:
 
-   ``` r
+``` r
 data.frame(x=x) %>% filter(x > 8)
-   ```
+```
 
    That's a lot of machinery to implement one little vector operation, one
    that is of course quite common.
@@ -334,17 +333,17 @@ data.frame(x=x) %>% filter(x > 8)
 
    In base-R, it is extremely simple:
 
-   ``` r
+``` r
    mtcars$hwratio <- mtcars$hp / mtcars$wt
-   ```
+```
 
    Want to add a column to a data frame?  Hey, just add it!
 
    But in Tidy:
 
-   ``` r
+``` r
    mtcars %>% mutate(hwratio=hp/wt) -> mtcars
-   ```
+```
 
    Still not terribly complex, but we're invoking some machinery -- piping,
    a function call, and reassigning to the original data frame.
@@ -412,7 +411,7 @@ data.frame(x=x) %>% filter(x > 8)
    when in the built-in **mtcars** dataset one groups by two aspects,
    **cyl** and **gear**, rather than just say **cyl**:
 
-   ``` r
+``` r
    > mtcars %>%
    group_by(cyl,gear) %>%
 summarize(mean(mpg))
@@ -428,17 +427,17 @@ summarize(mean(mpg))
    6     6     5        19.7
    7     8     3        15.0
    8     8     5        15.4
-   ```
+```
 
    Compare to base-R:
 
-   ``` r
+``` r
 > tapply(mtcars$mpg,list(mtcars$cyl,mtcars$gear),mean)
    3      4    5
    4 21.50 26.925 28.2
    6 19.75 19.750 19.7
    8 15.05     NA 15.4
-   ```
+```
 
    With **tapply()**, students do have to be told that in the case of more
    than one grouping variable, they need to surround the variables with
@@ -463,7 +462,7 @@ summarize(mean(mpg))
    Actually, the Tidy version can be modified in order to notice that empty
    group.  Then things get really bad for Tidy:
 
-   ``` r
+``` r
    > mtcars$cyl <- as.factor(mtcars$cyl)
 > mtcars$gear <- as.factor(mtcars$gear)
    > mtcars %>% 
@@ -482,7 +481,7 @@ summarize(mean(mpg))
    7 8     3            15.0
    8 8     4           NaN  
    9 8     5            15.4
-   ```
+```
 
    There's trouble for R beginners right away, in the need to convert to
    factors, something not mentioned in the Tidy documentation, and which
@@ -521,7 +520,7 @@ summarize(mean(mpg))
    The R package **janeaustenr** brings in full corpuses of six novels by
    that author:
 
-   ``` r
+``` r
 
    > library(janeaustenr)
    > books <- austen_books()
@@ -533,24 +532,23 @@ summarize(mean(mpg))
    > books$text[22225]
    [1] "drink to our good journey."
 
-   ```
+```
 
 
    The authors' first goal is to put all the books together, one row per
    line of a book, with line and chapter number.  Here are a couple of
    typical rows in the desired result:
 
-   ``` r
+``` r
    "children, the old Gentleman's days were comfort… Sense & Sens…    25       1
-   ...
+...
    "As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
-   ``` 
+``` 
 
    The base-R solution (details to be worked out, not important here) would
    follow this familiar pattern:
 
-   ``` r
-
+``` r
    processBooks(books) {
       books = split(books,by title)
          output <- NULL
@@ -566,7 +564,6 @@ getChaps <- function()
 {
    ...
 }
-
 ```
 
 And here is the Tidy solution:
@@ -578,7 +575,7 @@ mutate(line = row_number(),
       chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
                ignore_case = TRUE)))) %>%
 ungroup()
-   ```
+```
 
    As noted, the Tidy version is more concise, and may well be preferred by
    seasoned R coders.  Even base-R enthusiasts would probably want to
@@ -603,7 +600,7 @@ ungroup()
 
    Pipes are simply not designed with debugging in mind.
 
-## Case study:  poor readability, cognitive overload
+## Case study:  poor readability, unreasonable cognitive overload
 
 As noted, R courses using the Tidyverse often do rather little beyond
 their canonical *data %>% group_by %>% mutate %>% summarize* paradigm.
