@@ -724,9 +724,10 @@ which one can code nice graphics.  I fully agree that **ggplot2** is
 excellent -- but that's not the Tidyverse.  My point, then, is they are
 endorsing Tidy because of something that is not Tidy.
 
-RStudio is a business.  Its job, rightly so, is to promote its product, 
-which in a broad sense is R.  All of RStudio's revenue comes from R, and
-the more R users there are, the better for RStudio.
+RStudio is a business.  Its job, rightly so, is to promote its product,
+which in a broad sense is R.  All of RStudio's revenue comes from
+services involving R, and the more R users there are, the better for
+RStudio.
 
 RStudio genuinely believed that Tidy would facilitate the usage of R.
 The **ggplot2** package had been enormously popular well before Tidy
@@ -751,11 +752,13 @@ That of course is fine, but it is misleading to speak of **ggplot2**
 
 * There is nothing "Tidy-ish" about GGP2.  It does not use pipes
   (Hadley has said if he designed GGP2 today, he would base it on pipes).
-  It's not based on the Each Variable Is a Column, Each Datapoint Is a
-  Row Tidy credo.  It doesn't use an FP approach; contrary to FP
-  philosophy, which disallows *side effects*, a restriction adhered to
-  by **dplyr**, the '+' of GGP2 operates similarly to very base-R
-  operation **x$a <- b**.
+  It's not based on the Each Variable Forms a Column, Each Observation
+  Forms a Row Tidy credo.  
+  
+  In particular, GGP2 doesn't use an FP approach.  FP
+  philosophy disallows *side effects*, a restriction adhered to
+  by **dplyr**.  By contrast, the '+' of GGP2 operates 
+  similarly to very base-R operation **x$a <- b**.
 
 Again, GGP2 is a wonderful package, which I use and teach myself.  But
 it is not a reason to burden R learners with Tidy, i.e. FP, **dplyr**,
