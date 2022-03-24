@@ -323,9 +323,9 @@ data.frame(x=x) %>% filter(x > 8)
 
    > one thing we have learned is that when we teach the tidyverse
    > consistently, the presence of base R patterns (e.g., using square
-         > brackets to select columns instead of dplyr::select()) stands out.  An
+   > brackets to select columns instead of dplyr::select()) stands out.  An
    > assignment completed entirely with base R syntax (in a class where
-         > tidyverse is being used) could signal a student who is less engaged with
+   > tidyverse is being used) could signal a student who is less engaged with
    > the overall learning materials for the course.  
 
    Consider the following simple example:  Say we wish to add to the
