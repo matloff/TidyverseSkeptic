@@ -177,7 +177,7 @@ This could easily be in the base-R instructor's second lesson, if not
 the first.  For Tidy, though, this would have to be changed to
 
 ``` r
-   > library(dplyr)
+> library(dplyr)
 > thue2 <- thue2 %>% filter(blood.glucose < 7)
 ```
 
@@ -221,8 +221,8 @@ tapply(what to split, how to split it, what to apply to the resulting chunks)
    **airquality**:
 
 ``` r
-   group_by(airquality, Month) %>% 
-summarize(o3 = mean(Ozone, na.rm = TRUE))
+group_by(airquality, Month) %>% 
+   summarize(o3 = mean(Ozone, na.rm = TRUE))
 ```
 
    Here is the base-R version offered by Dr. Peng:
@@ -259,12 +259,12 @@ tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
 
 ``` r
 
-   loans <- openintro::loans_full_schema %>%
+loans <- openintro::loans_full_schema %>%
    mutate(
          homeownership = str_to_title(homeownership),
          bankruptcy = if_else(public_record_bankrupt >= 1, "Yes", "No")
          ) %>%
-filter(annual_income >= 10)
+   filter(annual_income >= 10)
 
 ```
 
@@ -718,7 +718,7 @@ I wrote at the outset of this document that **ggplot2** should not be
 considered part of the Tidyverse.  I'll go into detail below, but first,
 why does it matter?
 
-The answer is that, in the many people I've interacted with regarding
+The answer is that, among the many people I've interacted with regarding
 Tidy, often the first reaaon they cite for liking Tidy is the ease with
 which one can code nice graphics.  I fully agree that **ggplot2** is
 excellent -- but that's not the Tidyverse.  My point, then, is they are
