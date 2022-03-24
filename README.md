@@ -603,6 +603,30 @@ ungroup()
 
    Pipes are simply not designed with debugging in mind.
 
+# Other Issues
+
+## ggplot2 vs. the Tidyverse
+
+I wrote at the outset of this document that **ggplot2** should not be
+considered part of the Tidyverse.  I'll go into detail below, but first,
+why does it matter?
+
+The answer is that, in the many people I've interacted with regarding
+Tidy, often the first reaaon they cite for liking Tidy is the ease with
+which one can code nice graphics.  I fully agree that **ggplot2** is
+excellent -- but that's not the Tidyverse.  My point, then, is they are
+endorsing Tidy because of something that is not Tidy.
+
+RStudio is a business.  Its job, rightly so, is to promote its product, 
+which in a broad sense is R.  All of RStudio's revenue comes from R, and
+the more R users there are, the better for RStudio.
+
+RStudio genuinely believed that Tidy would facilitate the usage of R.
+The **ggplot2** package had been enormously popular well before Tidy
+came along.  Clearly, RStudio saw that, and thus saw that a good way to
+sell the Tidyverse was to include the popular **ggplot2** in the
+definition of Tidy.
+
 ### The Tidyverse advocates' claims
 
 As a lifelong passionate teacher, I strongly question the claim made by
