@@ -359,7 +359,7 @@ data.frame(x=x) %>% filter(x > 8)
    The "naughty kids" aspect in the above quote,
 
    > An assignment completed entirely with base R syntax (in a class where
-         > tidyverse is being used) could signal a student who is less engaged with
+   > tidyverse is being used) could signal a student who is less engaged with
    > the overall learning materials for the course.
 
    sounds a bit authoritarian, and I've seen consequences.  For instance,
