@@ -80,20 +80,24 @@ unsuited for nonprogrammer students of R.
 * Using Tidy to teach R results in it taking *more* time to learn *less*.
   The students learn a few **dplyr** verbs well, but that equips them to
   do much less with R than a standard R beginners course would teach.
+  That leaves the learners less equipped to put R to real use, compared to
+  "graduates" of standard base-R courses.
+
+* Once one goes beyond the simple **mutate/select/filter/summarize**
+  level, Tidy programming can be of low readability.
 
 * Tidy advocates also concede that debugging Tidy code is difficult,
   especially in the case of pipes. Yet noncoder learners are the ones
   who make the most mistakes, so it makes no sense to have them use a
-  style that makes it difficult to track down their errors.
+  coding style that makes it difficult to track down their errors.
 
 * The obsession among many Tidyers that one must avoid writing loops,
   the '$' operator, brackets and so on often results in obfuscated
   code.
 
-* R courses using the Tidyverse often do rather little beyond their
-  canonical *data %>% group_by %>% mutate %>% summarize* paradigm.  That
-  leaves the learners less equipped to put R to real use, compared to
-  "graduates" of standard base-R courses.
+* The refusal to teach '$' and the de-emphasis on, or even complete lack of
+  coverage of, R vectors is a major handicap for Tidy "graduates" to
+  making use of most of R's statistical functions and statistical packages.  
 
 * Note once again, that in discussing teaching, I am taking the target
   audience here to be **nonprogrammers** who wish to use R for data
