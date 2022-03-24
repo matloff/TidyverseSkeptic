@@ -54,6 +54,10 @@ R, and leaves them less able to productively.
   students. 
 
 * Tidy is concise, but that conciseness is often far too abstract for beginners.
+  The Tidyers confuse *concise* code with *easily
+  writeable/readable/debuggable/teachable* code.  The 
+  former does not imply the latter, and more often implies 
+  the opposite.
 
 * Tidy's abstractness is due to philosophy of functional programming
   (FP). The latter is popular with many sophisticated computer
@@ -73,17 +77,14 @@ unsuited for nonprogrammer students of R.
   often more difficult to write Tidy code than base-R. Hadley says, for
   instance, "it may take a while to wrap your head around [FP]."
 
-* Using Tidy to teach R results in it taking *more* time, to learn *less*.
+* Using Tidy to teach R results in it taking *more* time to learn *less*.
+  The students learn a few **dplyr** verbs well, but that equips them to
+  do much less with R than a standard R beginners course would teach.
 
 * Tidy advocates also concede that debugging Tidy code is difficult,
   especially in the case of pipes. Yet noncoder learners are the ones
   who make the most mistakes, so it makes no sense to have them use a
   style that makes it difficult to track down their errors.
-
-* The Tidyers confuse *concise* code with *easily
-  writeable/readable/debuggable/teachable* code.  The 
-  former does not imply the latter, and more often implies 
-  the opposite.
 
 * The obsession among many Tidyers that one must avoid writing loops,
   the '$' operator, brackets and so on often results in obfuscated
