@@ -249,13 +249,13 @@ tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
 
 ## Case study:  the $ sign and brackets
 
-   Tidyers believe that two of the most basic operations in R, the \$ sign
-   and bracketing, are harmful.  For instance, consider an example in
-   [an article by Tidy advocates](https://arxiv.org/abs/2108.03510)
-   by Tidy advocates, *An Educator's Perspective of the Tidyverse.* 
+Tidyers believe that two of the most basic operations in R, the \$ sign
+and bracketing, are harmful.  For instance, consider an example in
+[an article by Tidy advocates](https://arxiv.org/abs/2108.03510)
+by Tidy advocates, *An Educator's Perspective of the Tidyverse.* 
 
-   The dataset is loan data available in the **openintro** package.  Here
-   is the Tidy code to preprocess the data:
+The dataset is loan data available in the **openintro** package.  Here
+is the Tidy code to preprocess the data:
 
 ``` r
 
@@ -268,107 +268,107 @@ loans <- openintro::loans_full_schema %>%
 
 ```
 
-   In base-R:
+In base-R:
 
 ``` r
 
-   loans <- openintro::loans_full_schema
-   loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
+loans <- openintro::loans_full_schema
+loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
 
 ```
 
-   As noted earlier, one should not conflate conciseness with clarity.  But
-   here the base-R code is both more concise *and* more straightforward.
-   The Tidyers might even agree, except that the code uses '$'.  As the
-   article puts it:
+As noted earlier, one should not conflate conciseness with clarity.  But
+here the base-R code is both more concise *and* more straightforward.
+The Tidyers might even agree, except that the code uses '$'.  As the
+article puts it:
 
-   > When using base R the variables in that data frame are commonly
-   > accessed with the $ operator (e.g., loans$loan amount to access the
-         > variable called loan amount in the data frame loans). Often, students
-   > are tempted to access the loan amount variable in this example by
-   > referring to it simply as loan amount and not specifying the name of
-   > the data frame in which it lives. This results in a frustrating error:
-   > object 'loan amount' not found.
+> When using base R the variables in that data frame are commonly
+> accessed with the $ operator (e.g., loans$loan amount to access the
+> variable called loan amount in the data frame loans). Often, students
+> are tempted to access the loan amount variable in this example by
+> referring to it simply as loan amount and not specifying the name of
+> the data frame in which it lives. This results in a frustrating error:
+> object 'loan amount' not found.
 
-   The simple solution to this "problem" is to explain it to students, and
-   have them watch for it.  It would be impossible to have students avoid
-   all possible errors, and again, this one is easy to remedy with proper
-   advance warning.
+The simple solution to this "problem" is to explain it to students, and
+have them watch for it.  It would be impossible to have students avoid
+all possible errors, and again, this one is easy to remedy with proper
+advance warning.
 
-   As to brackets, Tidy essentially ignores vectors.  Consider the
-   following base-R coe:
+As to brackets, Tidy essentially ignores vectors.  Consider the
+following base-R coe:
 
 ``` r
 x <- c(5,12,13,1)
    x[x > 8]
 ```
 
-   Probably the simplest way to do this in Tidy would be:
+Probably the simplest way to do this in Tidy would be:
 
 ``` r
 data.frame(x=x) %>% filter(x > 8)
 ```
 
-   That's a lot of machinery to implement one little vector operation, one
-   that is of course quite common.
+That's a lot of machinery to implement one little vector operation, one
+that is of course quite common.
 
 ## Case study:  an overly rigid philosophy
 
-   It is disappointing that the Tidyers wish to replace base-R, rather than
-   supplement it.  
+It is disappointing that the Tidyers wish to replace base-R, rather than
+supplement it.  
 
-   One of the most troubling aspects of the Tidy movement is their rigidity
-   and insistence on "loyalty."  For instance, the above-cited *Educator's
-   Perspective* article
+One of the most troubling aspects of the Tidy movement is their rigidity
+and insistence on "loyalty."  For instance, the above-cited *Educator's
+Perspective* article
 
-   > one thing we have learned is that when we teach the tidyverse
-   > consistently, the presence of base R patterns (e.g., using square
-   > brackets to select columns instead of dplyr::select()) stands out.  An
-   > assignment completed entirely with base R syntax (in a class where
-   > tidyverse is being used) could signal a student who is less engaged with
-   > the overall learning materials for the course.  
+> one thing we have learned is that when we teach the tidyverse
+> consistently, the presence of base R patterns (e.g., using square
+> brackets to select columns instead of dplyr::select()) stands out.  An
+> assignment completed entirely with base R syntax (in a class where
+> tidyverse is being used) could signal a student who is less engaged with
+> the overall learning materials for the course.  
 
-   Consider the following simple example:  Say we wish to add to the
-   **mtcars** data a column consisting of the horsepower-to-weight ratio.
+Consider the following simple example:  Say we wish to add to the
+**mtcars** data a column consisting of the horsepower-to-weight ratio.
 
-   In base-R, it is extremely simple:
+In base-R, it is extremely simple:
 
 ``` r
    mtcars$hwratio <- mtcars$hp / mtcars$wt
 ```
 
-   Want to add a column to a data frame?  Hey, just add it!
+Want to add a column to a data frame?  Hey, just add it!
 
-   But in Tidy:
+But in Tidy:
 
 ``` r
    mtcars %>% mutate(hwratio=hp/wt) -> mtcars
 ```
 
-   Still not terribly complex, but we're invoking some machinery -- piping,
-   a function call, and reassigning to the original data frame.
+Still not terribly complex, but we're invoking some machinery -- piping,
+a function call, and reassigning to the original data frame.
 
-   Why would we deprive R learners of the very simple, direct and effective
-   tools like this?  Just for the sake of "purity," implicit in the above
-   quoted passage?
+Why would we deprive R learners of the very simple, direct and effective
+tools like this?  Just for the sake of "purity," implicit in the above
+quoted passage?
 
-   Students who are taught the Tidy version of the above and then are shown
-   the base-R one will say, "Wow!  That's much easier.  Thanks for the
-   shortcut."  This brings me to my next point.
+Students who are taught the Tidy version of the above and then are shown
+the base-R one will say, "Wow!  That's much easier.  Thanks for the
+shortcut."  This brings me to my next point.
 
-   The "naughty kids" aspect in the above quote,
+The "naughty kids" aspect in the above quote,
 
-   > An assignment completed entirely with base R syntax (in a class where
-   > tidyverse is being used) could signal a student who is less engaged with
-   > the overall learning materials for the course.
+> An assignment completed entirely with base R syntax (in a class where
+> tidyverse is being used) could signal a student who is less engaged with
+> the overall learning materials for the course.
 
-   sounds a bit authoritarian, and I've seen consequences.  For instance,
-   one R learner proudly displayed on Twitter some code she had managed to
-   write, but she guiltily apologized for using a loop.
+sounds a bit authoritarian, and I've seen consequences.  For instance,
+one R learner proudly displayed on Twitter some code she had managed to
+write, but she guiltily apologized for using a loop.
 
-   What is also intriguing about the above quote is its seeming implication
-   that such a student's use of base-R would be "taking the easy way out."
-   But doesn't that mean base-R is easier?
+What is also intriguing about the above quote is its seeming implication
+that such a student's use of base-R would be "taking the easy way out."
+But doesn't that mean base-R is easier?
 
 
 
