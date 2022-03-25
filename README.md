@@ -126,7 +126,7 @@ i.e. drawing a simple histogram of R's built-in Nile River dataset.
 This is in the very first lesson in my tutorial.  Easy!  By contrast,
 the Tidy crowd forbids use of base-R plots, insisting on using
 **ggplot2**.  I also prefer **ggplot2** to base-R graphics (though as
-      explained below, it should not be considered part of the Tidyverse), but
+explained below, it should not be considered part of the Tidyverse), but
 here we have a much more important goal--to give students an actual
 useful application of R right from the start.
 
@@ -537,8 +537,7 @@ earlier, noncoder R learners are the ones most in need of debugging
 skills, as they make the most errors.  Thus the example here is of high
 importance.
 
-The R package **janeaustenr** brings in full corpuses of six novels by
-that author:
+The R package **janeaustenr** brings in full corpuses of six Austen novels: 
 
 ``` r
 
@@ -588,14 +587,39 @@ main point in this section.   Even the base-R FP version would be quite
 debuggable (providing the function called by **lapply()** is named).
 
 By contrast, this example epitomizes the problems with debugging Tidy
-code.  It is impossible to use the R **debug()** or **browser()**
-functions, let alone the RStudio IDE debugging tool, on the code as is.
-Pipes are fundamentally unsuitable for use of debugging tools, and even
-just using **print()** statements is impossible. 
+code.  It is impossible to effectively use the R **debug()** or
+**browser()** functions, let alone the RStudio IDE debugging tool, on
+the code as is.  There are two major obstacles, both fundamental to 
+Tidy in general:
+
+* Use of R generic functions.  For instance, consider the code
+
+``` r
+debug(group_by)
+mtcars %>% group_by(cyl)
+```
+
+This produces 
+
+``` r
+debugging in: group_by(., cyl)
+debug: {
+    UseMethod("group_by")
+}
+
+```
+
+Dealing with this is far beyond the skillset of R beginners.
+
+* Use of pipes.
+
+Pipes are fundamentally unsuitable for use of debugging
+tools, and even just using **print()** statements is impossible. 
  
 One partial remedy is the clever **pipecleaner** package for debugging
 pipes.  It works only up to a point, and is probably a bit too involved
-for R beginners.  Most signifcantly, the package writeup  also notes that 
+for R beginners.  Most signifcantly, the package writeup  also notes
+that 
 
 > Occasionally it is necessary to restructure code from a piped to an
 > unpiped form. 
@@ -634,10 +658,9 @@ mtcars %>%
 There are several major points to note here:
 
 * The R learner here must learn two different FP map functions for this
-  particular example.  This is an
-  excellent example of Tidy's cognitive overload problem.  Actually,
-  the Tidyverse FP package, **purrr**, has 52 different map functions!  
-  (See below.)
+  particular example.  This is an excellent example of Tidy's cognitive 
+  overload problem.  Actually, the Tidyverse FP package, **purrr**, has 
+  52 different map functions!  (See below.)
 
 * That "Tidy" code is a nightmare to read.  For instance, 
   the first '~' in that first map call is highly nonintuitive.  This
@@ -647,7 +670,7 @@ There are several major points to note here:
 * Tidy, in its obsession to avoid R's standard '$' symbol, is causing
   all kinds of chaos and confusion here.
 
-    The hapless student would naturally ask, "Where does that expression
+The hapless student would naturally ask, "Where does that expression
 'summary' come from?"  It would appear that **map()** is being called on
 a nonexistent variable, **summary**.  In actuality, base-R's **summary()** 
 function is being called on the previous computation
@@ -758,29 +781,31 @@ he can eat for a lifetime."
 
 ## ggplot2 vs. the Tidyverse
 
-I wrote at the outset of this document that **ggplot2** should not be
-considered part of the Tidyverse.  I'll go into detail below, but first,
-why does it matter?
+I wrote at the outset of this document that **ggplot2** (GGP2) should
+not be considered part of the Tidyverse.  I'll go into detail below, but
+first, why does it matter?
 
 The answer is that, among the many people I've interacted with regarding
 Tidy, often the first reaaon they cite for liking Tidy is the ease with
-which one can code nice graphics.  I fully agree that **ggplot2** is
-excellent -- but that's not the Tidyverse.  My point, then, is they are
-endorsing Tidy because of something that is not Tidy.
+which one can code nice graphics.  I fully agree that GGP2 is excellent,
+and I use and teach it myself -- but it's not the Tidyverse.  My point,
+then, is they are endorsing Tidy because of something that is not part
+of idy.
 
 RStudio is a business.  Its job, rightly so, is to promote its product,
 which in a broad sense is R.  All of RStudio's revenue comes from
 services involving R, and the more R users there are, the better for
-RStudio.
+RStudio.  (And by the way, also the better for us longtime R advocates;
+RStudio has done a superb job of expanding the number of R users.)
 
 RStudio genuinely believed that Tidy would facilitate the usage of R.
-The **ggplot2** package had been enormously popular well before Tidy
+The GGP2 package had been enormously popular well before Tidy
 came along.  Clearly, RStudio saw that, and thus saw that a good way to
-sell the Tidyverse was to include the popular **ggplot2** in the
+sell the Tidyverse was to include the popular GGP2 in the
 definition of Tidy.
 
-That of course is fine, but it is misleading to speak of **ggplot2**
-(GGP2) as justification for using, especially teaching, the Tidyverse.  Note:
+That of course is fine, but it is misleading to speak of GGP2
+as justification for using, especially teaching, the Tidyverse.  Note:
 
 * The GGP2 package was Hadley Wickham's PhD project, which
   implemented Lee Wilkinson's *grammar of graphics* ideas.  Hadley
@@ -794,53 +819,40 @@ That of course is fine, but it is misleading to speak of **ggplot2**
     > independently to address specific phases of the data science cycle, and
     > subsequently came together under the tidyverse umbrella in 2016...
 
-* There is nothing "Tidy-ish" about GGP2.  It does not use pipes
-  (Hadley has said if he designed GGP2 today, he would base it on pipes).
-  It's not based on the Each Variable Forms a Column, Each Observation
-  Forms a Row Tidy credo.  
+* There is nothing "Tidy-ish" about GGP2.  
+
+  GGP2 does not use pipes.  (Hadley has said if he designed GGP2 today,
+  he would base it on pipes.)
+
+  GGP2 is not especially based on the Each Variable Forms a 
+  Column, Each Observation Forms a Row Tidy credo.  Base-R graphics, 
+  and indeed most of base-R, relies on the "Each Variable..." format too.
   
-  In particular, GGP2 doesn't use an FP approach.  FP
+  Notably, GGP2 doesn't use an FP approach.  FP
   philosophy disallows *side effects*, a restriction adhered to
   by **dplyr**.  By contrast, the '+' of GGP2 operates 
   similarly to very base-R operation **x$a <- b**.
 
-Again, GGP2 is a wonderful package, which I use and teach myself.  But
-it is not a reason to burden R learners with Tidy, i.e. FP, **dplyr**,
-**purrr** and so on.
+Again, GGP2 is a wonderful package.  But it is not a reason to burden R
+learners with Tidy, i.e. FP, **dplyr**, **purrr** and so on.
 
-## The Tidyverse advocates' citing of testimonials
+## Tidyverse "testimonials"
 
-As a lifelong passionate teacher, I strongly question the claim made by
-Tidyverse advocates that it facilitates the teaching of R to
-non-programmers, as opposed to teaching them base-R.  
+There has been no study of Tidy advocates' teachability claim, and
+indeed designing a proper "randomized clinical trials" study would be
+very difficult if not impossible.  (My arguments in this document merely
+appeal to common sense, again no data.)  But many Tidy teachers report
+great success with the approach.
 
-There has been no study of Tidy advocates' teachability claim.
-Advocates often provide testimonials from students like 
+One major issue with this "success" (aside from the improper conflation
+of Tidy with GGP2) is that Tidy R courses are scaled down in scope,
+compared to the base-R ones.  A typical Tidy R course does not equip
+students to do much in R (whether, base or Tidy). They teach a few **dplyr**
+verbs, a few GGP2 calls, and provide examples that the students can
+mimic. Much time is spent on the RS IDE and R Markdown. Students emerge
+with a false sense of empowerment.  Teacher and students alike are
+happy, but misleadingly so. 
 
-* "I learned R using Tidyverse, and now am productive in R" 
-
-* "I like the English-like nature of the Tidyverse"
-
-* "I can make beautiful graphics with the Tidyverse"
-
-* "Tidyverse showed me the fluidity of data"
-
-Advocates who are instructors will echo those statements, and add, e.g.
-
-* "Base-R is good for professional programmers, but the Tidyverse is the
-  best R learning tool for non-techies who just want to do data
-analysis"
-
-* "R was created by statisticians, for statisticians.  But we are data
-  scientists, mainly interested in producing graphs and tables"
-
-* "The Tidyverse is **modern** R, for the rest of us"
-
-All of these statements are either misleading, irrelevant to the
-teachability issue, or downright meaningless.  They say nothing at all
-about the teachability of base-R in comparison to Tidy.  (It is ironic
-that advocates who present such statements are data scientists, who
-ought to know the need for a control group.)
 
 ## Use of functional programming
 
