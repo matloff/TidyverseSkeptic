@@ -805,11 +805,28 @@ sell the Tidyverse was to include the popular GGP2 in the
 definition of Tidy.
 
 That of course is fine, but it is misleading to speak of GGP2
-as justification for using, especially teaching, the Tidyverse.  Note:
+as justification for using, especially teaching, the Tidyverse.  A
+listing of the chronology clarifies the matter:
 
 * The GGP2 package was Hadley Wickham's PhD project, which
   implemented Lee Wilkinson's *grammar of graphics* ideas.  Hadley
   completed his dissertation in 2008, well before Tidy.
+
+* Hadley introduced the Tidy concept in his
+  [2014 paper](https://www.jstatsoft.org/v59/i10/paper):  Each variable
+  forms a column, each observation forms a row (EVCEOR).  Of course, there
+  was nothing new here, as most of base-R assumes EVCEOR format.  Indeed, 
+  Hadley put the base-R workhorse function, **plot()**, on an equal
+  footing with GGP2:
+
+    > Most graphical tools in R are input-tidy, including the base plot()
+    > function, the lattice family of plots (Sarkar 2008) and ggplot2 (Wickham
+    > 2009).
+
+* As Hadley's packages (and RStudio) gained popularity, the term 
+  *Hadleyverse* became used to describe his collection of projects.  He
+  demurred, though, and suggested the term *Tidyverse* in his 
+  2016 useR! conference keynote.
 
 * Even the Tidy advocacy article cited earlier, *An Educator's
   Perspective*, notes that GGP2 was only brought under the Tidy
@@ -817,18 +834,20 @@ as justification for using, especially teaching, the Tidyverse.  Note:
 
     > Many of the core packages in the tidyverse were originally developed
     > independently to address specific phases of the data science cycle, and
-    > subsequently came together under the tidyverse umbrella in 2016...
+    > subsequently came together under the tidyverse umbrella in 2016
+    > (Smith 2016)...
 
-* There is nothing "Tidy-ish" about GGP2.  
+  (The Smith citation lists GGP2 and **purrr**.)
 
-  GGP2 does not use pipes.  (Hadley has said if he designed GGP2 today,
-  he would base it on pipes.)
-
-  GGP2 is not especially based on the Each Variable Forms a 
-  Column, Each Observation Forms a Row Tidy credo.  Base-R graphics, 
-  and indeed most of base-R, relies on the "Each Variable..." format too.
+* As noted above, there is nothing especially "Tidy-ish" about GGP2.  
+  It is no more EVCEOR-ish than the base-R **plot()** (and most of
+  base-R).  It does not use pipes.  (Hadley has said if he designed 
+  GGP2 today, he would base it on pipes.)  It does not use FP.
   
-Again, GGP2 is a wonderful package.  But it is not a reason to burden R
+Again, GGP2 is a wonderful package.  RStudio has the right to define the
+Tidyverse however they feel appropriate.  (It was originally called the
+Hadleyverse, as it was a collection of Hadley's software projects, but
+he demurred.) But RStudio's naming freedom does not justify burdening R
 learners with Tidy, i.e. FP, **dplyr**, **purrr** and so on.
 
 ## Tidyverse "testimonials"
@@ -897,138 +916,4 @@ but yes it is a powerful tool, worth the investment of time -- *for the
 experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" FP.
 
-
-### Tibbles
-
-Similarly, it is bad pedagogy to force students to learn tibbles, a more
-complex technology, instead of data frames, a simpler one.  The types of
-"nonorthogonal" situations that tibbles are meant to address should be
-an advanced topic, not for beginners with no coding background.
-
-Those advanced situations involve data frames in which row/column
-elements are not *atomic* objects, i.e. not simple numbers, character
-strings or logical values.  **This is a "straw man" set up by the Tidy
-advocates'**; R beginners are very unlikely to encounter data frames of
-this type.  Indeed, most if not all R textbooks do not even have
-examples of this kind of data.
-
-### The English issue
-
-Again, the point most emphasized by Tidyverse advocates is that the
-Tidyverse is more teachable because of its "English-like" syntax. 
-
-Below is a comparison of the "English" **dplyr** to the "non-English"
-**data.table** (adapted from
-[here](https://atrebas.github.io/post/2019-03-03-datatable-dplyr/)):
-We'll again use R's built-in **mtcars** dataset.
-
-``` r 
-mtdt <- as.data.table(mtcars);  mtdt[cyl == 6]  # data.table syntax
-mttb <- as_tibble(mtcars);  filter(mttb,cyl == 6)  # dplyr syntax 
-``` 
-
-Is there really any difference?  Can't beginners, even without
-programming background, quickly adapt to either one after seeing a few
-examples?  Even those who claim high teachability for **dplyr** do
-readily agree that their students could also easily pick up
-**data.table**, or for that matter my preference for beginners, base-R,
-given some examples.
-
-We saw earlier that the **purrr** example,
-
-``` r
-mtcars %>%
-  split(.$cyl) %>%
-  map(~ lm(mpg ~ wt, data = .)) %>%
-  map(summary) %>%
-  map_dbl("r.squared")
-```
-
-would be baffling even to experienced (but non-R) programmers, starkly
-contradicting the claimed "English-like clarity" of Tidy.  And the
-**dplyr** meaning of **mutate** is nowhere near its English meaning, and
-again, would not be guessed even by a non-R professional programmer.
-
-In other words, though students may say they like the "English" aspect
-of Tidy, the benefit is illusory.  They could become more proficient in
-R, **more quickly**, learning base-R than Tidy.
-
-By the way, as noted below, the Tidy advocates don't like the many
-base-R functions whose names *do* use English, e.g. **plot()**,
-**lines()**,  **aggregate()** and **merge()**.  Clearly, then, English
-is not the core issue.
-
-### Pipes
-
-The Tidyverse also makes heavy use of **magrittr** *pipes*, e.g. writing
-the function composition **h(g(f(x)))** as
-
-``` r
-f(x) %>%  g() %>% h()
-```
-
-Again, the pitch made is that this is "English," in this case in the
-sense of reading left-to-right.  But again, one might question just how
-valuable that is, and in any event, I personally tend to write such code
-left-to-right anyway, *without* using pipes:
-
-``` r
-a <- f(x)
-b <- g(a)
-h(b)
-```
-
-As a long-time teacher of programming languages (C, C++, Java, Pascal,
-Python, R, assembly language, etc.), I find the promotion of pipes
-troubling.  The piped version hides the fact that **g()** and **h()**
-have an argument, which is invisible in the pipe expression.  This adds
-confusion to the already-difficult process of learning the functions
-concept.
-
-Or if **w()** say, were to have two arguments, the first one being used
-in the pipe, that argument would be hidden, making it appear that there
-is only one argument:
-
-``` r
-> w <- function(u,v) u+2*v
-> 3 %>% w(5)
-[1] 13
-```
-
-Here **w()** has 2 arguments, but it looks like 1.
-
-And what if we want that 3 to play the role of **v**, not **u**?  Yes,
-**magrittr** has a way to do that, the "dot" notation:
-
-``` r
-> 3 %>% w(5,.)
-[1] 11
-```
-
-Moreover, what if the function **h()** above has two arguments,
-rather than just one, with each argument requiring functional
-composition?  Pipes can't be used there.
-
-And even more importantly, even advocates of pipes concede that pipes make
-debugging more difficult; by contrast, my style above lends itself easily to
-debugging.  And again, for large problems, piped code is slower.
-
-The benefit of pipes claimed by the Tidyers is the "left to right"
-execution.  They conceded that one can achieve this without pipes, but
-stress that this comes at the expense of setting up variables for the
-intermediate results.  That's a valid point, but is that small gain
-worth the increased cognitive load on R learners, increased debugging
-problems and so on?  To me it clearly is not.
-
-### Code readability
-
-The Tidyverse advocates also claim that the "English" in **dplyr** makes
-the code easier to *read*, not just write.  To me, that is missing the
-point; as any instructor of software engineering can tell you, the best
-way to make code readable is to use REAL English, in good, meaningful
-code comments.  And this is just as important, if not more so, for
-nonprogrammers.
-
-See my [R style guide](http://github.com/matloff/R-Style-Guide) for more on
-readability issues.
 
