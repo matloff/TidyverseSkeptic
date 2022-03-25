@@ -828,11 +828,6 @@ as justification for using, especially teaching, the Tidyverse.  Note:
   Column, Each Observation Forms a Row Tidy credo.  Base-R graphics, 
   and indeed most of base-R, relies on the "Each Variable..." format too.
   
-  Notably, GGP2 doesn't use an FP approach.  FP
-  philosophy disallows *side effects*, a restriction adhered to
-  by **dplyr**.  By contrast, the '+' of GGP2 operates 
-  similarly to very base-R operation **x$a <- b**.
-
 Again, GGP2 is a wonderful package.  But it is not a reason to burden R
 learners with Tidy, i.e. FP, **dplyr**, **purrr** and so on.
 
