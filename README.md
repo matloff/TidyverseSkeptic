@@ -251,7 +251,7 @@ Tidy version requires two function calls rather than one for base-R.
 But again, both versions are simple, so let's call it a tie.  But is it
 certainly not the case that the Tidy version is *easier* to learn.
 
-## Case study:  the $ sign and brackets
+## Case study:  Tidy's banning the $ sign and brackets
 
 Tidyers believe that two of the most basic operations in R, the \$ sign
 and bracketing, are harmful.  For instance, consider an example in
@@ -325,7 +325,7 @@ One of the most troubling aspects of the Tidy movement is their rigidity
 and insistence on "loyalty."  For instance, the above-cited *Educator's
 Perspective* article
 
-> one thing we have learned is that when we teach the tidyverse
+> ...one thing we have learned is that when we teach the tidyverse
 > consistently, the presence of base R patterns (e.g., using square
 > brackets to select columns instead of dplyr::select()) stands out.  An
 > assignment completed entirely with base R syntax (in a class where
@@ -352,13 +352,16 @@ But in Tidy:
 Still not terribly complex, but we're invoking some machinery -- piping,
 a function call, and reassigning to the original data frame.
 
-Why would we deprive R learners of the very simple, direct and effective
-tools like this?  Just for the sake of "purity," implicit in the above
+Why would we deprive R learners of very simple, direct and effective
+tools like this?  Just for the sake of Tidy "purity," implicit in the above
 quoted passage?
 
 Students who are taught the Tidy version of the above and then are shown
 the base-R one will say, "Wow!  That's much easier.  Thanks for the
-shortcut."  This brings me to my next point.
+shortcut."  And I can guarantee, a few would say, "Why didn't you tell
+us this way in the first place?"
+
+This brings me to my next point.
 
 The "naughty kids" aspect in the above quote,
 
@@ -369,20 +372,6 @@ The "naughty kids" aspect in the above quote,
 sounds a bit authoritarian, and I've seen consequences.  For instance,
 one R learner proudly displayed on Twitter some code she had managed to
 write, but she guiltily apologized for using a loop.
-
-And in [another
-tweet](https://twitter.com/cynthiahqy/status/1444871989152280578), the
-author proudly cites the loop-free nature of her code, but her wording
-shows (rightly) that this was difficult to achieve:
-
-> Excited and a bit nervous to share some initial work on a #tidyverse
-> inspired #rstats 📦 for wrangling data from different classifications
-> (e.g. trade/labour) into consistent panels WITHOUT FOR-LOOPS
-
-The author does claim that the FP format is clearer for data wrangling.
-That's debatable -- the proper remedy is always to put an outline of
-one's code in comment lines -- but at the very least, this again shows that
-**FP makes the learning process harder for beginners.**
 
 What is also intriguing about the above quote on "naughty kids" is its
 seeming implication that such a student's use of base-R would be "taking
