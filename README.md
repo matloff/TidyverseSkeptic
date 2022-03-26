@@ -28,7 +28,7 @@ predates Tidy and does not use the Tidy paradigm.  In my discussion
 here, my references to Tidy do not include **ggplot2**, a package of
 which I am an enthusiastic user and teacher.  More details later in this
 document, the section
-[ggplot2 vs. the Tidyverse](README.md#ggplot2-vs-the-tidyverse).
+[ggplot2 vs. the Tidyverse](README.md#ggplot2-vs.-the-tidyverse).
 
 
 # Kudos to RStudio, But with a Wrong Turn
@@ -770,7 +770,7 @@ he can eat for a lifetime."
 
 # Other Issues
 
-## ggplot2 vs the Tidyverse
+## ggplot2 vs. the Tidyverse
 
 I wrote at the outset of this document that **ggplot2** (GGP2) should
 not be considered part of the Tidyverse.  I'll go into detail below, but
