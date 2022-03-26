@@ -284,6 +284,7 @@ In base-R:
 
 loans <- openintro::loans_full_schema
 loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
+loans <- subset(loans,annual_income >= 10)
 
 ```
 
@@ -835,16 +836,17 @@ listing of the chronology clarifies the matter:
 
   (The Smith citation lists GGP2 and **purrr**.)
 
-* As noted above, there is nothing especially "Tidy-ish" about GGP2.  
-  It is no more EVCEOR-ish than the base-R **plot()** (and most of
-  base-R).  It does not use pipes.  (Hadley has said if he designed 
-  GGP2 today, he would base it on pipes.)  It does not use FP.
+* As noted above, there is nothing especially "Tidy-ish" about GGP2.  It
+  is no more EVCEOR-ish than the base-R **plot()** (and most of base-R).
+  It does not use pipes.  (Hadley has said if he designed GGP2 today, he
+  would base it on pipes.)  It does not use FP.
   
 Again, GGP2 is a wonderful package.  RStudio has the right to define the
 Tidyverse however they feel appropriate.  (It was originally called the
 Hadleyverse, as it was a collection of Hadley's software projects, but
-he demurred.) But RStudio's naming freedom does not justify burdening R
-learners with Tidy, i.e. FP, **dplyr**, **purrr** and so on.
+he demurred.) But RStudio's naming freedom does not justify burdening
+and handicapping R learners with Tidy, i.e. FP, **dplyr**, **purrr** and
+so on.
 
 ## Tidyverse "testimonials"
 
