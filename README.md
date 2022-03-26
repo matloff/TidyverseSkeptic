@@ -912,4 +912,61 @@ but yes it is a powerful tool, worth the investment of time -- *for the
 experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" FP.
 
+# Well, Then, Where Are We Now?
+
+Due to a catchy name, a charismatic developer and highly aggressive
+marketing by the R language's dominant commercial entity, Tidy has
+become a major part of R.  It has brought a "pop culture" to R; one
+prominent Tidy advocate even sells 
+["Tidy
+merchandise"](https://twitter.com/ameliamn/status/1214995483577520131)
+(bags, mugs, shoes).  A popular Tidy Tuesday series has arisen on
+Twitter.
+
+At times, it has even veered into the realm of cult.  There are many who
+equate Hadley Wickham with R itself.  Putting the hero worship aside, at
+the very least one can say that many if not most in that huge following
+view R as
+
+R = dplyr + ggplot2 + RStudio + Rmarkdown
+
+To us longtime R advocates, this is a tragic irony.  On the one hand,
+RStudio is to be congratulated for greatly increasing the worldwide
+count of R users.  But the tragedy is that those users tend to be
+ill-equipped to actually *use* R productively, compared to "graduates"
+of standard base-R courses.
+
+Equally important is the impact on the R language itself.  In his
+aforementioned keynote address, Roger Peng asked,
+
+> It will be interesting to see how things evolve, and whether the
+> community can sustain multiple ways of programming.  I think that it
+> can, but that's my opinion.
+
+Peng's speculation may be correct if one views R strictly as a
+programming language.  But R is a *statistical tool*.
+As explained earlier in this document, Tidy is at odds with the
+most R statistical packages.  Though packages like **broom** might be
+developed to bridge the gap in some specific instances, there obviously
+far too many of this to be realistic.  It is here that the divide
+between the Tidy and base-R worlds may be mostly keenly manifest.
+
+Sadly, that divide has occasionally become person.
+Some in RStudio itself have Twitter-blocked some of the critics,
+abruptly ending frank but civil conversation.  In my case, one major
+RStudio developer [made quite a show of
+it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
+tweeting a screen shot in which "You have blocked this user" is repeated
+dozens of times.  Given RStudio's considering itself a leader in the R
+community, such childish, spiteful behavior is improper and
+counterproductive.
+
+But the good news is that both sides have been making attempts at
+reconciliation.  Especially notable is that the R Core Group, a body
+that controls the development of base-R, recently added a native pipe to
+the language.  I doubt many in that group actually use it, but it is an
+impressive olive branch.  RStudio, including Hadley, has also made various
+conciliatory public remarks.  Hopefully we will be seeing more of these
+trends in the coming years.
+
 
