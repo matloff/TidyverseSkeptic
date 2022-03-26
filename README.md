@@ -967,7 +967,30 @@ reconciliation.  Especially notable is that the R Core Group, a body
 that controls the development of base-R, recently added a native pipe to
 the language.  I doubt many in that group actually use it, but it is an
 impressive olive branch.  RStudio, including Hadley, has also made various
-conciliatory public remarks.  Hopefully we will be seeing more of these
-trends in the coming years.
+conciliatory public remarks.  Indeed, my meeting with RStudio head JJ
+Allaire in 2017 came at his suggestion, as did his meeting with Matt
+Doyle, author of the **dplyr** rival package **data.table**.
 
+Hopefully we will be seeing more of these trends in the coming years.
+As I explained in that meeting with JJ, the best form of reconciliation
+on RStudio's part would be to encourage instructors in the Tidy
+community to teach a mixture of Tidy and base-R.  Five years later, 
+in a time of better relations, the advice is more important than ever.
 
+It should be noncontroversial that R learners should be given a choice
+of tools, and that they themselves should decide what is the best one to
+use in any given setting.  And if for example some thus-empowered useR
+feels that
+
+``` r
+   mtcars$hwratio <- mtcars$hp / mtcars$wt
+```
+
+is more convenient
+
+``` r
+   mtcars %>% mutate(hwratio=hp/wt) -> mtcars
+```
+
+so be it.  Rest assured, Tidy is here to stay, and occasional
+"transgressions" should not be viewed as threatening.
