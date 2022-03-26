@@ -674,10 +674,10 @@ function is being called on the previous computation
 behind the scenes.  Again, highly nonintuitive, and NOT stated in the
 online help page.
 
-    The poor student is further baffled by the call to **map_dbl()**.
+The poor student is further baffled by the call to **map_dbl()**.
 Where did that 'r.squared' come from?  Again, Tidy is hiding the
-fact that **summary()** yields an S3 object with component **r.squared**.  
-Yes, sometimes it is helpful to hide the details, but
+fact that **summary()** yields an S3 object with component **r.squared**.  Yes,
+sometimes it is helpful to hide the details, but
 not if it confuses beginners.
 
 The fact is, **R beginners would be much better off writing a loop here,
