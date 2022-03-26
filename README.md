@@ -917,12 +917,11 @@ learners of R to "wrap their heads around" FP.
 # Well, Then, Where Are We Now?
 
 Due to a catchy name, a charismatic developer and highly aggressive
-marketing by the R language's dominant commercial entity, Tidy has
-become a major part of R.  It has brought a "pop culture" to R; one
-prominent Tidy advocate even sells 
-["Tidy
-merchandise"](https://twitter.com/ameliamn/status/1214995483577520131)
-(bags, mugs, shoes).  A popular Tidy Tuesday series has arisen on
+marketing by a dominant commercial entity, Tidy has swept the R world.
+It has even brought a "pop culture" to R; one prominent Tidy advocate
+(and coauthor of the *Educator Perspective* article) even sells ["Tidy
+merchandise"](https://twitter.com/ameliamn/status/1214995483577520131) --
+bags, mugs, and shoes.  A popular Tidy Tuesday series has arisen on
 Twitter.
 
 At times, it has even veered into the realm of cult.  There are many who
