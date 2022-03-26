@@ -770,7 +770,7 @@ he can eat for a lifetime."
 
 # Other Issues
 
-## ggplot2 vs. the Tidyverse
+## ggplot2 vs the Tidyverse
 
 I wrote at the outset of this document that **ggplot2** (GGP2) should
 not be considered part of the Tidyverse.  I'll go into detail below, but
