@@ -1,9 +1,11 @@
-# Teaching R in a Kinder, Gentler Manner: Use Base-R, Not the Tidyverse  
+# Teaching R in a Kinder, Gentler Manner: 
+
+# Use Base-R, Not the Tidyverse  
 
 ## Author:  Prof. Norm Matloff, University of California, Davis
 
 I teach in the Computer Science Dept. at UC Davis, where I formerly was
-Professor of Statistics. I am an award-winning textbook author, 
+a Professor of Statistics. I am an award-winning textbook author, 
 and am also the recipient of university awards for teaching
 and public service. 
 
@@ -16,8 +18,8 @@ GitHub repo, with over 300 GitHub stars.
 
 But it goes far beyond that; I really am intensely interested in how
 people learn, from children to middle-aged adults. Among other things,
-I've taught English As a Second Language, and have taught a short course
-on probability to sixth-graders.
+I've taught English As a Second Language to working-class adults from
+China, and have taught a short course on probability to sixth-graders.
 
 See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
@@ -33,7 +35,7 @@ More details later in this document, in the section
 [ggplot2 versus the Tidyverse](README.md#ggplot2-versus-the-tidyverse).
 
 
-# Kudos to RStudio, But with a Wrong Turn
+# Kudos to RStudio, But They Took a Wrong Turn
 
 I like and admire the RStudio people, including the Tidyverse
 originator, Hadley Wickham, and have always supported them, both
@@ -70,10 +72,11 @@ the opposite.
 
 * Tidy's abstractness is due to the philosophy of functional programming
 (FP). The latter is popular with many sophisticated computer
-scientists, but is difficult even for computer science students, thus
-unsuited for nonprogrammer students of R.  (Actually, base-R has a rich
-set of its own FP functions, but my point applies to them as well; they
-are not appropriate at the start of the R learning process.)
+scientists, but is difficult even for computer science students.  Tidy
+is thus unsuited for nonprogrammer students of R.  (
+Actually, base-R has a rich set of its own FP functions, but my point 
+applies to them as well; they are not appropriate at the start of 
+the R learning process.)
 
 * The FP philosophy replaces straightforward loops with abstract use of
 functions. Since functions are the most difficult aspect for noncoder
@@ -771,7 +774,21 @@ any situation with just a few simple operations.  The old adage applies:
 "Give a man a fish, and he can eat for a day. Teach him how to fish, and
 he can eat for a lifetime."  
 
+Note that the above example uses the "dot notation," used when the
+output of a pipe is fed into a multi-argument function.  Here is the
+[advice](https://magrittr.tidyverse.org/reference/pipe.html) given at
+the official Tidyverse site:
 
+> Placing lhs elsewhere in rhs call
+> 
+> Often you will want lhs to the rhs call at another position than the
+> first. For this purpose you can use the dot (.) as placeholder. For
+> example, y %>% f(x, .) is equivalent to f(x, y) and z %>% f(x, y, arg =
+> .) is equivalent to f(x, y, arg = z).
+
+This phrasing is likely beyond the comprehension of many R beginners.
+Seeing a few examples would help them, of course. but it is yet another
+example of how Tidy causes cognitive overload for learners.
 
 
 # Other Issues
@@ -929,7 +946,7 @@ equate Hadley Wickham with R itself.  Putting the hero worship aside, at
 the very least one can say that many if not most in that huge following
 view R as
 
-R = dplyr + ggplot2 + RStudio + Rmarkdown
+R = dplyr + ggplot2 + RStudio IDE + Rmarkdown
 
 To us longtime R advocates, this is a tragic irony.  On the one hand,
 RStudio is to be congratulated for greatly increasing the worldwide
