@@ -951,7 +951,7 @@ developed to bridge the gap in some specific instances, there obviously
 far too many of this to be realistic.  It is here that the divide
 between the Tidy and base-R worlds may be mostly keenly manifest.
 
-Sadly, that divide has occasionally become person.
+Sadly, that divide has occasionally become personal.
 Some in RStudio itself have Twitter-blocked some of the critics,
 abruptly ending frank but civil conversation.  In my case, one major
 RStudio developer [made quite a show of
