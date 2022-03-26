@@ -26,8 +26,10 @@ See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 Though RStudio presents **ggplot2** as part of the Tidyverse, it
 predates Tidy and does not use the Tidy paradigm.  In my discussion
 here, my references to Tidy do not include **ggplot2**, a package of
-which I am an enthusiastic user and teacher.  More details later in this
-document, the section
+which I am an enthusiastic user and teacher.  Instead, by the
+"Tidyverse," I will mean **dplyr**, **purrr** and pipes, as well
+as Tidy's ban/near ban of loops, the '$', brackets, and so on.  
+More details later in this document, in the section
 [ggplot2 versus the Tidyverse](README.md#ggplot2-versus-the-tidyverse).
 
 
@@ -38,10 +40,10 @@ originator, Hadley Wickham, and have always supported them, both
 privately and
 [publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
 They and I have been interacting from the beginning, when the firm
-consisted of only founder JJ Allaire and ace developer Joe Cheng.  I
+consisted only of founder JJ Allaire and ace developer Joe Cheng.  I
 highly praise the firm to my students, and I use and recommend 
-Hadley's (non-Tidyverse) packages **ggplot2** and **stringr**, and 
-on occasion **devtools** has been an absolute lifesaver for me.
+Hadley's (non-Tidyverse) packages **ggplot2** and **stringr**. 
+On occasion **devtools** has been an absolute lifesaver for me.
 Hadley was the internal reviewer for my book, *The Art of R
 Programming*, and I was one of the internal reviewers for Hadley's
 *Advanced R* (2nd. ed.).
@@ -49,7 +51,9 @@ Programming*, and I was one of the internal reviewers for Hadley's
 Nevertheless, I believe that **RStudio took a wrong turn when it decided
 to promote the Tidyverse** for beginning learners who have no prior
 coding background.  Tidy makes it more difficult for noncoders to learn
-R, and leaves them less able to productively.
+R, and leaves them less able to use it productively.  As someone who is
+passionate about teaching and a longtime R enthusiast, this is quite
+troubling.  Hence the document you are now reading.
 
 
 # Teachability overview
@@ -64,12 +68,12 @@ writeable/readable/debuggable/teachable* code.  The
 former does not imply the latter, and more often implies 
 the opposite.
 
-* Tidy's abstractness is due to philosophy of functional programming
+* Tidy's abstractness is due to the philosophy of functional programming
 (FP). The latter is popular with many sophisticated computer
 scientists, but is difficult even for computer science students, thus
 unsuited for nonprogrammer students of R.  (Actually, base-R has a rich
-set of its own FP functions, but my point is that these are not
-appropriate at the start of the R learning process.)
+set of its own FP functions, but my point applies to them as well; they
+are not appropriate at the start of the R learning process.)
 
 * The FP philosophy replaces straightforward loops with abstract use of
 functions. Since functions are the most difficult aspect for noncoder
@@ -615,7 +619,8 @@ that
 > Occasionally it is necessary to restructure code from a piped to an
 > unpiped form. 
 
-This makes it clear that pipes were simply not designed 
+This makes it clear that pipes (both the Magrittr pipes in Tidy, and
+that later native pipes added to base-R), were simply not designed 
 with debugging in mind.  As the package author says, sometimes the only
 solution is to convert the code to ordinary unpiped form.  (The
 package has an aid for this.)
@@ -781,7 +786,7 @@ Tidy, often the first reaaon they cite for liking Tidy is the ease with
 which one can code nice graphics.  I fully agree that GGP2 is excellent,
 and I use and teach it myself -- but it's not the Tidyverse.  My point,
 then, is they are endorsing Tidy because of something that is not part
-of idy.
+of Tidy.
 
 RStudio is a business.  Its job, rightly so, is to promote its product,
 which in a broad sense is R.  All of RStudio's revenue comes from
