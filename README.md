@@ -1,4 +1,4 @@
-# Teach R in a Kinder, Gentler Manner: Use Base-R, Not the Tidyverse  
+# Teaching R in a Kinder, Gentler Manner: Use Base-R, Not the Tidyverse  
 
 ## Author:  Prof. Norm Matloff, University of California, Davis
 
@@ -28,6 +28,8 @@ predates Tidy and does not use the Tidy paradigm.  In my discussion
 here, my references to Tidy do not include **ggplot2**, a package of
 which I am an enthusiastic user and teacher.  More details later in this
 document.
+[link to GGPs](#other-issues)
+
 
 # Kudos to RStudio, But with a Wrong Turn
 
