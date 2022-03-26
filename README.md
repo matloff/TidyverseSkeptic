@@ -944,12 +944,12 @@ aforementioned keynote address, Roger Peng asked,
 > can, but that's my opinion.
 
 Peng's speculation may be correct if one views R strictly as a
-programming language.  But R is a *statistical tool*.
-As explained earlier in this document, Tidy is at odds with the
-most R statistical packages.  Though packages like **broom** might be
-developed to bridge the gap in some specific instances, there obviously
-far too many of this to be realistic.  It is here that the divide
-between the Tidy and base-R worlds may be mostly keenly manifest.
+programming language.  But R is a *statistical tool*.  As explained
+earlier in this document, Tidy is at odds with the most R statistical
+packages.  Though packages like **broom** might be developed to bridge
+the gap in some specific instances, there obviously are far too many
+packages for this to be realistic.  It is here that the divide between
+the Tidy and base-R worlds may be mostly keenly manifest.
 
 Sadly, that divide has occasionally become personal.
 Some in RStudio itself have Twitter-blocked some of the critics,
