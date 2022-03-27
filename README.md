@@ -860,10 +860,9 @@ listing of the chronology clarifies the matter:
   would base it on pipes.)  It does not use FP.
   
 Again, GGP2 is a wonderful package.  RStudio has the right to define the
-Tidyverse however they feel appropriate.  
-But RStudio's naming freedom does not justify burdening
-and handicapping R learners with Tidy, i.e. FP, **dplyr**, **purrr** and
-so on.
+Tidyverse however they feel appropriate.  But RStudio's naming freedom 
+does not justify burdening and handicapping R learners with Tidy, 
+i.e. FP, **dplyr**, **purrr** and so on.
 
 ## Tidyverse "testimonials"
 
