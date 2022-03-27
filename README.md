@@ -715,7 +715,7 @@ But the Tidy promoters don't want learners to use loops.
 So the instructor using Tidy simply would avoid giving students such an
 example, whereas it would be easy for the base-R instructor to do so.
 
-Granted, loops can use their clarity if they are nested.  This can be
+Granted, loops can lose their clarity if they are nested.  This can be
 ameliorated by using good comment lines and indenting, but it's fine to
 use functions---not in FP format, but simply as calls.  For learners,
 Use the format
