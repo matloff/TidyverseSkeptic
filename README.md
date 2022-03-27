@@ -387,9 +387,10 @@ What is also intriguing about the above quote on "naughty kids" is its
 seeming implication that such a student's use of base-R would be "taking
 the easy way out." But doesn't that mean base-R is easier?
 
-Finally, regarding the "purity" view in the article, advocating mixing
-Tidy and base-R in teaching, I did suggest that to RStudio founder and
-head JJ Allaire, but he did not like the idea either.
+Finally, regarding the "purity" view in the article, opposed to mixing
+Tidy and base-R in teaching:  I did suggest a mixed approach to RStudio
+founder and head JJ Allaire when we met in 2017, but he did not like the
+idea either.
 
 ## Case study:  Tidy as an obstacle to R statistical methods
 
