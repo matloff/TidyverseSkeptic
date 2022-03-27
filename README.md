@@ -73,10 +73,9 @@ the opposite.
 * Tidy's abstractness is due to the philosophy of functional programming
 (FP). The latter is popular with many sophisticated computer
 scientists, but is difficult even for computer science students.  Tidy
-is thus unsuited for nonprogrammer students of R.  (
-Actually, base-R has a rich set of its own FP functions, but my point 
-applies to them as well; they are not appropriate at the start of 
-the R learning process.)
+is thus unsuited as the initial basis of instruction for 
+nonprogrammer students of R.  FP should be limited and brought in
+gradually.  The same statement applies to base-R's own FP functions.
 
 * The FP philosophy replaces straightforward loops with abstract use of
 functions. Since functions are the most difficult aspect for noncoder
