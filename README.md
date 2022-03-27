@@ -25,14 +25,14 @@ See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
 # Note on ggplot2
 
-Though RStudio presents **ggplot2** as part of the Tidyverse, it
-predates Tidy and does not use the Tidy paradigm.  In my discussion
-here, my references to Tidy do not include **ggplot2**, a package of
-which I am an enthusiastic user and teacher.  Instead, by the
-"Tidyverse," I will mean **dplyr**, **purrr** and pipes, as well
-as Tidy's ban/near ban of loops, the '$', brackets, and so on.  
-More details later in this document, in the section
-[ggplot2 versus the Tidyverse](README.md#ggplot2-versus-the-tidyverse).
+Though RStudio presents **ggplot2** as part of the Tidyverse, that
+package predates Tidy and does not use the Tidy paradigm.  In my
+discussion here, my references to Tidy do not include **ggplot2**, a
+package of which I am an enthusiastic user and teacher.  Instead, by the
+"Tidyverse," I will mean **dplyr**, **purrr** and pipes, as well as
+Tidy's ban/near teaching ban of loops, the '$', brackets, and so on.  More
+details later in this document, in the section [ggplot2 versus the
+Tidyverse](README.md#ggplot2-versus-the-tidyverse).
 
 
 # Kudos to RStudio, But They Took a Wrong Turn
@@ -123,7 +123,7 @@ crucial beginning stage, keep it simple, little or no fancy stuff.
 ## Case study: delayed learning (I)
 
 Let's look at  my online R tutorial,
-[**fasteR**](http://github.com/matloff/fasteR)).  Consider, for
+[**fasteR**](http://github.com/matloff/fasteR).  Consider, for
 instance, an innocuous line like 
 
 ``` r
@@ -134,8 +134,8 @@ i.e. drawing a simple histogram of R's built-in Nile River dataset.
 
 This is in the very first lesson in my tutorial.  Easy!  By contrast,
 the Tidy crowd forbids use of base-R plots, insisting on using
-**ggplot2**.  I also prefer **ggplot2** to base-R graphics (though as
-explained below, it should not be considered part of the Tidyverse), but
+**ggplot2**.  I also prefer **ggplot2** to base-R graphics (though again
+it should not be considered part of the Tidyverse), but
 here we have a much more important goal--to give students an actual
 useful application of R right from the start.
 
@@ -161,7 +161,7 @@ Also in my very first lesson, I do
 printing the mean Nile River flow during a certain range of years.
 Incredibly, not only would this NOT be in a first lesson with Tidy, the
 students in a Tidy course may actually *never* learn how to do this.
-Typical Tidiers don't consider vectors very important for learners, let
+Typical Tidyers don't consider vectors very important for learners, let
 alone vector subscipts. 
 
 As a concrete example of this Tidy point of view, consider the book
@@ -217,7 +217,7 @@ However, for some reason Tidy advocates deeply hate this function.
 Indeed, for many of them, **tapply()** epitomizes what's wrong with
 base-R.  
 
-Indeed, when the Tidyverse was first developed, Prof. Rogern Peng gave a
+Indeed, when the Tidyverse was first developed, Prof. Roger Peng gave a
 keynote talk, *Teaching R to New Users--from tapply to the Tidyverse*,
 also presented as [a Web
 page](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/).
@@ -264,8 +264,8 @@ certainly not the case that the Tidy version is *easier* to learn.
 
 Tidyers believe that two of the most basic operations in R, the \$ sign
 and bracketing, are harmful.  For instance, consider an example in
-[an article by Tidy advocates](https://arxiv.org/abs/2108.03510)
-by Tidy advocates, *An Educator's Perspective of the Tidyverse.* 
+[an article by Tidy advocates](https://arxiv.org/abs/2108.03510),
+*An Educator's Perspective of the Tidyverse.* 
 
 The dataset is loan data available in the **openintro** package.  Here
 is the Tidy code to preprocess the data:
@@ -314,7 +314,7 @@ following base-R coe:
 
 ``` r
 x <- c(5,12,13,1)
-   x[x > 8]
+x[x > 8]
 ```
 
 Probably the simplest way to do this in Tidy would be:
@@ -323,8 +323,9 @@ Probably the simplest way to do this in Tidy would be:
 data.frame(x=x) %>% filter(x > 8)
 ```
 
-That's a lot of machinery to implement one little vector operation, one
-that is of course quite common.
+That's a lot of machinery to implement one little vector operation --
+conversion to a data frame, pipes, **filter()** -- an
+operation that is of course quite common.
 
 ## Case study:  an overly rigid philosophy
 
@@ -333,7 +334,7 @@ supplement it.
 
 One of the most troubling aspects of the Tidy movement is their rigidity
 and insistence on "loyalty."  For instance, the above-cited *Educator's
-Perspective* article
+Perspective* article states,
 
 > ...one thing we have learned is that when we teach the tidyverse
 > consistently, the presence of base R patterns (e.g., using square
@@ -359,8 +360,8 @@ But in Tidy:
    mtcars %>% mutate(hwratio=hp/wt) -> mtcars
 ```
 
-Still not terribly complex, but we're invoking some machinery -- piping,
-a function call, and reassigning to the original data frame.
+Still not terribly complex, but again  we're invoking some machinery --
+piping, a function call, and reassigning to the original data frame.
 
 Why would we deprive R learners of very simple, direct and effective
 tools like this?  Just for the sake of Tidy "purity," implicit in the above
@@ -890,7 +891,7 @@ opinion demonstrates the problem with Tidy, it's that
 Tidy advocates want R beginners to avoid loops.  Indeed, those
 advocates may not even teach loops at all in a basic course.
 
-The Tidiers want R beginners to use functional programming (FP) instead
+The Tidyers want R beginners to use functional programming (FP) instead
 of loops.  But even they agree that the concept of functions is one of
 the hardest for beginners to learn.  **Thus it makes no sense to force
 beginners to use a the tough concept of FP in lieu of the much more
