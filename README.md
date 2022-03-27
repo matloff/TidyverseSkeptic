@@ -483,13 +483,13 @@ summarize(mean(mpg))
    group.  Then things get really bad for Tidy:
 
 ``` r
-   > mtcars$cyl <- as.factor(mtcars$cyl)
+> mtcars$cyl <- as.factor(mtcars$cyl)
 > mtcars$gear <- as.factor(mtcars$gear)
-   > mtcars %>% 
+> mtcars %>% 
    group_by(cyl,gear,.drop=FALSE) %>% 
-summarize(mean(mpg))
-# A tibble: 9 x 3
-# Groups:   cyl [3]
+   summarize(mean(mpg))
+A tibble: 9 x 3
+Groups:   cyl [3]
    cyl   gear  `mean(mpg)`
    <fct> <fct>       <dbl>
    1 4     3            21.5
@@ -860,9 +860,8 @@ listing of the chronology clarifies the matter:
   would base it on pipes.)  It does not use FP.
   
 Again, GGP2 is a wonderful package.  RStudio has the right to define the
-Tidyverse however they feel appropriate.  (It was originally called the
-Hadleyverse, as it was a collection of Hadley's software projects, but
-he demurred.) But RStudio's naming freedom does not justify burdening
+Tidyverse however they feel appropriate.  
+But RStudio's naming freedom does not justify burdening
 and handicapping R learners with Tidy, i.e. FP, **dplyr**, **purrr** and
 so on.
 
