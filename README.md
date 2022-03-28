@@ -560,9 +560,9 @@ line of a book, with line and chapter number.  Here are a couple of
 typical rows in the desired result:
 
 ``` r
-   "children, the old Gentleman's days were comfort… Sense & Sens…    25       1
+"children, the old Gentleman's days were comfort… Sense & Sens…    25       1
 ...
-   "As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
+"As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
 ``` 
 
 Here is the solution given by the authors:
@@ -971,38 +971,37 @@ the gap in some specific instances, there obviously are far too many
 packages for this to be realistic.  It is here that the divide between
 the Tidy and base-R worlds may be mostly keenly manifest.
 
-Sadly, that divide has occasionally become personal.
-Some in RStudio itself have Twitter-blocked some of the critics,
-abruptly ending frank but civil conversation.  In my case, one major
-RStudio developer [made quite a show of
+Sadly, that divide has occasionally become personal.  Some in RStudio
+and their allies sharply criticized the base-R-favoring organizers of
+the R/Finance Conference in 2018, in my view quite unfairly so.  Some in
+RStudio itself have Twitter-blocked some of the critics, abruptly ending
+frank but civil conversation.  In my case, one major RStudio developer
+[made quite a show of
 it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
 tweeting a screen shot in which "You have blocked this user" is repeated
-dozens of times.  Given RStudio's considering itself a leader in the R
-community, such childish, spiteful behavior is improper and
-counterproductive.  It is also inconsistent with RStudio's
-status as a Public Benefit Corporation, which it
-[annouced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
+dozens of times.  There was also tension between RStudio and Matt Dowle,
+author of **data.table**, a technically superior competitor to
+**dplyr**.
+
 
 But the good news is that both sides have been making attempts at
 reconciliation.  Especially notable is that the R Core Group, a body
 that controls the development of base-R, recently added a native pipe to
 the language.  I doubt many in that group actually use it, but it is an
-impressive olive branch.  RStudio, including Hadley, has also made various
-conciliatory public remarks.  Indeed, my meeting with RStudio CEO JJ
-Allaire in 2017 came at JJ's suggestion. 
+impressive olive branch.  
 
-Around that time, JJ also met with Matt Dowle, author of the **dplyr**
-rival package **data.table**.  In 2019, RStudio stopped viewing the
-package as a rival, and announced the release of **dtplyr**, a
-Tidy-syntax front end to **dplyr**.  Since **data.table** is much faster
-on large datasets than **dplyr**, this was a win-win for the entire R
-community.
+RStudio, including Hadley, has also made various conciliatory public
+remarks.  Indeed, my meeting with RStudio CEO JJ Allaire in 2017 came at
+JJ's suggestion.  Around that time, JJ also met with Matt Dowle.  In
+2019, RStudio stopped viewing **data.table** as a rival, and announced
+the release of **dtplyr**, a Tidy-syntax front end to **dplyr**.  Since
+**data.table** is much faster on large datasets than **dplyr**, this was
+a win-win for the entire R community.
 
 Hopefully we will be seeing more of these trends in the coming years.
 As I explained in that meeting with JJ, the best form of reconciliation
 on RStudio's part would be to encourage instructors in the Tidy
-community to teach a mixture of Tidy and base-R.  Five years later, in a
-time of better relations, that advice is more important than ever.
+community to teach a mixture of Tidy and base-R.  
 
 It should be noncontroversial that R learners should be given a choice
 of tools, and that they themselves should decide what is the best one to
@@ -1023,6 +1022,12 @@ so be it.  There will be other cases in which the graduates of mixed
 instruction find the Tidy solution more appealing.  Rest assured, Tidy
 is here to stay.
 
+Five years have passed since JJ met with Matt and me, and not only are
+the relations between the two sides much better, RStudio has changed
+status to a Public Benefit Corporation, which it
+[annouced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
+
 It is my fervent hope that this essay makes a good case for a mixed
-approach to teaching R, and that RStudio will agree.
+approach to teaching R, and that RStudio will agree, and recommend it to
+the Tidy teaching community.
 
