@@ -389,7 +389,7 @@ the easy way out." But doesn't that mean base-R is easier?
 
 Finally, regarding the "purity" view in the article, opposed to mixing
 Tidy and base-R in teaching:  I did suggest a mixed approach to RStudio
-founder and head JJ Allaire when we met in 2017, but he did not like the
+founder and CEO JJ Allaire when we met in 2017, but he did not like the
 idea either.
 
 ## Case study:  Tidy as an obstacle to R statistical methods
@@ -977,17 +977,19 @@ it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
 tweeting a screen shot in which "You have blocked this user" is repeated
 dozens of times.  Given RStudio's considering itself a leader in the R
 community, such childish, spiteful behavior is improper and
-counterproductive.
+counterproductive.  It is also with inconsistent with RStudio's
+status as a Public Benefit Corporation, which it
+[annouced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
 
 But the good news is that both sides have been making attempts at
 reconciliation.  Especially notable is that the R Core Group, a body
 that controls the development of base-R, recently added a native pipe to
 the language.  I doubt many in that group actually use it, but it is an
 impressive olive branch.  RStudio, including Hadley, has also made various
-conciliatory public remarks.  Indeed, my meeting with RStudio head JJ
-Allaire in 2017 came at his suggestion. 
+conciliatory public remarks.  Indeed, my meeting with RStudio CEO JJ
+Allaire in 2017 came at JJ's suggestion. 
 
-At that time, JJ also met with Matt Dowle, author of the **dplyr**
+Around that time, JJ also met with Matt Dowle, author of the **dplyr**
 rival package **data.table**.  In 2019, RStudio stopped viewing the
 package as a rival, and announced the release of **dtplyr**, a
 Tidy-syntax front end to **dplyr**.  Since **data.table** is much faster
@@ -997,8 +999,8 @@ community.
 Hopefully we will be seeing more of these trends in the coming years.
 As I explained in that meeting with JJ, the best form of reconciliation
 on RStudio's part would be to encourage instructors in the Tidy
-community to teach a mixture of Tidy and base-R.  Five years later, 
-in a time of better relations, the advice is more important than ever.
+community to teach a mixture of Tidy and base-R.  Five years later, in a
+time of better relations, that advice is more important than ever.
 
 It should be noncontroversial that R learners should be given a choice
 of tools, and that they themselves should decide what is the best one to
@@ -1017,3 +1019,7 @@ is more convenient
 
 so be it.  Rest assured, Tidy is here to stay, and occasional
 "transgressions" should not be viewed as threatening.
+
+It is my fervent hope that this essay makes a good case for a mixed
+approach to teaching R, and that RStudio will agree.
+
