@@ -973,10 +973,12 @@ the Tidy and base-R worlds may be mostly keenly manifest.
 
 Sadly, that divide has occasionally become personal.  Some in RStudio
 and their allies sharply criticized the base-R-favoring organizers of
-the R/Finance Conference in 2018, in my view quite unfairly so.  Some in
-RStudio itself have Twitter-blocked some of the critics, abruptly ending
-frank but civil conversation.  In my case, one major RStudio developer
-[made quite a show of
+the R/Finance Conference in 2018, in my view quite 
+[unfairly
+so](https://matloff.wordpress.com/2019/05/18/r-finance-1-year-later/).  
+Some in RStudio itself have Twitter-blocked some of the critics,
+abruptly ending frank but civil conversation.  In my case, one major
+RStudio developer [made quite a show of
 it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
 tweeting a screen shot in which "You have blocked this user" is repeated
 dozens of times.  There was also tension between RStudio and Matt Dowle,
@@ -1025,7 +1027,7 @@ is here to stay.
 Five years have passed since JJ met with Matt and me, and not only are
 the relations between the two sides much better, RStudio has changed
 status to a Public Benefit Corporation, which it
-[annouced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
+[announced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
 
 It is my fervent hope that this essay makes a good case for a mixed
 approach to teaching R, and that RStudio will agree, and recommend it to
