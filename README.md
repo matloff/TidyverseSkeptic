@@ -932,16 +932,18 @@ but yes it is a powerful tool, worth the investment of time -- *for the
 experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" FP.
 
-# Well, Then, Where Are We Now?
+# Where Are We Now, and Where Should We Be Going?
 
 Due to a catchy name, a charismatic developer and highly aggressive
 marketing by a dominant commercial entity, Tidy has swept the R world.
-It has even brought a "pop culture" to R; one prominent Tidy advocate
+
+It has even brought a "pop culture" to R.  One prominent Tidy advocate
 (and coauthor of the *Educator Perspective* article) even sells ["Tidy
 merchandise"](https://twitter.com/ameliamn/status/1214995483577520131)
--- bags, mugs, and shoes.  A popular Tidy Tuesday series has arisen on
-Twitter.  At times, it has even veered into the realm of cult.  There
-are many who equate Hadley Wickham with R itself.  
+-- bags, mugs, and shoes.  RStudio sells Tidy stickers.  A popular Tidy
+Tuesday series has arisen on Twitter.  At times, it has even veered into
+the realm of cult.  There are many who equate Hadley Wickham with R
+itself.  What a difference from the staid R community of yore!
 
 Putting the hero worship aside, at the very least one can say that many
 if not most in that huge Tidy following view R as
@@ -977,7 +979,7 @@ it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
 tweeting a screen shot in which "You have blocked this user" is repeated
 dozens of times.  Given RStudio's considering itself a leader in the R
 community, such childish, spiteful behavior is improper and
-counterproductive.  It is also with inconsistent with RStudio's
+counterproductive.  It is also inconsistent with RStudio's
 status as a Public Benefit Corporation, which it
 [annouced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
 
@@ -1008,17 +1010,18 @@ use in any given setting.  And if for example some thus-empowered useR
 feels that
 
 ``` r
-   mtcars$hwratio <- mtcars$hp / mtcars$wt
+mtcars$hwratio <- mtcars$hp / mtcars$wt
 ```
 
-is more convenient
+is more convenient than
 
 ``` r
-   mtcars %>% mutate(hwratio=hp/wt) -> mtcars
+mtcars %>% mutate(hwratio=hp/wt) -> mtcars
 ```
 
-so be it.  Rest assured, Tidy is here to stay, and occasional
-"transgressions" should not be viewed as threatening.
+so be it.  There will be other cases in which the graduates of mixed
+instruction find the Tidy solution more appealing.  Rest assured, Tidy
+is here to stay.
 
 It is my fervent hope that this essay makes a good case for a mixed
 approach to teaching R, and that RStudio will agree.
