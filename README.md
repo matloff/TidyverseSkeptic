@@ -934,8 +934,9 @@ learners of R to "wrap their heads around" FP.
 
 # Where Are We Now, and Where Should We Be Going?
 
-Due to a catchy name, a charismatic developer and highly aggressive
-marketing by a dominant commercial entity, Tidy has swept the R world.
+Due to a catchy name, a charismatic developer, the Bandwagon Effect, and
+highly aggressive marketing by a dominant commercial entity, Tidy has
+swept the R world.
 
 It has even brought a "pop culture" to R.  One prominent Tidy advocate
 (and coauthor of the *Educator Perspective* article) even sells ["Tidy
@@ -946,7 +947,7 @@ the realm of cult.  There are many who equate Hadley Wickham with R
 itself.  What a difference from the staid R community of yore!
 
 Putting the hero worship aside, at the very least one can say that many
-if not most in that huge Tidy following view R as
+if not most in that huge Tidy following view R to consist mainly of
 
 R = dplyr + ggplot2 + RStudio IDE + Rmarkdown
 
@@ -963,8 +964,9 @@ aforementioned keynote address, Roger Peng asked,
 > community can sustain multiple ways of programming.  I think that it
 > can, but that's my opinion.
 
-Peng's speculation may be correct if one views R strictly as a
-programming language.  But R is a *statistical tool*.  As explained
+I am indeed worried that R will split into two different "dialects.
+Though Peng's speculation may be correct if one views R strictly as a
+programming language, R is a *statistical tool*.  As explained
 earlier in this document, Tidy is at odds with the most R statistical
 packages.  Though packages like **broom** might be developed to bridge
 the gap in some specific instances, there obviously are far too many
