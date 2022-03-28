@@ -973,8 +973,8 @@ the Tidy and base-R worlds may be mostly keenly manifest.
 
 Sadly, that divide has occasionally become personal.  Some in RStudio
 and their allies sharply criticized the base-R-favoring organizers of
-the R/Finance Conference in 2018, in my view quite [unfairly so]
-(https://matloff.wordpress.com/2019/05/18/r-finance-1-year-later/).
+the R/Finance Conference in 2018, in my view quite [unfairly 
+so](https://matloff.wordpress.com/2019/05/18/r-finance-1-year-later/).
 Some in RStudio itself have Twitter-blocked some of the critics,
 abruptly ending frank but civil conversation.  In my case, one major
 RStudio developer [made quite a show of
