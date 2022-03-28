@@ -394,42 +394,44 @@ idea either.
 
 ## Case study:  Tidy as an obstacle to R statistical methods
 
-   In the last section, we discussed the Tidyers' opposition to the '$' and
-   brackets operations.  This is an obvious impediment to R's statistical
-   operations. 
+In the last section, we discussed the Tidyers' opposition to teaching
+the '$' and brackets operations.  This is an obvious impediment to using R's
+statistical operations.  
 
-   Statistics in R is mainly are vector- and matrix-oriented.  (A matrix 
-         is a special case of a vector.)  Thus we immediately see a problem with
-   Tidy.
+Most of the R statistical functions return S3 objects, i.e. lists,
+accessible via '$'.  Similarly, statistical operations in R are mainly
+vector- and matrix-oriented.  (A matrix is a special case of a vector.)
+I would find it difficult to teach a course in linear regression,
+principal components, log-linear models and so on to students who did
+not have solid prior experience with '$' and vectors.
 
-   Equally important, most of the R statistical functions return S3 object,
-   i.e. lists, accessible via '$'.  I would find it difficult to teach a
-   course in linear regression, principal components, log-linear models and
-   so on to students who did not have solid prior experience with '$'.
+Thus we immediately see a problem with Tidy:  It creates a barrier to
+use of R as a statistical tool by Tidy "graduates."
 
-   [Here](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/) is
-   an example of bridging the gap between Tidy and statistics, by Claus
-   Wilke, who begins by reporting, "I’ve finally figured out how to perform a PCA using the tidyverse."  The answer is to use the **broom** package.
+[Here](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/) is
+an example of bridging the gap between Tidy and statistics, by Claus
+Wilke, who begins by reporting, "I’ve finally figured out how to perform
+a PCA using the tidyverse."  His word "finally" shows that there is
+indeed a gap.  His answer is to use the **broom** package.  As it was,
+even that package did not quite work, he said, though the development
+version did.  And what about the thousands of CRAN packages that return
+S3 objects?  Is **broom** going to provide a Tidy interface to each one?
+That of course would be unrealistic.
 
-   As it was, even that package did not quite work, he said, though the
-   development version did.  And what about the thousands of CRAN packages
-   that return S3 objects?  Is **broom** going to provide a Tidy interface
-   to each one?  That of course would be unrealistic.
-
-   A fundamental problem, from my point of view, is that the RStudio people
-   are not primarily statisticians.  Their focus is on developing software,
-   primarily for data wrangling and graphics.  They do this quite well, but
-   they are not the types who sit around debating, for example, the
-   propriety of p-values.  Statistics is not foremost on their radar
-   screens, and this sad gap between Tidy and statistics is a result.
+A fundamental problem, from my point of view, is that the RStudio people
+are not primarily statisticians.  Their focus is on developing software,
+primarily for data wrangling and graphics.  They do this quite well, but
+they are not the types who sit around debating, for example, the
+propriety of p-values.  Statistics is not foremost on their radar
+screens, and this sad gap between Tidy and statistics is a result.
 
 
 ## Case study:  tapply() (II)
 
-   Besides *learnability*, another goal for noncoder R learners is
-   *usability.*  In this light, it's instructive to look at what happens
-   when in the built-in **mtcars** dataset one groups by two aspects,
-   **cyl** and **gear**, rather than just say **cyl**:
+Besides *learnability*, another goal for noncoder R learners is
+*usability.*  In this light, it's instructive to look at what happens
+when in the built-in **mtcars** dataset one groups by two aspects,
+**cyl** and **gear**, rather than just say **cyl**:
 
 ``` r
    > mtcars %>%
@@ -459,28 +461,28 @@ summarize(mean(mpg))
    8 15.05     NA 15.4
 ```
 
-   With **tapply()**, students do have to be told that in the case of more
-   than one grouping variable, they need to surround the variables with
-   'list'.  Again, once they are given examples, students have no trouble
-   with this.
+With **tapply()**, students do have to be told that in the case of more
+than one grouping variable, they need to surround the variables with
+'list'.  Again, once they are given examples, students have no trouble
+with this.
 
-   But look at the form of the output:  The Tidy version outputs a tibble,
-   rather hard to read, while **tapply()** outputs an R matrix, printed out
-   as a two-way table.  The latter form is exactly what many students need
-   in their applications, e.g.  social science research.  
+But look at the form of the output:  The Tidy version outputs a tibble,
+rather hard to read, while **tapply()** outputs an R matrix, printed out
+as a two-way table.  The latter form is exactly what many students need
+in their applications, e.g. social science research.  
 
-   In searching through the hundreds of functions in **dplyr**, it is not
-   clear to me which one, if any, can convert that Tidy output to the very
-   informative tabular view that **tapply()** provides.  If there is one,
-   the fact that one is not easily identifiable illustrates my point above
-   that Tidy is actually very bloated, not suitable for beginners.
+In searching through the hundreds of functions in **dplyr**, it is not
+clear to me which one, if any, can convert that Tidy output to the very
+informative tabular view that **tapply()** provides.  If there is one,
+the fact that one is not easily identifiable illustrates my point above
+that Tidy is actually very bloated, not suitable for beginners.
 
-   Moreover, the **tapply()** output is more informative in a second sense,
-   letting the user know that there were no 8-cyliner, 4-speed cars, again
-   the kind of thing that is quite meaningful in many applications.  
+Moreover, the **tapply()** output is more informative in a second sense,
+letting the user know that there were no 8-cyliner, 4-speed cars, again
+the kind of thing that is quite meaningful in many applications.  
 
-   Actually, the Tidy version can be modified in order to notice that empty
-   group.  Then things get really bad for Tidy:
+Actually, the Tidy version can be modified in order to notice that empty
+group.  Then things get really bad for Tidy:
 
 ``` r
 > mtcars$cyl <- as.factor(mtcars$cyl)
@@ -503,19 +505,19 @@ Groups:   cyl [3]
    9 8     5            15.4
 ```
 
-   There's trouble for R beginners right away, in the need to convert to
-   factors, something not mentioned in the Tidy documentation, and which
-   would further complicate things for R beginners even if it were
-   documented.  Furthermore, the instructor would need to explain the
-   **drop=FALSE**
+There's trouble for R beginners right away, in the need to convert to
+factors, something not mentioned in the Tidy documentation, and which
+would further complicate things for R beginners even if it were
+documented.  Furthermore, the instructor would need to explain the
+**.drop=FALSE**
 
-   This illustrates why one Tidy advocate dismissed my example of grouping
-   by two factors as "advanced," not suitable for a discussion of how R
-   beginners learn.  It IS advanced for Tidy learners.  But it's clear that
-   for base-R learners, it's not advanced at all.  Indeed, examples like
-   this are standard fare in base-R courses.
+This illustrates why one Tidy advocate dismissed my example of grouping
+by two factors as "advanced," not suitable for a discussion of how R
+beginners learn.  It IS advanced for Tidy learners.  But it's clear that
+for base-R learners, it's not advanced at all.  Indeed, examples like
+this are standard fare in base-R courses.
 
-   I'd give base-R the clear win for teaching purposes here. 
+I'd give base-R the clear win for teaching purposes here. 
 
 ## Case study:  Tidy obstacles to debugging
 
@@ -936,14 +938,13 @@ Due to a catchy name, a charismatic developer and highly aggressive
 marketing by a dominant commercial entity, Tidy has swept the R world.
 It has even brought a "pop culture" to R; one prominent Tidy advocate
 (and coauthor of the *Educator Perspective* article) even sells ["Tidy
-merchandise"](https://twitter.com/ameliamn/status/1214995483577520131) --
-bags, mugs, and shoes.  A popular Tidy Tuesday series has arisen on
-Twitter.
+merchandise"](https://twitter.com/ameliamn/status/1214995483577520131)
+-- bags, mugs, and shoes.  A popular Tidy Tuesday series has arisen on
+Twitter.  At times, it has even veered into the realm of cult.  There
+are many who equate Hadley Wickham with R itself.  
 
-At times, it has even veered into the realm of cult.  There are many who
-equate Hadley Wickham with R itself.  Putting the hero worship aside, at
-the very least one can say that many if not most in that huge following
-view R as
+Putting the hero worship aside, at the very least one can say that many
+if not most in that huge Tidy following view R as
 
 R = dplyr + ggplot2 + RStudio IDE + Rmarkdown
 
@@ -984,8 +985,14 @@ that controls the development of base-R, recently added a native pipe to
 the language.  I doubt many in that group actually use it, but it is an
 impressive olive branch.  RStudio, including Hadley, has also made various
 conciliatory public remarks.  Indeed, my meeting with RStudio head JJ
-Allaire in 2017 came at his suggestion, as did his meeting with Matt
-Doyle, author of the **dplyr** rival package **data.table**.
+Allaire in 2017 came at his suggestion. 
+
+At that time, JJ also met with Matt Dowle, author of the **dplyr**
+rival package **data.table**.  In 2019, RStudio stopped viewing the
+package as a rival, and announced the release of **dtplyr**, a
+Tidy-syntax front end to **dplyr**.  Since **data.table** is much faster
+on large datasets than **dplyr**, this was a win-win for the entire R
+community.
 
 Hopefully we will be seeing more of these trends in the coming years.
 As I explained in that meeting with JJ, the best form of reconciliation
