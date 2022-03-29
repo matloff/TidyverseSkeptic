@@ -286,7 +286,7 @@ In base-R:
 
 loans <- openintro::loans_full_schema
 loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
-loans <- subset(loans,annual_income >= 10)
+subset(loans,annual_income >= 10)
 
 ```
 
@@ -307,6 +307,18 @@ The simple solution to this "problem" is to explain it to students, and
 have them watch for it.  It would be impossible to have students avoid
 all possible errors, and again, this one is easy to remedy with proper
 advance warning.
+
+And the argument "Coding style X often results in errors by beginners,
+so we should replace X by other machinery" of course works both ways.  A 
+common error among Tidy beginners is failure to reassign the result of
+something like **mutate()**.  The above argument would imply that the
+base-R approach of simply tacking on the new variable to the given data
+frame is superior, as we did in the code above,
+
+``` r
+loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
+
+```
 
 As to brackets, Tidy essentially ignores vectors.  Consider the
 following base-R coe:
@@ -387,10 +399,94 @@ What is also intriguing about the above quote on "naughty kids" is its
 seeming implication that such a student's use of base-R would be "taking
 the easy way out." But doesn't that mean base-R is easier?
 
-Finally, regarding the "purity" view in the article, opposed to mixing
+The Tidyers oppose teaching loops to beginners, on the grounds that loop
+coding is error-prone.  That is open to debate, but the point is that
+loops are easier to debug; the sophisticated machinery that Tidyers want
+in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
+the Tidyers' "cure is worse than the disease.".
+
+## Case study:  it doesn't have to be Either Or
+
+Regarding the "purity" view in the article, opposed to mixing
 Tidy and base-R in teaching:  I did suggest a mixed approach to RStudio
 founder and CEO JJ Allaire when we met in 2017, but he did not like the
-idea either.
+idea either, on the grounds that RStudio should not be telling people
+how to teach.  But of course, that is exactly what RStudio has been
+doing in promoting Tidy.
+
+An overly rigid approach simply doesn't make sense.  Why deprive R
+learners of simple that would ease their burden -- whether from Tidy or
+base-R?
+
+One of the authors of the *Educator's Perspective* article has a nice
+[presentation](https://github.com/mine-cetinkaya-rundel/teach-ds-to-new-user) 
+on teaching data science.  One of the examples is on recoding variables:
+
+base-R:
+
+``` r
+mtcars$transmission <-
+ ifelse(mtcars$am == 0, "automatic", "manual")
+```
+
+Tidy:
+
+``` r
+mtcars <- mtcars %>%
+ mutate(
+    transmission =
+    case_when(
+       am == 0 ~ "automatic",
+       am == 1 ~ "manual"
+    )
+ )
+```
+
+Her point seems to be that although base-R does well here, if recoding
+**gear** rather than **am**, the base-R method is cumbersome.  It is
+indeed -- but due to her choosing to use nested calls to **ifelse()**.
+
+
+Tidy:
+
+``` r
+mtcars <- mtcars %>%
+ mutate(
+   gear_char =
+   case_when(
+     gear == 3 ~ "three",
+     gear == 4 ~ "four",
+     gear == 5 ~ "five"
+   )
+ )
+```
+
+base R
+
+``` r
+mtcars$gear_char <-
+ ifelse(mtcars$gear == 3,
+   "three",
+   ifelse(mtcars$gear == 4,
+   "four",
+   "five")
+ )
+```
+
+But a mixed base-R/Tidy approach is simpler and more intuitive than
+either her base-R or Tidy versions::
+
+``` r
+mtcars$gear_char <- 
+   case_when(
+      mtcars$gear == 3 ~ 'three',
+      mtcars$gear == 4 ~ 'four',
+      mtcars$gear == 5 ~ 'five')
+
+```
+
+
+
 
 ## Case study:  Tidy as an obstacle to R statistical methods
 
@@ -957,6 +1053,9 @@ count of R users.  But the tragedy is that those users tend to be
 ill-equipped to actually *use* R productively, compared to "graduates"
 of standard base-R courses.
 
+The danger of being wrapped up in hoopla, of course, is that one can
+lose sight of reality.  In my view, this is what has happened with Tidy.
+
 Equally important is the impact on the R language itself.  In his
 aforementioned keynote address, Roger Peng asked,
 
@@ -1025,12 +1124,15 @@ so be it.  There will be other cases in which the graduates of mixed
 instruction find the Tidy solution more appealing.  Rest assured, Tidy
 is here to stay.
 
-Five years have passed since JJ met with Matt and me, and not only are
-the relations between the two sides much better, RStudio has changed
-status to a Public Benefit Corporation, which it
+One very important change that has occurred in the five years since JJ
+asked to meet with Matt and me, is that RStudio changed status to a
+Public Benefit Corporation, which it
 [announced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
+As such, it should move beyond relying on testimonials, and take a good,
+hard, dispassionate look at what is best for R learners.
 
-It is my fervent hope that this essay makes a good case for a mixed
-approach to teaching R, and that RStudio will agree, and recommend it to
-the Tidy teaching community.
+I thus renew the suggestion I made to JJ in 2017, and **ask that
+RStudio recommend to the Tidy teaching community that they teach a
+mixture of Tidy and base-R.**
+
 
