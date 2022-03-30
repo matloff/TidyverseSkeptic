@@ -321,11 +321,14 @@ loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
 ```
 
 As to brackets, Tidy essentially ignores vectors.  Consider the
-following base-R coe:
+following base-R code:
 
 ``` r
 x <- c(5,12,13,1)
 x[x > 8]
+# or, if preferred:
+subset(x, x > 8)
+
 ```
 
 Probably the simplest way to do this in Tidy would be:
@@ -407,15 +410,15 @@ the Tidyers' "cure is worse than the disease.".
 
 ## Case study:  it doesn't have to be Either Or
 
-Regarding the "purity" view in the article, opposed to mixing
-Tidy and base-R in teaching:  I did suggest a mixed approach to RStudio
-founder and CEO JJ Allaire when we met in 2017, but he did not like the
-idea either, on the grounds that RStudio should not be telling people
-how to teach.  But of course, that is exactly what RStudio has been
-doing in promoting Tidy.
+Regarding the "purity" view in the *Educator's Perspective* article,
+opposed to mixing Tidy and base-R in teaching:  I did suggest a mixed
+approach to RStudio founder and CEO JJ Allaire when we met in 2017, but
+he did not like the idea either, on the grounds that RStudio should not
+be telling people how to teach.  But of course, that is exactly what
+RStudio has been doing in promoting Tidy.
 
-An overly rigid approach simply doesn't make sense.  Why deprive R
-learners of simple that would ease their burden -- whether from Tidy or
+An overly rigid, "pure" approach simply doesn't make sense.  Why deprive R
+learners of simple tools that would ease their burden -- whether from Tidy or
 base-R?
 
 One of the authors of the *Educator's Perspective* article has a nice
@@ -485,7 +488,8 @@ mtcars$gear_char <-
 
 ```
 
-
+No pipe, no **mutate()**, no reassignment.  Just the bare minimum, much
+easier to understand.
 
 
 ## Case study:  Tidy as an obstacle to R statistical methods
@@ -615,120 +619,7 @@ this are standard fare in base-R courses.
 
 I'd give base-R the clear win for teaching purposes here. 
 
-## Case study:  Tidy obstacles to debugging
-
-Here is an example from *Text Mining with R*, by Julia
-Silge of RStudio, and David Robinson. It's a great introduction to the
-text analysis field, and I myself have found the book useful.  
-
-This example, which may be found
-[here](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html),
-is a bit more involved than the previous ones, and thus better
-illustrates my concerns about debugging Tidy code.  Courses that teach
-using Tidy do very well for simple examples; this one is more complex,
-possibly in terms of writing the code, and definitely in terms of
-debugging.
-
-Debugging is something I've given a fair amount of thought to.  I even
-wrote a book on it, *The Art of Debugging* (NSP, 2008).  As noted
-earlier, noncoder R learners are the ones most in need of debugging
-skills, as they make the most errors.  Thus the example here is of high
-importance.
-
-The R package **janeaustenr** brings in full corpuses of six Austen novels: 
-
-``` r
-
-> library(janeaustenr)
-> books <- austen_books()
-> str(books)
-Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       73422 obs. of  2 variables:
-$ text: chr  "SENSE AND SENSIBILITY" "" "by Jane Austen" "" ...
-$ book: Factor w/ 6 levels "Sense & Sensibility",..: 1 1 1 1 1 1 1 1 1 1 ...
-...
-> books$text[22225]
-[1] "drink to our good journey."
-
-```
-
-The authors' first goal is to put all the books together, one row per
-line of a book, with line and chapter number.  Here are a couple of
-typical rows in the desired result:
-
-``` r
-"children, the old Gentleman's days were comfort… Sense & Sens…    25       1
-...
-"As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
-``` 
-
-Here is the solution given by the authors:
-
-``` r
-original_books <- austen_books() %>%
-   group_by(book) %>%
-      mutate(line = row_number(),
-         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
-               ignore_case = TRUE)))) %>%
-         ungroup()
-```
-
-
-A base-R version within reach of R beginners would begin with **split()**,
-to group by books, followed by loop over books.  A more advanced base-R
-coder might use FP, first with **lapply()** and then with **Reduce()**
-to concatenate the data frames.  
-
-The R beginners version may be unfancy, even old-fashioned, but again
-suitable for beginners -- especially from the point of view of
-debugging, a key point for noncoder R learners, as noted, and my
-main point in this section.   Even the base-R FP version would be quite
-debuggable (providing the function called by **lapply()** is named).
-
-By contrast, this example epitomizes the problems with debugging Tidy
-code.  It is impossible to effectively use the R **debug()** or
-**browser()** functions, let alone the RStudio IDE debugging tool, on
-the code as is.  There are two major obstacles, both fundamental to 
-Tidy in general:
-
-* Use of R generic functions.  For instance, consider the code
-
-``` r
-debug(group_by)
-mtcars %>% group_by(cyl)
-```
-
-This produces 
-
-``` r
-debugging in: group_by(., cyl)
-debug: {
-    UseMethod("group_by")
-}
-
-```
-
-Dealing with this is far beyond the skillset of R beginners.
-
-* Use of pipes.
-
-Pipes are fundamentally unsuitable for use of debugging
-tools, and even just using **print()** statements is impossible. 
- 
-One partial remedy is the clever **pipecleaner** package for debugging
-pipes.  It works only up to a point, and is probably a bit too involved
-for R beginners.  Most signifcantly, the package writeup  also notes
-that 
-
-> Occasionally it is necessary to restructure code from a piped to an
-> unpiped form. 
-
-This makes it clear that pipes (both the Magrittr pipes in Tidy, and
-that later native pipes added to base-R), were simply not designed 
-with debugging in mind.  As the package author says, sometimes the only
-solution is to convert the code to ordinary unpiped form.  (The
-package has an aid for this.)
-
-## Case study:  poor readability, unreasonable cognitive overload
+## Case study:  poor readability, unnecessary cognitive overload
 
 As noted, R courses using the Tidyverse often do rather little beyond
 their canonical *data %>% group_by %>% mutate %>% summarize* paradigm.
@@ -890,6 +781,119 @@ Seeing a few examples would help them, of course. but it is yet another
 example of how Tidy causes cognitive overload for learners.
 
 
+## Case study:  Tidy obstacles to debugging
+
+Here is an example from *Text Mining with R*, by Julia
+Silge of RStudio, and David Robinson. It's a great introduction to the
+text analysis field, and I myself have found the book useful.  
+
+This example, which may be found
+[here](https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html),
+is a bit more involved than the previous ones, and thus better
+illustrates my concerns about debugging Tidy code.  Courses that teach
+using Tidy do very well for simple examples; this one is more complex,
+possibly in terms of writing the code, and definitely in terms of
+debugging.
+
+Debugging is something I've given a fair amount of thought to.  I even
+wrote a book on it, *The Art of Debugging* (NSP, 2008).  As noted
+earlier, noncoder R learners are the ones most in need of debugging
+skills, as they make the most errors.  Thus the example here is of high
+importance.
+
+The R package **janeaustenr** brings in full corpuses of six Austen novels: 
+
+``` r
+
+> library(janeaustenr)
+> books <- austen_books()
+> str(books)
+Classes ‘tbl_df’, ‘tbl’ and 'data.frame':       73422 obs. of  2 variables:
+$ text: chr  "SENSE AND SENSIBILITY" "" "by Jane Austen" "" ...
+$ book: Factor w/ 6 levels "Sense & Sensibility",..: 1 1 1 1 1 1 1 1 1 1 ...
+...
+> books$text[22225]
+[1] "drink to our good journey."
+
+```
+
+The authors' first goal is to put all the books together, one row per
+line of a book, with line and chapter number.  Here are a couple of
+typical rows in the desired result:
+
+``` r
+"children, the old Gentleman's days were comfort… Sense & Sens…    25       1
+...
+"As we went along, Kitty and I drew up the blind… Pride & Prej…  7398      39
+``` 
+
+Here is the solution given by the authors:
+
+``` r
+original_books <- austen_books() %>%
+   group_by(book) %>%
+      mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+               ignore_case = TRUE)))) %>%
+         ungroup()
+```
+
+
+A base-R version within reach of R beginners would begin with **split()**,
+to group by books, followed by loop over books.  A more advanced base-R
+coder might use FP, first with **lapply()** and then with **Reduce()**
+to concatenate the data frames.  
+
+The R beginners version may be unfancy, even old-fashioned, but again
+suitable for beginners -- especially from the point of view of
+debugging, a key point for noncoder R learners, as noted, and my
+main point in this section.   Even the base-R FP version would be quite
+debuggable (providing the function called by **lapply()** is named).
+
+By contrast, this example epitomizes the problems with debugging Tidy
+code.  It is impossible to effectively use the R **debug()** or
+**browser()** functions, let alone the RStudio IDE debugging tool, on
+the code as is.  There are two major obstacles, both fundamental to 
+Tidy in general:
+
+* Use of R generic functions.  For instance, consider the code
+
+``` r
+debug(group_by)
+mtcars %>% group_by(cyl)
+```
+
+This produces 
+
+``` r
+debugging in: group_by(., cyl)
+debug: {
+    UseMethod("group_by")
+}
+
+```
+
+Dealing with this is far beyond the skillset of R beginners.
+
+* Use of pipes.
+
+Pipes are fundamentally unsuitable for use of debugging
+tools, and even just using **print()** statements is impossible. 
+ 
+One partial remedy is the clever **pipecleaner** package for debugging
+pipes.  It works only up to a point, and is probably a bit too involved
+for R beginners.  Most signifcantly, the package writeup  also notes
+that 
+
+> Occasionally it is necessary to restructure code from a piped to an
+> unpiped form. 
+
+This makes it clear that pipes (both the Magrittr pipes in Tidy, and
+that later native pipes added to base-R), were simply not designed 
+with debugging in mind.  As the package author says, sometimes the only
+solution is to convert the code to ordinary unpiped form.  (The
+package has an aid for this.)
+
 # Other Issues
 
 ## ggplot2 versus the Tidyverse
@@ -1037,7 +1041,7 @@ swept the R world.
 It has even brought a "pop culture" to R.  One prominent Tidy advocate
 (and coauthor of the *Educator Perspective* article) even sells ["Tidy
 merchandise"](https://twitter.com/ameliamn/status/1214995483577520131)
--- bags, mugs, and shoes.  RStudio sells Tidy stickers.  A popular Tidy
+-- bags, mugs, and shoes.  A popular Tidy
 Tuesday series has arisen on Twitter.  At times, it has even veered into
 the realm of cult.  There are many who equate Hadley Wickham with R
 itself.  What a difference from the staid R community of yore!
@@ -1072,13 +1076,16 @@ the gap in some specific instances, there obviously are far too many
 packages for this to be realistic.  It is here that the divide between
 the Tidy and base-R worlds may be mostly keenly manifest.
 
-Sadly, that divide has occasionally become personal.  Some in RStudio
-and their allies sharply criticized the base-R-favoring organizers of
-the R/Finance Conference in 2018, in my view quite [unfairly 
-so](https://matloff.wordpress.com/2019/05/18/r-finance-1-year-later/).
-Some in RStudio itself have Twitter-blocked some of the critics,
-abruptly ending frank but civil conversation.  In my case, one major
-RStudio developer [made quite a show of
+Sadly, that divide has occasionally become personal.  For instance,
+there was harsh public criticism from some in RStudio and the firm's
+allies of the base-R-favoring R/Finance Conference in 2018, accusing the
+conference organizers of being insensitive to gender diversity.  In my
+view, this was quite
+[unfair](https://matloff.wordpress.com/2019/05/18/r-finance-1-year-later/),
+and was my first exposure to a bitter base/Tidy divide.  Some in RStudio
+itself have Twitter-blocked some of the Tidy critics, abruptly ending
+frank but civil conversation.  In my case, one major RStudio developer
+[made quite a show of
 it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
 tweeting a screen shot in which "You have blocked this user" is repeated
 dozens of times.  There was also tension between RStudio and Matt Dowle,
@@ -1087,10 +1094,11 @@ author of **data.table**, a technically superior competitor to
 
 
 But the good news is that both sides have been making attempts at
-reconciliation.  Especially notable is that the R Core Group, a body
+reconciliation.  Especially notable is that the R Core Team, a body
 that controls the development of base-R, recently added a native pipe to
 the language.  I doubt many in that group actually use it, but it is an
-impressive olive branch.  
+impressive olive branch.  The R Foundation now includes a number of
+pro-Tidy
 
 RStudio, including Hadley, has also made various conciliatory public
 remarks.  Indeed, my meeting with RStudio CEO JJ Allaire in 2017 came at
@@ -1100,15 +1108,15 @@ the release of **dtplyr**, a Tidy-syntax front end to **dplyr**.  Since
 **data.table** is much faster on large datasets than **dplyr**, this was
 a win-win for the entire R community.
 
-Hopefully we will be seeing more of these trends in the coming years.
-As I explained in that meeting with JJ, the best form of reconciliation
-on RStudio's part would be to encourage instructors in the Tidy
-community to teach a mixture of Tidy and base-R.  
+Hopefully we will be seeing more of these positive trends in the coming
+years.  As I explained in that meeting with JJ, the best form of
+reconciliation on RStudio's part would be to encourage instructors in
+the Tidy community to teach a mixture of Tidy and base-R.  
 
 It should be noncontroversial that R learners should be given a choice
 of tools, and that they themselves should decide what is the best one to
 use in any given setting.  And if for example some thus-empowered useR
-feels that
+feels thatW
 
 ``` r
 mtcars$hwratio <- mtcars$hp / mtcars$wt
