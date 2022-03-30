@@ -226,8 +226,8 @@ printed version, but the title says it all:  One should teach Tidy, not
 
 Surprisingly, though, in making his comparison of Tidy to base-R, his
 base-R example is **aggregate()**, not **tapply()**.  The complexity of
-**aggregate()** function makes for an unfair comparison, as **tapply()**
-is much simpler, and perfect for R beginners.  
+**aggregate()** function makes for an unfair comparison, a straw man, as
+**tapply()** is much simpler, and perfect for R beginners.  
 
 Here is an example from the Peng talk, using the built-in R dataset
 **airquality**:
@@ -412,7 +412,7 @@ the Tidyers' "cure is worse than the disease.".
 
 Regarding the "purity" view in the *Educator's Perspective* article,
 opposed to mixing Tidy and base-R in teaching:  I did suggest a mixed
-approach to RStudio founder and CEO JJ Allaire when we met in 2017, but
+approach to RStudio founder and CEO JJ Allaire when we met in 2019, but
 he did not like the idea either, on the grounds that RStudio should not
 be telling people how to teach.  But of course, that is exactly what
 RStudio has been doing in promoting Tidy.
@@ -977,12 +977,26 @@ great success with the approach.
 One major issue with this "success" (aside from the improper conflation
 of Tidy with GGP2) is that Tidy R courses are scaled down in scope,
 compared to the base-R ones.  A typical Tidy R course does not equip
-students to do much in R (whether, base or Tidy). They teach a few **dplyr**
-verbs, a few GGP2 calls, and provide examples that the students can
-mimic. Much time is spent on the RS IDE and R Markdown. Students emerge
-with a false sense of empowerment.  Teacher and students alike are
-happy, but misleadingly so. 
+students to do much in R (whether, base or Tidy). They teach a few
+**dplyr** verbs, a few GGP2 calls, and provide examples that the
+students can mimic.  Much time is spent on the RS IDE and R Markdown.
+Students emerge with a false sense of empowerment.  
 
+Professor Peng, in his aforementioned keynote address, agrees but feels
+this is a good thing:
+
+> [Tidy] allowed a relatively small set of tools to provide a wide range
+> of operations when it came to data wrangling. The opinionated nature of
+> the tools naturally limited somewhat the flexibility of how things could
+> be done. But this reduced complexity was what made the tools so
+> appealing to new users. There were just fewer things to learn.
+
+Teacher and students alike are happy, but misleadingly so. 
+
+It doesn't have to be that way.  As shown in this essay, Tidy is in many
+ways more *difficult* for nocoder learners of R, contrary to the above
+quote's message, "Well, they learn less but at least it is easier for
+them."
 
 ## Use of functional programming
 
@@ -1047,21 +1061,24 @@ the realm of cult.  There are many who equate Hadley Wickham with R
 itself.  What a difference from the staid R community of yore!
 
 Putting the hero worship aside, at the very least one can say that many
-if not most in that huge Tidy following view R to consist mainly of
+if not most in that huge Tidy following view R to consist mainly as
 
-R = dplyr + ggplot2 + RStudio IDE + Rmarkdown
+   R = dplyr + ggplot2 + RStudio IDE + Rmarkdown
+
+Indeed, this is characterization of Tidy by the pro-Tidy Prof. Peng, as
+we saw earlier.
 
 To us longtime R advocates, this is a tragic irony.  On the one hand,
 RStudio is to be congratulated for greatly increasing the worldwide
 count of R users.  But the tragedy is that those users tend to be
 ill-equipped to actually *use* R productively, compared to "graduates"
-of standard base-R courses.
+of standard base-R courses -- and *without* Tidy being easier to learn.
 
 The danger of being wrapped up in hoopla, of course, is that one can
 lose sight of reality.  In my view, this is what has happened with Tidy.
 
 Equally important is the impact on the R language itself.  In his
-aforementioned keynote address, Roger Peng asked,
+aforementioned keynote address, Prof. Peng asked,
 
 > It will be interesting to see how things evolve, and whether the
 > community can sustain multiple ways of programming.  I think that it
@@ -1082,31 +1099,34 @@ allies of the base-R-favoring R/Finance Conference in 2018, accusing the
 conference organizers of being insensitive to gender diversity.  In my
 view, this was quite
 [unfair](https://matloff.wordpress.com/2019/05/18/r-finance-1-year-later/),
-and was my first exposure to a bitter base/Tidy divide.  Some in RStudio
-itself have Twitter-blocked some of the Tidy critics, abruptly ending
-frank but civil conversation.  In my case, one major RStudio developer
-[made quite a show of
+and it was my first exposure to a bitter base/Tidy divide.  It was also
+my first real exposure to Twitter.  Shortly after the conference, an
+RStudio employee asked me, "What do you think of the tweetstorm about
+the conference?", total news to me.  I was shocked by the vitriol.
+
+Some in RStudio have Twitter-blocked some of the Tidy critics, abruptly
+ending frank but civil conversation.  In my case, one major RStudio
+developer [made quite a show of
 it](https://twitter.com/romain_francois/status/1140860812837445632?s=19),
 tweeting a screen shot in which "You have blocked this user" is repeated
 dozens of times.  There was also tension between RStudio and Matt Dowle,
 author of **data.table**, a technically superior competitor to
 **dplyr**.
 
-
 But the good news is that both sides have been making attempts at
-reconciliation.  Especially notable is that the R Core Team, a body
+reconciliation.  Especially notable is that the R Core Group, a body
 that controls the development of base-R, recently added a native pipe to
 the language.  I doubt many in that group actually use it, but it is an
 impressive olive branch.  The R Foundation now includes a number of
-pro-Tidy
+pro-Tidy members.
 
 RStudio, including Hadley, has also made various conciliatory public
-remarks.  Indeed, my meeting with RStudio CEO JJ Allaire in 2017 came at
-JJ's suggestion.  Around that time, JJ also met with Matt Dowle.  In
-2019, RStudio stopped viewing **data.table** as a rival, and announced
-the release of **dtplyr**, a Tidy-syntax front end to **dplyr**.  Since
-**data.table** is much faster on large datasets than **dplyr**, this was
-a win-win for the entire R community.
+remarks.  Indeed, my meeting with RStudio CEO JJ Allaire in 2019 came at
+JJ's suggestion.  Around that time, JJ also met with Matt Dowle.  Also
+in 2019, RStudio stopped viewing **data.table** as a rival, and
+announced the release of **dtplyr**, a Tidy-syntax front end to
+**dplyr**.  Since **data.table** is much faster on large datasets than
+**dplyr**, this was a win-win for the entire R community.
 
 Hopefully we will be seeing more of these positive trends in the coming
 years.  As I explained in that meeting with JJ, the best form of
@@ -1116,7 +1136,7 @@ the Tidy community to teach a mixture of Tidy and base-R.
 It should be noncontroversial that R learners should be given a choice
 of tools, and that they themselves should decide what is the best one to
 use in any given setting.  And if for example some thus-empowered useR
-feels thatW
+feels that
 
 ``` r
 mtcars$hwratio <- mtcars$hp / mtcars$wt
@@ -1132,14 +1152,14 @@ so be it.  There will be other cases in which the graduates of mixed
 instruction find the Tidy solution more appealing.  Rest assured, Tidy
 is here to stay.
 
-One very important change that has occurred in the five years since JJ
-asked to meet with Matt and me, is that RStudio changed status to a
-Public Benefit Corporation, which it
-[announced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.
-As such, it should move beyond relying on testimonials, and take a good,
-hard, dispassionate look at what is best for R learners.
+One very important event is that RStudio changed status to a Public
+Benefit Corporation, which it
+[announced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.  As
+such, it should take a good, hard, dispassionate look at what is best
+for R learners.  The firm should move beyond using misleading
+testimonials to rationalize its rigid stance.
 
-I thus renew the suggestion I made to JJ in 2017, and **ask that
+I thus renew the suggestion I made to JJ in 2019, and **ask that
 RStudio recommend to the Tidy teaching community that they teach a
 mixture of Tidy and base-R.**
 
