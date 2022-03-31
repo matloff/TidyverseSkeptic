@@ -26,12 +26,16 @@ See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 # Note on ggplot2
 
 Though RStudio presents **ggplot2** as part of the Tidyverse, that
-package predates Tidy and does not use the Tidy paradigm.  In my
-discussion here, my references to Tidy do not include **ggplot2**, a
-package of which I am an enthusiastic user and teacher.  Instead, by the
-"Tidyverse," I will mean **dplyr**, **purrr** and pipes, as well as
-Tidy's ban/near teaching ban of loops, the '$', brackets, and so on.  More
-details later in this document, in the section [ggplot2 versus the
+package predates Tidy and does not use the Tidy paradigm.  Indeed, the
+package is widely used by both base-R advocates and Tidy proponents
+alike.  RStudio's marketing of Tidy as including **ggplot2** only came later.
+
+This is important, as many who praise Tidy cite **ggplot2** as their
+first reason for being pro-Tidy.  This obfuscates the real issues as I
+see them, which are: Focus on **dplyr**, **purrr** and pipes; a ban/near
+teaching ban regarding loops, the '$', brackets, and so on.  
+
+More details later in this document, in the section [ggplot2 versus the
 Tidyverse](README.md#ggplot2-versus-the-tidyverse).
 
 
@@ -90,11 +94,15 @@ e.g. pipes on functions of more than one argument.
 often more difficult to write Tidy code than base-R. Hadley says, for
 instance, "it may take a while to wrap your head around [FP]."
 
-* Using Tidy to teach R results in it taking *more* time to learn *less*.
-The students learn a few **dplyr** verbs well, but that equips them to
+* Tidy was deliberately designed to equip learners with fewer R tools.
+  The students learn a few **dplyr** verbs well, but that equips them to
 do much less with R than a standard R beginners course would teach.
 That leaves the learners less equipped to put R to real use, compared to
 "graduates" of standard base-R courses.
+
+* Thus the "testimonials" in which Tidy teachers of R claim great
+success are misleading.  The "success" is due to watering down the
+material.
 
 * Once one goes beyond the simple **mutate/select/filter/summarize**
 level, Tidy programming can be of low readability.
