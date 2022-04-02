@@ -218,8 +218,8 @@ Indeed, for many of them, **tapply()** epitomizes what's wrong with
 base-R.  
 
 Indeed, when the Tidyverse was first developed, Prof. Roger Peng gave a
-keynote talk, *Teaching R to New Users--from tapply to the Tidyverse*,
-also presented as [a Web
+thoughtful keynote talk, *Teaching R to New Users--from tapply to the
+Tidyverse*, also presented as [a Web
 page](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/).
 Actually, **tapply()** is not mentioned in Dr. Peng's talk or in the
 printed version, but the title says it all:  One should teach Tidy, not
@@ -258,8 +258,9 @@ Both the Tidy and **tapply()** code are simple.  Both are easily grasped
 by beginners. After being presented with some examples, beginners have
 no trouble using either of them in a new setting of similar type.  The
 Tidy version requires two function calls rather than one for base-R.
-But again, both versions are simple, so let's call it a tie.  But is it
-certainly not the case that the Tidy version is *easier* to learn.
+But again, both versions are simple (and the **tapply()** one is a bit
+more cluttered), so let's call it a tie.  But is it
+certainly not the case that the Tidy version is *easier to learn*.
 
 ## Case study:  Tidy's banning the $ sign and brackets
 
@@ -294,8 +295,8 @@ subset(loans,annual_income >= 10)
 
 One should not conflate conciseness with clarity.  But
 here the base-R code is both more concise *and* more straightforward.
-The Tidyers might even agree, except that the code uses '$'.  As the
-article puts it:
+The Tidyers might even agree, except that they would object to
+the code's usage of '$'.  As the article puts it:
 
 > When using base R the variables in that data frame are commonly
 > accessed with the $ operator (e.g., loans$loan amount to access the
@@ -340,8 +341,7 @@ data.frame(x=x) %>% filter(x > 8)
 ```
 
 That's a lot of machinery to implement one little vector operation --
-conversion to a data frame, pipes, **filter()** -- an
-operation that is of course quite common.
+conversion to a data frame, pipes, **filter()**. 
 
 ## Case study:  an overly rigid philosophy
 
@@ -380,8 +380,8 @@ Still not terribly complex, but again  we're invoking some machinery --
 piping, a function call, and reassigning to the original data frame.
 
 Why would we deprive R learners of very simple, direct and effective
-tools like this?  Just for the sake of Tidy "purity," implicit in the above
-quoted passage?
+tools like the base-R one above?  Just for the sake of Tidy "purity,"
+implicit in the above quoted passage?
 
 Students who are taught the Tidy version of the above and then are shown
 the base-R one will say, "Wow!  That's much easier.  Thanks for the
@@ -414,10 +414,10 @@ the Tidyers' "cure is worse than the disease.".
 
 Regarding the "purity" view in the *Educator's Perspective* article,
 opposed to mixing Tidy and base-R in teaching:  I did suggest a mixed
-approach to RStudio founder and CEO JJ Allaire when we met in 2019, but
-he did not like the idea either, on the grounds that RStudio should not
-be telling people how to teach.  But of course, that is exactly what
-RStudio has been doing in promoting Tidy.
+approach to RStudio founder and CEO JJ Allaire when we met in 2019.
+Unfortunately, JJ did not like the idea either, on the grounds that
+RStudio should not be telling people how to teach.  But of course, that
+is exactly what RStudio has been doing in promoting Tidy.
 
 An overly rigid, "pure" approach simply doesn't make sense.  Why deprive R
 learners of simple tools that would ease their burden -- whether from Tidy or
@@ -425,7 +425,8 @@ base-R?
 
 One of the authors of the *Educator's Perspective* article has a nice
 [presentation](https://github.com/mine-cetinkaya-rundel/teach-ds-to-new-user) 
-on teaching data science.  One of the examples is on recoding variables:
+on teaching data science, in which she makes a side-by-side comparison
+of base-R and Tidy code.  One of the examples is on recoding variables:
 
 base-R:
 
@@ -478,8 +479,9 @@ mtcars$gear_char <-
  )
 ```
 
-But a mixed base-R/Tidy approach is simpler and more intuitive than
-either her base-R or Tidy versions::
+But a mixed base-R/Tidy approach, combining '$' with the **dplyr**
+function **case_when()**, is simpler and more intuitive than either her
+base-R or Tidy versions::
 
 ``` r
 mtcars$gear_char <- 
@@ -728,16 +730,10 @@ f <- function(something)
 rather than say, one of the **apply()** or **purrr** functions.
 
 **Again, there is a serious problem of cognitive overload.** Tidyverse
-students are being asked to learn a much larger volume of material,
-which is clearly bad pedagogy.  See ["The Tidyverse
-Curse"](https://www.r-bloggers.com/the-tidyverse-curse), in which the
-author says *inter alia* that he uses "only" 60 Tidyverse functions --
-60!  The "star" of the Tidyverse, **dplyr**, consists of 263 functions. 
-
-While a user initially need not use more than a small fraction of those
-263 functions, the high complexity is clear.  Every time a user needs some
-variant of an operation, she must sift through those hundreds of
-functions for one suited to her current need.  
+students are being asked to learn a much larger volume of material.
+This is ironic, in that the goal in developing Tidy for teaching was
+to limit a course to just a few verbs.  The problem is that the verbs
+have dozens of variants.  This is clearly bad pedagogy.  
 
 Tidy advocates say the uniformity of interface in all those functions
 makes learning them easier.  Uniform *syntax* is nice, yes, but the fact
@@ -760,7 +756,18 @@ out](https://twitter.com/MattDowle/status/1142001162230489088) about
 
 Having a common syntax thus does not compensate for this dizzying
 complexity. 
- 
+
+And students who need to go further will find a daunting task.  See
+["The Tidyverse Curse"](https://www.r-bloggers.com/the-tidyverse-curse),
+in which the author says *inter alia* that he uses "only" 60 Tidyverse
+functions -- 60!  The "star" of the Tidyverse, **dplyr**, consists of
+263 functions. 
+
+While a user initially need not use more than a small fraction of those
+263 functions, the high complexity is clear.  Every time a user needs
+some variant of an operation, she must sift through those hundreds of
+functions for one suited to her current need.  
+
 By contrast, if the user knows base-R (not difficult), she can handle
 any situation with just a few simple operations.  The old adage applies:
 "Give a man a fish, and he can eat for a day. Teach him how to fish, and
