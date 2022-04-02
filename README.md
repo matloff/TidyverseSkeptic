@@ -30,7 +30,7 @@ package predates Tidy and does not use the Tidy paradigm.  The package
 is widely used by both base-R advocates and Tidy proponents alike.
 RStudio's marketing of Tidy as including **ggplot2** only came later.
 
-This is important, as many who praise Tidy cite **ggplot2** as their
+This is important, since many who praise Tidy cite **ggplot2** as their
 first reason for being pro-Tidy in teaching.  This obfuscates the real
 issues as I see them, which are: Focus on **dplyr**, **purrr** and
 pipes; a ban/near ban regarding loops, the '$', brackets, and so on.  
@@ -68,7 +68,7 @@ troubling.  Hence the document you are now reading.
 coding background.  I am *not* discussing teaching Computer Science
 students. 
 
-* Tidy was deliberately designed to equip learners with just a small set
+* Tidy was consciously designed to equip learners with just a small set
 of R tools.  The students learn a few **dplyr** verbs well, but that
 equips them to do much less with R than a standard R beginners course
 would teach.  That leaves the learners less equipped to put R to real
@@ -79,7 +79,7 @@ success are misleading.  The "success" is due to watering down the
 material (and conflation with **ggplot2**).  The students learn to mimic
 a few example patterns, but are not equipped to go further.
 
-* The refusal to teach '$' and the de-emphasis on, or even complete lack of
+* The refusal to teach '$' and the de-emphasis of, or even complete lack of
 coverage of, R vectors is a major handicap for Tidy "graduates" to
 making use of most of R's statistical functions and statistical packages.  
 
@@ -213,7 +213,7 @@ quite easy to teach beginners, by presenting its call form to them:
 tapply(what to split, how to split it, what to apply to the resulting chunks)
 ```
 
-However, for some reason Tidy advocates deeply hate this function.
+However, for some reason Tidy advocates deeply resent this function.
 Indeed, for many of them, **tapply()** epitomizes what's wrong with
 base-R.  
 
@@ -227,8 +227,9 @@ printed version, but the title says it all:  One should teach Tidy, not
 
 Surprisingly, though, in making his comparison of Tidy to base-R, his
 base-R example is **aggregate()**, not **tapply()**.  The complexity of
-**aggregate()** function makes for an unfair comparison, a straw man, as
-**tapply()** is much simpler, and perfect for R beginners.  
+**aggregate()** function makes for an unfair comparison, a straw man; 
+**tapply()** is much simpler, and perfect for R beginners, and thus the
+proper comparison.  
 
 Here is an example from the Peng talk, using the built-in R dataset
 **airquality**:
@@ -291,7 +292,7 @@ subset(loans,annual_income >= 10)
 
 ```
 
-As noted earlier, one should not conflate conciseness with clarity.  But
+One should not conflate conciseness with clarity.  But
 here the base-R code is both more concise *and* more straightforward.
 The Tidyers might even agree, except that the code uses '$'.  As the
 article puts it:
