@@ -916,7 +916,8 @@ Tidy, often the first reaaon they cite for liking Tidy is the ease with
 which one can code nice graphics.  I fully agree that GGP2 is excellent,
 and I use and teach it myself -- but it's not the Tidyverse.  My point,
 then, is they are endorsing Tidy because of something that is not part
-of Tidy.
+of Tidy.  Indeed, GGP2 is widely used by base-R and Tidy advocates
+alike.
 
 RStudio is a business.  Its job, rightly so, is to promote its product,
 which in a broad sense is R.  All of RStudio's revenue comes from
@@ -928,10 +929,11 @@ RStudio genuinely believed that Tidy would facilitate the usage of R.
 The GGP2 package had been enormously popular well before Tidy
 came along.  Clearly, RStudio saw that, and thus saw that a good way to
 sell the Tidyverse was to include the popular GGP2 in the
-definition of Tidy.
+definition of Tidy.  The message was, I believe, "Look how much easier
+it is do graphics in Tidy vs. in base-R."
 
-That of course is fine, but it is misleading to speak of GGP2
-as justification for using, especially teaching, the Tidyverse.  A
+GGP2 does make things easier.  But it is misleading to speak of GGP2
+as justification for using the Tidyverse, especially in teaching. A
 listing of the chronology clarifies the matter:
 
 * The GGP2 package was Hadley Wickham's PhD project, which
@@ -939,7 +941,8 @@ listing of the chronology clarifies the matter:
   completed his dissertation in 2008, well before Tidy.
 
 * Hadley introduced the Tidy concept in his
-  [2014 paper](https://www.jstatsoft.org/v59/i10/paper):  Each variable
+  [2014 paper](https://www.jstatsoft.org/v59/i10/paper), with
+  a very specific, crisp definition:  Each variable
   forms a column, each observation forms a row (EVCEOR).  Of course, there
   was nothing new here, as most of base-R assumes EVCEOR format.  Indeed, 
   Hadley put the base-R workhorse function, **plot()**, on an equal
