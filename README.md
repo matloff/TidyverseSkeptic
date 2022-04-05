@@ -1,4 +1,4 @@
-# Teaching R in a Kinder, Gentler, More Effectie Manner: 
+# Teaching R in a Kinder, Gentler, More Effective Manner: 
 
 # Use Base-R, Not the Tidyverse  
 
