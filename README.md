@@ -251,7 +251,8 @@ Indeed, that base-R code would be difficult for R beginners.
 But here is the far easier base-R code, using **tapply()**:
 
 ``` r
-tapply(airquality$Ozone,airquality$Month,function(x) mean(x,na.rm=T))
+aq <- na.omit(airquality)
+tapply(aq$Ozone,airquality$Month,function(x) mean)
 ```
 
 Both the Tidy and **tapply()** code are simple.  Both are easily grasped
