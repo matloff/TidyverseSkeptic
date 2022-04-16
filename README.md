@@ -33,7 +33,7 @@ RStudio's marketing of Tidy as including **ggplot2** only came later.
 This is important, since many who praise Tidy cite **ggplot2** as their
 first reason for being pro-Tidy in teaching.  This obfuscates the real
 issues as I see them, which are: Focus on **dplyr**, **purrr** and
-pipes; a ban/near ban regarding loops, the '$', brackets, and so on.  
+pipes; a ban/near ban regarding loops, the '$' sign, brackets, and so on.  
 
 More details later in this document, in the section [ggplot2 versus the
 Tidyverse](README.md#ggplot2-versus-the-tidyverse).
@@ -79,9 +79,10 @@ success are misleading.  The "success" is due to watering down the
 material (and conflation with **ggplot2**).  The students learn to mimic
 a few example patterns, but are not equipped to go further.
 
-* The refusal to teach '$' and the de-emphasis of, or even complete lack of
-coverage of, R vectors is a major handicap for Tidy "graduates" to
-making use of most of R's statistical functions and statistical packages.  
+* The refusal to teach the '$' operator,and the de-emphasis of, or even
+complete lack of coverage of, R vectors is a major handicap for Tidy
+"graduates" to making use of most of R's statistical functions and
+statistical packages.  
 
 * Tidy's is too abstract for beginners, due to the philosophy of
 functional programming (FP). The latter is popular with many
