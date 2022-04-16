@@ -79,7 +79,7 @@ success are misleading.  The "success" is due to watering down the
 material (and conflation with **ggplot2**).  The students learn to mimic
 a few example patterns, but are not equipped to go further.
 
-* The refusal to teach the '$' operator,and the de-emphasis of, or even
+* The refusal to teach the '$' operator, and the de-emphasis of, or even
 complete lack of coverage of, R vectors is a major handicap for Tidy
 "graduates" to making use of most of R's statistical functions and
 statistical packages.  
