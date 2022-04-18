@@ -61,7 +61,6 @@ R, and leaves them less able to use it productively.  As someone who is
 passionate about teaching and a longtime R enthusiast, this is quite
 troubling.  Hence the document you are now reading.
 
-
 # Teachability overview
 
 * Again, my focus here is on teaching R to those with little or no
@@ -263,6 +262,40 @@ Tidy version requires two function calls rather than one for base-R.
 But again, both versions are simple (and the **tapply()** one is a bit
 more cluttered), so let's call it a tie.  But is it
 certainly not the case that the Tidy version is *easier to learn*.
+
+Of course, one can find instances in which each approach, base-R and
+Tidy, is simpler to use.  Indeed, I have strongly advocated that
+noncoder R learners should pick up some of both.  (Much more on this
+point below.)  But I think it's repeating how simple it is for R
+learners to solve many basic problems.
+
+Consider this example that I like to use to motivate linear regression
+models.  We wish to predict human weight from height, and to show
+approximate linearity, we plot mean weight against height.  The 
+dataset, **mlb**, is from my **regtools** package.
+
+Base-R:
+
+``` r
+htsAndWts <- tapply(mlb$Weight,mlb$Height,mean)        
+plot(htsAndWts)
+```
+
+Tidy (plus **ggplot2**):
+
+``` r
+mlb %>% 
+group_by(Height) %>% 
+summarize(weights = mean(Weight)) %>%              
+ggplot(aes(x=Height,y=weights)) + geom_point()                
+```
+
+It would be out of the question to use this example in a Tidy course,
+far too much machinery to cover, at least in the first few weeks.
+But easy to do so in a course using base-R, at an early stage.
+That should be the goal, empowering students to work on real problems,
+early on.
+
 
 ## Case study:  Tidy's banning the $ sign and brackets
 
