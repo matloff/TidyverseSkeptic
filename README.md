@@ -12,7 +12,8 @@ and public service.
 Specifically in terms of R, I have been an R user and developer since
 near the beginning, having used R's predecessor S before that.  I've
 published several books that use R, and have served as the
-Editor-in-Chief of the *R Journal*. My R tutorial for beginners,
+Editor-in-Chief of the *R Journal*, as well as Associate Editor
+for the *Journal of Statistical Software*. My R tutorial for beginners,
 [fasteR](https://github.com/matloff/fasteR), has become my most popular
 GitHub repo, with over 300 GitHub stars.
 
@@ -263,11 +264,13 @@ But again, both versions are simple (and the **tapply()** one is a bit
 more cluttered), so let's call it a tie.  But is it
 certainly not the case that the Tidy version is *easier to learn*.
 
+## Case study:  tapply() (III)
+
 Of course, one can find instances in which each approach, base-R and
-Tidy, is simpler to use.  Indeed, I have strongly advocated that
-noncoder R learners should pick up some of both.  (Much more on this
-point below.)  But I think it's repeating how simple it is for R
-learners to solve many basic problems.
+Tidy, is simpler to use than the other.  Indeed, I have strongly
+advocated that noncoder R learners should pick up some of both.  (Much
+more on this point below.)  But I think it's worth repeating how simple it is
+for R learners to solve many basic problems using **tapply()**.
 
 Consider this example that I like to use to motivate linear regression
 models.  We wish to predict human weight from height, and to show
@@ -290,19 +293,20 @@ summarize(weights = mean(Weight)) %>%
 ggplot(aes(x=Height,y=weights)) + geom_point()                
 ```
 
-It would be out of the question to use this example in a Tidy course,
-far too much machinery to cover, at least in the first few weeks.
-But easy to do so in a course using base-R, at an early stage.
-That should be the goal, empowering students to work on real problems,
-early on.
+Two major **dplyr** functions, pipes, and a somewhat sophisticated usage
+of **ggplot2**!  It would be out of the question to use this example
+early in a Tidy course, far too much machinery to cover, at least in the
+first couple of weeks.  But easy to do so in a course using base-R, in the
+first or second lesson.  That should be the goal, empowering students to
+work on real problems, early on.
 
 
 ## Case study:  Tidy's banning the $ sign and brackets
 
 Tidyers believe that two of the most basic operations in R, the \$ sign
 and bracketing, are harmful.  For instance, consider an example in
-[an article by Tidy advocates](https://arxiv.org/abs/2108.03510),
-*An Educator's Perspective of the Tidyverse.* 
+[an article by Tidy advocates](https://arxiv.org/abs/2108.03510), *An
+Educator's Perspective of the Tidyverse.* 
 
 The dataset is loan data available in the **openintro** package.  Here
 is the Tidy code to preprocess the data:
