@@ -828,8 +828,6 @@ This phrasing is likely beyond the comprehension of many R beginners.
 Seeing a few examples would help them, of course. but it is yet another
 example of how Tidy causes cognitive overload for learners.
 
-## Should we teach using pipes or functional composition?  Neither!
-
 ## Case study:  Tidy obstacles to debugging
 
 Here is an example from *Text Mining with R*, by Julia
