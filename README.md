@@ -927,8 +927,9 @@ message, hence no clue as to what the problem might be.
 If the code had not used pipes, one could use the R **debug()** or
 **browser()** functions, or the RStudio IDE debugging tool.  Even use of
 **print()** statements, which I do not recommend in general, would still
-be effective of the code had been nonpiped.  But it won't work in the
-Tidy, i.e. piped, version.
+be effective of the code had been nonpiped.  (Details below in the
+special section on pipes.) But it won't work in the Tidy, i.e. piped,
+version.
 
 For instance, consider the code
 
