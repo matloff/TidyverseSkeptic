@@ -569,7 +569,7 @@ propriety of p-values.  Statistics is not foremost on their radar
 screens, and this sad gap between Tidy and statistics is a result.
 
 
-## Case study:  tapply() (II)
+## Case study:  tapply() (IV)
 
 Besides *learnability*, another goal for noncoder R learners is
 *usability.*  In this light, it's instructive to look at what happens
@@ -828,6 +828,7 @@ This phrasing is likely beyond the comprehension of many R beginners.
 Seeing a few examples would help them, of course. but it is yet another
 example of how Tidy causes cognitive overload for learners.
 
+## Should we teach using pipes or functional composition?  Neither!
 
 ## Case study:  Tidy obstacles to debugging
 
@@ -899,12 +900,39 @@ main point in this section.   Even the base-R FP version would be quite
 debuggable (providing the function called by **lapply()** is named).
 
 By contrast, this example epitomizes the problems with debugging Tidy
-code.  It is impossible to effectively use the R **debug()** or
-**browser()** functions, let alone the RStudio IDE debugging tool, on
-the code as is.  There are two major obstacles, both fundamental to 
-Tidy in general:
+code.  Suppose, for instance, that the user had accidentally typed 'sum'
+rather than 'cumsum' in the above code.  The output would look like
+this:
 
-* Use of R generic functions.  For instance, consider the code
+``` r
+> original_books
+# A tibble: 73,422 x 4
+   text                    book                 line chapter
+   <chr>                   <fct>               <int>   <int>
+ 1 "SENSE AND SENSIBILITY" Sense & Sensibility     1      50
+ 2 ""                      Sense & Sensibility     2      50
+ 3 "by Jane Austen"        Sense & Sensibility     3      50
+ 4 ""                      Sense & Sensibility     4      50
+ 5 "(1811)"                Sense & Sensibility     5      50
+ 6 ""                      Sense & Sensibility     6      50
+ 7 ""                      Sense & Sensibility     7      50
+ 8 ""                      Sense & Sensibility     8      50
+ 9 ""                      Sense & Sensibility     9      50
+10 "CHAPTER 1"             Sense & Sensibility    10      50
+# … with 73,412 more rows
+
+```
+
+The 'chapter column' should read 1, not 50.  But there is not error
+message, hence no clue as to what the problem might be.
+
+If the code had not used pipes, one could use the R **debug()** or
+**browser()** functions, or the RStudio IDE debugging tool.  Even use of
+**print()** statements, which I do not recommend in general, would still
+be effective of the code had been nonpiped.  But it won't work in the
+Tidy, i.e. piped, version.
+
+For instance, consider the code
 
 ``` r
 debug(group_by)
@@ -923,8 +951,6 @@ debug: {
 
 Dealing with this is far beyond the skillset of R beginners.
 
-* Use of pipes.
-
 Pipes are fundamentally unsuitable for use of debugging
 tools, and even just using **print()** statements is impossible. 
  
@@ -941,6 +967,91 @@ that later native pipes added to base-R), were simply not designed
 with debugging in mind.  As the package author says, sometimes the only
 solution is to convert the code to ordinary unpiped form.  (The
 package has an aid for this.)
+
+## Should we teach using pipes or functional composition?  Neither!
+
+Pipes play a central role in the Tidy paradigm.  According to the 
+Tidy advocates, the claimed alternative--function composition--is
+confusing for those without coding background.  That point is debatable,
+but once again, the Tidy people are presenting us with a false choice,
+pipes or function composition.
+
+There is a "third way"--breaking a sequence of function calls into
+separate, intermediate results.  In other words, instead of
+
+``` r
+y <- h(g(f(x)))  # functional composition
+```
+
+or
+
+``` r
+y <- x %>% f %>% g %>% h  # pipes
+```
+
+write
+
+``` r
+a <- f(x)
+b <- g(a)
+y <- h(b)
+```
+
+The Tidyers do sometimes mention this Third Way, but immediately dismiss
+it.  Hadley, for instance, in *R for Data Science* feels that it creates
+"cluttered" code.  Well, OK, each person has his/her own aesthetic
+values, but really that should pale in comparison to code writability,
+readability and debuggability.
+
+For example, consider the Jane Austen novels example above.
+
+``` r
+original_books <- austen_books() %>%
+   group_by(book) %>%
+      mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+               ignore_case = TRUE)))) %>%
+         ungroup()
+```
+
+A non-piped version (but still using **dplyr**) would be, say,
+
+``` r
+austens <- austen_books() 
+booksGrouped <- tibble(group_by(austens,book))
+chapterNumbers <- 
+   cumsum(str_detect(booksGrouped$text, regex("^chapter [\\divxlc]",
+               ignore_case = TRUE)))
+mutated <- mutate(booksGrouped,line = row_number(),chapter=chapterNumbers)
+original_books <- ungroup(mutated)
+```
+
+Now, suppose the user had accidentally typed 'sum' instead of 'cumsum'.
+In the unpiped version, the user could run this code one line at a time,
+pausing to check the result at each step, either via a debugging tool or
+just using **print()**.  She would quickly determine that the line in
+which **chapterNumbers** is assigned is the culprit.  This is the
+essence of debugging--first narrow down where the error arises.
+
+As noted, one could not do this with the piped version.  Indeed, the
+user would likely convert to the non-piped version for debugging!
+
+So why not do this in the first place?  I assert that it would be easier
+to write nonpipe code to begin with.  During the writing of the code,
+the breaking down the overall action into simple intermediate steps make
+it easier for the author to plan out the trajectory of the code.  Each
+intermediate step allows the author to "catch one's breath."
+
+For the same reasons, I assert that such code is easier to *write* and
+*debug*, but also easier for others to *read*.
+
+Isn't this worth a little bit of clutter?
+
+Even I, with several decades of programming experience in numerous
+languages, almost never use functional composition (other than a
+nesting depth of 2).  Nor do I use pipes.  I use separate intermediate
+statements, as discussed above.  It's just clearer.  And yes, worth the
+bit of clutter!
 
 # Other Issues
 
@@ -1045,9 +1156,20 @@ this is a good thing:
 Teacher and students alike are happy, but misleadingly so. 
 
 It doesn't have to be that way.  As shown in this essay, Tidy is in many
-ways more *difficult* for nocoder learners of R, contrary to the above
+ways more *difficult* for noncoder learners of R, contrary to the above
 quote's message, "Well, they learn less but at least it is easier for
 them."
+
+Many Tidyers say that students actually prefer the Tidy paradigm.  But
+in many educational contexts, students lack "the big picture."  Take the
+Jane Austen books example presented earlier in both piped and nonpiped
+versions, with a bug.  If a group of Tidy "graduates" were given both
+versions, with half the graduates assigned to find the bug in the piped
+code and the other half told to find the bug in nonpiped code, it's a
+safe bet that the second group of graduates would be more successful and
+happier.  As noted, the first group would likely resort to "unpiping"
+the code (which by the way may introduce further bugs), and I assert,
+would have a newfound respect for nonpiped code.
 
 ## Use of functional programming
 
