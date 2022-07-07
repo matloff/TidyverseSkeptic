@@ -125,11 +125,25 @@ audience here to be **nonprogrammers** who wish to use R for data
 analysis.  Eventually, they may wish to make use of FP, but at the
 crucial beginning stage, keep it simple, little or no fancy stuff.
 
+In summary, Tidy uses unnecessarily complicated machinery, an obvious
+drawback for teaching beginners, and yet only equips students to perform
+a narrow set of operations.  It would be like teaching English As a
+Second Language as follows:  The instructor teaches the students to say
+"Good Morning," by providing them with a template like,
+
+> It is my fervent wish that you find your morning unusually fulfilling.
+
+The students would be told to substitute *morning* with *afternoon* or
+*evening*.  But they would have no idea what the other words mean, and
+would not generalize much.  The students may even rave about these
+English "lessons," but they won't have learned much at all.
+
+
 # Using Tidy Hinders the Learning Process:  Case Studies 
 
 ## Case study: delayed learning (I)
 
-Let's look at  my online R tutorial,
+Let's look at an example in my online R tutorial,
 [**fasteR**](http://github.com/matloff/fasteR).  Consider, for
 instance, an innocuous line like 
 
@@ -144,7 +158,8 @@ the Tidy crowd forbids use of base-R plots, insisting on using
 **ggplot2**.  I also prefer **ggplot2** to base-R graphics (though again
 it should not be considered part of the Tidyverse), but
 here we have a much more important goal--to give students an actual
-useful application of R right from the start.
+useful application of R right from the start.  Tidy greatly impedes that
+goal.
 
 To be Tidy the instructor would have to do something like
 
@@ -185,9 +200,9 @@ ahead of her Tidy counterparts.**
 
 A researcher tweeted in December 2019 that an introductory statistics
 book by Peter Dalgaard is "now obsolete," because it uses base-R rather
-than Tidy.  Think of what an update to Tidy would involve, how much extra
-complexity it would impose on the students.  Here is an early lesson from the
-book:
+than Tidy.  Think of what an "update" to use of Tidy would involve, how
+much extra complexity it would impose on the students.  Here is an early
+lesson from the book:
 
 ``` r
 > thue2 <- subset(thuesen,blood.glucose < 7)
@@ -301,10 +316,9 @@ ggplot(aes(x=Height,y=weights)) + geom_point()
 
 Two major **dplyr** functions, pipes, and a somewhat sophisticated usage
 of **ggplot2**!  It would be out of the question to use this example
-early in a Tidy course, far too much machinery to cover, at least in the
-first couple of weeks.  But easy to do so in a course using base-R, in the
-first or second lesson.  That should be the goal, empowering students to
-work on real problems, early on.
+early in a Tidy course, far too much machinery to cover.  But easy to do
+so in a course using base-R, in the first or second lesson.  That should
+be the goal, empowering students to work on real problems, early on.
 
 
 ## Case study:  Tidy's banning the $ sign and brackets
