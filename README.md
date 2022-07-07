@@ -135,7 +135,7 @@ Second Language as follows:  The instructor teaches the students to say
 
 The students would be told to substitute *morning* with *afternoon* or
 *evening*.  But they would have no idea what the other words mean, and
-would not generalize much.  The students may even rave about these
+it would not generalize much.  The students may even rave about these
 English "lessons," but they won't have learned much at all.
 
 
