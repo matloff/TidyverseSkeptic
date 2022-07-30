@@ -496,6 +496,10 @@ of the Robinson essay):
 
 Reader, take your pick. :-)
 
+Similarly, the "naughty kids" example, in which the tidyverse advocate
+complained that some students were, apparently, "taking the easy way" by
+using base-R, again would indicate that hard way is actually Tidy.
+
 ## Case study:  it doesn't have to be Either Or
 
 Regarding the "purity" view in the *Educator's Perspective* article,
