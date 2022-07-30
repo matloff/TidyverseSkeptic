@@ -285,7 +285,7 @@ But again, both versions are simple (and the **tapply()** one is a bit
 more cluttered), so let's call it a tie.  But is it
 certainly not the case that the Tidy version is *easier to learn*.
 
-## Case study:  tapply() (III)
+## Case study:  tapply() (II)
 
 Of course, one can find instances in which each approach, base-R and
 Tidy, is simpler to use than the other.  Indeed, I have strongly
@@ -469,6 +469,33 @@ loops are easier to debug; the sophisticated machinery that Tidyers want
 in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
 the Tidyers' "cure is worse than the disease.".
 
+## "Don't teach students the hard way first"
+
+David Robinson, another prominent name in the R world, wrote a very
+well-reasoned  
+[essay](http://varianceexplained.org/r/teach-hard-way) with the above
+title.  He pointed out htat it makes non pdagogical sense to first teach
+students the hard way to do somethng, and only later show them an easier
+way.  Sage advice.  Ironically, though, he uses this reasoning to argue
+against teacher base-R (either first, or ever).
+
+Yet I would hope that the above examples show that it is the Tidy way
+that is the hard way.  In each case, base-R is simpler and more direct.
+
+Among other things, Robinson rightly notes that it is an issue of trust.
+If the instructor doesn't at least warn the students that he/she will
+present the hard way first, then later in presenting the easy way, some
+students will feel deceived.  Again, ironically, this is precisely the
+argument I made above in the "mutate" example (written before learning
+of the Robinson essay):
+
+> Students who are taught the Tidy version of the above and then are shown
+> the base-R one will say, "Wow! That's much easier. Thanks for the
+> shortcut." And I can guarantee, a few would say, "Why didn't you tell us
+> this way in the first place?"
+
+Reader, take your pick. :-)
+
 ## Case study:  it doesn't have to be Either Or
 
 Regarding the "purity" view in the *Educator's Perspective* article,
@@ -589,7 +616,7 @@ propriety of p-values.  Statistics is not foremost on their radar
 screens, and this sad gap between Tidy and statistics is a result.
 
 
-## Case study:  tapply() (IV)
+## Case study:  tapply() (III)
 
 Besides *learnability*, another goal for noncoder R learners is
 *usability.*  In this light, it's instructive to look at what happens
