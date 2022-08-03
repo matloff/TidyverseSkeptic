@@ -21,7 +21,7 @@
   - [Case study:  Tidy as an obstacle to R statistical methods](#case-study--tidy-as-an-obstacle-to-r-statistical-methods)
   - [Case study:  tapply() (III)](#case-study--tapply-iii)
   - [Case study:  poor readability, unnecessary cognitive overload](#case-study--poor-readability-unnecessary-cognitive-overload)
-  - [Case study:  Tidy obstacles to debugging](#case-study--tidy-obstacles-to-debugging) - [A tibble: 73,422 x 4](#a-tibble-73422-x-4)
+  - [Case study:  Tidy obstacles to debugging](#case-study--tidy-obstacles-to-debugging) - 
   - [Should we teach using pipes or functional composition?  Neither!](#should-we-teach-using-pipes-or-functional-composition--neither)
 - [Other Issues](#other-issues)
   - [ggplot2 versus the Tidyverse](#ggplot2-versus-the-tidyverse)
@@ -705,6 +705,7 @@ group.  Then things get really bad for Tidy:
 > mtcars %>% 
    group_by(cyl,gear,.drop=FALSE) %>% 
    summarize(mean(mpg))
+
 A tibble: 9 x 3
 Groups:   cyl [3]
    cyl   gear  `mean(mpg)`
@@ -755,7 +756,7 @@ mtcars %>%
   map(summary) %>%
   map_dbl("r.squared")
 
-  output
+#  output
 4         6         8 
 0.5086326 0.4645102 0.4229655
 ```
@@ -834,7 +835,7 @@ for (outer loop specs) {
 
 f <- function(something) 
 {
-   the work of what would have been the inner loop goes here
+#  the work of what would have been the inner loop goes here
 }
 ```
 
