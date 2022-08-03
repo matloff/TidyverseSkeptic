@@ -417,7 +417,7 @@ following base-R code:
 ``` r
 x <- c(5,12,13,1)
 x[x > 8]
-# or, if preferred:
+  or, if preferred:
 subset(x, x > 8)
 
 ```
@@ -658,10 +658,7 @@ when in the built-in **mtcars** dataset one groups by two aspects,
 
 ``` r
    > mtcars %>%
-   group_by(cyl,gear) %>%
-summarize(mean(mpg))
-# A tibble: 8 x 3
-# Groups:   cyl [3]
+   > group_by(cyl,gear) %>% summarize(mean(mpg))
    cyl  gear `mean(mpg)`
    <dbl> <dbl>       <dbl>
    1     4     3        21.5
@@ -842,7 +839,7 @@ for (outer loop specs) {
 
 f <- function(something) 
 {
-   # the work of what would have been the inner loop goes here
+   the work of what would have been the inner loop goes here
 }
 ```
 
@@ -984,7 +981,7 @@ this:
 
 ``` r
 > original_books
-# A tibble: 73,422 x 4
+A tibble: 73,422 x 4
    text                    book                 line chapter
    <chr>                   <fct>               <int>   <int>
  1 "SENSE AND SENSIBILITY" Sense & Sensibility     1      50
@@ -997,7 +994,7 @@ this:
  8 ""                      Sense & Sensibility     8      50
  9 ""                      Sense & Sensibility     9      50
 10 "CHAPTER 1"             Sense & Sensibility    10      50
-# … with 73,412 more rows
+   with 73,412 more rows
 
 ```
 
