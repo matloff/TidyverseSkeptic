@@ -39,7 +39,7 @@ published several books that use R, and have served as the
 Editor-in-Chief of the *R Journal*, as well as Associate Editor
 for the *Journal of Statistical Software*. My R tutorial for beginners,
 [fasteR](https://github.com/matloff/fasteR), has become my most popular
-GitHub repo, with over 300 GitHub stars.
+GitHub repo, with 500 GitHub stars.
 
 But it goes far beyond that; I really am intensely interested in how
 people learn, from children to middle-aged adults. Among other things,
