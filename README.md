@@ -15,7 +15,6 @@
   - [Case study:  tapply() (I)](#case-study--tapply-i)
   - [Case study:  tapply() (II)](#case-study--tapply-ii)
   - [Case study:  Tidy's banning the $ sign and brackets](#case-study--tidys-banning-the--sign-and-brackets)
-- [or, if preferred:](#or-if-preferred)
   - [Case study:  an overly rigid philosophy](#case-study--an-overly-rigid-philosophy)
   - ["Don't teach students the hard way first"](#dont-teach-students-the-hard-way-first)
   - [Case study:  it doesn't have to be Either Or](#case-study--it-doesnt-have-to-be-either-or)
