@@ -4,6 +4,36 @@
 
 ## Author:  Prof. Norm Matloff, University of California, Davis
 
+# Table of contents
+
+- [Note on ggplot2](#note-on-ggplot2)
+- [Kudos to RStudio, But They Took a Wrong Turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
+- [Teachability overview--the Tidy approach is overly complicated and undergeneralizable](#teachability-overview--the-tidy-approach-is-overly-complicated-and-undergeneralizable)
+- [Using Tidy Hinders the Learning Process:  Case Studies](#using-tidy-hinders-the-learning-process--case-studies)
+  - [Case study: delayed learning (I)](#case-study-delayed-learning-i)
+  - [Case study: delayed learning (II)](#case-study-delayed-learning-ii)
+  - [Case study:  tapply() (I)](#case-study--tapply-i)
+  - [Case study:  tapply() (II)](#case-study--tapply-ii)
+  - [Case study:  Tidy's banning the $ sign and brackets](#case-study--tidys-banning-the--sign-and-brackets)
+- [or, if preferred:](#or-if-preferred)
+  - [Case study:  an overly rigid philosophy](#case-study--an-overly-rigid-philosophy)
+  - ["Don't teach students the hard way first"](#dont-teach-students-the-hard-way-first)
+  - [Case study:  it doesn't have to be Either Or](#case-study--it-doesnt-have-to-be-either-or)
+  - [Case study:  Tidy as an obstacle to R statistical methods](#case-study--tidy-as-an-obstacle-to-r-statistical-methods)
+  - [Case study:  tapply() (III)](#case-study--tapply-iii)
+- [A tibble: 8 x 3](#a-tibble-8-x-3)
+- [Groups:   cyl [3]](#groups---cyl-3)
+  - [Case study:  poor readability, unnecessary cognitive overload](#case-study--poor-readability-unnecessary-cognitive-overload)
+- [output](#output)
+- [the work of what would have been the inner loop goes here](#the-work-of-what-would-have-been-the-inner-loop-goes-here)
+  - [Case study:  Tidy obstacles to debugging](#case-study--tidy-obstacles-to-debugging) - [A tibble: 73,422 x 4](#a-tibble-73422-x-4)
+- [… with 73,412 more rows](#-with-73412-more-rows)
+  - [Should we teach using pipes or functional composition?  Neither!](#should-we-teach-using-pipes-or-functional-composition--neither)
+- [Other Issues](#other-issues)
+  - [ggplot2 versus the Tidyverse](#ggplot2-versus-the-tidyverse)
+  - [Tidyverse "testimonials"](#tidyverse-testimonials)
+  - [Use of functional programming](#use-of-functional-programming) - [Where Are We Now, and Where Should We Be Going?](#where-are-we-now-and-where-should-we-be-going)
+
 I teach in the Computer Science Dept. at UC Davis, where I formerly was
 a Professor of Statistics. I am an award-winning textbook author, 
 and am also the recipient of university awards for teaching
@@ -472,9 +502,8 @@ the Tidyers' "cure is worse than the disease.".
 ## "Don't teach students the hard way first"
 
 David Robinson, another prominent name in the R world, wrote a very
-well-reasoned  
-[essay](http://varianceexplained.org/r/teach-hard-way) with the above
-title.  He pointed out htat it makes non pdagogical sense to first teach
+well-reasoned  [essay](http://varianceexplained.org/r/teach-hard-way) with the above
+title.  He pointed out htat it makes no pedagogical sense to first teach
 students the hard way to do somethng, and only later show them an easier
 way.  Sage advice.  Ironically, though, he uses this reasoning to argue
 against teacher base-R (either first, or ever).
@@ -498,7 +527,8 @@ Reader, take your pick. :-)
 
 Similarly, the "naughty kids" example, in which the tidyverse advocate
 complained that some students were, apparently, "taking the easy way" by
-using base-R, again would indicate that hard way is actually Tidy.
+using base-R, again would indicate that hard way is actually Tidy.  If
+so, why teach it first?
 
 ## Case study:  it doesn't have to be Either Or
 
@@ -1281,7 +1311,9 @@ merchandise"](https://twitter.com/ameliamn/status/1214995483577520131)
 -- bags, mugs, and shoes.  A popular Tidy
 Tuesday series has arisen on Twitter.  At times, it has even veered into
 the realm of cult.  There are many who equate Hadley Wickham with R
-itself.  What a difference from the staid R community of yore!
+itself.  He is treated like a rock star by R "groupies."
+What a difference from the staid R community of yore!  We who have been
+in R since the early days applaud RStudio for spreading the word.
 
 Putting the hero worship aside, at the very least one can say that many
 if not most in that huge Tidy following view R to consist mainly as
@@ -1292,7 +1324,7 @@ Indeed, this is characterization of Tidy by the pro-Tidy Prof. Peng, as
 we saw earlier.
 
 To us longtime R advocates, this is a tragic irony.  On the one hand,
-RStudio is to be congratulated for greatly increasing the worldwide
+again RStudio is to be congratulated for greatly increasing the worldwide
 count of R users.  But the tragedy is that those users tend to be
 ill-equipped to actually *use* R productively, compared to "graduates"
 of standard base-R courses -- and *without* Tidy being easier to learn.
@@ -1318,7 +1350,7 @@ the Tidy and base-R worlds may be mostly keenly manifest.
 
 Sadly, that divide has occasionally become personal.  For instance,
 there was harsh public criticism from some in RStudio and the firm's
-allies of the base-R-favoring R/Finance Conference in 2018, accusing the
+allies, toward the base-R-favoring R/Finance Conference in 2018, accusing the
 conference organizers of being insensitive to gender diversity.  In my
 view, this was quite
 [unfair](https://matloff.wordpress.com/2019/05/18/r-finance-1-year-later/),
@@ -1384,6 +1416,7 @@ testimonials to rationalize its rigid stance.
 
 I thus renew the suggestion I made to JJ in 2019, and **ask that
 RStudio recommend to the Tidy teaching community that they teach a
-mixture of Tidy and base-R.**
+mixture of Tidy and base-R.**  The firm's transtioning to a broader,
+less R-focused copy under the name Posit makes this even more important.
 
 
