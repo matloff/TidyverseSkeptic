@@ -20,13 +20,8 @@
   - [Case study:  it doesn't have to be Either Or](#case-study--it-doesnt-have-to-be-either-or)
   - [Case study:  Tidy as an obstacle to R statistical methods](#case-study--tidy-as-an-obstacle-to-r-statistical-methods)
   - [Case study:  tapply() (III)](#case-study--tapply-iii)
-- [A tibble: 8 x 3](#a-tibble-8-x-3)
-- [Groups:   cyl [3]](#groups---cyl-3)
   - [Case study:  poor readability, unnecessary cognitive overload](#case-study--poor-readability-unnecessary-cognitive-overload)
-- [output](#output)
-- [the work of what would have been the inner loop goes here](#the-work-of-what-would-have-been-the-inner-loop-goes-here)
   - [Case study:  Tidy obstacles to debugging](#case-study--tidy-obstacles-to-debugging) - [A tibble: 73,422 x 4](#a-tibble-73422-x-4)
-- [… with 73,412 more rows](#-with-73412-more-rows)
   - [Should we teach using pipes or functional composition?  Neither!](#should-we-teach-using-pipes-or-functional-composition--neither)
 - [Other Issues](#other-issues)
   - [ggplot2 versus the Tidyverse](#ggplot2-versus-the-tidyverse)
@@ -760,7 +755,7 @@ mtcars %>%
   map(summary) %>%
   map_dbl("r.squared")
 
-# output
+  output
 4         6         8 
 0.5086326 0.4645102 0.4229655
 ```
@@ -981,7 +976,6 @@ this:
 
 ``` r
 > original_books
-A tibble: 73,422 x 4
    text                    book                 line chapter
    <chr>                   <fct>               <int>   <int>
  1 "SENSE AND SENSIBILITY" Sense & Sensibility     1      50
