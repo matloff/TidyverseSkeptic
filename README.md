@@ -13,6 +13,7 @@
   - [Case study: delayed learning (I)](#case-study-delayed-learning-i)
   - [Case study: delayed learning (II)](#case-study-delayed-learning-ii)
   - [Case study:  tapply() (I)](#case-study--tapply-i)
+  - [Note re tapply(): the workhorse of base-R](#note-re-tapply-the-workhorse-of-base-r)
   - [Case study:  tapply() (II)](#case-study--tapply-ii)
   - [Case study:  Tidy's banning the $ sign and brackets](#case-study--tidys-banning-the--sign-and-brackets)
   - [Case study:  an overly rigid philosophy](#case-study--an-overly-rigid-philosophy)
@@ -51,9 +52,10 @@ See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 # Note on ggplot2
 
 Though RStudio presents **ggplot2** as part of the Tidyverse, that
-package predates Tidy and does not use the Tidy paradigm.  The package
-is widely used by both base-R advocates and Tidy proponents alike.
-RStudio's marketing of Tidy as including **ggplot2** only came later.
+package predates Tidy and is written in base-R, not the Tidy paradigm.
+The package is widely used by both base-R advocates and Tidy proponents
+alike.  RStudio's marketing of Tidy as including **ggplot2** only came
+later.
 
 This is important, since many who praise Tidy cite **ggplot2** as their
 first reason for being pro-Tidy in teaching.  This obfuscates the real
@@ -308,6 +310,18 @@ Tidy version requires two function calls rather than one for base-R.
 But again, both versions are simple (and the **tapply()** one is a bit
 more cluttered), so let's call it a tie.  But is it
 certainly not the case that the Tidy version is *easier to learn*.
+
+## Note re tapply(): the workhorse of base-R
+
+Above and below, several examples use the Some who have read this essay
+have objected that **tapply()** is an advanced, esoteric R function,
+thus inappropriate for the beginners-oriented theme here.  This is what
+they were taught, but actually it is exactly the opposite.  **The
+tapply() function is the workhorxe of base-R.**
+
+For example, consider the **ggplot2** package, written by the ()later)
+inventor of the tidyverse, Hadley Wickham.  Hadley calls **tapply()**
+7 times in the **ggplot2** code!
 
 ## Case study:  tapply() (II)
 
