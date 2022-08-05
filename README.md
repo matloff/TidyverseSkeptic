@@ -6,7 +6,7 @@
 
 # Table of contents
 
-- [Note on ggplot2](#note-on-ggplot2)
+- [Note on ggplot2 re marketing](#note-on-ggplot2-re-marketing)
 - [Kudos to RStudio, But They Took a Wrong Turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
 - [Teachability overview--the Tidy approach is overly complicated and undergeneralizable](#teachability-overview--the-tidy-approach-is-overly-complicated-and-undergeneralizable)
 - [Using Tidy Hinders the Learning Process:  Case Studies](#using-tidy-hinders-the-learning-process--case-studies)
@@ -49,7 +49,7 @@ China, and have taught a short course on probability to sixth-graders.
 
 See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
-# Note on ggplot2
+# Note on ggplot2 re marketing
 
 Though RStudio presents **ggplot2** as part of the Tidyverse, that
 package predates Tidy and is written in base-R, not the Tidy paradigm.
