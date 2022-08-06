@@ -148,7 +148,7 @@ Here are some interesting numbers:
 
 <tr>  <td>RSQLite</td>  <td>14</td>  <td>0</td>  </tr>
 
-<tr>  <td>tesnsorflow</td>  <td>32</td>  <td>0</td>  </tr>
+<tr>  <td>tensorflow</td>  <td>32</td>  <td>0</td>  </tr>
 
 <tr>  <td>tidymodels</td>  <td>8</td>  <td>0</td>  </tr>
 
@@ -1536,7 +1536,8 @@ this, this fee is exhorbitant.  RStudio is a commercial entity, and the
 conference promotes its product. Given this status, 
 I had assumed the conference would be free,
 maybe a small nominal fee. As a PBC, RStudio is legally
-committed to the public good. 
+committed to the public good.  Instead, the fee more evokes "Charge what
+the traffic will bear" than "public good."
 
 And as a PBC, and as a commercial entity that dominates a pre-existing
 open source product, RStudio should take a good, hard, dispassionate
