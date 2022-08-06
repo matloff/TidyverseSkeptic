@@ -174,7 +174,7 @@ than
 And if it's easier for them, it's even further easier for R learners.
 In fact, an article discussed
 [later in this essay](#case-study--an-overly-rigid-philosophy),
-aggreessivly promoting Tidy, actually accuses students who use base-R
+aggressivly promoting Tidy, actually accuses students who use base-R
 instead of Tidy as taking the easy way out.  Easier, indeed!
 
 # Teachability overview--the Tidy approach is overly complicated and undergeneralizable
