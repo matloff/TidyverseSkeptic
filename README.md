@@ -111,7 +111,8 @@ All the breathless claims that Tidy is more modern and clearer,
 whilc base-R is old-fashioned and unclear, 
 fly in the face of the fact that RStudio developers, and authors of
 other prominent R packages, tend to write in base-R, not Tidy.
-And *all* of them use some base-R.
+And *all* of them use some base-R instead of the corresponding Tidy
+constructs.
 
 Here are some interesting numbers:
 
