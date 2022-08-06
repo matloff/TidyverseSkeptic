@@ -165,7 +165,7 @@ Here are some interesting numbers:
 </p>
 
 Striking numbers to those who learned R via a tidyverse course.  In
-particular, **mutate()**, is one of the very first verbs one learns in a
+particular, **mutate()** is one of the very first verbs one learns in a
 Tidy course, **yet **mutate()** is used **0 times** in most of the above
 packages.**  And even in the packages in which this function is called a
 lot, they also have plenty of calls to base-R ***apply()**, functions
