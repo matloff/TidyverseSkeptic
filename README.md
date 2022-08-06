@@ -124,13 +124,21 @@ Here are some interesting numbers:
 
 <tr>  <td>broom</td>  <td>38</td>  <td>58</td>  </tr>
 
+<tr>  <td>datapasta</td>  <td>31</td>  <td>0</td>  </tr>
+
 <tr>  <td>forecast</td>  <td>82</td>  <td>0</td>  </tr>
 
 <tr>  <td>future</td>  <td>71</td>  <td>0</td>  </tr>
 
 <tr>  <td>ggplot2</td>  <td>78</td>  <td>0</td>  </tr>
 
+<tr>  <td>glmnet</td>  <td>92</td>  <td>0</td>  </tr>
+
+<tr>  <td>gt</td>  <td>112</td>  <td>87</td>  </tr>
+
 <tr>  <td>knitr</td>  <td>73</td>  <td>0</td>  </tr>
+
+<tr>  <td>naniar</td>  <td>3</td>  <td>44</td>  </tr>
 
 <tr>  <td>parsnip</td>  <td>45</td>  <td>33</td>  </tr>
 
@@ -138,11 +146,17 @@ Here are some interesting numbers:
 
 <tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
 
+<tr>  <td>RSQLite</td>  <td>14</td>  <td>0</td>  </tr>
+
+<tr>  <td>tesnsorflow</td>  <td>32</td>  <td>0</td>  </tr>
+
 <tr>  <td>tidymodels</td>  <td>8</td>  <td>0</td>  </tr>
 
 <tr>  <td>tidytext</td>  <td>5</td>  <td>6</td>  </tr>
 
 <tr>  <td>tsibble</td> <td>8</td> <td>19</td>  </tr>
+
+<tr>  <td>VIM</td> <td>117</td> <td>19</td>  </tr>
 
 </table>
 
