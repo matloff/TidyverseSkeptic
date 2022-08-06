@@ -137,8 +137,6 @@ Here are some interesting numbers:
 
 <tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
 
-<tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
-
 <tr>  <td>tidymodels</td>  <td>8</td>  <td>0</td>  </tr>
 
 <tr>  <td>tidytext</td>  <td>5</td>  <td>6</td>  </tr>
