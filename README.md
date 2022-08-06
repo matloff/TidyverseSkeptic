@@ -7,7 +7,8 @@
 # Table of contents
 
 - [Note on ggplot2 re marketing](#note-on-ggplot2-re-marketing)
-- [Kudos to RStudio, But They Took a Wrong Turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
+- [Kudos to RStudio, but they took a wrong turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
+- [RStudio and other prominent R developers use base-R themselves](#rstudio-and-other-prominent-r-developers-use-base-r-themselves)
 - [Teachability overview--the Tidy approach is overly complicated and undergeneralizable](#teachability-overview--the-tidy-approach-is-overly-complicated-and-undergeneralizable)
 - [Using Tidy Hinders the Learning Process:  Case Studies](#using-tidy-hinders-the-learning-process--case-studies)
   - [Case study: delayed learning (I)](#case-study-delayed-learning-i)
@@ -27,7 +28,12 @@
 - [Other Issues](#other-issues)
   - [ggplot2 versus the Tidyverse](#ggplot2-versus-the-tidyverse)
   - [Tidyverse "testimonials"](#tidyverse-testimonials)
-  - [Use of functional programming](#use-of-functional-programming) - [Where Are We Now, and Where Should We Be Going?](#where-are-we-now-and-where-should-we-be-going)
+  - [Use of functional programming](#use-of-functional-programming) 
+- [Where Are We Now, and Where Should We Be Going?](#where-are-we-now-and-where-should-we-be-going)
+   - [Tidy as pop culture](#tidy-as-pop-culture)
+   - [Problems](#problems)
+   - [Some room for optimism](#some-room-for-optimism)
+   - [RStudio, as a Public Benefit Corporation, holds the key](#rstudio-as-a-public-benefit-corporation-holds-the-key)
 
 I teach in the Computer Science Dept. at UC Davis, where I formerly was
 a Professor of Statistics. I am an award-winning textbook author, 
@@ -51,11 +57,10 @@ See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
 # Note on ggplot2 re marketing
 
-Though RStudio presents **ggplot2** as part of the Tidyverse, that
-package predates Tidy and is written in base-R, not the Tidy paradigm.
-The package is widely used by both base-R advocates and Tidy proponents
-alike.  RStudio's marketing of Tidy as including **ggplot2** only came
-later.
+RStudio's presentation of **ggplot2** as part of the Tidyverse is
+misleading.  That package predates Tidy, and the package is widely used
+by both base-R advocates and Tidy proponents alike.  RStudio's marketing
+of Tidy as including **ggplot2** only came later.
 
 This is important, since many who praise Tidy cite **ggplot2** as their
 first reason for being pro-Tidy in teaching.  This obfuscates the real
@@ -69,7 +74,10 @@ More details later in this document, in the section [ggplot2 versus the
 Tidyverse](README.md#ggplot2-versus-the-tidyverse).
 
 
-# Kudos to RStudio, But They Took a Wrong Turn
+# Kudos to RStudio, but they took a wrong turn
+
+(As of July 2022, RStudio changed its name to Posit, but in this
+document I will use the original, more familiar name.)
 
 I like and admire the RStudio people, including the Tidyverse
 originator, Hadley Wickham, and have always supported them, both
@@ -91,6 +99,84 @@ coding background.  Tidy makes it more difficult for noncoders to learn
 R, and leaves them less able to use it productively.  As someone who is
 passionate about teaching and a longtime R enthusiast, this is quite
 troubling to me.  Hence the document you are now reading.
+
+# RStudio and other prominent R developers use base-R themselves
+
+An old TV commercial urged viewers to "Drive the car Ferrari
+drives"---followed by a shot of Enzo Ferrari getting into his everyday
+work car, a little Fiat.  This is actually similar to the situation with
+prominent R software.
+
+All the breathless claims that Tidy is more modern and clearer,
+whilc base-R is old-fashioned and unclear, 
+fly in the face of the fact that RStudio developers, and authors of
+other prominent R packages, tend to write in base-R, not Tidy.
+And *all* of some use some base-R.
+
+Here are some interesting numbers:
+
+<table border="1">
+
+<tr>  <td>package</td>  <td>*apply() calls</td>  <td>mutate() calls</td>  </tr>
+
+<tr>  <td>brms</td>  <td>333</td>  <td>0</td>  </tr>
+
+<tr>  <td>broom</td>  <td>38</td>  <td>58</td>  </tr>
+
+<tr>  <td>forecast</td>  <td>82</td>  <td>0</td>  </tr>
+
+<tr>  <td>future</td>  <td>71</td>  <td>0</td>  </tr>
+
+<tr>  <td>ggplot2</td>  <td>78</td>  <td>0</td>  </tr>
+
+<tr>  <td>knitr</td>  <td>73</td>  <td>0</td>  </tr>
+
+<tr>  <td>parsnip</td>  <td>45</td>  <td>33</td>  </tr>
+
+<tr>  <td>purrr</td>  <td>10</td>  <td>0</td>  </tr>
+
+<tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
+
+<tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
+
+<tr>  <td>tidymodels</td>  <td>8</td>  <td>0</td>  </tr>
+
+<tr>  <td>tidytext</td>  <td>5</td>  <td>6</td>  </tr>
+
+<tr>  <td>tsibble</td> <td>8</td> <td>19</td>  </tr>
+
+</table>
+
+<p>
+
+</p>
+
+Striking numbers to those who learned R via a tidyverse course.  In
+particular, **mutate()**, is one of the very first verbs one learns in a
+Tidy course, **yet **mutate()** is **0 times** in most of the above
+packages.**  And even in the packages in which this function is called a
+lot, they also have plenty of calls to base-R ***apply()**, functions
+which Tidy is supposed to replace.
+
+Now, wny do these prominent R developers often use base-R, rather than
+the allegedly "modern and clearer" Tidy?  **Because it's easier.**
+For instance, it's easier to write
+
+``` r
+   mtcars$hwratio <- mtcars$hp / mtcars$wt
+```
+
+than
+
+``` r
+   mtcars %>% mutate(hwratio=hp/wt) -> mtcars
+```
+
+And if it's easier for them, it's even further easier for R learners.
+In fact, an article discussed
+[later in this essay](#case-study--an-overly-rigid-philosophy),
+aggreessivly promoting Tidy, actually accuses students who use base-R
+instead of Tidy as taking the easy way out.  Easier, indeed!
 
 # Teachability overview--the Tidy approach is overly complicated and undergeneralizable
 
@@ -1304,11 +1390,13 @@ but yes it is a powerful tool, worth the investment of time -- *for the
 experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" FP.
 
-# Where Are We Now, and Where Should We Be Going?
+# Where are we now, and where should We be going?
+
+## Tidy as pop culture
 
 Due to a catchy name, a charismatic developer, the Bandwagon Effect, and
-highly aggressive marketing by a dominant commercial entity, Tidy has
-swept the R world.
+highly aggressive marketing by a dominant commercial entity, Tidy 
+now dominates the R world.
 
 It has even brought a "pop culture" to R.  One prominent Tidy advocate
 (and coauthor of the *Educator Perspective* article) even sells ["Tidy
@@ -1318,7 +1406,10 @@ Tuesday series has arisen on Twitter.  At times, it has even veered into
 the realm of cult.  There are many who equate Hadley Wickham with R
 itself.  He is treated like a rock star by R "groupies."
 What a difference from the staid R community of yore!  We who have been
-in R since the early days applaud RStudio for spreading the word.
+in R since the early days applaud RStudio for spreading the word,
+but it has come at major costs to the well-being of the language.
+
+## Problems
 
 Putting the hero worship aside, at the very least one can say that many
 if not most in that huge Tidy following view R to consist mainly as
@@ -1373,6 +1464,8 @@ dozens of times.  There was also tension between RStudio and Matt Dowle,
 author of **data.table**, a technically superior competitor to
 **dplyr**.
 
+## Some room for optimism
+
 But the good news is that both sides have been making attempts at
 reconciliation.  Especially notable is that the R Core Group, a body
 that controls the development of base-R, recently added a native pipe to
@@ -1412,12 +1505,30 @@ so be it.  There will be other cases in which the graduates of mixed
 instruction find the Tidy solution more appealing.  Rest assured, Tidy
 is here to stay.
 
+## RStudio, as a Public Benefit Corporation, holds the key
+
 One very important event is that RStudio changed status to a Public
-Benefit Corporation, which it
-[announced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.  As
-such, it should take a good, hard, dispassionate look at what is best
-for R learners.  The firm should move beyond using misleading
-testimonials to rationalize its rigid stance.
+Benefit Corporation (PBC), which it
+[announced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.  
+
+In my opinion, in spite of various actions the firm might point to that
+are aimed at the public good, **RStudio has not lived up to its status as
+a PBC.**
+
+I was shocked to find in 2022 how expensive the RStudio conference is,
+reportedly [US
+$1500](https://twitter.com/fishiintheC/status/1553001832166969344).
+Though there were probably some registration types that we cheaper than
+this, this fee is exhorbitant.  RStudio is a commercial entity, and the
+conference promotes its product. Given this status, 
+I had assumed the conference would be free,
+maybe a small nominal fee. As a PBC, RStudio is legally
+committed to the public good. 
+
+And as a PBC, and as a commercial entity that dominates a pre-existing
+open source product, RStudio should take a good, hard, dispassionate
+look at what is best for R learners.  The firm should move beyond using
+misleading testimonials to rationalize its rigid stance.
 
 I thus renew the suggestion I made to JJ in 2019, and **ask that
 RStudio recommend to the Tidy teaching community that they teach a
