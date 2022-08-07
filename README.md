@@ -191,6 +191,12 @@ In fact, an article discussed
 aggressively promoting Tidy, actually accuses students who use base-R
 instead of Tidy as taking the easy way out.  Easier, indeed!
 
+Some who read an earlier version of this essay countered that the reason
+many package developers stick to base-R is to avoid having too many
+package dependencies.  Yet the data in the above table show this to be
+false, since even the packages that use **mutate()**--thus already
+depending on Tidy--still use a lot of base-R.
+
 # Teachability overview--the Tidy approach is overly complicated and undergeneralizable
 
 * Again, my focus here is on teaching R to those with little or no
