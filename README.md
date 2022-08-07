@@ -619,7 +619,7 @@ well-reasoned  [essay](http://varianceexplained.org/r/teach-hard-way) with the a
 title.  He pointed out htat it makes no pedagogical sense to first teach
 students the hard way to do somethng, and only later show them an easier
 way.  Sage advice.  Ironically, though, he uses this reasoning to argue
-against teacher base-R (either first, or ever).
+against teaching base-R (either first, or ever).
 
 Yet I would hope that the above examples show that it is the Tidy way
 that is the hard way.  In each case, base-R is simpler and more direct.
