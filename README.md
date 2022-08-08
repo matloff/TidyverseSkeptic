@@ -32,7 +32,7 @@
 - [RStudio and other prominent R developers use base-R themselves](#rstudio-and-other-prominent-r-developers-use-base-r-themselves)
 - [Where are we now, and where should we be going?](#where-are-we-now-and-where-should-we-be-going)
    - [Tidy as pop culture](#tidy-as-pop-culture)
-   - [Problems](#problems)
+   - [Parochialism, polemics snd problems](#parochialism-polemics-snd-problems)
    - [Some room for optimism](#some-room-for-optimism)
    - [RStudio, as a Public Benefit Corporation, holds the key](#rstudio-as-a-public-benefit-corporation-holds-the-key)
 
@@ -1412,7 +1412,7 @@ The purpose of including the above table is to assure R learners, that
 in spite of being told by some R teachers that base-R is useless, it in
 fact is used in some of their favorite R packages!
 
-# Where are we now, and where should We be going?
+# Where are we now, and where should we be going?
 
 ## Tidy as pop culture
 
@@ -1431,7 +1431,7 @@ What a difference from the staid R community of yore!  We who have been
 in R since the early days applaud RStudio for spreading the word,
 but it has come at major costs to the well-being of the language.
 
-## Problems
+## Parochialism, polemics snd problems
 
 Putting the hero worship aside, at the very least one can say that many
 if not most in that huge Tidy following view R to consist mainly as
@@ -1439,7 +1439,7 @@ if not most in that huge Tidy following view R to consist mainly as
    R = dplyr + ggplot2 + RStudio IDE + Rmarkdown
 
 Indeed, this is characterization of Tidy by the pro-Tidy Prof. Peng, as
-we saw earlier.
+we saw earlier. 
 
 To us longtime R advocates, this is a tragic irony.  On the one hand,
 again RStudio is to be congratulated for greatly increasing the worldwide
