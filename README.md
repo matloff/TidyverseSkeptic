@@ -468,8 +468,8 @@ be the goal, empowering students to work on real problems, early on.
 
 Tidyers believe that two of the most basic operations in R, the \$ sign
 and bracketing, are harmful.  For instance, consider an example in
-[an article by Tidy advocates](https://arxiv.org/abs/2108.03510), *An
-Educator's Perspective of the Tidyverse.* 
+[an article by Tidy advocates](https://escholarship.org/uc/item/7kk4d922)
+*An Educator's Perspective of the Tidyverse.* 
 
 The dataset is loan data available in the **openintro** package.  Here
 is the Tidy code to preprocess the data:
@@ -551,8 +551,9 @@ It is disappointing that the Tidyers wish to replace base-R, rather than
 supplement it.  
 
 One of the most troubling aspects of the Tidy movement is their rigidity
-and insistence on "loyalty."  For instance, the above-cited *Educator's
-Perspective* article states,
+and insistence on "loyalty."  An illuminating example is in 
+[a preprint version](https://arxiv.org/abs/2108.03510)
+of the above-cited *Educator's Perspective* article, which states,
 
 > ...one thing we have learned is that when we teach the tidyverse
 > consistently, the presence of base R patterns (e.g., using square
@@ -560,6 +561,8 @@ Perspective* article states,
 > assignment completed entirely with base R syntax (in a class where
 > tidyverse is being used) could signal a student who is less engaged with
 > the overall learning materials for the course.  
+
+(This passage is not in the final published version.)
 
 Consider the following simple example:  Say we wish to add to the
 **mtcars** data a column consisting of the horsepower-to-weight ratio.
