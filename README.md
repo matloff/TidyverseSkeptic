@@ -6,9 +6,9 @@
 
 # Table of contents
 
+- [The main issue is how to teach R learners to do data analysis](#the-main-issue-is-how-to-teach-r-learners-to-do-data-analysis)
 - [Note on ggplot2 re marketing](#note-on-ggplot2-re-marketing)
 - [Kudos to RStudio, but they took a wrong turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
-- [RStudio and other prominent R developers use base-R themselves](#rstudio-and-other-prominent-r-developers-use-base-r-themselves)
 - [Teachability overview--the Tidy approach is overly complicated and undergeneralizable](#teachability-overview--the-tidy-approach-is-overly-complicated-and-undergeneralizable)
 - [Using Tidy Hinders the Learning Process:  Case Studies](#using-tidy-hinders-the-learning-process--case-studies)
   - [Case study: delayed learning (I)](#case-study-delayed-learning-i)
@@ -29,7 +29,8 @@
   - [ggplot2 versus the Tidyverse](#ggplot2-versus-the-tidyverse)
   - [Tidyverse "testimonials"](#tidyverse-testimonials)
   - [Use of functional programming](#use-of-functional-programming) 
-- [Where Are We Now, and Where Should We Be Going?](#where-are-we-now-and-where-should-we-be-going)
+- [RStudio and other prominent R developers use base-R themselves](#rstudio-and-other-prominent-r-developers-use-base-r-themselves)
+- [Where are we now, and where should we be going?](#where-are-we-now-and-where-should-we-be-going)
    - [Tidy as pop culture](#tidy-as-pop-culture)
    - [Problems](#problems)
    - [Some room for optimism](#some-room-for-optimism)
@@ -54,6 +55,13 @@ I've taught English As a Second Language to working-class adults from
 China, and have taught a short course on probability to sixth-graders.
 
 See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
+
+# The main issue is how to teach R learners to do data analysis
+
+Note that in discussing teaching in this essay, I am taking the target
+audience here to be **nonprogrammers** who wish to use R for data
+analysis.  The focus is not on what R style should be used by package
+designers.
 
 # Note on ggplot2 re marketing
 
@@ -99,103 +107,6 @@ coding background.  Tidy makes it more difficult for noncoders to learn
 R, and leaves them less able to use it productively.  As someone who is
 passionate about teaching and a longtime R enthusiast, this is quite
 troubling to me.  Hence the document you are now reading.
-
-# RStudio and other prominent R developers use base-R themselves
-
-An old TV commercial urged viewers to "Drive the car Ferrari
-drives"---followed by a shot of Enzo Ferrari getting into his everyday
-work car, a little Fiat.  This is actually similar to the situation with
-prominent R software.
-
-All the breathless claims that Tidy is more modern and clearer,
-whilc base-R is old-fashioned and unclear, 
-fly in the face of the fact that RStudio developers, and authors of
-other prominent R packages, tend to write in base-R, not Tidy.
-And *all* of them use some base-R instead of the corresponding Tidy
-constructs.
-
-Here are some interesting numbers:
-
-<table border="1">
-
-<tr>  <td>package</td>  <td>*apply() calls</td>  <td>mutate() calls</td>  </tr>
-
-<tr>  <td>brms</td>  <td>333</td>  <td>0</td>  </tr>
-
-<tr>  <td>broom</td>  <td>38</td>  <td>58</td>  </tr>
-
-<tr>  <td>datapasta</td>  <td>31</td>  <td>0</td>  </tr>
-
-<tr>  <td>forecast</td>  <td>82</td>  <td>0</td>  </tr>
-
-<tr>  <td>future</td>  <td>71</td>  <td>0</td>  </tr>
-
-<tr>  <td>ggplot2</td>  <td>78</td>  <td>0</td>  </tr>
-
-<tr>  <td>glmnet</td>  <td>92</td>  <td>0</td>  </tr>
-
-<tr>  <td>gt</td>  <td>112</td>  <td>87</td>  </tr>
-
-<tr>  <td>knitr</td>  <td>73</td>  <td>0</td>  </tr>
-
-<tr>  <td>naniar</td>  <td>3</td>  <td>44</td>  </tr>
-
-<tr>  <td>parsnip</td>  <td>45</td>  <td>33</td>  </tr>
-
-<tr>  <td>purrr</td>  <td>10</td>  <td>0</td>  </tr>
-
-<tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
-
-<tr>  <td>RSQLite</td>  <td>14</td>  <td>0</td>  </tr>
-
-<tr>  <td>tensorflow</td>  <td>32</td>  <td>0</td>  </tr>
-
-<tr>  <td>tidymodels</td>  <td>8</td>  <td>0</td>  </tr>
-
-<tr>  <td>tidytext</td>  <td>5</td>  <td>6</td>  </tr>
-
-<tr>  <td>tsibble</td> <td>8</td> <td>19</td>  </tr>
-
-<tr>  <td>VIM</td> <td>117</td> <td>19</td>  </tr>
-
-</table>
-
-<p>
-
-</p>
-
-Striking numbers to those who learned R via a tidyverse course.  In
-particular, **mutate()** is one of the very first verbs one learns in a
-Tidy course, **yet **mutate()** is used **0 times** in most of the above
-packages.**  And even in the packages in which this function is called a
-lot, they also have plenty of calls to base-R ***apply()**, functions
-which Tidy is supposed to replace.
-
-Now, wny do these prominent R developers often use base-R, rather than
-the allegedly "modern and clearer" Tidy?  **Because it's easier.**
-For instance, it's easier to write
-
-``` r
-   mtcars$hwratio <- mtcars$hp / mtcars$wt
-```
-
-than
-
-``` r
-   mtcars %>% mutate(hwratio=hp/wt) -> mtcars
-```
-
-And if it's easier for them, it's even further easier for R learners.
-In fact, an article discussed
-[later in this essay](#case-study--an-overly-rigid-philosophy),
-aggressively promoting Tidy, actually accuses students who use base-R
-instead of Tidy as taking the easy way out.  Easier, indeed!
-
-Some who read an earlier version of this essay countered that the reason
-many package developers stick to base-R is to avoid having too many
-package dependencies.  Yet the data in the above table show this to be
-false, since even the packages that use **mutate()**--thus already
-depending on Tidy--still use a lot of base-R.
 
 # Teachability overview--the Tidy approach is overly complicated and undergeneralizable
 
@@ -1411,6 +1322,95 @@ Actually, most non-FP languages allow passing one function to another,
 but yes it is a powerful tool, worth the investment of time -- *for the
 experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" FP.
+
+# RStudio and other prominent R developers use base-R themselves
+
+An old TV commercial urged viewers to "Drive the car Ferrari
+drives"---followed by a shot of Enzo Ferrari getting into his everyday
+work car, a little Fiat.  This is actually similar to the situation with
+prominent R software.
+
+All the breathless claims that Tidy is more modern and clearer,
+whilc base-R is old-fashioned and unclear, 
+fly in the face of the fact that RStudio developers, and authors of
+other prominent R packages, tend to write in base-R, not Tidy.
+And *all* of them use some base-R instead of the corresponding Tidy
+constructs.
+
+Here are some interesting numbers:
+
+<table border="1">
+
+<tr>  <td>package</td>  <td>*apply() calls</td>  <td>mutate() calls</td>  </tr>
+
+<tr>  <td>brms</td>  <td>333</td>  <td>0</td>  </tr>
+
+<tr>  <td>broom</td>  <td>38</td>  <td>58</td>  </tr>
+
+<tr>  <td>datapasta</td>  <td>31</td>  <td>0</td>  </tr>
+
+<tr>  <td>forecast</td>  <td>82</td>  <td>0</td>  </tr>
+
+<tr>  <td>future</td>  <td>71</td>  <td>0</td>  </tr>
+
+<tr>  <td>ggplot2</td>  <td>78</td>  <td>0</td>  </tr>
+
+<tr>  <td>glmnet</td>  <td>92</td>  <td>0</td>  </tr>
+
+<tr>  <td>gt</td>  <td>112</td>  <td>87</td>  </tr>
+
+<tr>  <td>knitr</td>  <td>73</td>  <td>0</td>  </tr>
+
+<tr>  <td>naniar</td>  <td>3</td>  <td>44</td>  </tr>
+
+<tr>  <td>parsnip</td>  <td>45</td>  <td>33</td>  </tr>
+
+<tr>  <td>purrr</td>  <td>10</td>  <td>0</td>  </tr>
+
+<tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
+
+<tr>  <td>RSQLite</td>  <td>14</td>  <td>0</td>  </tr>
+
+<tr>  <td>tensorflow</td>  <td>32</td>  <td>0</td>  </tr>
+
+<tr>  <td>tidymodels</td>  <td>8</td>  <td>0</td>  </tr>
+
+<tr>  <td>tidytext</td>  <td>5</td>  <td>6</td>  </tr>
+
+<tr>  <td>tsibble</td> <td>8</td> <td>19</td>  </tr>
+
+<tr>  <td>VIM</td> <td>117</td> <td>19</td>  </tr>
+
+</table>
+
+<p>
+
+</p>
+
+Striking numbers to those who learned R via a tidyverse course.  In
+particular, **mutate()** is one of the very first verbs one learns in a
+Tidy course, **yet **mutate()** is used **0 times** in most of the above
+packages.**  And even in the packages in which this function is called a
+lot, they also have plenty of calls to base-R ***apply()**, functions
+which Tidy is supposed to replace.
+
+In a Twitter discussion of an earlier version of this essay, various
+reasons were offered for why package authors do use at least some
+base-R. Many discussants speculated that a common reason is desire to
+avoid "package bloat."  I believe that in at least some cases, an author
+simply felt that the base-R construct was the most convenient.  
+
+Again, the reader should note that this essay is not about what
+R style package writers should use.  As stated above,
+
+> Note that in discussing teaching in this essay, I am taking the target
+> audience here to be **nonprogrammers** who wish to use R for data
+> analysis.  The focus is not on what R style should be used by package
+> designers.
+
+The purpose of including the above table is to assure R learners, that
+in spite of being told by some R teachers that base-R is useless, it in
+fact is used in some of their favorite R packages!
 
 # Where are we now, and where should We be going?
 
