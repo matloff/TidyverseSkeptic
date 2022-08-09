@@ -529,6 +529,9 @@ loops are easier to debug; the sophisticated machinery that Tidyers want
 in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
 the Tidyers' "cure is worse than the disease.".
 
+The above article is so purist that it even recommends against teaching 
+**lm()**.  Use **broom**, they say.
+
 ## "dplyr or bust"
 
 The Tidyers become so focused on Tidy that they try to solve every
