@@ -1,6 +1,6 @@
 # Teaching R in a Kinder, Gentler, More Effective Manner: 
 
-# Use Base-R, Not the Tidyverse  
+# Use Base-R, Not Just the Tidyverse  
 
 ## Author:  Prof. Norm Matloff, University of California, Davis
 
