@@ -1,6 +1,6 @@
 # Teaching R in a Kinder, Gentler, More Effective Manner: 
 
-# Use Base-R, Not Just the Tidyverse  
+# Teach Base-R, Not Just the Tidyverse  
 
 ## Author:  Prof. Norm Matloff, University of California, Davis
 
@@ -10,32 +10,25 @@
 - [Note on ggplot2 re marketing](#note-on-ggplot2-re-marketing)
 - [Kudos to RStudio, but they took a wrong turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
 - [Teachability overview--the Tidy approach is overly complicated and undergeneralizable](#teachability-overview--the-tidy-approach-is-overly-complicated-and-undergeneralizable)
-- [Using Tidy Hinders the Learning Process:  Case Studies](#using-tidy-hinders-the-learning-process--case-studies)
-  - [Case study: delayed learning (I)](#case-study-delayed-learning-i)
-  - [Case study: delayed learning (II)](#case-study-delayed-learning-ii)
-  - [Case study:  tapply() (I)](#case-study--tapply-i)
-  - [Note re tapply(): the workhorse of base-R](#note-re-tapply-the-workhorse-of-base-r)
-  - [Case study:  tapply() (II)](#case-study--tapply-ii)
-  - [Case study:  Tidy's banning the $ sign and brackets](#case-study--tidys-banning-the--sign-and-brackets)
-  - [An overly rigid philosophy](#an-overly-rigid-philosophy)
+- [Examples](#examples)
+- [Dogmatic teaching is harmful to students](#dogmatic-teaching-is-harmful-to-students)
+  - [No dollar sign, no brackets, no loops, even no lm()](#no-dollar-sign-no-brackets-no-loops-even-no-lm)
+  - [Insistence on "loyalty"](#insistence-on-loyalty)
   - ["dplyr or bust"](#dplyr-or-bust)
-  - [Case study:  Hadley and tapply()](#case-study--hadley-and-tapply)
-  - [Case study:  it doesn't have to be Either Or](#case-study--it-doesnt-have-to-be-either-or)
-  - [Case study:  Tidy as an obstacle to R statistical methods](#case-study--tidy-as-an-obstacle-to-r-statistical-methods)
-  - [Case study:  tapply() (III)](#case-study--tapply-iii)
-  - [Case study:  poor readability, unnecessary cognitive overload](#case-study--poor-readability-unnecessary-cognitive-overload)
-  - [Case study:  Tidy obstacles to debugging](#case-study--tidy-obstacles-to-debugging) - 
-  - [Should we teach using pipes or functional composition?  Neither!](#should-we-teach-using-pipes-or-functional-composition--neither)
+- [Tidy as an obstacle to R statistical methods](#tidy-as-an-obstacle-to-r-statistical-methods)
+- [Poor readability, unnecessary cognitive overload](#poor-readability-unnecessary-cognitive-overload)
+- [Tidy obstacles to debugging](#tidy-obstacles-to-debugging)
+- [Should we teach using pipes or functional composition?  Neither!](#should-we-teach-using-pipes-or-functional-composition--neither)
 - [Other Issues](#other-issues)
   - [ggplot2 versus the Tidyverse](#ggplot2-versus-the-tidyverse)
   - [Tidyverse "testimonials"](#tidyverse-testimonials)
-  - [Use of functional programming](#use-of-functional-programming) 
+  - [Use of functional programming](#use-of-functional-programming)
 - [RStudio and other prominent R developers use base-R themselves](#rstudio-and-other-prominent-r-developers-use-base-r-themselves)
 - [Where are we now, and where should we be going?](#where-are-we-now-and-where-should-we-be-going)
-   - [Tidy as pop culture](#tidy-as-pop-culture)
-   - [Parochialism, polemics snd problems](#parochialism-polemics-snd-problems)
-   - [Some room for optimism](#some-room-for-optimism)
-   - [RStudio, as a Public Benefit Corporation, holds the key](#rstudio-as-a-public-benefit-corporation-holds-the-key)
+  - [Tidy as pop culture](#tidy-as-pop-culture)
+  - [Parochialism, polemics snd problems](#parochialism-polemics-snd-problems)
+  - [Some room for optimism](#some-room-for-optimism)
+  - [RStudio, as a Public Benefit Corporation, holds the key](#rstudio-as-a-public-benefit-corporation-holds-the-key)
 
 I teach in the Computer Science Dept. at UC Davis, where I formerly was
 a Professor of Statistics. I am an award-winning textbook author, 
@@ -184,7 +177,7 @@ English "lessons," but they won't have learned much at all.
 
 # Examples
 
-## Case study: delayed learning (I)
+*Case study: delayed learning (I)*
 
 Let's look at an example in my online R tutorial,
 [**fasteR**](http://github.com/matloff/fasteR).  Consider, for
@@ -239,7 +232,7 @@ subscripts.
 In other words, **even after one lesson, the base-R learner would be way
 ahead of her Tidy counterparts.**
 
-## Case study: delayed learning (II)
+*Case study: delayed learning (II)*
 
 A researcher tweeted in December 2019 that an introductory statistics
 book by Peter Dalgaard is "now obsolete," because it uses base-R rather
@@ -269,7 +262,7 @@ don't seem to use R's '->' op.)
 Again, the Tidyverse is simply too complex for R learners without coding
 background.  **It slows down their learning process.**
 
-## Case study:  tapply() (I)
+*Case study:  tapply() (I)*
 
 One of the most commonly-used functions in base-R is **tapply()**.  It's
 quite easy to teach beginners, by presenting its call form to them:
@@ -328,7 +321,7 @@ But again, both versions are simple (and the **tapply()** one is a bit
 more cluttered), so let's call it a tie.  But is it
 certainly not the case that the Tidy version is *easier to learn*.
 
-## Note re tapply(): the workhorse of base-R
+*Note re tapply(): the workhorse of base-R*
 
 Above and below, several examples use the **tapply()** function. Some
 who have read this essay have objected that **tapply()** is an advanced,
@@ -340,7 +333,7 @@ For example, consider the **ggplot2** package, written by the ()later)
 inventor of the tidyverse, Hadley Wickham.  Hadley calls **tapply()**
 7 times in the **ggplot2** code!
 
-## Case study:  tapply() (II)
+*Case study:  tapply() (II)*
 
 Of course, one can find instances in which each approach, base-R and
 Tidy, is simpler to use than the other.  Indeed, I have strongly
@@ -386,7 +379,7 @@ I'll take as my examples here
 *An Educator's Perspective of the Tidyverse,* as it is very detailed and
 articulate.  But their viewpoint is now commonplace in the US.
 
-## No $ sign, no [, no loops, even no lm() 
+## No dollar sign, no brackets, no loops, even no lm() 
 
 The polemic Tidyers believe that two of the most basic operations in R,
 the \$ sign and bracketing, are harmful.  For instance, consider an
@@ -467,27 +460,7 @@ data.frame(x=x) %>% filter(x > 8)
 That's a lot of machinery to implement one little vector operation --
 conversion to a data frame, pipes, **filter()**. 
 
-## An overly rigid philosophy
-
-It is disappointing that the Tidyers wish to replace base-R, rather than
-supplement it.  
-
-One of the most troubling aspects of the Tidy movement is their rigidity
-and insistence on "loyalty."  An illuminating example is in 
-[an early preprint version](https://arxiv.org/abs/2108.03510)
-of the above-cited *Educator's Perspective* article (downloaded from the
-Wayback Machine, August 10, 2021 version of the file), which states,
-
-> ...one thing we have learned is that when we teach the tidyverse
-> consistently, the presence of base R patterns (e.g., using square
-> brackets to select columns instead of dplyr::select()) stands out.  An
-> assignment completed entirely with base R syntax (in a class where
-> tidyverse is being used) could signal a student who is less engaged with
-> the overall learning materials for the course.  
-
-(This passage is not in the final published version.)
-
-Consider the following simple example:  Say we wish to add to the
+Consider this very simple example:  Say we wish to add to the
 **mtcars** data a column consisting of the horsepower-to-weight ratio.
 
 In base-R, it is extremely simple:
@@ -506,6 +479,36 @@ But in Tidy:
 
 Still not terribly complex, but again  we're invoking some machinery --
 piping, a function call, and reassigning to the original data frame.
+
+The Tidyers oppose teaching loops to beginners, on the grounds that loop
+coding is error-prone.  That is open to debate, but the point is that
+loops are easier to debug; the sophisticated machinery that Tidyers want
+in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
+the Tidyers' "cure is worse than the disease.".
+
+The article is so purist that it even recommends against teaching 
+**lm()**.  Use **broom**, they say.  What's next, a Tidy wrapper for
+**sqrt()**?
+
+## Insistence on "loyalty"
+
+It is disappointing that the polemic Tidyers wish to replace base-R,
+rather than supplement it.  
+
+One of the most troubling aspects of the Tidy movement is their rigidity
+and insistence on "loyalty."  An illuminating example is in 
+[an early preprint version](https://arxiv.org/abs/2108.03510)
+of the above-cited *Educator's Perspective* article (downloaded from the
+Wayback Machine, August 10, 2021 version of the file), which states,
+
+> ...one thing we have learned is that when we teach the tidyverse
+> consistently, the presence of base R patterns (e.g., using square
+> brackets to select columns instead of dplyr::select()) stands out.  An
+> assignment completed entirely with base R syntax (in a class where
+> tidyverse is being used) could signal a student who is less engaged with
+> the overall learning materials for the course.  
+
+(This passage is not in the final published version.)
 
 Why would we deprive R learners of very simple, direct and effective
 tools like the base-R one above?  Just for the sake of Tidy "purity,"
@@ -532,15 +535,6 @@ What is also intriguing about the above quote on "naughty kids" is its
 seeming implication that such a student's use of base-R would be "taking
 the easy way out." But doesn't that mean base-R is easier?
 
-The Tidyers oppose teaching loops to beginners, on the grounds that loop
-coding is error-prone.  That is open to debate, but the point is that
-loops are easier to debug; the sophisticated machinery that Tidyers want
-in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
-the Tidyers' "cure is worse than the disease.".
-
-The above article is so purist that it even recommends against teaching 
-**lm()**.  Use **broom**, they say.
-
 ## "dplyr or bust"
 
 The Tidyers become so focused on Tidy that they try to solve every
@@ -552,7 +546,7 @@ those who submit the queries are either so weak in base-R, or too
 fixated on **dplyr**, that they are incapable of taking that easier
 path.
 
-## Case study:  Hadley and tapply()
+*Case study:  Hadley and tapply()*
 
 As noted earlier, many who learned R from a Tidyer are surprised to
 learn that **ggplot2** makes liberal use of **tapply()**.  It shouldn't
@@ -583,7 +577,7 @@ Hadley replied, in
 An R Core member, commenting on this phenomenon (but not this incident)
 cited a saying, "Sometimes the followers are holier than the prophet." 
 
-## Case study:  it doesn't have to be Either Or
+*Case study:  it doesn't have to be Either Or*
 
 Regarding the "purity" view in the *Educator's Perspective* article,
 opposed to mixing Tidy and base-R in teaching:  I did suggest a mixed
@@ -669,11 +663,17 @@ No pipe, no **mutate()**, no reassignment.  Just the bare minimum, much
 easier to understand.
 
 
-## Case study:  Tidy as an obstacle to R statistical methods
+# Tidy as an obstacle to R statistical methods
 
-In the last section, we discussed the Tidyers' opposition to teaching
-the '$' and brackets operations.  This is an obvious impediment to using R's
-statistical operations.  
+As noted above, some polemic Tidyers even oppose teaching **lm()**.
+Instead, they recommend using the **broom** wrapper.  The wrapper is
+indeed useful, but students need to learn the basics.  And of course, it
+is unreasonable to ask that the hundreds of R statistical operations,
+and the thousands of packages, all have Tidy wrappers.
+
+Consider the Tidyers' opposition to teaching the '$' and brackets
+operations.  This is an obvious impediment to using R's statistical
+operations.  
 
 Most of the R statistical functions return S3 objects, i.e. lists,
 accessible via '$'.  Similarly, statistical operations in R are mainly
@@ -702,99 +702,7 @@ they are not the types who sit around debating, for example, the
 propriety of p-values.  Statistics is not foremost on their radar
 screens, and this sad gap between Tidy and statistics is a result.
 
-
-## Case study:  tapply() (III)
-
-Besides *learnability*, another goal for noncoder R learners is
-*usability.*  In this light, it's instructive to look at what happens
-when in the built-in **mtcars** dataset one groups by two aspects,
-**cyl** and **gear**, rather than just say **cyl**:
-
-``` r
-   > mtcars %>%
-   > group_by(cyl,gear) %>% summarize(mean(mpg))
-   cyl  gear `mean(mpg)`
-   <dbl> <dbl>       <dbl>
-   1     4     3        21.5
-   2     4     4        26.9
-   3     4     5        28.2
-   4     6     3        19.8
-   5     6     4        19.8
-   6     6     5        19.7
-   7     8     3        15.0
-   8     8     5        15.4
-```
-
-   Compare to base-R:
-
-``` r
-> tapply(mtcars$mpg,list(mtcars$cyl,mtcars$gear),mean)
-   3      4    5
-   4 21.50 26.925 28.2
-   6 19.75 19.750 19.7
-   8 15.05     NA 15.4
-```
-
-With **tapply()**, students do have to be told that in the case of more
-than one grouping variable, they need to surround the variables with
-'list'.  Again, once they are given examples, students have no trouble
-with this.
-
-But look at the form of the output:  The Tidy version outputs a tibble,
-rather hard to read, while **tapply()** outputs an R matrix, printed out
-as a two-way table.  The latter form is exactly what many students need
-in their applications, e.g. social science research.  
-
-In searching through the hundreds of functions in **dplyr**, it is not
-clear to me which one, if any, can convert that Tidy output to the very
-informative tabular view that **tapply()** provides.  If there is one,
-the fact that one is not easily identifiable illustrates my point above
-that Tidy is actually very bloated, not suitable for beginners.
-
-Moreover, the **tapply()** output is more informative in a second sense,
-letting the user know that there were no 8-cyliner, 4-speed cars, again
-the kind of thing that is quite meaningful in many applications.  
-
-Actually, the Tidy version can be modified in order to notice that empty
-group.  Then things get really bad for Tidy:
-
-``` r
-> mtcars$cyl <- as.factor(mtcars$cyl)
-> mtcars$gear <- as.factor(mtcars$gear)
-> mtcars %>% 
-   group_by(cyl,gear,.drop=FALSE) %>% 
-   summarize(mean(mpg))
-
-A tibble: 9 x 3
-Groups:   cyl [3]
-   cyl   gear  `mean(mpg)`
-   <fct> <fct>       <dbl>
-   1 4     3            21.5
-   2 4     4            26.9
-   3 4     5            28.2
-   4 6     3            19.8
-   5 6     4            19.8
-   6 6     5            19.7
-   7 8     3            15.0
-   8 8     4           NaN  
-   9 8     5            15.4
-```
-
-There's trouble for R beginners right away, in the need to convert to
-factors, something not mentioned in the Tidy documentation, and which
-would further complicate things for R beginners even if it were
-documented.  Furthermore, the instructor would need to explain the
-**.drop=FALSE**
-
-This illustrates why one Tidy advocate dismissed my example of grouping
-by two factors as "advanced," not suitable for a discussion of how R
-beginners learn.  It IS advanced for Tidy learners.  But it's clear that
-for base-R learners, it's not advanced at all.  Indeed, examples like
-this are standard fare in base-R courses.
-
-I'd give base-R the clear win for teaching purposes here. 
-
-## Case study:  poor readability, unnecessary cognitive overload
+# Poor readability, unnecessary cognitive overload
 
 As noted, R courses using the Tidyverse often do rather little beyond
 their canonical *data %>% group_by %>% mutate %>% summarize* paradigm.
@@ -960,7 +868,7 @@ This phrasing is likely beyond the comprehension of many R beginners.
 Seeing a few examples would help them, of course. but it is yet another
 example of how Tidy causes cognitive overload for learners.
 
-## Case study:  Tidy obstacles to debugging
+# Tidy obstacles to debugging
 
 Here is an example from *Text Mining with R*, by Julia
 Silge of RStudio, and David Robinson. It's a great introduction to the
@@ -1098,7 +1006,7 @@ with debugging in mind.  As the package author says, sometimes the only
 solution is to convert the code to ordinary unpiped form.  (The
 package has an aid for this.)
 
-## Should we teach using pipes or functional composition?  Neither!
+# Should we teach using pipes or functional composition?  Neither!
 
 Pipes play a central role in the Tidy paradigm.  According to the 
 Tidy advocates, the claimed alternative--function composition--is
