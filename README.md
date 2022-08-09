@@ -11,6 +11,7 @@
 - [Kudos to RStudio, but they took a wrong turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
 - [Teachability overview--the Tidy approach is overly complicated and undergeneralizable](#teachability-overview--the-tidy-approach-is-overly-complicated-and-undergeneralizable)
 - [Examples](#examples)
+- [It doesn't have to be Either Or;teach a mix of base-R and Tidy](#it-doesnt-have-to-be-either-orteach-a-mix-of-base-r-and-tidy)
 - [Dogmatic teaching is harmful to students](#dogmatic-teaching-is-harmful-to-students)
   - [No dollar sign, no brackets, no loops, even no lm()](#no-dollar-sign-no-brackets-no-loops-even-no-lm)
   - [Insistence on "loyalty"](#insistence-on-loyalty)
@@ -210,6 +211,10 @@ data frames, **ggplot()**, the **aes** argument, the role of the '+'
 (it's not addition here) and so on -- and thus she could definitely NOT
 present it in the first lesson.
 
+(Things would be simpler for Tidy instructors if they were to use
+**qplot()** in the **ggplot2** package, but as far as I know, few if any
+Tidy courses do this.)
+
 Also in my very first lesson, I do
 
 ``` r
@@ -367,6 +372,91 @@ of **ggplot2**!  It would be out of the question to use this example
 early in a Tidy course, far too much machinery to cover.  But easy to do
 so in a course using base-R, in the first or second lesson.  That should
 be the goal, empowering students to work on real problems, early on.
+
+# It doesn't have to be Either Or;teach a mix of base-R and Tidy
+
+Regarding the "purity" view in the *Educator's Perspective* article,
+opposed to mixing Tidy and base-R in teaching:  I did suggest a mixed
+approach to RStudio founder and CEO JJ Allaire when we met in 2019.
+Unfortunately, JJ did not like the idea either, on the grounds that
+RStudio should not be telling people how to teach.  But of course, that
+is exactly what RStudio has been doing in promoting Tidy.
+
+An overly rigid, "pure" approach simply doesn't make sense.  Why deprive R
+learners of simple tools that would ease their burden -- whether from Tidy or
+base-R?
+
+One of the authors of the *Educator's Perspective* article has a nice
+[presentation](https://github.com/mine-cetinkaya-rundel/teach-ds-to-new-user) 
+on teaching data science, in which she makes a side-by-side comparison
+of base-R and Tidy code.  One of the examples is on recoding variables:
+
+base-R:
+
+``` r
+mtcars$transmission <-
+ ifelse(mtcars$am == 0, "automatic", "manual")
+```
+
+Tidy:
+
+``` r
+mtcars <- mtcars %>%
+ mutate(
+    transmission =
+    case_when(
+       am == 0 ~ "automatic",
+       am == 1 ~ "manual"
+    )
+ )
+```
+
+Her point seems to be that although base-R does well here, if recoding
+**gear** rather than **am**, the base-R method is cumbersome.  It is
+indeed -- but due to her choosing to use nested calls to **ifelse()**.
+
+
+Tidy:
+
+``` r
+mtcars <- mtcars %>%
+ mutate(
+   gear_char =
+   case_when(
+     gear == 3 ~ "three",
+     gear == 4 ~ "four",
+     gear == 5 ~ "five"
+   )
+ )
+```
+
+base R
+
+``` r
+mtcars$gear_char <-
+ ifelse(mtcars$gear == 3,
+   "three",
+   ifelse(mtcars$gear == 4,
+   "four",
+   "five")
+ )
+```
+
+But a mixed base-R/Tidy approach, combining '$' with the **dplyr**
+function **case_when()**, is simpler and more intuitive than either her
+base-R or Tidy versions::
+
+``` r
+mtcars$gear_char <- 
+   case_when(
+      mtcars$gear == 3 ~ 'three',
+      mtcars$gear == 4 ~ 'four',
+      mtcars$gear == 5 ~ 'five')
+
+```
+
+No pipe, no **mutate()**, no reassignment.  Just the bare minimum, much
+easier to understand.
 
 # Dogmatic teaching is harmful to students
 
@@ -535,6 +625,24 @@ What is also intriguing about the above quote on "naughty kids" is its
 seeming implication that such a student's use of base-R would be "taking
 the easy way out." But doesn't that mean base-R is easier?
 
+Notably, the article dismisses the notion of teaching a mix of base-R
+and Tidy, which is my recommendation.  They claim this would "confuse"
+students.  But functions are functions are functions; there is nothing
+conceptually different about Tidy functions.  Look at the example we
+discussed above:
+
+``` r
+mtcars$gear_char <- 
+   case_when(
+      mtcars$gear == 3 ~ 'three',
+      mtcars$gear == 4 ~ 'four',
+      mtcars$gear == 5 ~ 'five')
+
+```
+
+We have the base-R '$' and the Tidy **case_when()**.  They flow together
+naturally, no concept clash, nothing to get confused about.
+
 ## "dplyr or bust"
 
 The Tidyers become so focused on Tidy that they try to solve every
@@ -576,91 +684,6 @@ Hadley replied, in
 
 An R Core member, commenting on this phenomenon (but not this incident)
 cited a saying, "Sometimes the followers are holier than the prophet." 
-
-*Case study:  it doesn't have to be Either Or*
-
-Regarding the "purity" view in the *Educator's Perspective* article,
-opposed to mixing Tidy and base-R in teaching:  I did suggest a mixed
-approach to RStudio founder and CEO JJ Allaire when we met in 2019.
-Unfortunately, JJ did not like the idea either, on the grounds that
-RStudio should not be telling people how to teach.  But of course, that
-is exactly what RStudio has been doing in promoting Tidy.
-
-An overly rigid, "pure" approach simply doesn't make sense.  Why deprive R
-learners of simple tools that would ease their burden -- whether from Tidy or
-base-R?
-
-One of the authors of the *Educator's Perspective* article has a nice
-[presentation](https://github.com/mine-cetinkaya-rundel/teach-ds-to-new-user) 
-on teaching data science, in which she makes a side-by-side comparison
-of base-R and Tidy code.  One of the examples is on recoding variables:
-
-base-R:
-
-``` r
-mtcars$transmission <-
- ifelse(mtcars$am == 0, "automatic", "manual")
-```
-
-Tidy:
-
-``` r
-mtcars <- mtcars %>%
- mutate(
-    transmission =
-    case_when(
-       am == 0 ~ "automatic",
-       am == 1 ~ "manual"
-    )
- )
-```
-
-Her point seems to be that although base-R does well here, if recoding
-**gear** rather than **am**, the base-R method is cumbersome.  It is
-indeed -- but due to her choosing to use nested calls to **ifelse()**.
-
-
-Tidy:
-
-``` r
-mtcars <- mtcars %>%
- mutate(
-   gear_char =
-   case_when(
-     gear == 3 ~ "three",
-     gear == 4 ~ "four",
-     gear == 5 ~ "five"
-   )
- )
-```
-
-base R
-
-``` r
-mtcars$gear_char <-
- ifelse(mtcars$gear == 3,
-   "three",
-   ifelse(mtcars$gear == 4,
-   "four",
-   "five")
- )
-```
-
-But a mixed base-R/Tidy approach, combining '$' with the **dplyr**
-function **case_when()**, is simpler and more intuitive than either her
-base-R or Tidy versions::
-
-``` r
-mtcars$gear_char <- 
-   case_when(
-      mtcars$gear == 3 ~ 'three',
-      mtcars$gear == 4 ~ 'four',
-      mtcars$gear == 5 ~ 'five')
-
-```
-
-No pipe, no **mutate()**, no reassignment.  Just the bare minimum, much
-easier to understand.
 
 
 # Tidy as an obstacle to R statistical methods
