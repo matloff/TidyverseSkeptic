@@ -17,8 +17,9 @@
   - [Note re tapply(): the workhorse of base-R](#note-re-tapply-the-workhorse-of-base-r)
   - [Case study:  tapply() (II)](#case-study--tapply-ii)
   - [Case study:  Tidy's banning the $ sign and brackets](#case-study--tidys-banning-the--sign-and-brackets)
-  - [Case study:  an overly rigid philosophy](#case-study--an-overly-rigid-philosophy)
-  - ["Don't teach students the hard way first"](#dont-teach-students-the-hard-way-first)
+  - [An overly rigid philosophy](#case-study--an-overly-rigid-philosophy)
+  - ["dplyr or bust"](#dplyr-or-bust)
+  - [Case study:  Hadley and tapply()](#case-study--hadley-and-tapply)
   - [Case study:  it doesn't have to be Either Or](#case-study--it-doesnt-have-to-be-either-or)
   - [Case study:  Tidy as an obstacle to R statistical methods](#case-study--tidy-as-an-obstacle-to-r-statistical-methods)
   - [Case study:  tapply() (III)](#case-study--tapply-iii)
@@ -456,7 +457,7 @@ data.frame(x=x) %>% filter(x > 8)
 That's a lot of machinery to implement one little vector operation --
 conversion to a data frame, pipes, **filter()**. 
 
-## Case study:  an overly rigid philosophy
+## An overly rigid philosophy
 
 It is disappointing that the Tidyers wish to replace base-R, rather than
 supplement it.  
@@ -526,36 +527,44 @@ loops are easier to debug; the sophisticated machinery that Tidyers want
 in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
 the Tidyers' "cure is worse than the disease.".
 
-## "Don't teach students the hard way first"
+## "dplyr or bust"
 
-David Robinson, another prominent name in the R world, wrote a very
-well-reasoned  [essay](http://varianceexplained.org/r/teach-hard-way) with the above
-title.  He pointed out htat it makes no pedagogical sense to first teach
-students the hard way to do somethng, and only later show them an easier
-way.  Sage advice.  Ironically, though, he uses this reasoning to argue
-against teaching base-R (either first, or ever).
+The Tidyers become so focused on Tidy that they try to solve every
+problem by using that tool.  The result is seen in "How do I...?"
+queries in Twitter, Stack Overflow and so on.
 
-Yet I would hope that the above examples show that it is the Tidy way
-that is the hard way.  In each case, base-R is simpler and more direct.
+In many cases, the problem has a simple and direct base-R solution, but
+those who submit the queries are either so weak in base-R, or too
+fixated on **dplyr**, that they are incapable of taking that easier
+path.
 
-Among other things, Robinson rightly notes that it is an issue of trust.
-If the instructor doesn't at least warn the students that he/she will
-present the hard way first, then later in presenting the easy way, some
-students will feel deceived.  Again, ironically, this is precisely the
-argument I made above in the "mutate" example (written before learning
-of the Robinson essay):
+## Case study:  Hadley and tapply()
 
-> Students who are taught the Tidy version of the above and then are shown
-> the base-R one will say, "Wow! That's much easier. Thanks for the
-> shortcut." And I can guarantee, a few would say, "Why didn't you tell us
-> this way in the first place?"
+As noted earlier, many who learned R from a Tidyer are surprised to
+learn that **ggplot2** makes liberal use of **tapply()**.  It shouldn't
+be surprising, as **ggplot2** is pre-Tidy, but many of the more polemic
+Tidyers have portrayed **tapply()** as the epitome of "What's wrong with
+R."
 
-Reader, take your pick. :-)
+The tragic error of the "**dplyr** or bust" obsession is shown in the following
+Twitter exchange.
 
-Similarly, the "naughty kids" example, in which the tidyverse advocate
-complained that some students were, apparently, "taking the easy way" by
-using base-R, again would indicate that hard way is actually Tidy.  If
-so, why teach it first?
+David Robinson, a well-known Tidy advocate, 
+[tweeted](https://twitter.com/drob/status/766294758696357888?language=en)
+
+dplyr #rstats pattern I use constantly:
+
+> %>%
+>   group_by(...) %>%
+>   mutate(n = n()) %>%
+>   ungroup()
+> 
+> Do others? Would a shortcut be helpful?
+
+Hadley replied, in
+[the same thread](https://twitter.com/hadleywickham/status/766301706103554048)
+
+> [use] or ave() vs tapply()
 
 ## Case study:  it doesn't have to be Either Or
 
