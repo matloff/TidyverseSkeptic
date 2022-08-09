@@ -568,6 +568,9 @@ Hadley replied, in
 
 > [use] or ave() vs tapply()
 
+An R Core member, commenting on this phenomenon (but not this incident)
+cited a saying, "Sometimes the followers are holier than the prophet." 
+
 ## Case study:  it doesn't have to be Either Or
 
 Regarding the "purity" view in the *Educator's Perspective* article,
