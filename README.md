@@ -182,7 +182,7 @@ it would not generalize much.  The students may even rave about these
 English "lessons," but they won't have learned much at all.
 
 
-# Using Tidy Hinders the Learning Process:  Case Studies 
+# Examples
 
 ## Case study: delayed learning (I)
 
@@ -375,13 +375,22 @@ early in a Tidy course, far too much machinery to cover.  But easy to do
 so in a course using base-R, in the first or second lesson.  That should
 be the goal, empowering students to work on real problems, early on.
 
+# Dogmatic teaching is harmful to students
 
-## Case study:  Tidy's banning the $ sign and brackets
+Most people, on most issues, avoid extremes.  But some teeachers of R
+have gone polemic, with dogmatic calls for "purity," with a Tidy-only
+approach.
 
-Tidyers believe that two of the most basic operations in R, the \$ sign
-and bracketing, are harmful.  For instance, consider an example in
+I'll take as my examples here
 [an article by Tidy advocates](https://escholarship.org/uc/item/7kk4d922)
-*An Educator's Perspective of the Tidyverse.* 
+*An Educator's Perspective of the Tidyverse,* as it is very detailed and
+articulate.  But their viewpoint is now commonplace in the US.
+
+## No $ sign, no [, no loops, even no lm() 
+
+The polemic Tidyers believe that two of the most basic operations in R,
+the \$ sign and bracketing, are harmful.  For instance, consider an
+example in *Educator's Perspective*.*
 
 The dataset is loan data available in the **openintro** package.  Here
 is the Tidy code to preprocess the data:
