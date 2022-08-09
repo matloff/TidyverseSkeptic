@@ -17,7 +17,7 @@
   - [Note re tapply(): the workhorse of base-R](#note-re-tapply-the-workhorse-of-base-r)
   - [Case study:  tapply() (II)](#case-study--tapply-ii)
   - [Case study:  Tidy's banning the $ sign and brackets](#case-study--tidys-banning-the--sign-and-brackets)
-  - [An overly rigid philosophy](#case-study--an-overly-rigid-philosophy)
+  - [An overly rigid philosophy](#an-overly-rigid-philosophy)
   - ["dplyr or bust"](#dplyr-or-bust)
   - [Case study:  Hadley and tapply()](#case-study--hadley-and-tapply)
   - [Case study:  it doesn't have to be Either Or](#case-study--it-doesnt-have-to-be-either-or)
@@ -330,11 +330,11 @@ certainly not the case that the Tidy version is *easier to learn*.
 
 ## Note re tapply(): the workhorse of base-R
 
-Above and below, several examples use the Some who have read this essay
-have objected that **tapply()** is an advanced, esoteric R function,
-thus inappropriate for the beginners-oriented theme here.  This is what
-they were taught, but actually it is exactly the opposite.  **The
-tapply() function is the workhorxe of base-R.**
+Above and below, several examples use the **tapply()** function. Some
+who have read this essay have objected that **tapply()** is an advanced,
+esoteric R function, thus inappropriate for the beginners-oriented theme
+here.  This is what they were taught, but actually it is exactly the
+opposite.  **The tapply() function is the workhorxe of base-R.**
 
 For example, consider the **ggplot2** package, written by the ()later)
 inventor of the tidyverse, Hadley Wickham.  Hadley calls **tapply()**
@@ -443,7 +443,7 @@ following base-R code:
 ``` r
 x <- c(5,12,13,1)
 x[x > 8]
-  or, if preferred:
+# or, if preferred:
 subset(x, x > 8)
 
 ```
@@ -451,6 +451,7 @@ subset(x, x > 8)
 Probably the simplest way to do this in Tidy would be:
 
 ``` r
+x <- c(5,12,13,1)
 data.frame(x=x) %>% filter(x > 8)
 ```
 
@@ -464,8 +465,9 @@ supplement it.
 
 One of the most troubling aspects of the Tidy movement is their rigidity
 and insistence on "loyalty."  An illuminating example is in 
-[a preprint version](https://arxiv.org/abs/2108.03510)
-of the above-cited *Educator's Perspective* article, which states,
+[an early preprint version](https://arxiv.org/abs/2108.03510)
+of the above-cited *Educator's Perspective* article (downloaded from the
+Wayback Machine, August 10, 2021 version of the file), which states,
 
 > ...one thing we have learned is that when we teach the tidyverse
 > consistently, the presence of base R patterns (e.g., using square
@@ -1447,8 +1449,9 @@ if not most in that huge Tidy following view R to consist mainly as
 
    R = dplyr + ggplot2 + RStudio IDE + Rmarkdown
 
-Indeed, this is characterization of Tidy by the pro-Tidy Prof. Peng, as
-we saw earlier. 
+As noted, an article on the teaching of R argues against teaching a mix
+of base-R and Tidy to beginners, and RStudio founder JJ Allaire has
+refused to recommend teaching a mix.
 
 To us longtime R advocates, this is a tragic irony.  On the one hand,
 again RStudio is to be congratulated for greatly increasing the worldwide
@@ -1456,7 +1459,7 @@ count of R users.  But the tragedy is that those users tend to be
 ill-equipped to actually *use* R productively, compared to "graduates"
 of standard base-R courses -- and *without* Tidy being easier to learn.
 
-The danger of being wrapped up in hoopla, of course, is that one can
+The danger of being wrapped up in hoopla and crusade, of course, is that one can
 lose sight of reality.  In my view, this is what has happened with Tidy.
 
 Equally important is the impact on the R language itself.  In his
