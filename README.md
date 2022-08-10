@@ -51,6 +51,8 @@ China, and have taught a short course on probability to sixth-graders.
 
 See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
+# Preliminaries
+
 # The main issue is how to teach R learners to do data analysis
 
 Note that in discussing teaching in this essay, I am taking the target
@@ -58,7 +60,7 @@ audience here to be **nonprogrammers** who wish to use R for data
 analysis.  The focus is not on what R style should be used by package
 designers.
 
-# Note on ggplot2 re marketing
+## Note on ggplot2 re marketing
 
 RStudio's presentation of **ggplot2** as part of the Tidyverse is
 misleading.  That package predates Tidy, and the package is widely used
@@ -76,6 +78,31 @@ problems with Tidy as I see them:
 More details later in this document, in the section [ggplot2 versus the
 Tidyverse](README.md#ggplot2-versus-the-tidyverse).
 
+## The Purist R Teachers (PRTs)
+
+I believe that R learners should be taught both base-R and Tidy.  Many R
+teachers feel the same way.  But are some who:
+
+* Refuse to teach any base-R.
+
+* Ban the use of $, [, loops, the apply() family and so on.
+
+* Treat **dplyr** as the go-to tool for almost any R action, including
+challenging ones, ignoring that base-R might lead to a simpler solution.
+
+I'll refer to these instructors as Purist R Teacher (PRTs).
+
+The PRTs are common in the US, less so abroad, as RStudio's main
+promotion of Tidy has been in the US.
+
+## RStudio/Posit
+
+In summer 2022, the RStudio corporation changed its name to Posit, to
+signal a broader scope than just R.  I believe this will be a
+win-win-win-win for the firm, and both the R and Python communities.
+
+The name of the IDE will continue to be RStudio.  For easy recognition,
+I'll use that name to refer to both the company and the IDE.
 
 # Kudos to RStudio, but they took a wrong turn
 
@@ -460,7 +487,7 @@ easier to understand.
 
 # Dogmatic teaching is harmful to students
 
-Most people, on most issues, avoid extremes.  But some teeachers of R
+Most people, on most issues, avoid extremes.  But some teachers of R
 have gone polemic, with dogmatic calls for "purity," with a Tidy-only
 approach.
 
@@ -471,7 +498,7 @@ articulate.  But their viewpoint is now commonplace in the US.
 
 ## No dollar sign, no brackets, no loops, even no lm() 
 
-The polemic Tidyers believe that two of the most basic operations in R,
+The PRT Tidyers believe that two of the most basic operations in R,
 the \$ sign and bracketing, are harmful.  For instance, consider an
 example in *Educator's Perspective*.*
 
@@ -582,7 +609,7 @@ The article is so purist that it even recommends against teaching
 
 ## Insistence on "loyalty"
 
-It is disappointing that the polemic Tidyers wish to replace base-R,
+It is disappointing that the PRT Tidyers wish to replace base-R,
 rather than supplement it.  
 
 One of the most troubling aspects of the Tidy movement is their rigidity
@@ -658,7 +685,7 @@ path.
 
 As noted earlier, many who learned R from a Tidyer are surprised to
 learn that **ggplot2** makes liberal use of **tapply()**.  It shouldn't
-be surprising, as **ggplot2** is pre-Tidy, but many of the more polemic
+be surprising, as **ggplot2** is pre-Tidy, but many of the more PRT
 Tidyers have portrayed **tapply()** as the epitome of "What's wrong with
 R."
 
@@ -688,7 +715,7 @@ cited a saying, "Sometimes the followers are holier than the prophet."
 
 # Tidy as an obstacle to R statistical methods
 
-As noted above, some polemic Tidyers even oppose teaching **lm()**.
+As noted above, some PRT Tidyers even oppose teaching **lm()**.
 Instead, they recommend using the **broom** wrapper.  The wrapper is
 indeed useful, but students need to learn the basics.  And of course, it
 is unreasonable to ask that the hundreds of R statistical operations,
