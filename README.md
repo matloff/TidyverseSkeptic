@@ -6,8 +6,11 @@
 
 # Table of contents
 
-- [The main issue is how to teach R learners to do data analysis](#the-main-issue-is-how-to-teach-r-learners-to-do-data-analysis)
-- [Note on ggplot2 re marketing](#note-on-ggplot2-re-marketing)
+- [Preliminaries](#preliminaries)
+  - [The main issue is how to teach R learners to do data analysis](#the-main-issue-is-how-to-teach-r-learners-to-do-data-analysis)
+  - [Note on ggplot2 re marketing](#note-on-ggplot2-re-marketing)
+  - [The Purist R Teachers (PRTs)](#the-purist-r-teachers-prts)
+  - [RStudio/Posit](#rstudioposit)
 - [Kudos to RStudio, but they took a wrong turn](#kudos-to-rstudio-but-they-took-a-wrong-turn)
 - [Teachability overview--the Tidy approach is overly complicated and undergeneralizable](#teachability-overview--the-tidy-approach-is-overly-complicated-and-undergeneralizable)
 - [Examples](#examples)
@@ -53,7 +56,7 @@ See my [full bio](https://heather.cs.ucdavis.edu/matloff.html)
 
 # Preliminaries
 
-# The main issue is how to teach R learners to do data analysis
+## The main issue is how to teach R learners to do data analysis
 
 Note that in discussing teaching in this essay, I am taking the target
 audience here to be **nonprogrammers** who wish to use R for data
