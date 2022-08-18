@@ -9,7 +9,8 @@
 \setlength{\parindent}{0in}
 \setlength{\parskip}{0.1in}
 
-\title{R Design Patterns: Base-R vs.\ Tidyverse}
+\title{R Design Patterns: Base-R vs.\ Tidyverse \\
+   With an eye toward the teaching of R beginners}
 \author{Norman Matloff \\
       Dept. of Computer Science, University of California, Davis}
 
@@ -18,10 +19,14 @@
 \maketitle
 
 This document enables the reader to see at a glance the difference
-between base-R and the Tidyverse in common R design settings.
+between base-R and the tidyverse in common R design settings.  I believe
+the base-R versions are generally simpler, thus more appropriate for R
+learners.
 
 All examples use R's built-in datasets.  After e.g., changing a data
 frame, it is restored for the next example, e.g. \textbf{data(mtcars)}.
+The examples are presented roughly in order of how often these
+operations tend to be performed by R users.
 
 As this document is aimed at comparing base-R and the tidyverse in terms
 of teaching new R learners, advanced functions from either base-R or the
@@ -58,7 +63,7 @@ mtcars$mpg[3]
 
 \begin{lstlisting}
 
-mtcars %>% select(mpg) %>% 
+select(mtcars,mpg) %>% 
   filter(row_number() == 3)
 
 \end{lstlisting}
@@ -96,8 +101,7 @@ mtcars$hwratio
 
 \begin{lstlisting}
 
-mtcars 
-  %>% mutate(hwratio=hp/wt) -> mtcars
+mutate(mtcars,hwratio=hp/wt) -> mtcars
 
 \end{lstlisting}
 
@@ -107,9 +111,14 @@ mtcars
 
 \end{parcolumns}
 
-\section*{Deleting a column from a data frame}
+\bigskip
 
-% use by invoking "source ParColsEnv.tex" from Vim
+Of course, typically Tidy coders would use \lstinline{<-}
+rather than \lstinline{->}.  I feel that the former is more
+consistent with the ``left to right flow'' of pipes.  But in any case,
+the point about code complexity is the same either way.
+
+\section*{Extracting rows}
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -119,7 +128,8 @@ mtcars
 
 \begin{lstlisting}
 
-mtcars$carb <- NULL
+mtc8 <- 
+  subset(mtcars,cyl==8)
 
 \end{lstlisting}
 
@@ -135,7 +145,7 @@ mtcars$carb <- NULL
 
 \begin{lstlisting}
 
-mtcars %>% select(-carb) -> mtcars
+filter(mtcars,mpg > 15) -> mtc8
 
 \end{lstlisting}
 
@@ -145,7 +155,9 @@ mtcars %>% select(-carb) -> mtcars
 
 \end{parcolumns}
 
-\section*{Deleting multiple columns from a data frame}
+
+
+\section*{Mean by group}
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -155,8 +167,8 @@ mtcars %>% select(-carb) -> mtcars
 
 \begin{lstlisting}
 
-mtcars[c('drat','carb')] 
-  <- NULL
+tapply(mtcars$mpg,
+  mtcars$cyl,mean)
 
 \end{lstlisting}
 
@@ -172,8 +184,9 @@ mtcars[c('drat','carb')]
 
 \begin{lstlisting}
 
-mtcars %>% select(-c(drat,carb)) 
-  -> mtcars
+group_by(mtcars, cyl) %>%
+  summarize(meanMPG = 
+    mean(mpg,))
 
 \end{lstlisting}
 
@@ -182,6 +195,95 @@ mtcars %>% select(-c(drat,carb))
 }
 
 \end{parcolumns}
+
+
+
+\section*{Quick look at univariate data}
+
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+hist(Nile)
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+dn <- data.frame(Nile)
+ggplot(dn) + 
+  geom_histogram(aes(Nile),dn)
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\bigskip
+
+One could do this more quickly in \textbf{qplot()} than in the full
+\textbf{ggplot2}, but this is seldom taught in tidyverse courses.
+
+
+\section*{Quick look at bivariate data}
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+plot(x=mtcars$wt,
+  y=mtcars$mpg)
+
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+ggplot(data = mtcars, 
+  aes(x = wt, y = mpg)) 
+  + geom_point()
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+
 
 
 \section*{Binary categorization on a vector}
@@ -230,6 +332,45 @@ Nile %>% as.data.frame %>%
 
 The step of conversion back to a vector at the end is needed for many R
 packages in which vector input is required.  
+
+\section*{Deleting columns from a data frame}
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars[c('drat','carb')] 
+  <- NULL
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+select(mtcars,-c(drat,carb)) 
+  -> mtcars
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
 
 \end{document}
 
