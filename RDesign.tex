@@ -1,0 +1,70 @@
+
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+
+\usepackage{times}
+\usepackage{listings}
+\usepackage{parcolumns}
+
+\setlength{\parindent}{0in}
+\setlength{\parskip}{0.1in}
+
+\title{R Design Patterns: Base-R vs.\ Tidyverse}
+\author{Norman Matloff \\
+      Dept. of Computer Science, University of California, Davis}
+
+\begin{document}
+
+\maketitle
+
+This document enables the reader to see at a glance the difference
+between base-R and the Tidyverse in common R design settings.
+
+All examples use R's built-in datasets.
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\textbf{R binary categorization on a vector:}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+NileHiLow <- 
+  ifelse(Nile >= 1000,
+    'high','low')
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+Nile %>% as.data.frame %>% 
+  mutate(
+    HighLow = case_when
+    (x < 1000~'low',
+     x >= 1000~'high')
+  ) %>%
+  select(HighLow) %>%
+  as.vector -> HighLow
+
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\end{document}
+
