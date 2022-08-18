@@ -9,8 +9,8 @@
 \setlength{\parindent}{0in}
 \setlength{\parskip}{0.1in}
 
-\title{R Design Patterns: Base-R vs.\ Tidyverse \\
-   With an eye toward the teaching of R beginners}
+\title{R Design Patterns, Base-R vs.\ Tidyverse \\
+   With a view toward the teaching of R beginners}
 \author{Norman Matloff \\
       Dept. of Computer Science, University of California, Davis}
 
@@ -63,7 +63,8 @@ mtcars$mpg[3]
 
 \begin{lstlisting}
 
-select(mtcars,mpg) %>% 
+mtcars %>%
+select(mpg) %>% 
   filter(row_number() == 3)
 
 \end{lstlisting}
@@ -73,6 +74,12 @@ select(mtcars,mpg) %>%
 }
 
 \end{parcolumns}
+
+\textbf{Comment:}  The Tidy version could be shortened a bit by using
+\lstinline{select(mtcars,mpg)} instead of 
+\lstinline{mtcars %>% select(mpg)}, 
+but the latter seems to be the preferred form,
+e.g. on the official tidyverse page, \textit{https://dplyr.tidyverse.org/}.  
 
 \section*{Adding a column to a data frame}
 
@@ -101,7 +108,8 @@ mtcars$hwratio
 
 \begin{lstlisting}
 
-mutate(mtcars,hwratio=hp/wt) -> mtcars
+mtcars %>% 
+mutate(hwratio=hp/wt) -> mtcars
 
 \end{lstlisting}
 
@@ -113,6 +121,7 @@ mutate(mtcars,hwratio=hp/wt) -> mtcars
 
 \bigskip
 
+\textbf{Comment:}
 Of course, typically Tidy coders would use \lstinline{<-}
 rather than \lstinline{->}.  I feel that the former is more
 consistent with the ``left to right flow'' of pipes.  But in any case,
@@ -145,7 +154,8 @@ mtc8 <-
 
 \begin{lstlisting}
 
-filter(mtcars,mpg > 15) -> mtc8
+mtcars %>%
+filter(cyl == 8) -> mtc8
 
 \end{lstlisting}
 
@@ -184,7 +194,8 @@ tapply(mtcars$mpg,
 
 \begin{lstlisting}
 
-group_by(mtcars, cyl) %>%
+mtcars %>%
+group_by(cyl) %>%
   summarize(meanMPG = 
     mean(mpg,))
 
@@ -196,9 +207,7 @@ group_by(mtcars, cyl) %>%
 
 \end{parcolumns}
 
-
-
-\section*{Quick look at univariate data}
+\section*{Row means}
 
 
 \begin{parcolumns}[rulebetween=true]{2}
@@ -209,7 +218,7 @@ group_by(mtcars, cyl) %>%
 
 \begin{lstlisting}
 
-hist(Nile)
+rowMeans(EuStockMarkets)
 
 \end{lstlisting}
 
@@ -225,9 +234,12 @@ hist(Nile)
 
 \begin{lstlisting}
 
-dn <- data.frame(Nile)
-ggplot(dn) + 
-  geom_histogram(aes(Nile),dn)
+EuStockMarkets %>% 
+  as.data.frame %>% 
+  rowwise() %>% 
+  mutate(m = 
+    rowMeans(across(everything()))) 
+  %>% select(m)
 
 \end{lstlisting}
 
@@ -237,10 +249,174 @@ ggplot(dn) +
 
 \end{parcolumns}
 
-\bigskip
+\textbf{Comment:} The row means operation is quite common in R usage.
+Here the Tidy user must go to far much trouble than in base-R.
 
-One could do this more quickly in \textbf{qplot()} than in the full
-\textbf{ggplot2}, but this is seldom taught in tidyverse courses.
+\section*{Row operations, custom function}
+
+
+% use by invoking "source ParColsEnv.tex" from Vim
+
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mM <- function(x) 
+  max(x) - min(x)
+apply(EuStockMarkets,1,mM) 
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mM <- function(x) 
+   max(x) - min(x)
+EuStockMarkets %>% 
+  as.data.frame %>% rowwise() %>% 
+  mutate(m = 
+     mM(across(everything()))) %>% 
+  select(m)
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\textbf{Comment:} The \textbf{apply()} function is of central importance
+in traditional R.  Here again, the Tidy user must go to much more
+trouble.
+
+\section*{Means, grouped by more than one variable}
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+tapply(mtcars$mpg,
+  list(mtcars$cyl,
+    mtcars$am),
+  mean)
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars %>% 
+  group_by(cyl,am) %>% 
+  summarize(m = mean(mpg))
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\textbf{Comment:}  There is quite a difference in type of output here:
+
+\begin{lstlisting}
+
+> tapply(mtcars$mpg,list(mtcars$cyl,mtcars$am),mean)
+       0        1
+4 22.900 28.07500
+6 19.125 20.56667
+8 15.050 15.40000
+> mtcars %>% group_by(cyl,am) %>% summarize(m = mean(mpg))
+# Groups:   cyl [3]
+    cyl    am     m
+  <dbl> <dbl> <dbl>
+1     4     0  22.9
+2     4     1  28.1
+3     6     0  19.1
+4     6     1  20.6
+5     8     0  15.0
+6     8     1  15.4
+
+\end{lstlisting}
+
+The base-R form returns a 3x2 table, which is often what one needs for
+reports, research papers and so.  The Tidy version is less useful in
+such contexts.
+
+
+% \section*{Quick look at univariate data}
+% 
+% 
+% \begin{parcolumns}[rulebetween=true]{2}
+% 
+% \colchunk{
+% 
+% \begin{minipage}{0.40\linewidth}
+% 
+% \begin{lstlisting}
+% 
+% hist(Nile)
+% 
+% \end{lstlisting}
+% 
+% \end{minipage}
+% 
+% }
+% 
+% \hspace{0.1in}
+% 
+% \colchunk{
+% 
+% \begin{minipage}{0.40\linewidth}
+% 
+% \begin{lstlisting}
+% 
+% nile <- as.numeric(Nile)
+% dn <- data.frame(nile)
+% ggplot(dn) + 
+%   geom_histogram(aes(nile),dn)
+% 
+% \end{lstlisting}
+% 
+% \end{minipage}
+% 
+% }
+% 
+% \end{parcolumns}
+% 
+% \bigskip
+% 
+% \textbf{Comment:}
+% One could do this more quickly in \textbf{qplot()} than in the full
+% \textbf{ggplot2}, but this is seldom taught in tidyverse courses.
 
 
 \section*{Quick look at bivariate data}
@@ -272,8 +448,8 @@ plot(x=mtcars$wt,
 \begin{lstlisting}
 
 ggplot(data = mtcars, 
-  aes(x = wt, y = mpg)) 
-  + geom_point()
+  aes(x = wt, y = mpg)) +
+  geom_point()
 
 \end{lstlisting}
 
@@ -330,6 +506,7 @@ Nile %>% as.data.frame %>%
 
 \end{parcolumns}
 
+\textbf{Comment:}
 The step of conversion back to a vector at the end is needed for many R
 packages in which vector input is required.  
 
