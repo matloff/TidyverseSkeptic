@@ -20,13 +20,173 @@
 This document enables the reader to see at a glance the difference
 between base-R and the Tidyverse in common R design settings.
 
-All examples use R's built-in datasets.
+All examples use R's built-in datasets.  After e.g., changing a data
+frame, it is restored for the next example, e.g. \textbf{data(mtcars)}.
+
+As this document is aimed at comparing base-R and the tidyverse in terms
+of teaching new R learners, advanced functions from either base-R or the
+tidyverse are excluded here.
 
 More and more examples will be added over time.
 
+\section*{Reading a specific cell in a data frame}
+
+% use by invoking "source ParColsEnv.tex" from Vim
+
+
 \begin{parcolumns}[rulebetween=true]{2}
 
-\textbf{R binary categorization on a vector:}
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars$mpg[3]
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars %>% select(mpg) %>% 
+  filter(row_number() == 3)
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\section*{Adding a column to a data frame}
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars$hwratio 
+  <- mtcars$hp / mtcars$wt
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars 
+  %>% mutate(hwratio=hp/wt) -> mtcars
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\section*{Deleting a column from a data frame}
+
+% use by invoking "source ParColsEnv.tex" from Vim
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars$carb <- NULL
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars %>% select(-carb) -> mtcars
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\section*{Deleting multiple columns from a data frame}
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars[c('drat','carb')] 
+  <- NULL
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.1in}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+mtcars %>% select(-c(drat,carb)) 
+  -> mtcars
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+
+\section*{Binary categorization on a vector}
+
+\begin{parcolumns}[rulebetween=true]{2}
 
 \colchunk{
 
