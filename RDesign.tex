@@ -5,6 +5,7 @@
 \usepackage{times}
 \usepackage{listings}
 \usepackage{parcolumns}
+\usepackage{hyperref}
 
 \setlength{\parindent}{0in}
 \setlength{\parskip}{0.1in}
@@ -21,7 +22,12 @@
 This document enables the reader to see at a glance the difference
 between base-R and the tidyverse in common R design settings.  I believe
 the base-R versions are generally simpler, thus more appropriate for R
-learners.
+learners.  I discuss this in detail in
+\url{http://github.com/matloff/TidyverseSkeptic/README.md}, where I
+cite many other problems besides lack of simplicity, but I believe the
+examples here begin to illustrate why Tidy is a bad vehicle to use in
+teaching R beginners.  By the way, I use the latter term to mean R
+learners with no prior programming background.
 
 All examples use R's built-in datasets.  After e.g., changing a data
 frame, it is restored for the next example, e.g. \textbf{data(mtcars)}.
@@ -31,8 +37,6 @@ operations tend to be performed by R users.
 As this document is aimed at comparing base-R and the tidyverse in terms
 of teaching new R learners, advanced functions from either base-R or the
 tidyverse are excluded here.
-
-More and more examples will be added over time.
 
 \section*{Reading a specific cell in a data frame}
 
@@ -207,6 +211,13 @@ group_by(cyl) %>%
 
 \end{parcolumns}
 
+\textbf{Comment:}  Strangely, many Tidy advocates dismiss the
+\textbf{tapply()} function, treating it as a niche function in base-R.
+On the contrary, it is a workhorse in classic base-R applications.  For
+example, consider the \textbf{ggplot2} package, written by the (later)
+inventor of the tidyverse, Hadley Wickham. Hadley calls
+\textbf{tapply()} 7 times in the \textbf{ggplot2} code!
+
 \section*{Row means}
 
 
@@ -345,7 +356,9 @@ mtcars %>%
 
 \end{parcolumns}
 
-\textbf{Comment:}  There is quite a difference in type of output here:
+\textbf{Comment:}  
+In this example, the two sets of code are not fully comparable,
+as there is quite a difference in type of output:
 
 \begin{lstlisting}
 
@@ -369,100 +382,9 @@ mtcars %>%
 
 The base-R form returns a 3x2 table, which is often what one needs for
 reports, research papers and so.  The Tidy version is less useful in
-such contexts.
+such contexts, but would be of value in some other applications.
 
-
-% \section*{Quick look at univariate data}
-% 
-% 
-% \begin{parcolumns}[rulebetween=true]{2}
-% 
-% \colchunk{
-% 
-% \begin{minipage}{0.40\linewidth}
-% 
-% \begin{lstlisting}
-% 
-% hist(Nile)
-% 
-% \end{lstlisting}
-% 
-% \end{minipage}
-% 
-% }
-% 
-% \hspace{0.1in}
-% 
-% \colchunk{
-% 
-% \begin{minipage}{0.40\linewidth}
-% 
-% \begin{lstlisting}
-% 
-% nile <- as.numeric(Nile)
-% dn <- data.frame(nile)
-% ggplot(dn) + 
-%   geom_histogram(aes(nile),dn)
-% 
-% \end{lstlisting}
-% 
-% \end{minipage}
-% 
-% }
-% 
-% \end{parcolumns}
-% 
-% \bigskip
-% 
-% \textbf{Comment:}
-% One could do this more quickly in \textbf{qplot()} than in the full
-% \textbf{ggplot2}, but this is seldom taught in tidyverse courses.
-
-
-\section*{Quick look at bivariate data}
-
-\begin{parcolumns}[rulebetween=true]{2}
-
-\colchunk{
-
-\begin{minipage}{0.40\linewidth}
-
-\begin{lstlisting}
-
-plot(x=mtcars$wt,
-  y=mtcars$mpg)
-
-
-\end{lstlisting}
-
-\end{minipage}
-
-}
-
-\hspace{0.1in}
-
-\colchunk{
-
-\begin{minipage}{0.40\linewidth}
-
-\begin{lstlisting}
-
-ggplot(data = mtcars, 
-  aes(x = wt, y = mpg)) +
-  geom_point()
-
-\end{lstlisting}
-
-\end{minipage}
-
-}
-
-\end{parcolumns}
-
-
-
-
-\section*{Binary categorization on a vector}
+\section*{Binary recoding of a vector}
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -537,7 +459,8 @@ mtcars[c('drat','carb')]
 
 \begin{lstlisting}
 
-select(mtcars,-c(drat,carb)) 
+mtcars %>%
+select(-c(drat,carb)) 
   -> mtcars
 
 \end{lstlisting}
@@ -548,6 +471,69 @@ select(mtcars,-c(drat,carb))
 
 \end{parcolumns}
 
+\section*{Isn't It More Reasonable to Teach a Mix of Base-R and Tidy?}
+
+I believe most people react skeptically to extreme ideologies.  I've
+advocated teaching a mix of base-R and Tidy, but have yet to find a
+prominent Tidy advocate who agrees.
+
+Here is an example.  (The Tidy version appeared in a presentation by a
+Tidy advocate.)  In the \textbf{mtcars} dataset, say we wish to recode
+the number of gears into English.
+
+\begin{parcolumns}[rulebetween=true]{2}
+
+\colchunk{
+
+\begin{minipage}{0.40\linewidth}
+
+\begin{lstlisting}
+
+gr <- mtcars$gear
+mtcars$gear <-
+  case_when(
+    gr == 3 ~ 'three',
+    gr == 4 ~ 'four',
+    gr == 5 ~ 'five')
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\hspace{0.05in}
+
+\colchunk{
+
+\begin{minipage}{0.45\linewidth}
+
+\begin{lstlisting}
+
+mtcars %>%
+ mutate(
+   gear =
+   case_when(
+     gear == 3 ~ "three",
+     gear == 4 ~ "four",
+     gear == 5 ~ "five"
+   )
+ ) -> mtcars
+
+\end{lstlisting}
+
+\end{minipage}
+
+}
+
+\end{parcolumns}
+
+\textbf{Comment:}  A purely-base-R version might use nested
+\textbf{ifelse()} calls.  This would be shorter than the Tidy version,
+but not as clear.  But by using a blend of base-R and Tidy---use of '\$'
+to reference a data frame column and use of the Tidy function
+\textbf{case\_when()}---we still end up with shorter and simpler code,
+compared to the pure-Tidy version.
 
 \end{document}
 
