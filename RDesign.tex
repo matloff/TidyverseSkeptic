@@ -38,6 +38,10 @@ As this document is aimed at comparing base-R and the tidyverse in terms
 of teaching new R learners, advanced functions from either base-R or the
 tidyverse are excluded here.
 
+It is certainly not claimed here that all possible operations are
+simpler in base-R, and indeed I've called for teaching R with a blend of
+the two approaches, as seen in one of the examples here.  
+
 \section*{Reading a specific cell in a data frame}
 
 % use by invoking "source ParColsEnv.tex" from Vim
@@ -429,7 +433,7 @@ Nile %>% as.data.frame %>%
 \end{parcolumns}
 
 \textbf{Comment:}
-The step of conversion back to a vector at the end is needed for many R
+The Tidy step of conversion back to a vector at the end is needed for many R
 packages in which vector input is required.  
 
 \section*{Deleting columns from a data frame}
