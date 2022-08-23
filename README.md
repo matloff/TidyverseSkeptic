@@ -1013,7 +1013,7 @@ this:
 
 ```
 
-The 'chapter column' should read 1, not 50.  But there is not error
+The 'chapter column' should read 1, not 50.  But there is no error
 message, hence no clue as to what the problem might be.
 
 If the code had not used pipes, one could use the R **debug()** or
