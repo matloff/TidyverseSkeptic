@@ -29,6 +29,9 @@ examples here begin to illustrate why Tidy is a bad vehicle to use in
 teaching R beginners.  By the way, I use the latter term to mean R
 learners with no prior programming background.
 
+The examples here might also serve those who use base-R but with to
+learn Tidy, or vice versa.
+
 All examples use R's built-in datasets.  After e.g., changing a data
 frame, it is restored for the next example, e.g. \textbf{data(mtcars)}.
 The examples are presented roughly in order of how often these
@@ -44,8 +47,7 @@ the two approaches, as seen in one of the examples here.
 
 \section*{Reading a specific cell in a data frame}
 
-% use by invoking "source ParColsEnv.tex" from Vim
-
+What is the MPG value for the third car? 
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -90,6 +92,8 @@ but the latter seems to be the preferred form,
 e.g. on the official tidyverse page, \textit{https://dplyr.tidyverse.org/}.  
 
 \section*{Adding a column to a data frame}
+
+Create a new variable, the horsepower-to-weight ratio.
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -137,6 +141,8 @@ the point about code complexity is the same either way.
 
 \section*{Extracting rows}
 
+Find all the cars with 8 cylinders.
+
 \begin{parcolumns}[rulebetween=true]{2}
 
 \colchunk{
@@ -173,9 +179,9 @@ filter(cyl == 8) -> mtc8
 
 \end{parcolumns}
 
-
-
 \section*{Mean by group}
+
+Find the mean MPG, broken down by number of cylinders.
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -224,6 +230,7 @@ inventor of the tidyverse, Hadley Wickham. Hadley calls
 
 \section*{Row means}
 
+For each day in the market, find the mean of 4 major EU stock indexes.
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -269,8 +276,8 @@ Here the Tidy user must go to much more trouble than in base-R.
 
 \section*{Row operations, custom function}
 
-
-% use by invoking "source ParColsEnv.tex" from Vim
+For each market day, find the spread between the smallest index and the
+largest.
 
 
 \begin{parcolumns}[rulebetween=true]{2}
@@ -320,6 +327,9 @@ in traditional R.  Here again, the Tidy user must go to much more
 trouble.
 
 \section*{Means, grouped by more than one variable}
+
+Find the mean MPG, broken down by both number of cylinders and type of
+transmission.
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -386,9 +396,11 @@ as there is quite a difference in type of output:
 
 The base-R form returns a 3x2 table, which is often what one needs for
 reports, research papers and so.  The Tidy version is less useful in
-such contexts, but would be of value in some other applications.
+such contexts, but would be of greater value in some other applications.
 
 \section*{Binary recoding of a vector}
+
+Record the river levels to 'high' if $>$ 1000, 'low' otherwise.
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -433,10 +445,12 @@ Nile %>% as.data.frame %>%
 \end{parcolumns}
 
 \textbf{Comment:}
-The Tidy step of conversion back to a vector at the end is needed for many R
-packages in which vector input is required.  
+The Tidy step of conversion back to a vector at the end is needed for
+the many R packages in which vector input is required.  
 
 \section*{Deleting columns from a data frame}
+
+Remove the 'drat' and 'carb' variables from the data.
 
 \begin{parcolumns}[rulebetween=true]{2}
 
@@ -478,8 +492,7 @@ select(-c(drat,carb))
 \section*{Isn't It More Reasonable to Teach a Mix of Base-R and Tidy?}
 
 I believe most people react skeptically to extreme ideologies.  I've
-advocated teaching a mix of base-R and Tidy, but have yet to find a
-prominent Tidy advocate who agrees.
+advocated teaching a mix of base-R and Tidy.
 
 Here is an example.  (The Tidy version appeared in a presentation by a
 Tidy advocate.)  In the \textbf{mtcars} dataset, say we wish to recode
