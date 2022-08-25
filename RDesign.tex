@@ -22,28 +22,34 @@
 This document enables the reader to see at a glance the difference
 between base-R and the tidyverse in common R design settings.  I believe
 the base-R versions are generally simpler, thus more appropriate for R
-learners.  I discuss this in detail in
-\url{http://github.com/matloff/TidyverseSkeptic/README.md}, where I
-cite many other problems besides lack of simplicity, but I believe the
-examples here begin to illustrate why Tidy is a bad vehicle to use in
-teaching R beginners.  By the way, I use the latter term to mean R
-learners with no prior programming background.
+learners.  Relative to learning via base-R, learners who are taught Tidy
+take longer to reach proficiency, and even then are proficient only in a
+very narrow range of operations.
+
+I discuss this in much more detail (e.g. an entire section on
+pipes) in \url{http://github.com/matloff/TidyverseSkeptic/README.md},
+where I cite many other problems besides lack of simplicity, but I
+believe the examples here begin to illustrate why Tidy is a bad vehicle
+to use in teaching R beginners.  By the way, I use the latter term to
+mean R learners with no prior programming background.
 
 The examples here might also serve those who use base-R but wish to
 learn Tidy, or vice versa.
 
-All examples use R's built-in datasets.  After e.g., changing a data
+All examples use R's built-in datasets.  Note that, after changing a data
 frame, it is restored for the next example, e.g. \textbf{data(mtcars)}.
 The examples are presented roughly in order of how often these
 operations tend to be performed by R users.
 
 As this document is aimed at comparing base-R and the tidyverse in terms
-of teaching new R learners, advanced functions from either base-R or the
-tidyverse are excluded here.
+of teaching new R learners, advanced functions from either base-R (e.g.
+\textbf{with()} or the tidyverse (e.g. \textbf{mutate\_at()} are excluded
+here.
 
 It is certainly not claimed here that all possible operations are
-simpler in base-R, and indeed I've called for teaching R with a blend of
-the two approaches, as seen in one of the examples here.  
+simpler in base-R, and indeed \textbf{ I've long called for teaching R
+with a blend of the two approaches}, as seen in one of the examples
+here.  
 
 \section*{Reading a specific cell in a data frame}
 
@@ -75,7 +81,7 @@ mtcars$mpg[3]
 
 mtcars %>%
 select(mpg) %>% 
-  filter(row_number() == 3)
+slice(3)
 
 \end{lstlisting}
 
