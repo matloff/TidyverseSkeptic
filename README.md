@@ -362,9 +362,9 @@ Above and below, several examples use the **tapply()** function. Some
 who have read this essay have objected that **tapply()** is an advanced,
 esoteric R function, thus inappropriate for the beginners-oriented theme
 here.  This is what they were taught, but actually it is exactly the
-opposite.  **The tapply() function is the workhorxe of base-R.**
+opposite.  **The tapply() function is the workhorse of base-R.**
 
-For example, consider the **ggplot2** package, written by the ()later)
+For example, consider the **ggplot2** package, written by the (later)
 inventor of the tidyverse, Hadley Wickham.  Hadley calls **tapply()**
 7 times in the **ggplot2** code!
 
@@ -1013,7 +1013,7 @@ this:
 
 ```
 
-The 'chapter column' should read 1, not 50.  But there is not error
+The 'chapter column' should read 1, not 50.  But there is no error
 message, hence no clue as to what the problem might be.
 
 If the code had not used pipes, one could use the R **debug()** or
