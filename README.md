@@ -303,14 +303,15 @@ One of the most commonly-used functions in base-R is **tapply()**.  It's
 quite easy to teach beginners, by presenting its call form to them:
 
 ``` r
-tapply(what to split, how to split it, what to apply to the resulting chunks)
+tapply(what to split, how to split it, 
+   what to apply to the resulting chunks)
 ```
 
 However, for some reason Tidy advocates deeply resent this function.
 Indeed, for many of them, **tapply()** epitomizes what's wrong with
 base-R.  
 
-Indeed, when the Tidyverse was first developed, Prof. Roger Peng gave a
+When the Tidyverse was first developed, Prof. Roger Peng gave a
 thoughtful keynote talk, *Teaching R to New Users--from tapply to the
 Tidyverse*, also presented as [a Web
 page](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/).
@@ -324,8 +325,8 @@ base-R example is **aggregate()**, not **tapply()**.  The complexity of
 **tapply()** is much simpler, and perfect for R beginners, and thus the
 proper comparison.  
 
-Here is an example from the Peng talk, using the built-in R dataset
-**airquality**:
+Below is an example from the Peng talk, using the built-in R dataset
+**airquality**.  We find the mean ozone level by month:
 
 ``` r
 group_by(airquality, Month) %>% 
@@ -344,17 +345,21 @@ Indeed, that base-R code would be difficult for R beginners.
 But here is the far easier base-R code, using **tapply()**:
 
 ``` r
-aq <- na.omit(airquality)
-tapply(aq$Ozone,aq$Month,mean)
+tapply(airquality$Ozone,airquality$Month,mean,na.rm=TRUE)
 ```
 
-Both the Tidy and **tapply()** code are simple.  Both are easily grasped
-by beginners. After being presented with some examples, beginners have
-no trouble using either of them in a new setting of similar type.  The
-Tidy version requires two function calls rather than one for base-R.
-But again, both versions are simple (and the **tapply()** one is a bit
-more cluttered), so let's call it a tie.  But is it
-certainly not the case that the Tidy version is *easier to learn*.
+This fits clearly into our **tapply** call form shown above:
+
+* What to split: Ozone
+
+* How to split it: by Month
+
+* What to apply to the resulting chunks: mean
+
+The Tidy version requires two function calls rather than one for base-R.
+The Tidy code is a bit wordier, and requires that one do an assignment
+(to **o3**).  All in all, the base-R version is simpler, and thus easier
+for beginners.
 
 *Note re tapply(): the workhorse of base-R*
 
