@@ -623,69 +623,6 @@ The article is so purist that it even recommends against teaching
 **lm()**.  Use **broom**, they say.  What's next, a Tidy wrapper for
 **sqrt()**?
 
-## Insistence on "loyalty"
-
-It is disappointing that the PRT Tidyers wish to replace base-R,
-rather than supplement it.  
-
-One of the most troubling aspects of the Tidy movement is their rigidity
-and insistence on "loyalty."  An illuminating example is in 
-[an early preprint version](https://arxiv.org/abs/2108.03510)
-of the above-cited *Educator's Perspective* article (downloaded from the
-Wayback Machine, August 10, 2021 version of the file), which states,
-
-> ...one thing we have learned is that when we teach the tidyverse
-> consistently, the presence of base R patterns (e.g., using square
-> brackets to select columns instead of dplyr::select()) stands out.  An
-> assignment completed entirely with base R syntax (in a class where
-> tidyverse is being used) could signal a student who is less engaged with
-> the overall learning materials for the course.  
-
-(This passage is not in the final published version.)
-
-Why would we deprive R learners of very simple, direct and effective
-tools like the base-R one above?  Just for the sake of Tidy "purity,"
-implicit in the above quoted passage?
-
-Students who are taught the Tidy version of the above and then are shown
-the base-R one will say, "Wow!  That's much easier.  Thanks for the
-shortcut."  And I can guarantee, a few would say, "Why didn't you tell
-us this way in the first place?"
-
-This brings me to my next point.
-
-The "naughty kids" aspect in the above quote,
-
-> An assignment completed entirely with base R syntax (in a class where
-> tidyverse is being used) could signal a student who is less engaged with
-> the overall learning materials for the course.
-
-sounds a bit authoritarian, and I've seen consequences.  For instance,
-one R learner proudly displayed on Twitter some code she had managed to
-write, but she guiltily apologized for using a loop.
-
-What is also intriguing about the above quote on "naughty kids" is its
-seeming implication that such a student's use of base-R would be "taking
-the easy way out." But doesn't that mean base-R is easier?
-
-Notably, the article dismisses the notion of teaching a mix of base-R
-and Tidy, which is my recommendation.  They claim this would "confuse"
-students.  But functions are functions are functions; there is nothing
-conceptually different about Tidy functions.  Look at the example we
-discussed above:
-
-``` r
-mtcars$gear_char <- 
-   case_when(
-      mtcars$gear == 3 ~ 'three',
-      mtcars$gear == 4 ~ 'four',
-      mtcars$gear == 5 ~ 'five')
-
-```
-
-We have the base-R '$' and the Tidy **case_when()**.  They flow together
-naturally, no concept clash, nothing to get confused about.
-
 ## "dplyr or bust"
 
 The Tidyers become so focused on Tidy that they try to solve every
