@@ -183,10 +183,9 @@ statistical packages.
 functional programming (FP). The latter is popular with many
 sophisticated computer scientists, but is difficult even for computer
 science students, let alone the nontech learners that form our focus
-here.  Tidy is thus unsuited as the initial basis of
-instruction for nonprogrammer students of R.  FP should be limited and
-brought in gradually.  The same statement applies to base-R's own FP
-functions.
+here.  Tidy is thus unsuited as the initial basis of instruction for
+nonprogrammer students of R.  FP should be limited and brought in
+gradually.  The same statement applies to base-R's own FP functions.
 
 * The Tidy FP philosophy replaces straightforward, easily grasped, loops
 with abstract use of functions. Since functions are the most difficult
@@ -282,7 +281,9 @@ As a concrete example of this Tidy point of view, consider the book
 second edition, 2017.  The book makes a point of being 
 ["Tidyverse compliant"](https://twitter.com/GSwithR/status/996830294367002625).
 In 231 pages, vectors are mentioned just briefly, with no coverage of 
-subscripts.
+subscripts.  Hadley, in his Tidy "bible," *R for Data Science", actually
+does cover vectors--but not until Chapter 20.*  Again, typical Tidy
+courses don't cover vectors at all.
 
 In other words, **even after one lesson, the base-R learner would be way
 ahead of her Tidy counterparts.**
@@ -328,8 +329,7 @@ tapply(what to split, how to split it,
 ```
 
 However, for some reason Tidy advocates deeply resent this function.
-Indeed, for many of them, **tapply()** epitomizes what's wrong with
-base-R.  
+Indeed, **tapply()** epitomizes what's wrong with base-R.  
 
 When the Tidyverse was first developed, Prof. Roger Peng gave a
 thoughtful keynote talk, *Teaching R to New Users--from tapply to the
@@ -343,7 +343,7 @@ Surprisingly, though, in making his comparison of Tidy to base-R, his
 base-R example is **aggregate()**, not **tapply()**.  The complexity of
 **aggregate()** function makes for an unfair comparison, a straw man; 
 **tapply()** is much simpler, and perfect for R beginners, and thus the
-proper comparison.  
+proper comparison as the title of the talk seems to agree).(
 
 Below is an example from the Peng talk, using the built-in R dataset
 **airquality**.  We find the mean ozone level by month:
@@ -378,8 +378,8 @@ This fits clearly into our **tapply** call form shown above:
 
 The Tidy version requires two function calls rather than one for base-R.
 The Tidy code is a bit wordier, and requires that one do an assignment
-(to **o3**).  All in all, the base-R version is simpler, and thus easier
-for beginners.
+(to **o3**).  All in all, **the base-R version is simpler, and thus easier
+for noncoder beginners**.
 
 *Case study:  tapply() (II)*
 
@@ -389,10 +389,14 @@ advocated that noncoder R learners should pick up some of both.  (Much
 more on this point below.)  But I think it's worth repeating how simple it is
 for R learners to solve many basic problems using **tapply()**.
 
-Consider this example that I like to use to motivate linear regression
-models.  We wish to predict human weight from height, and to show
-approximate linearity, we plot mean weight against height.  The 
-dataset, **mlb**, is from my **regtools** package.
+Consider this example, a bit more advanced, that I like to use to
+motivate linear regression models.  We wish to predict human weight from
+height, and wish to first check approximate linearity. 
+
+The dataset, involving heights and weights of professional baseball
+players, **mlb**, is from my **regtools** package.  For each height
+value, there are various players of that height, so 
+we plot mean weight against height.  
 
 Base-R:
 
@@ -416,107 +420,29 @@ early in a Tidy course, far too much machinery to cover.  But easy to do
 so in a course using base-R, in the first or second lesson.  That should
 be the goal, empowering students to work on real problems, early on.
 
-# It doesn't have to be Either Or;teach a mix of base-R and Tidy
-
-Regarding the "purity" view in the *Educator's Perspective* article,
-opposed to mixing Tidy and base-R in teaching:  I did suggest a mixed
-approach to RStudio founder and CEO JJ Allaire when we met in 2019.
-Unfortunately, JJ did not like the idea either, on the grounds that
-RStudio should not be telling people how to teach.  But of course, that
-is exactly what RStudio has been doing in promoting Tidy.
-
-An overly rigid, "pure" approach simply doesn't make sense.  Why deprive R
-learners of simple tools that would ease their burden -- whether from Tidy or
-base-R?
-
-One of the authors of the *Educator's Perspective* article has a nice
-[presentation](https://github.com/mine-cetinkaya-rundel/teach-ds-to-new-user) 
-on teaching data science, in which she makes a side-by-side comparison
-of base-R and Tidy code.  One of the examples is on recoding variables:
-
-base-R:
-
-``` r
-mtcars$transmission <-
- ifelse(mtcars$am == 0, "automatic", "manual")
-```
-
-Tidy:
-
-``` r
-mtcars <- mtcars %>%
- mutate(
-    transmission =
-    case_when(
-       am == 0 ~ "automatic",
-       am == 1 ~ "manual"
-    )
- )
-```
-
-Her point seems to be that although base-R does well here, if recoding
-**gear** rather than **am**, the base-R method is cumbersome.  It is
-indeed -- but due to her choosing to use nested calls to **ifelse()**.
-
-
-Tidy:
-
-``` r
-mtcars <- mtcars %>%
- mutate(
-   gear_char =
-   case_when(
-     gear == 3 ~ "three",
-     gear == 4 ~ "four",
-     gear == 5 ~ "five"
-   )
- )
-```
-
-base R
-
-``` r
-mtcars$gear_char <-
- ifelse(mtcars$gear == 3,
-   "three",
-   ifelse(mtcars$gear == 4,
-   "four",
-   "five")
- )
-```
-
-But a mixed base-R/Tidy approach, combining '$' with the **dplyr**
-function **case_when()**, is simpler and more intuitive than either her
-base-R or Tidy versions::
-
-``` r
-mtcars$gear_char <- 
-   case_when(
-      mtcars$gear == 3 ~ 'three',
-      mtcars$gear == 4 ~ 'four',
-      mtcars$gear == 5 ~ 'five')
-
-```
-
-No pipe, no **mutate()**, no reassignment.  Just the bare minimum, much
-easier to understand.
-
-# Dogmatic teaching is harmful to students
+# Dogmatic Teaching Is Harmful to Students
 
 Most people, on most issues, avoid extremes.  But some teachers of R
 have gone polemic, with dogmatic calls for "purity," with a Tidy-only
 approach.
 
-I'll take as my examples here
-[an article by Tidy advocates](https://escholarship.org/uc/item/7kk4d922)
-*An Educator's Perspective of the Tidyverse,* as it is very detailed and
-articulate.  But their viewpoint is now commonplace in the US.
+The "purity" view is expressed in the [*Educator's Perspective*
+article](https://escholarship.org/uc/item/7kk4d922), written by a number
+of prominent Tidy advocates.  I did suggest a mixed approach to RStudio
+founder and CEO JJ Allaire when we met (at his request) in 2019.
+Unfortunately, JJ did not like the idea either, on the grounds that
+RStudio should not be telling people how to teach.  But of course, that
+is exactly what RStudio has been doing in promoting Tidy.
 
-## No dollar sign, no brackets, no loops, even no lm() 
+I'll take for my examples here from the abovementioned article, as it is
+very detailed and articulate.  The authors' viewpoint is commonplace in
+the US.
+
+## No dollar sign allowed, no brackets, no loops, even no lm() 
 
 The PRT Tidyers believe that two of the most basic operations in R,
 the \$ sign and bracketing, are harmful.  For instance, consider an
-example in *Educator's Perspective*.*
+example in *Educator's Perspective*.
 
 The dataset is loan data available in the **openintro** package.  Here
 is the Tidy code to preprocess the data:
@@ -666,46 +592,7 @@ An R Core member, commenting on this phenomenon (but not this incident)
 cited a saying, "Sometimes the followers are holier than the prophet." 
 
 
-# Tidy as an obstacle to R statistical methods
-
-As noted above, some PRT Tidyers even oppose teaching **lm()**.
-Instead, they recommend using the **broom** wrapper.  The wrapper is
-indeed useful, but students need to learn the basics.  And of course, it
-is unreasonable to ask that the hundreds of R statistical operations,
-and the thousands of packages, all have Tidy wrappers.
-
-Consider the Tidyers' opposition to teaching the '$' and brackets
-operations.  This is an obvious impediment to using R's statistical
-operations.  
-
-Most of the R statistical functions return S3 objects, i.e. lists,
-accessible via '$'.  Similarly, statistical operations in R are mainly
-vector- and matrix-oriented.  (A matrix is a special case of a vector.)
-I would find it difficult to teach a course in linear regression,
-principal components, log-linear models and so on to students who did
-not have solid prior experience with '$' and vectors.
-
-Thus we immediately see a problem with Tidy:  It creates a barrier to
-use of R as a statistical tool by Tidy "graduates."
-
-[Here](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/) is
-an example of bridging the gap between Tidy and statistics, by Claus
-Wilke, who begins by reporting, "I’ve finally figured out how to perform
-a PCA using the tidyverse."  His word "finally" shows that there is
-indeed a gap.  His answer is to use the **broom** package.  As it was,
-even that package did not quite work, he said, though the development
-version did.  And what about the thousands of CRAN packages that return
-S3 objects?  Is **broom** going to provide a Tidy interface to each one?
-That of course would be unrealistic.
-
-A fundamental problem, from my point of view, is that the RStudio people
-are not primarily statisticians.  Their focus is on developing software,
-primarily for data wrangling and graphics.  They do this quite well, but
-they are not the types who sit around debating, for example, the
-propriety of p-values.  Statistics is not foremost on their radar
-screens, and this sad gap between Tidy and statistics is a result.
-
-# Poor readability, unnecessary cognitive overload
+## Poor readability, unnecessary cognitive overload
 
 As noted, R courses using the Tidyverse often do rather little beyond
 their canonical *data %>% group_by %>% mutate %>% summarize* paradigm.
@@ -871,7 +758,46 @@ This phrasing is likely beyond the comprehension of many R beginners.
 Seeing a few examples would help them, of course. but it is yet another
 example of how Tidy causes cognitive overload for learners.
 
-# Tidy obstacles to debugging
+# Tidy As an Obstacle to R Statistical Methods
+
+As noted above, some PRT Tidyers even oppose teaching **lm()**.
+Instead, they recommend using the **broom** wrapper.  The wrapper is
+indeed useful, but students need to learn the basics.  And of course, it
+is unreasonable to ask that the hundreds of R statistical operations,
+and the thousands of packages, all have Tidy wrappers.
+
+Consider the Tidyers' opposition to teaching the '$' and brackets
+operations.  This is an obvious impediment to using R's statistical
+operations.  
+
+Most of the R statistical functions return S3 objects, i.e. lists,
+accessible via '$'.  Similarly, statistical operations in R are mainly
+vector- and matrix-oriented.  (A matrix is a special case of a vector.)
+I would find it difficult to teach a course in linear regression,
+principal components, log-linear models and so on to students who did
+not have solid prior experience with '$' and vectors.
+
+Thus we immediately see a problem with Tidy:  It creates a barrier to
+use of R as a statistical tool by Tidy "graduates."
+
+[Here](https://clauswilke.com/blog/2020/09/07/pca-tidyverse-style/) is
+an example of bridging the gap between Tidy and statistics, by Claus
+Wilke, who begins by reporting, "I’ve finally figured out how to perform
+a PCA using the tidyverse."  His word "finally" shows that there is
+indeed a gap.  His answer is to use the **broom** package.  As it was,
+even that package did not quite work, he said, though the development
+version did.  And what about the thousands of CRAN packages that return
+S3 objects?  Is **broom** going to provide a Tidy interface to each one?
+That of course would be unrealistic.
+
+A fundamental problem, from my point of view, is that the RStudio people
+are not primarily statisticians.  Their focus is on developing software,
+primarily for data wrangling and graphics.  They do this quite well, but
+they are not the types who sit around debating, for example, the
+propriety of p-values.  Statistics is not foremost on their radar
+screens, and this sad gap between Tidy and statistics is a result.
+
+# Tidy Obstacles to Debugging
 
 Here is an example from *Text Mining with R*, by Julia
 Silge of RStudio, and David Robinson. It's a great introduction to the
@@ -1177,18 +1103,18 @@ happier.  As noted, the first group would likely resort to "unpiping"
 the code (which by the way may introduce further bugs), and I assert,
 would have a newfound respect for nonpiped code.
 
-## Use of functional programming
+## Use of functional programming (FP)
 
-If there is one aspect of the Tidy-vs.-base-R debate that in my
-opinion demonstrates the problem with Tidy, it's that
-Tidy advocates want R beginners to avoid loops.  Indeed, those
-advocates may not even teach loops at all in a basic course.
+If there is one aspect of the Tidy-vs.-base-R debate that in my opinion
+demonstrates the problem with Tidy, it's that Tidy advocates want R
+beginners to avoid loops.  Indeed, many of those advocates do not even
+teach loops at all.
 
 The Tidyers want R beginners to use functional programming (FP) instead
-of loops.  But even they agree that the concept of functions is one of
-the hardest for beginners to learn.  **Thus it makes no sense to force
-beginners to use a the tough concept of FP in lieu of the much more
-natural loops approach.**  FP does have its place, but it should be
+of loops.  But even the Tidyers agree that the concept of functions is
+one of the hardest for beginners to learn.  **Thus it makes no sense to
+force beginners to use a the tough concept of FP in lieu of the much
+more natural loops approach.**  FP does have its place, but it should be
 taught as an advanced topic.
 
 An anti-loops mentality has become the Tidy advocates' test of whether
@@ -1224,6 +1150,17 @@ Actually, most non-FP languages allow passing one function to another,
 but yes it is a powerful tool, worth the investment of time -- *for the
 experienced R programmer*.  But again, it's wrong to force nonprogrammer
 learners of R to "wrap their heads around" FP.
+
+And it is much more than just a matter of banning loops.  The '$' and
+'[' operators must also be banned, as they allow *side effects*.  In the
+example in our Prologue at the top of this essay, the base-R solution
+
+``` r
+df[column#,row#] = newvalue
+```
+
+has causes **df** to change, a side effect.  FP prohibits side effects,
+hence the proscribing of '['.  The same problem arises with '$'.[
 
 # RStudio and other prominent R developers use base-R themselves
 
