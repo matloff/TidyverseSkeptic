@@ -1,10 +1,8 @@
 # Teaching R in a Kinder, Gentler, More Effective Manner: 
 
-# Teach Base-R, Not Just the Tidyverse  
+## Teach Base-R, Not Just the Tidyverse  
 
-## Author:  Prof. Norm Matloff, University of California, Davis
-
-> "The KISS Principle:  Keep It Simple, Stupid"
+## Prof. Norm Matloff, University of California, Davis; January 11, 2023
 
 # Prologue
 
@@ -26,22 +24,23 @@ would treat in the first lesson or two.  Clearly:
 > There is something very wrong with the Tidy(-only) approach to teaching R
 > learners.
 
-# Overview:  Teaching R to Learners Who Have No Coding Background
+# Overview:  Teaching R to Noncoder Learners 
 
 The context of this essay is how to teach R to students without prior
-coding background.  These learners typically come from the social sciences
-or humanities, sometimes the life sciences.
+coding background.  These learners typically come from the social sciences,
+business, or the humanities, sometimes from the life sciences.
 
 **I believe that teaching R via the Tidyverse is counterproductive
 for this group of learners.**
 
 * The Tidyverse is more complex and abstract than base-R, hence **harder
-  to learn, directly antithetical to Tidy's stated goals.**
+  to learn**, directly antithetical to Tidy's stated goal of making R
+accesible to a broader community.
 
-* As exemplified in the above tweet, Tidy-based courses must therefore
-  restrict coverage to a small set of operations, mainly a few 
-  **dplyr** verbs.  The students may be happy but they are
-  **unprepared to use R productively in their work.**
+* Tidy-based courses must therefore restrict coverage to a small set of
+  operations, mainly a few **dplyr** verbs.  The students may be happy
+but they are **unprepared to use R productively in their work,** as
+exemplified in the above tweet, 
 
 * Accordingly, noncoder learners should be taught a mix of base-R and
   Tidy, starting first with base-R.  "Graduates" of mixed courses are
@@ -70,7 +69,7 @@ published several books that use R, and have served as the
 Editor-in-Chief of the *R Journal*, as well as Associate Editor for the
 *Journal of Statistical Software*. My abovementioned R tutorial for
 beginners, [fasteR](https://github.com/matloff/fasteR), has become my
-most popular GitHub repo, with 500 GitHub stars.
+most popular GitHub repo, with nearly 700 GitHub stars.
 
 But it goes far beyond that; I really am intensely interested in how
 people learn, from children to middle-aged adults. Among other things,
@@ -104,7 +103,7 @@ problems with Tidy as I see them:
 
 More details [later in this document](README.md#ggplot2-versus-the-tidyverse).
 
-## The Purist R Teachers (PRTs)
+## The Purist R Teachers
 
 I believe that R learners should be taught both base-R and Tidy, base-R
 first.  Many R teachers feel the same way.  But there are some who:
@@ -115,20 +114,7 @@ first.  Many R teachers feel the same way.  But there are some who:
 
 * Treat **dplyr** as the go-to tool for almost any R action, including
 challenging ones, ignoring that base-R might lead to a simpler solution.
-
-I'll refer to these instructors as Purist R Teacher (PRTs).
-
-The PRTs are common in the US, less so abroad, as RStudio's main
-promotion of Tidy has been in the US.
-
-## RStudio/Posit
-
-In summer 2022, the RStudio corporation changed its name to Posit, to
-signal a broader scope than just R.  I believe this will be a
-win-win-win-win for the firm, and both the R and Python communities.
-
-The name of the IDE will continue to be RStudio.  For easy recognition,
-I'll use that name to refer to both the company and the IDE.
+Again, the example in the Prologue above illustrates this.
 
 # Kudos to RStudio, but they took a wrong turn
 
@@ -152,11 +138,18 @@ new development for the R community.
 Nevertheless, I believe that **RStudio took a wrong turn when it decided
 to promote the Tidyverse** for beginning learners who have no prior
 coding background.  Tidy makes it more difficult for noncoders to learn
-R, and leaves them less able to use it productively.  As someone who is
-passionate about teaching and a longtime R enthusiast, this is quite
-troubling to me.  Hence the document you are now reading.
+R, and leaves them less able to use it productively.  
 
-# Teachability overview--the Tidy approach is overly complicated and undergeneralizable
+RStudio has always been a very public-spirited firm (they eventually
+changed to Public Benefit Corporation legal status),   In this light,
+it is very unfortunate that **RStudio did not consult with the broader
+R community in developing this new "dialect" of R.**
+
+As noted in my background summary above, I have been quite active in the
+R movement, so all this  is quite troubling to me.  Hence the document
+you are now reading.
+
+# Teachability Overview--Tidy Is Overly Complicated and Poorly Equips Students for Practical Use
 
 * Again, my focus here is on teaching R to those with little or no
 coding background.  I am *not* discussing teaching Computer Science
@@ -165,37 +158,37 @@ students.
 * Tidy was consciously designed to equip learners with just a small set
 of R tools.  The students learn a few **dplyr** verbs well, but that
 equips them to do much less with R than a standard R beginners course
-would teach.  That leaves the learners less equipped to put R to
-practical use, compared to "graduates" of standard base-R courses.
+would teach.  That leaves the learners **less equipped to put R to
+practical use**, compared to "graduates" of standard base-R courses.
 
-* Thus the "testimonials" in which Tidy teachers of R claim great
-success are misleading.  The "success" is due to watering down the
-material (and conflation with **ggplot2**).  The students learn to mimic
-a few example patterns and may be happy, but they are not equipped to go
-further.
+* Tidy teachers of R claim great success, but **these "testimonials"
+  are misleading.**  The "success" is due to watering down the material
+(and conflation with **ggplot2**).  The students learn to mimic a few
+example patterns and may be happy, but they are not equipped to use R
+beyond superficial operations.
 
-* The PRT Tidyers' refusal to teach the '[' and [ '$' operators, and the
+* The Tidyers' refusal to teach the '[' and [ '$' operators, and the
 lack of coverage of R vectors, are major handicaps for Tidy
-"graduates" to making use of most of R's statistical functions and
-statistical packages.  
+"graduates" to making use of most of R's **statistical functions and
+statistical packages.**  
 
-* Tidy's is too abstract for beginners, due to the philosophy of
-functional programming (FP). The latter is popular with many
-sophisticated computer scientists, but is difficult even for computer
-science students, let alone the nontech learners that form our focus
-here.  Tidy is thus unsuited as the initial basis of instruction for
-nonprogrammer students of R.  FP should be limited and brought in
+* Tidy's is **too abstract** for noncoder beginners, due to the
+  philosophy of functional programming (FP). The latter is popular with
+many sophisticated computer scientists, but is **difficult even for
+computer science students, let alone the nontech learners** that form our
+focus here.  Tidy is thus unsuited as the initial basis of instruction
+for nonprogrammer students of R.  FP should be limited and brought in
 gradually.  The same statement applies to base-R's own FP functions.
 
 * The Tidy FP philosophy replaces straightforward, easily grasped, loops
 with abstract use of functions. Since functions are the most difficult
 aspect for noncoder R learners, FP is clearly not the right path for
 such learners.  Indeed, even many Tidy advocates concede that it is in
-various senses often more difficult to write Tidy code than base-R. Even
+various senses often **more difficult to write Tidy code than base-R**. Even
 Hadley says, for instance, "it may take a while to wrap your head around
 [FP]."
 
-* A major problem with Tidy for R beginners is cognitive overload: The
+* A major problem is **Tidy's cognitive overload**: The
 basic operations contain myriad variants. Though of course one need
 not learn them all, one needs some variants even for simple operations,
 e.g. pipes on functions of more than one argument.
@@ -203,10 +196,10 @@ e.g. pipes on functions of more than one argument.
 * The obsession among many Tidyers that one must avoid writing loops,
 the '$' operator, brackets and so on often results in obfuscated code.
 Once one goes beyond the simple **mutate/select/filter/summarize**
-level, Tidy programming can be of low readability.  The much-vaunted
-"English-like" theme of Tidy becomes an obstacle rather than an aid.
+pattern, Tidy programming can be of low readability.  **The much-vaunted
+"English-like" theme of Tidy becomes an obstacle rather than an aid**.
 
-* Tidy advocates also concede that debugging Tidy code is difficult,
+* Tidy advocates also concede that **debugging Tidy code is difficult**,
 especially in the case of pipes. Yet noncoder learners are the ones
 who make the most mistakes, so it makes no sense to have them use a
 coding style that makes it difficult to track down their errors.
@@ -335,7 +328,7 @@ When the Tidyverse was first developed, Prof. Roger Peng gave a
 thoughtful keynote talk, *Teaching R to New Users--from tapply to the
 Tidyverse*, also presented as [a Web
 page](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/).
-Actually, **tapply()** is not mentioned in Dr. Peng's talk or in the
+Oddly, **tapply()** is not mentioned in Dr. Peng's talk or in the
 printed version, but the title says it all:  One should teach Tidy, not
 **tapply()**.
 
@@ -396,7 +389,7 @@ height, and wish to first check approximate linearity.
 The dataset, involving heights and weights of professional baseball
 players, **mlb**, is from my **regtools** package.  For each height
 value, there are various players of that height, so 
-we plot mean weight against height.  
+we plot mean weight against height, checking for a linear pattern.  
 
 Base-R:
 
@@ -426,21 +419,20 @@ Most people, on most issues, avoid extremes.  But some teachers of R
 have gone polemic, with dogmatic calls for "purity," with a Tidy-only
 approach.
 
-The "purity" view is expressed in the [*Educator's Perspective*
-article](https://escholarship.org/uc/item/7kk4d922), written by a number
-of prominent Tidy advocates.  I did suggest a mixed approach to RStudio
-founder and CEO JJ Allaire when we met (at his request) in 2019.
-Unfortunately, JJ did not like the idea either, on the grounds that
-RStudio should not be telling people how to teach.  But of course, that
-is exactly what RStudio has been doing in promoting Tidy.
+I did suggest a mixed approach to RStudio founder and CEO JJ Allaire
+when we met (at his request) in 2019.  Unfortunately, JJ did not like
+the idea either, on the grounds that RStudio should not be telling
+people how to teach.  But of course, that is exactly what RStudio has
+been doing in promoting Tidy.
 
-I'll take for my examples here from the abovementioned article, as it is
-very detailed and articulate.  The authors' viewpoint is commonplace in
+I'll take for my examples here from the [*Educator's Perspective*
+article](https://escholarship.org/uc/item/7kk4d922), written by a number
+of prominent Tidy advocates.  The authors' viewpoint is commonplace in
 the US.
 
 ## No dollar sign allowed, no brackets, no loops, even no lm() 
 
-The PRT Tidyers believe that two of the most basic operations in R,
+The Tidyers believe that two of the most basic operations in R,
 the \$ sign and bracketing, are harmful.  For instance, consider an
 example in *Educator's Perspective*.
 
@@ -484,7 +476,9 @@ the code's usage of '$'.  As the article puts it:
 The simple solution to this "problem" is to explain it to students, and
 have them watch for it.  It would be impossible to have students avoid
 all possible errors, and again, this one is easy to remedy with proper
-advance warning.
+advance warning.  Isn't this preferable to saddling learners with are
+more complex, less direct coding paradigm?  Don't "throw the baby out
+with the bath water"!
 
 And the argument "Coding style X often results in errors by beginners,
 so we should replace X by other machinery" of course works both ways.  A 
@@ -498,29 +492,9 @@ loans$bankruptcy <- ifelse(loans$public_record_bankrupt >= 1, "Yes", "No")
 
 ```
 
-As to brackets, Tidy essentially ignores vectors.  Consider the
-following base-R code:
-
-``` r
-x <- c(5,12,13,1)
-x[x > 8]
-# or, if preferred:
-subset(x, x > 8)
-
-```
-
-Probably the simplest way to do this in Tidy would be:
-
-``` r
-x <- c(5,12,13,1)
-data.frame(x=x) %>% filter(x > 8)
-```
-
-That's a lot of machinery to implement one little vector operation --
-conversion to a data frame, pipes, **filter()**. 
-
-Consider this very simple example:  Say we wish to add to the
-**mtcars** data a column consisting of the horsepower-to-weight ratio.
+Tidy essentially ignores vectors.  Consider this very simple example:
+Say we wish to add to the **mtcars** data a column consisting of the
+horsepower-to-weight ratio.
 
 In base-R, it is extremely simple:
 
@@ -537,9 +511,11 @@ But in Tidy:
 ```
 
 Still not terribly complex, but again  we're invoking some machinery --
-piping, a function call, and reassigning to the original data frame.
+piping, a function call, and reassigning to the original data frame  The
+base-R version is simple and straightforward, thus easier for R
+beginners to grasp.
 
-The Tidyers oppose teaching loops to beginners, on the grounds that loop
+The Tidyers oppose teaching loops to beginners, again on the grounds that loop
 coding is error-prone.  That is open to debate, but the point is that
 loops are easier to debug; the sophisticated machinery that Tidyers want
 in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
@@ -552,19 +528,18 @@ The article is so purist that it even recommends against teaching
 ## "dplyr or bust"
 
 The Tidyers become so focused on Tidy that they try to solve every
-problem by using that tool.  The result is seen in "How do I...?"
-queries in Twitter, Stack Overflow and so on.
+problem by using that tool.  The result is seen in "How do I do
+such-and-such using Tidy?" queries in Twitter, Stack Overflow and so on.
 
 In many cases, the problem has a simple and direct base-R solution, but
-those who submit the queries are either so weak in base-R, or too
-fixated on **dplyr**, that they are incapable of taking that easier
-path.
+those who submit the queries are so fixated on **dplyr**, that they are
+incapable of taking that easier path.
 
 *Case study:  Hadley and tapply()*
 
 As noted earlier, many who learned R from a Tidyer are surprised to
 learn that **ggplot2** makes liberal use of **tapply()**.  It shouldn't
-be surprising, as **ggplot2** is pre-Tidy, but many of the more PRT
+be surprising, as **ggplot2** is pre-Tidy, but many of the more ardent
 Tidyers have portrayed **tapply()** as the epitome of "What's wrong with
 R."
 
@@ -583,10 +558,9 @@ dplyr #rstats pattern I use constantly:
 > 
 > Do others? Would a shortcut be helpful?
 
-Hadley replied, in
-[the same thread](https://twitter.com/hadleywickham/status/766301706103554048)
-
-> [use] or ave() vs tapply()
+Hadley correctly replied, in
+[the same thread](https://twitter.com/hadleywickham/status/766301706103554048),
+that one should use base-R functions here, **ave()** or **tapply()**.
 
 An R Core member, commenting on this phenomenon (but not this incident)
 cited a saying, "Sometimes the followers are holier than the prophet." 
@@ -698,7 +672,7 @@ f <- function(something)
 
 rather than say, one of the **apply()** or **purrr** functions.
 
-**Again, there is a serious problem of cognitive overload.** Tidyverse
+**Again, Tidy has a serious problem of cognitive overload.** Tidyverse
 students are being asked to learn a much larger volume of material.
 This is ironic, in that the goal in developing Tidy for teaching was
 to limit a course to just a few verbs.  The problem is that the verbs
@@ -760,7 +734,7 @@ example of how Tidy causes cognitive overload for learners.
 
 # Tidy As an Obstacle to R Statistical Methods
 
-As noted above, some PRT Tidyers even oppose teaching **lm()**.
+As noted above, some Tidyers even oppose teaching **lm()**.
 Instead, they recommend using the **broom** wrapper.  The wrapper is
 indeed useful, but students need to learn the basics.  And of course, it
 is unreasonable to ask that the hundreds of R statistical operations,
@@ -799,8 +773,8 @@ screens, and this sad gap between Tidy and statistics is a result.
 
 # Tidy Obstacles to Debugging
 
-Here is an example from *Text Mining with R*, by Julia
-Silge of RStudio, and David Robinson. It's a great introduction to the
+Here is an example from *Text Mining with R*, by Julia Silge of RStudio,
+and the aforementioned David Robinson. It's a great introduction to the
 text analysis field, and I myself have found the book useful.  
 
 This example, which may be found
@@ -1032,8 +1006,8 @@ The answer is that, among the many people I've interacted with regarding
 Tidy, often the first reaaon they cite for liking Tidy is the ease with
 which one can code nice graphics.  I fully agree that GGP2 is excellent,
 and I use and teach it myself -- but it's not the Tidyverse.  My point,
-then, is they are endorsing Tidy because of something that is not part
-of Tidy.  Indeed, GGP2 is widely used by base-R and Tidy advocates
+then, is **they are endorsing Tidy because of something that is not part
+of Tidy**.  Indeed, GGP2 is widely used by base-R and Tidy advocates
 alike.
 
 RStudio is a business.  Its job, rightly so, is to promote its products.
@@ -1063,45 +1037,6 @@ Again, GGP2 is a wonderful package.  RStudio has the right to define the
 Tidyverse however they feel appropriate.  But RStudio's naming freedom 
 does not justify burdening and handicapping R learners with Tidy, 
 i.e. FP, **dplyr**, **purrr** and so on.
-
-## Tidyverse "testimonials"
-
-Many Tidy teachers report great success with the approach.
-
-One major issue with this "success" (aside from the improper conflation
-of Tidy with GGP2) is that Tidy R courses are scaled down in scope,
-compared to the base-R ones.  A typical Tidy R course does not equip
-students to do much in R (whether, base or Tidy). They teach a few
-**dplyr** verbs, a few GGP2 calls, and provide examples that the
-students can mimic.  Much time is spent on the RS IDE and R Markdown.
-Students emerge with a false sense of empowerment.  
-
-Professor Peng, in his aforementioned keynote address, agrees but feels
-this is a good thing:
-
-> [Tidy] allowed a relatively small set of tools to provide a wide range
-> of operations when it came to data wrangling. The opinionated nature of
-> the tools naturally limited somewhat the flexibility of how things could
-> be done. But this reduced complexity was what made the tools so
-> appealing to new users. There were just fewer things to learn.
-
-Teacher and students alike are happy, but misleadingly so. 
-
-It doesn't have to be that way.  As shown in this essay, Tidy is in many
-ways more *difficult* for noncoder learners of R, contrary to the above
-quote's message, "Well, they learn less but at least it is easier for
-them."
-
-Many Tidyers say that students actually prefer the Tidy paradigm.  But
-in many educational contexts, students lack "the big picture."  Take the
-Jane Austen books example presented earlier in both piped and nonpiped
-versions, with a bug.  If a group of Tidy "graduates" were given both
-versions, with half the graduates assigned to find the bug in the piped
-code and the other half told to find the bug in nonpiped code, it's a
-safe bet that the second group of graduates would be more successful and
-happier.  As noted, the first group would likely resort to "unpiping"
-the code (which by the way may introduce further bugs), and I assert,
-would have a newfound respect for nonpiped code.
 
 ## Use of functional programming (FP)
 
@@ -1159,105 +1094,16 @@ example in our Prologue at the top of this essay, the base-R solution
 df[column#,row#] = newvalue
 ```
 
-has causes **df** to change, a side effect.  FP prohibits side effects,
-hence the proscribing of '['.  The same problem arises with '$'.[
-
-# RStudio and other prominent R developers use base-R themselves
-
-An old TV commercial urged viewers to "Drive the car Ferrari
-drives"---followed by a shot of Enzo Ferrari getting into his everyday
-work car, a little Fiat.  This is actually similar to the situation with
-prominent R software.
-
-All the breathless claims that Tidy is more modern and clearer,
-whilc base-R is old-fashioned and unclear, 
-fly in the face of the fact that RStudio developers, and authors of
-other prominent R packages, tend to write in base-R, not Tidy.
-And *all* of them use some base-R instead of the corresponding Tidy
-constructs.
-
-Here are some interesting numbers:
-
-<table border="1">
-
-<tr>  <td>package</td>  <td>*apply() calls</td>  <td>mutate() calls</td>  </tr>
-
-<tr>  <td>brms</td>  <td>333</td>  <td>0</td>  </tr>
-
-<tr>  <td>broom</td>  <td>38</td>  <td>58</td>  </tr>
-
-<tr>  <td>datapasta</td>  <td>31</td>  <td>0</td>  </tr>
-
-<tr>  <td>forecast</td>  <td>82</td>  <td>0</td>  </tr>
-
-<tr>  <td>future</td>  <td>71</td>  <td>0</td>  </tr>
-
-<tr>  <td>ggplot2</td>  <td>78</td>  <td>0</td>  </tr>
-
-<tr>  <td>glmnet</td>  <td>92</td>  <td>0</td>  </tr>
-
-<tr>  <td>gt</td>  <td>112</td>  <td>87</td>  </tr>
-
-<tr>  <td>knitr</td>  <td>73</td>  <td>0</td>  </tr>
-
-<tr>  <td>naniar</td>  <td>3</td>  <td>44</td>  </tr>
-
-<tr>  <td>parsnip</td>  <td>45</td>  <td>33</td>  </tr>
-
-<tr>  <td>purrr</td>  <td>10</td>  <td>0</td>  </tr>
-
-<tr>  <td>rmarkdown</td>  <td>0</td>  <td>0</td>  </tr>
-
-<tr>  <td>RSQLite</td>  <td>14</td>  <td>0</td>  </tr>
-
-<tr>  <td>tensorflow</td>  <td>32</td>  <td>0</td>  </tr>
-
-<tr>  <td>tidymodels</td>  <td>8</td>  <td>0</td>  </tr>
-
-<tr>  <td>tidytext</td>  <td>5</td>  <td>6</td>  </tr>
-
-<tr>  <td>tsibble</td> <td>8</td> <td>19</td>  </tr>
-
-<tr>  <td>VIM</td> <td>117</td> <td>19</td>  </tr>
-
-</table>
-
-<p>
-
-</p>
-
-Striking numbers to those who learned R via a tidyverse course.  In
-particular, **mutate()** is one of the very first verbs one learns in a
-Tidy course, **yet **mutate()** is used **0 times** in most of the above
-packages.**  And even in the packages in which this function is called a
-lot, they also have plenty of calls to base-R ***apply()**, functions
-which Tidy is supposed to replace.
-
-In a Twitter discussion of an earlier version of this essay, various
-reasons were offered for why package authors do use at least some
-base-R. Many discussants speculated that a common reason is desire to
-avoid "package bloat."  I believe that in at least some cases, an author
-simply felt that the base-R construct was the most convenient.  
-
-Again, the reader should note that this essay is not about what
-R style package writers should use.  As stated above,
-
-> Note that in discussing teaching in this essay, I am taking the target
-> audience here to be **nonprogrammers** who wish to use R for data
-> analysis.  The focus is not on what R style should be used by package
-> designers.
-
-The purpose of including the above table is to assure R learners, that
-in spite of being told by some R teachers that base-R is useless, it in
-fact is used in some of their favorite R packages!
+causes **df** to change, a side effect.  FP prohibits side effects,
+hence the proscribing of '['.  The same problem arises with '$'.
 
 # Where are we now, and where should we be going?
 
 ## Tidy as pop culture
 
-Due to a catchy name, a charismatic developer, the Bandwagon Effect, and
-highly aggressive marketing by a dominant commercial entity, Tidy 
-now dominates the R world.
+Due to a catchy name, a charismatic developer (Hadley), the Bandwagon
+Effect, and highly aggressive marketing by a dominant commercial entity,
+Tidy now is a major force in the R world.
 
 It has even brought a "pop culture" to R.  One prominent Tidy advocate
 (and coauthor of the *Educator Perspective* article) even sells ["Tidy
@@ -1380,13 +1226,12 @@ a PBC.**
 I was shocked to find in 2022 how expensive the RStudio conference is,
 reportedly [US
 $1500](https://twitter.com/fishiintheC/status/1553001832166969344).
-Though there were probably some registration types that we cheaper than
+Though there were probably some registration types that are cheaper than
 this, this fee is exhorbitant.  RStudio is a commercial entity, and the
-conference promotes its product. Given this status, 
-I had assumed the conference would be free,
-maybe a small nominal fee. As a PBC, RStudio is legally
-committed to the public good.  Instead, the fee more evokes "Charge what
-the traffic will bear" than "public good."
+conference promotes its product. Given this status, I had assumed the
+conference would be free, maybe a small nominal fee. As a PBC, RStudio
+is legally committed to the public good.  Instead, the fee more evokes
+"Charge what the traffic will bear" than "public good."
 
 And as a PBC, and as a commercial entity that dominates a pre-existing
 open source product, RStudio should take a good, hard, dispassionate
