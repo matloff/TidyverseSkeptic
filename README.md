@@ -322,7 +322,7 @@ tapply(what to split, how to split it,
 ```
 
 However, for some reason Tidy advocates deeply resent this function.
-Indeed, **tapply()** epitomizes what's wrong with base-R.  
+Indeed, to them **tapply()** epitomizes what's wrong with base-R.  
 
 When the Tidyverse was first developed, Prof. Roger Peng gave a
 thoughtful keynote talk, *Teaching R to New Users--from tapply to the
@@ -336,7 +336,7 @@ Surprisingly, though, in making his comparison of Tidy to base-R, his
 base-R example is **aggregate()**, not **tapply()**.  The complexity of
 **aggregate()** function makes for an unfair comparison, a straw man; 
 **tapply()** is much simpler, and perfect for R beginners, and thus the
-proper comparison as the title of the talk seems to agree).(
+proper comparison as the title of the talk seems to agree.
 
 Below is an example from the Peng talk, using the built-in R dataset
 **airquality**.  We find the mean ozone level by month:
@@ -476,7 +476,7 @@ the code's usage of '$'.  As the article puts it:
 The simple solution to this "problem" is to explain it to students, and
 have them watch for it.  It would be impossible to have students avoid
 all possible errors, and again, this one is easy to remedy with proper
-advance warning.  Isn't this preferable to saddling learners with are
+advance warning.  Isn't this preferable to saddling learners with a
 more complex, less direct coding paradigm?  Don't "throw the baby out
 with the bath water"!
 
@@ -535,7 +535,7 @@ In many cases, the problem has a simple and direct base-R solution, but
 those who submit the queries are so fixated on **dplyr**, that they are
 incapable of taking that easier path.
 
-*Case study:  Hadley and tapply()*
+*Case study:  Hadley recommends tapply()!*
 
 As noted earlier, many who learned R from a Tidyer are surprised to
 learn that **ggplot2** makes liberal use of **tapply()**.  It shouldn't
