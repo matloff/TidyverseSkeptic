@@ -267,7 +267,7 @@ printing the mean Nile River flow during a certain range of years.
 Incredibly, not only would this NOT be in a first lesson with Tidy, the
 students in a Tidy course may actually *never* learn how to do this.
 Typical Tidyers don't consider vectors very important for learners, let
-alone vector subscipts. 
+alone vector subscripts. 
 
 As a concrete example of this Tidy point of view, consider the book
 *Getting Started with R*, by Beckerman *et al*, Oxford University Press,
