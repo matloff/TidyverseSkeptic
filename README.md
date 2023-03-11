@@ -298,7 +298,7 @@ the first.  For Tidy, though, this would have to be changed to
 
 ``` r
 > library(dplyr)
-> thue2 <- thue2 %>% filter(blood.glucose < 7)
+> thue2 <- thuesen %>% filter(blood.glucose < 7)
 ```
 
 Here the instructor would first have to teach the pipe operator '%>%',
