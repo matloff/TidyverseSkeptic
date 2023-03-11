@@ -1186,8 +1186,8 @@ remarks.  Indeed, my meeting with RStudio CEO JJ Allaire in 2019 came at
 JJ's suggestion.  Around that time, JJ also met with Matt Dowle.  Also
 in 2019, RStudio stopped viewing **data.table** as a rival, and
 announced the release of **dtplyr**, a Tidy-syntax front end to
-**dplyr**.  Since **data.table** is much faster on large datasets than
-**dplyr**, this was a win-win for the entire R community.
+**data.table**.  Since **data.table** is much faster on large datasets
+than **dplyr**, this was a win-win for the entire R community.
 
 Hopefully we will be seeing more of these positive trends in the coming
 years.  As I explained in that meeting with JJ, the best form of
