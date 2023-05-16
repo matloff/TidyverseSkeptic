@@ -369,6 +369,13 @@ This fits clearly into our **tapply** call form shown above:
 
 * What to apply to the resulting chunks: mean
 
+The formula method for **aggregate()** is even more compact, omitting NA values
+by default:
+
+``` r
+aggregate(Ozone~Month, airquality, mean)
+```
+
 The Tidy version requires two function calls rather than one for base-R.
 The Tidy code is a bit wordier, and requires that one do an assignment
 (to **o3**).  All in all, **the base-R version is simpler, and thus easier
