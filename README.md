@@ -35,7 +35,7 @@ for this group of learners.**
 
 * The Tidyverse is more complex and abstract than base-R, hence **harder
   to learn**, directly antithetical to Tidy's stated goal of making R
-accesible to a broader community.
+accessible to a broader community.
 
 * Tidy-based courses must therefore restrict coverage to a small set of
   operations, mainly a few **dplyr** verbs.  The students may be happy
@@ -349,8 +349,8 @@ group_by(airquality, Month) %>%
 Here is the base-R version offered by Dr. Peng:
 
 ``` r
-aggregate(airquality[, “Ozone”], 
-      list(Month = airquality[, “Month”]), 
+aggregate(airquality[, "Ozone"], 
+      list(Month = airquality[, "Month"]), 
       mean, na.rm = TRUE)
 ```
 
@@ -368,6 +368,13 @@ This fits clearly into our **tapply** call form shown above:
 * How to split it: by Month
 
 * What to apply to the resulting chunks: mean
+
+The formula method for **aggregate()** is even more compact, omitting NA values
+by default:
+
+``` r
+aggregate(Ozone~Month, airquality, mean)
+```
 
 The Tidy version requires two function calls rather than one for base-R.
 The Tidy code is a bit wordier, and requires that one do an assignment
@@ -897,7 +904,7 @@ tools, and even just using **print()** statements is impossible.
  
 One partial remedy is the clever **pipecleaner** package for debugging
 pipes.  It works only up to a point, and is probably a bit too involved
-for R beginners.  Most signifcantly, the package writeup  also notes
+for R beginners.  Most significantly, the package writeup  also notes
 that 
 
 > Occasionally it is necessary to restructure code from a piped to an
@@ -1003,7 +1010,7 @@ not be considered part of the Tidyverse.  I'll go into detail below, but
 first, why does it matter?
 
 The answer is that, among the many people I've interacted with regarding
-Tidy, often the first reaaon they cite for liking Tidy is the ease with
+Tidy, often the first reason they cite for liking Tidy is the ease with
 which one can code nice graphics.  I fully agree that GGP2 is excellent,
 and I use and teach it myself -- but it's not the Tidyverse.  My point,
 then, is **they are endorsing Tidy because of something that is not part
@@ -1068,7 +1075,7 @@ majors,  the authors' goals are antithetical to those of R learners.
 The authors list three goals, one of which is to teach theoretical
 computer science, certainly not desirable for teaching R in general, let
 alone for teaching R to those with no coding experience.  They also
-concede that a key concept in FP, *recursion*, is a "signficant
+concede that a key concept in FP, *recursion*, is a "significant
 obstacle" even for CS students.  
 
 If FP is tough for CS students, it makes no sense to have nonprogrammer
@@ -1116,7 +1123,7 @@ What a difference from the staid R community of yore!  We who have been
 in R since the early days applaud RStudio for spreading the word,
 but it has come at major costs to the well-being of the language.
 
-## Parochialism, polemics snd problems
+## Parochialism, polemics and problems
 
 Putting the hero worship aside, at the very least one can say that many
 if not most in that huge Tidy following view R to consist mainly as
@@ -1227,7 +1234,7 @@ I was shocked to find in 2022 how expensive the RStudio conference is,
 reportedly [US
 $1500](https://twitter.com/fishiintheC/status/1553001832166969344).
 Though there were probably some registration types that are cheaper than
-this, this fee is exhorbitant.  RStudio is a commercial entity, and the
+this, this fee is exorbitant.  RStudio is a commercial entity, and the
 conference promotes its product. Given this status, I had assumed the
 conference would be free, maybe a small nominal fee. As a PBC, RStudio
 is legally committed to the public good.  Instead, the fee more evokes
@@ -1240,7 +1247,7 @@ misleading testimonials to rationalize its rigid stance.
 
 I thus renew the suggestion I made to JJ in 2019, and **ask that
 RStudio recommend to the Tidy teaching community that they teach a
-mixture of Tidy and base-R.**  The firm's transtioning to a broader,
+mixture of Tidy and base-R.**  The firm's transitioning to a broader,
 less R-focused copy under the name Posit makes this even more important.
 
 
