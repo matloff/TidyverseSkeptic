@@ -1213,34 +1213,7 @@ so be it.  There will be other cases in which the graduates of mixed
 instruction find the Tidy solution more appealing.  Rest assured, Tidy
 is here to stay.
 
-## RStudio, as a Public Benefit Corporation, holds the key
 
-One very important event is that RStudio changed status to a Public
-Benefit Corporation (PBC), which it
-[announced](https://www.rstudio.com/blog/rstudio-pbc/) in 2019.  
 
-In my opinion, in spite of various actions the firm might point to that
-are aimed at the public good, **RStudio has not lived up to its status as
-a PBC.**
-
-I was shocked to find in 2022 how expensive the RStudio conference is,
-reportedly [US
-$1500](https://twitter.com/fishiintheC/status/1553001832166969344).
-Though there were probably some registration types that are cheaper than
-this, this fee is exhorbitant.  RStudio is a commercial entity, and the
-conference promotes its product. Given this status, I had assumed the
-conference would be free, maybe a small nominal fee. As a PBC, RStudio
-is legally committed to the public good.  Instead, the fee more evokes
-"Charge what the traffic will bear" than "public good."
-
-And as a PBC, and as a commercial entity that dominates a pre-existing
-open source product, RStudio should take a good, hard, dispassionate
-look at what is best for R learners.  The firm should move beyond using
-misleading testimonials to rationalize its rigid stance.
-
-I thus renew the suggestion I made to JJ in 2019, and **ask that
-RStudio recommend to the Tidy teaching community that they teach a
-mixture of Tidy and base-R.**  The firm's transtioning to a broader,
-less R-focused copy under the name Posit makes this even more important.
 
 
