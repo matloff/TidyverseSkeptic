@@ -1,0 +1,5 @@
+project:
+  title: "Tidyverse Skeptic"
+  type: website
+  output-dir: docs
+
