@@ -1,7 +1,7 @@
 
 
 ---
-title: "tidyverse Skeptic"
+title: "Tidyverse Skeptic"
 subtitle: "Why the tidyverse is not a good vehicle for teaching noncoders"
 author: Norm Matloff
 toc: true
@@ -10,13 +10,13 @@ toc: true
 [Author bio](https://heather.cs.ucdavis.edu/matloff.html)
 
 
-::: {.callout-important title='Synopsis'}
+::: {.callout-important title='Main Points'}
 
 * The focus of this essay is teaching R to noncoders.  **I believe that
   teaching R via the tidyverse is counterproductive for this group of
   learners.** 
 
-* It is not about teaching R to computer science students, nor is it
+* The essay is not about teaching R to computer science students, nor is it
   about whether R is a good tool for experience coders (which is a
   matter of personal taste).
 
@@ -27,18 +27,18 @@ toc: true
 * The tidyverse ("Tidy") is more complex and abstract than base-R, hence
   harder to learn, directly antithetical to Tidy's stated goals.
 
-* The Tidy *functional programming* philosophy replaces straightforward,
+* The Tidy *functional programming* (FP) philosophy replaces straightforward,
   easily grasped, loops with abstract use of functions. Since functions
   are the most difficult aspect for noncoder R learners, FP is clearly
   not the right path for such learners.  Indeed, even many Tidy
-  advocates concede that it is in various senses often more difficult to
-  write Tidy code than base-R.  Even Hadley says, for instance, "it may
-  take a while to wrap your head around [FP]."
+  advocates concede that FP Tidy is in various senses often more difficult to
+  write than base-R.  Hadley says, for instance, "it may
+  take a while to wrap your head around" FP.
 
 * Tidy advocates also concede that debugging Tidy code is difficult,
-especially in the case of pipes. Yet noncoder learners are the ones
-who make the most mistakes, so it makes no sense to have them use a
-coding style that makes it difficult to track down their errors.
+  especially in the case of pipes. Yet noncoder learners are the ones
+  who make the most mistakes, so it makes no sense to have them use a
+  coding style that makes it difficult to track down their errors.
 
 * "Testimonials" regarding Tidy are misleading.  Tidy-based courses
   restrict coverage to a small set of operations, mainly a few **dplyr**
@@ -49,14 +49,20 @@ coding style that makes it difficult to track down their errors.
 * Tidy-taught students then struggle with tasks in their daily work,
   trying to shoehorn a task into the Tidy framework.
 
-* Tidy has a function for everything under the sun, leading to cognitive
-  overload, when many of these operations can be done simply in base-R.
-  This is exacerbated by the Tidy philosophy that Tidy be
-  self-contained, as much as possible.
+* Moreover, there is an unwritten rule that one stay with that framework,
+  even for something as mundane as **lm**. There Tidy has its own
+  summary functions (**broom** and methods for **augment** and
+  **glimpse**), to be used in lieu of **summary**.
+
+* Accordingly, Tidy has a function for everything under the sun; **dplyr** 
+  alone has 297 functions! One of course need not know all of them,
+  but when a novice R coder asks how to do X, they are referred to
+  some specialized Tidy function for X, rather than pointing them to
+  simpler base-R approaches. This results in cognitive overload. 
 
 * Those knowing only Tidy are locked out from effectively using the vast
   majority of statistical packages on CRAN, which require knowledge of
-  the '$' operator, vectors, subscripts and so on.
+  the '$' operator, vectors, subscripts, **summary** and so on.
 
 * Using base-R as the vehicle of instruction brings students to a more
   skilled level, in shorter time, than does use of Tidy.  My own [online
@@ -69,6 +75,10 @@ coding style that makes it difficult to track down their errors.
   then equipped to apply whichever tool they find most convenient in any
   given application.
 
+
+* Unfortunately, this middle-ground approach is unacceptable to many
+  Tidy advocates, especially Posit.
+
 :::
 
 # Prologue: The KISS Principle:  "Keep It Simple, Stupid"
@@ -77,29 +87,31 @@ coding style that makes it difficult to track down their errors.
   As a Second Language in San Francisco Chinatown. 
 
 * I taught the lowest level, ESL 50, adult students who barely knew the
-  alphabet. The overriding theme I found is to start simply.  In
+  alphabet. The overriding principle I found is to start simply.  In
   teaching low level ESL, one does not start with Shakespeare. 
 
 * The KISS Principle applies similarly to use of the tidyverse for
   teaching noncoders. Compared to base-R, the tidyverse ("Tidy") is much
   more complex and abstract, the "Shakespeare" of R.
 
-In other words, Tidy uses unnecessarily complicated machinery, an obvious
-drawback for teaching beginners, and yet only equips students to perform
-a narrow set of operations.  It would be like teaching English As a
-Second Language as follows:  The instructor teaches the students to say
-"Good Morning," by providing them with a template like,
+* In other words, Tidy uses unnecessarily complicated machinery, an
+  obvious drawback for teaching beginners, and yet only equips students
+  to perform a narrow set of operations.  
 
-> It is my fervent wish that you find your morning unusually fulfilling.
+  It would be like teaching English As a Second Language as follows:
+  The instructor teaches the students to say "Good Morning," by
+  providing them with a template like,
 
-The students would be told to substitute *morning* with *afternoon* or
-*evening*.  But they would have no idea what the other words mean, and
-it would not generalize much.  The students may even rave about these
-English "lessons," but they won't have learned much at all.
+  > It is my fervent wish that you find your morning unusually fulfilling.
+
+  The students would be told to substitute *morning* with *afternoon* or
+  *evening*.  But they would have no idea what the other words mean, and
+  it would not generalize much.  The students may even rave about these
+  English "lessons," but they won't have learned much at all.
 
 **Sticking to simple concepts is the overriding principle in this
-document.** A number of concrete examples will be presented in
-@sec-examples.
+document.** A number of concrete examples will be presented, in
+@sec-examples and elsewhere in this document.
 
 # Preliminaries
 
@@ -108,7 +120,7 @@ document.** A number of concrete examples will be presented in
 * By "base-R" I mean array indices, loops, if-then-else and so on.  
 
 * I do NOT advocate a slow, boring approach in which, for instance, one
-  starts with "R data can be real, character or logical..."  
+  starts with "R data can be numeric, character or logical..."  
 
 * The main issue is how to teach R learners to do data analysis,
   practical stuff that they can skillfully apply.
@@ -117,7 +129,14 @@ document.** A number of concrete examples will be presented in
 
    * focus on **dplyr** and pipes, possibly **purrr** 
 
-   * a ban/near ban on the use of loops, the '$' sign, brackets
+   * a ban/near ban on the use of loops, the '$' sign, brackets etc.
+
+## Function notation
+
+It is common to denote functions with parentheses, as in "The main
+linear models function in R is lm()." I write 'lm' rather than 'lm()',
+as it matters crucially when one function has another as an argument;
+'lm()' will produce an error, a common one among beginners.
 
 ## Note on ggplot2 re marketing
 
@@ -133,28 +152,37 @@ document.** A number of concrete examples will be presented in
 
 ## Disclaimer: Kudos to Posit, but they took a wrong turn
 
-I like and admire the Posit people, including the tidyverse originator,
-Hadley Wickham, and have always supported them, both privately and
-[publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
-They and I have been interacting from the beginning, when the firm
-consisted only of founder JJ Allaire and ace developer Joe Cheng.  
-Hadley was the internal reviewer for my book, *The Art of R
-Programming*, and I was one of the internal reviewers for Hadley's
-*Advanced R* (2nd. ed.).  I am writing this essay using Posit's 
-**Quarto** package, a wonderful development for the R community.
+* I like and admire the Posit people, including the tidyverse
+  originator, Hadley Wickham, and have always supported them, both
+  privately and
+  [publicly](https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/).
 
-Nevertheless, I believe that **Posit took a wrong turn when it decided
-to promote the tidyverse** for beginning learners who have no prior
-coding background.  Tidy makes it more difficult for noncoders to learn
-R, and leaves them less able to use it productively.  As someone who is
-passionate about teaching and a longtime R enthusiast, this is quite
-troubling to me.  Hence the document you are now reading.
+* They and I have been interacting from the beginning, when the firm
+  consisted only of founder JJ Allaire and ace developer Joe Cheng.
+
+* Hadley was the internal reviewer for my book (at his request), *The
+  Art of R Programming*, and I was one of the internal reviewers for
+  Hadley's *Advanced R* (2nd. ed.).
+
+* Posit is to be praised for greatly expanding the size of the R
+  community.
+
+* One positive result of Posit's role as a commercial entity is
+  that it has subsidized major, beneficial growth of packages such as
+  **ggplot2**.
+
+* Nevertheless, I believe that **Posit took a wrong turn when it decided
+  to promote the tidyverse** for beginning learners who have no prior
+  coding background.  Tidy makes it more difficult for noncoders to
+  learn R, and leaves them less able to use it productively.  As someone
+  who is passionate about teaching and a longtime R enthusiast, this is
+  quite troubling to me.  Hence the document you are now reading.
 
 
 
 # Examples {#sec-examples}
 
-*Case study: delayed learning (I)*
+## Case study: delayed learning (I)
 
 Let's look at an example in my online R tutorial,
 [**fasteR**](http://github.com/matloff/fasteR).  Consider, for
@@ -215,7 +243,7 @@ courses don't cover vectors at all.
 In other words, **even after one lesson, the base-R learner would be way
 ahead of her Tidy counterparts.**
 
-*Case study: delayed learning (II)*
+## Case study: delayed learning (II)
 
 A researcher tweeted in December 2019 that an introductory statistics
 book by Peter Dalgaard is "now obsolete," because it uses base-R rather
@@ -245,9 +273,9 @@ don't seem to use R's '->' op.)
 Again, the tidyverse is simply too complex for R learners without coding
 background.  **It slows down their learning process.**
 
-*Case study:  tapply() (I)*
+## Case study:  **tapply** (I)
 
-One of the most commonly-used functions in base-R is **tapply()**.  It's
+One of the most commonly-used functions in base-R is **tapply**.  It's
 quite easy to teach beginners, by presenting its call form to them:
 
 ``` r
@@ -256,21 +284,19 @@ tapply(what to split, how to split it,
 ```
 
 However, for some reason Tidy advocates deeply resent this function.
-Indeed, **tapply()** epitomizes what's wrong with base-R.  
-
 When the tidyverse was first developed, Prof. Roger Peng gave a
 thoughtful keynote talk, *Teaching R to New Users--from tapply to the
 tidyverse*, also presented as [a Web
 page](https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/).
-Actually, **tapply()** is not mentioned in Dr. Peng's talk or in the
+Actually, **tapply** is not mentioned in Dr. Peng's talk or in the
 printed version, but the title says it all:  One should teach Tidy, not
-**tapply()**.
+**tapply**.
 
 Surprisingly, though, in making his comparison of Tidy to base-R, his
-base-R example is **aggregate()**, not **tapply()**.  The complexity of
-**aggregate()** function makes for an unfair comparison, a straw man; 
-**tapply()** is much simpler, and perfect for R beginners, and thus the
-proper comparison as the title of the talk seems to agree).(
+base-R example is **aggregate**, not **tapply**.  The complexity of
+**aggregate** function makes for an unfair comparison, a straw man; 
+**tapply** is much simpler, and perfect for R beginners, and thus the
+proper comparison as the title of the talk seems to agree).
 
 Below is an example from the Peng talk, using the built-in R dataset
 **airquality**.  We find the mean ozone level by month:
@@ -308,7 +334,7 @@ The Tidy code is a bit wordier, and requires that one do an assignment
 (to **o3**).  All in all, **the base-R version is simpler, and thus easier
 for noncoder beginners**.
 
-*Case study:  tapply() (II)*
+## Case study:  **tapply** (II)
 
 Of course, one can find instances in which each approach, base-R and
 Tidy, is simpler to use than the other.  Indeed, I have strongly
@@ -355,19 +381,19 @@ approach.
 
 The "purity" view is expressed in the [*Educator's Perspective*
 article](https://escholarship.org/uc/item/7kk4d922), written by a number
-of prominent Tidy advocates.  I did suggest a mixed approach to Posit
-founder and CEO JJ Allaire when we met (at his request) in 2019.
-Unfortunately, JJ did not like the idea either, on the grounds that
-Posit should not be telling people how to teach.  But of course, that
-is exactly what Posit has been doing in promoting Tidy.
+of prominent Tidy advocates.  I did suggest a mixed approach for
+teaching R to Posit founder and CEO JJ Allaire when we met (at his
+request) in 2019.  Unfortunately, JJ did not like the idea either, on
+the grounds that Posit should not be telling people how to teach.  But
+of course, that is exactly what Posit has been doing in promoting Tidy.
 
 I'll take for my examples here from the abovementioned article, as it is
 very detailed and articulate.  The authors' viewpoint is commonplace in
 the US.
 
-## No dollar sign allowed, no brackets, no loops, even no lm() 
+## No dollar sign allowed, no brackets, no loops, even no **lm**
 
-The PRT Tidyers believe that two of the most basic operations in R,
+The Tidyers believe that two of the most basic operations in R,
 the \$ sign and bracketing, are harmful.  For instance, consider an
 example in *Educator's Perspective*.
 
@@ -444,7 +470,7 @@ data.frame(x=x) %>% filter(x > 8)
 ```
 
 That's a lot of machinery to implement one little vector operation --
-conversion to a data frame, pipes, **filter()**. 
+conversion to a data frame, pipes, **filter**. 
 
 Consider this very simple example:  Say we wish to add to the
 **mtcars** data a column consisting of the horsepower-to-weight ratio.
@@ -472,10 +498,6 @@ loops are easier to debug; the sophisticated machinery that Tidyers want
 in lieu of loops, FP, is NOT easy to debug (more on this below).  Here
 the Tidyers' "cure is worse than the disease.".
 
-The article is so purist that it even recommends against teaching 
-**lm()**.  Use **broom**, they say.  What's next, a Tidy wrapper for
-**sqrt()**?
-
 ## "dplyr or bust"
 
 The Tidyers become so focused on Tidy that they try to solve every
@@ -487,12 +509,12 @@ those who submit the queries are either so weak in base-R, or too
 fixated on **dplyr**, that they are incapable of taking that easier
 path.
 
-*Case study:  Hadley and tapply()*
+*Case study:  Hadley and tapply*
 
 As noted earlier, many who learned R from a Tidyer are surprised to
-learn that **ggplot2** makes liberal use of **tapply()**.  It shouldn't
-be surprising, as **ggplot2** is pre-Tidy, but many of the more PRT
-Tidyers have portrayed **tapply()** as the epitome of "What's wrong with
+learn that **ggplot2** makes liberal use of **tapply**.  It shouldn't
+be surprising, as **ggplot2** is pre-Tidy, but many of the more 
+Tidyers have portrayed **tapply** as the epitome of "What's wrong with
 R."
 
 The tragic error of the "**dplyr** or bust" obsession is shown in the following
@@ -513,7 +535,7 @@ dplyr #rstats pattern I use constantly:
 Hadley replied, in
 [the same thread](https://twitter.com/hadleywickham/status/766301706103554048)
 
-> [use] or ave() vs tapply()
+> [use] or ave vs tapply
 
 An R Core member, commenting on this phenomenon (but not this incident)
 cited a saying, "Sometimes the followers are holier than the prophet." 
@@ -531,7 +553,7 @@ into real problems.
 
 Again, let's use an **mtcars** example taken from
 [an online tutorial](https://towardsdatascience.com/functional-programming-in-r-with-purrr-469e597d0229).  Here the goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group.  Here's the Tidy
-solution, from the online help page for **map()**:
+solution, from the online help page for **map**:
 
 ``` r
 mtcars %>%
@@ -561,15 +583,15 @@ There are several major points to note here:
   all kinds of chaos and confusion here.
 
 The hapless student would naturally ask, "Where does that expression
-'summary' come from?"  It would appear that **map()** is being called on
-a nonexistent variable, **summary**.  In actuality, base-R's **summary()** 
+'summary' come from?"  It would appear that **map** is being called on
+a nonexistent variable, **summary**.  In actuality, base-R's **summary** 
 function is being called on the previous computation
 behind the scenes.  Again, highly nonintuitive, and NOT stated in the
 online help page.
 
-The poor student is further baffled by the call to **map_dbl()**.
+The poor student is further baffled by the call to **map_dbl**.
 Where did that 'r.squared' come from?  Again, Tidy is hiding the
-fact that **summary()** yields an S3 object with component **r.squared**.  Yes,
+fact that **summary** yields an S3 object with component **r.squared**.  Yes,
 sometimes it is helpful to hide the details, but
 not if it confuses beginners.
 
@@ -587,8 +609,8 @@ u <- split(mtcars,mtcars$cyl)
 sapply(u,lmr2)
 ```
 
-Here **lmr2()** is defined explicitly, as opposed to the Tidy version, with
-its inscrutable '~' within the **map()** call.
+Here **lmr2** is defined explicitly, as opposed to the Tidy version, with
+its inscrutable '~' within the **map** call.
 
 In a [Twitter discussion](https://twitter.com/dgkeyes/status/1200532987000971264)
 of the above example, a Tidy advocate protested that the above **purrr** code was not 
@@ -623,7 +645,7 @@ f <- function(something)
 }
 ```
 
-rather than say, one of the **apply()** or **purrr** functions.
+rather than say, one of the **apply** or **purrr** functions.
 
 **Again, there is a serious problem of cognitive overload.** tidyverse
 students are being asked to learn a much larger volume of material.
@@ -635,8 +657,8 @@ Tidy advocates say the uniformity of interface in all those functions
 makes learning them easier.  Uniform *syntax* is nice, yes, but the fact
 remains that users must learn the *semantics* of the functions, i.e.
 what operations they perform.  What, for example, is the difference
-between **summarize()**, **summarize_each()**, **summarize_at()** and
-**summarize_if()**?  Under which circumstances should each be used?  The
+between **summarize**, **summarize_each**, **summarize_at** and
+**summarize_if**?  Under which circumstances should each be used?  The
 user must sift through this.
 
 As Matt Dowle, creator of **data.table**, [pointed
@@ -687,7 +709,7 @@ example of how Tidy causes cognitive overload for learners.
 
 # Tidy As an Obstacle to R Statistical Methods
 
-As noted above, some PRT Tidyers even oppose teaching **lm()**.
+As noted above, some Tidyers even oppose teaching **lm**.
 Instead, they recommend using the **broom** wrapper.  The wrapper is
 indeed useful, but students need to learn the basics.  And of course, it
 is unreasonable to ask that the hundreds of R statistical operations,
@@ -781,17 +803,16 @@ original_books <- austen_books() %>%
          ungroup()
 ```
 
-
-A base-R version within reach of R beginners would begin with **split()**,
+A base-R version within reach of R beginners would begin with **split**,
 to group by books, followed by loop over books.  A more advanced base-R
-coder might use FP, first with **lapply()** and then with **Reduce()**
+coder might use FP, first with **lapply** and then with **Reduce**
 to concatenate the data frames.  
 
 The R beginners version may be unfancy, even old-fashioned, but again
 suitable for beginners -- especially from the point of view of
 debugging, a key point for noncoder R learners, as noted, and my
 main point in this section.   Even the base-R FP version would be quite
-debuggable (providing the function called by **lapply()** is named).
+debuggable (providing the function called by **lapply** is named).
 
 By contrast, this example epitomizes the problems with debugging Tidy
 code.  Suppose, for instance, that the user had accidentally typed 'sum'
@@ -819,9 +840,9 @@ this:
 The 'chapter column' should read 1, not 50.  But there is not error
 message, hence no clue as to what the problem might be.
 
-If the code had not used pipes, one could use the R **debug()** or
-**browser()** functions, or the Posit IDE debugging tool.  Even use of
-**print()** statements, which I do not recommend in general, would still
+If the code had not used pipes, one could use the R **debug** or
+**browser** functions, or the Posit IDE debugging tool.  Even use of
+**print** statements, which I do not recommend in general, would still
 be effective of the code had been nonpiped.  (Details below in the
 special section on pipes.) But it won't work in the Tidy, i.e. piped,
 version.
@@ -846,7 +867,7 @@ debug: {
 Dealing with this is far beyond the skillset of R beginners.
 
 Pipes are fundamentally unsuitable for use of debugging
-tools, and even just using **print()** statements is impossible. 
+tools, and even just using **print** statements is impossible. 
  
 One partial remedy is the clever **pipecleaner** package for debugging
 pipes.  It works only up to a point, and is probably a bit too involved
@@ -923,7 +944,7 @@ original_books <- ungroup(mutated)
 Now, suppose the user had accidentally typed 'sum' instead of 'cumsum'.
 In the unpiped version, the user could run this code one line at a time,
 pausing to check the result at each step, either via a debugging tool or
-just using **print()**.  She would quickly determine that the line in
+just using **print**.  She would quickly determine that the line in
 which **chapterNumbers** is assigned is the culprit.  This is the
 essence of debugging--first narrow down where the error arises.
 
@@ -979,7 +1000,7 @@ listing of the chronology clarifies the matter:
   completed his dissertation in 2008, well before Tidy.
 
 * The pre-Tidy nature of GGP2 is exemplified by the fact that in the
-  GGP2 code, Hadley has SEVEN instances of calls to **tapply()**--the
+  GGP2 code, Hadley has SEVEN instances of calls to **tapply**--the
   function the Tidiers "love to hate."
 
 * GGP2 uses the '+' operator to modify a plot, rather than the Tidy way,
@@ -1097,7 +1118,7 @@ work car, a little Fiat.  This is actually similar to the situation with
 prominent R software.
 
 All the breathless claims that Tidy is more modern and clearer,
-whilc base-R is old-fashioned and unclear, 
+while base-R is old-fashioned and unclear, 
 fly in the face of the fact that Posit developers, and authors of
 other prominent R packages, tend to write in base-R, not Tidy.
 And *all* of them use some base-R instead of the corresponding Tidy
@@ -1107,7 +1128,7 @@ Here are some interesting numbers:
 
 <table border="1">
 
-<tr>  <td>package</td>  <td>*apply() calls</td>  <td>mutate() calls</td>  </tr>
+<tr>  <td>package</td>  <td>apply() calls</td>  <td>mutate() calls</td>  </tr>
 
 <tr>  <td>brms</td>  <td>333</td>  <td>0</td>  </tr>
 
@@ -1154,10 +1175,10 @@ Here are some interesting numbers:
 </p>
 
 Striking numbers to those who learned R via a tidyverse course.  In
-particular, **mutate()** is one of the very first verbs one learns in a
-Tidy course, **yet **mutate()** is used **0 times** in most of the above
+particular, **mutate** is one of the very first verbs one learns in a
+Tidy course, **yet **mutate** is used **0 times** in most of the above
 packages.**  And even in the packages in which this function is called a
-lot, they also have plenty of calls to base-R ***apply()**, functions
+lot, they also have plenty of calls to base-R ***apply**, functions
 which Tidy is supposed to replace.
 
 In a Twitter discussion of an earlier version of this essay, various
