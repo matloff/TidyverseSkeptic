@@ -178,7 +178,9 @@ as it matters crucially when one function has another as an argument;
   Posit, **lattice** has not been developed nearly as much as
   **ggplot2**.
 
-## Disclaimer: Kudos to Posit, but they took a wrong turn
+## The role of Posit Corp.
+
+The up side:
 
 * I like and admire the Posit people, including the tidyverse
   originator, Hadley Wickham, and have always supported them, both
@@ -199,14 +201,28 @@ as it matters crucially when one function has another as an argument;
   that it has subsidized major, beneficial growth of packages such as
   **ggplot2**.
 
-* Nevertheless, I believe that **Posit took a wrong turn when it decided
+The down side:
+
+* I believe that **Posit took a wrong turn when it decided
   to promote the tidyverse** for beginning learners who have no prior
   coding background.  Tidy makes it more difficult for noncoders to
   learn R, and leaves them less able to use it productively.  As someone
   who is passionate about teaching and a longtime R enthusiast, this is
-  quite troubling to me.  Hence the document you are now reading.
+  quite troubling to me.  
 
+* As a general principle, it can be unhealthy for a commercial
+  entity to dominate an open-source project.
 
+* The high popularity of Posit's own products have come at the
+  expense of other excellent products, notably **lattice**, a
+  more intuitive graphics package than **ggplot2**, and
+  **data.table**, a faster and more memory-efficient library
+  than **dplyr**.
+
+* Without the aggressive promotion by Posit, the tidyverse **would just
+  be a niche package.** In particular, it would not be used to teach
+  noncoder learners of R, for the very reasons shown in this document --
+  Tidy is much too abstract and too complex for this type of student. 
 
 # Examples {#sec-examples}
 
