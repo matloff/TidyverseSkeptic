@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "READMEFull.html",
+    "href": "READMEFull.html",
+    "title": "TidyverseSkeptic",
+    "section": "",
+    "text": "An alternate view of the Tidyverse “dialect” of the R language, and its promotion by RStudio."
+  },
+  {
+    "objectID": "Skeptic.html",
+    "href": "Skeptic.html",
+    "title": "Tidyverse Skeptic",
+    "section": "",
+    "text": "Author bio"
+  },
+  {
+    "objectID": "Skeptic.html#key-base-r-vs.-tidy-aspects",
+    "href": "Skeptic.html#key-base-r-vs.-tidy-aspects",
+    "title": "Tidyverse Skeptic",
+    "section": "Key base-r vs. Tidy aspects",
+    "text": "Key base-r vs. Tidy aspects\n\nBy “base-R” I mean array indices, loops, if-then-else and so on.\nI do NOT advocate a slow, boring approach in which, for instance, one starts with “R data can be numeric, character or logical…”\nThe main issue is how to teach R learners to do data analysis, practical stuff that they can skillfully apply.\nI view Tidy-based courses as characterized by\n\nfocus on dplyr, purrr and pipes\na ban/near ban on the use of loops, the ‘$’ sign, brackets etc."
+  },
+  {
+    "objectID": "Skeptic.html#function-notation",
+    "href": "Skeptic.html#function-notation",
+    "title": "Tidyverse Skeptic",
+    "section": "Function notation",
+    "text": "Function notation\nIt is common to denote functions with parentheses, as in “The main linear models function in R is lm().” I write ‘lm’ rather than ‘lm()’, as it matters crucially when one function has another as an argument; ‘lm()’ will produce an error, a common one among beginners."
+  },
+  {
+    "objectID": "Skeptic.html#note-on-ggplot2",
+    "href": "Skeptic.html#note-on-ggplot2",
+    "title": "Tidyverse Skeptic",
+    "section": "Note on ggplot2",
+    "text": "Note on ggplot2\n\nMany view ggplot2 as part of the tidyverse, but that is incorrect. That package predates Tidy, Posit’s marketing of Tidy as including ggplot2 only came later.\nHadley Wickham as stated that if he had to do it over, he would write ggplot2 differently, to follow Tidy principles.\nThis is important, since many who praise Tidy cite ggplot2 as their first reason for being pro-Tidy in teaching.\nBy the way, another excellent R graphics package is lattice. Unfortunately, lacking the heavy support of a commercial entity like Posit, lattice has not been developed nearly as much as ggplot2."
+  },
+  {
+    "objectID": "Skeptic.html#disclaimer-kudos-to-posit-but-they-took-a-wrong-turn",
+    "href": "Skeptic.html#disclaimer-kudos-to-posit-but-they-took-a-wrong-turn",
+    "title": "Tidyverse Skeptic",
+    "section": "Disclaimer: Kudos to Posit, but they took a wrong turn",
+    "text": "Disclaimer: Kudos to Posit, but they took a wrong turn\n\nI like and admire the Posit people, including the tidyverse originator, Hadley Wickham, and have always supported them, both privately and publicly.\nThey and I have been interacting from the beginning, when the firm consisted only of founder JJ Allaire and ace developer Joe Cheng.\nHadley was the internal reviewer for my book (at his request), The Art of R Programming, and I was one of the internal reviewers for Hadley’s Advanced R (2nd. ed.).\nPosit is to be praised for greatly expanding the size and diversity of the R community.\nOne positive result of Posit’s role as a commercial entity is that it has subsidized major, beneficial growth of packages such as ggplot2.\nNevertheless, I believe that Posit took a wrong turn when it decided to promote the tidyverse for beginning learners who have no prior coding background. Tidy makes it more difficult for noncoders to learn R, and leaves them less able to use it productively. As someone who is passionate about teaching and a longtime R enthusiast, this is quite troubling to me. Hence the document you are now reading."
+  },
+  {
+    "objectID": "Skeptic.html#case-study-delayed-learning-i",
+    "href": "Skeptic.html#case-study-delayed-learning-i",
+    "title": "Tidyverse Skeptic",
+    "section": "Case study: delayed learning (I)",
+    "text": "Case study: delayed learning (I)\nLet’s look at an example in my online R tutorial, fasteR. Consider, for instance, an innocuous line like\n&gt; hist(Nile)\ni.e. drawing a simple histogram of R’s built-in Nile River dataset.\nThis is in the very first lesson in my tutorial. Easy! By contrast, the Tidy crowd forbids use of base-R plots, insisting on using ggplot2. The latter is a great package (though again it should not be considered part of the tidyverse), but here we have a much more important goal – to give students an actual useful application of R right from the start. Tidy greatly impedes that goal.\nTo be Tidy the instructor would have to do something like\n&gt; library(ggplot2)\n&gt; dn &lt;- data.frame(Nile)\n&gt; ggplot(dn) + geom_histogram(aes(Nile),dn)\nHere the instructor would have a ton of things to explain – packages, data frames, ggplot(), the aes argument, the role of the ‘+’ (it’s not addition here) and so on – and thus she could definitely NOT present it in the first lesson. Things would be simpler for Tidy instructors if they were to use qplot() in the ggplot2 package, but the ggplot2 documentation says ” ‘qplot()’ is now deprecated in order to encourage the users to learn ‘ggplot()’ as it makes it easier to create complex graphics.” Again, “Stay within the framework,” even though it’s more difficult for noncoder learners.\nAlso in my very first lesson, I do\n&gt; mean(Nile[80:100])\nprinting the mean Nile River flow during a certain range of years. Incredibly, not only would this NOT be in a first lesson with Tidy, the students in a Tidy course may actually never learn how to do this. Typical Tidyers don’t consider vectors very important for learners, let alone vector subscipts.\nAs a concrete example of this Tidy point of view, consider the book Getting Started with R, by Beckerman et al, Oxford University Press, second edition, 2017. The book makes a point of being “tidyverse compliant”. In 231 pages, vectors are mentioned just briefly, with no coverage of subscripts. Hadley, in his Tidy “bible,” R for Data Science”, actually does cover vectors–but not until Chapter 20. In Section 3.5, we will see a group of leading Tidy authors disparage some base-R code in that “it returns a vector.” Again, typical Tidy courses don’t cover vectors at all.\nIn other words, even after one lesson, the base-R learner would be way ahead of her Tidy counterparts."
+  },
+  {
+    "objectID": "Skeptic.html#case-study-delayed-learning-ii",
+    "href": "Skeptic.html#case-study-delayed-learning-ii",
+    "title": "Tidyverse Skeptic",
+    "section": "Case study: delayed learning (II)",
+    "text": "Case study: delayed learning (II)\nA researcher tweeted in December 2019 that an introductory statistics book by Peter Dalgaard is “now obsolete,” because it uses base-R rather than Tidy. Think of what an “update” to use Tidy would involve, how much extra complexity it would impose on the students. Here is an early lesson from the book:\n&gt; thue2 &lt;- subset(thuesen,blood.glucose &lt; 7)\nThis could easily be in the base-R instructor’s second lesson, if not the first. For Tidy, though, this would have to be changed to\n&gt; library(dplyr)\n&gt; thue2 &lt;- thue2 %&gt;% filter(blood.glucose &lt; 7)\nHere the instructor would first have to teach the pipe operator ‘%&gt;%’, again extra complexity. And in so doing, she would probably emphasize the “left to right” flow of pipes, but the confused students would then wonder why, after that left-to-right flow, there is suddenly a right-to-left flow, with the ‘&lt;-’. (For some reason, the Tidy people don’t seem to use R’s ‘-&gt;’ op.)\nAgain, the tidyverse is simply too complex for R learners without coding background. It slows down their learning process."
+  },
+  {
+    "objectID": "Skeptic.html#case-study-tapply-i",
+    "href": "Skeptic.html#case-study-tapply-i",
+    "title": "Tidyverse Skeptic",
+    "section": "Case study: tapply (I)",
+    "text": "Case study: tapply (I)\nOne of the most commonly-used functions in base-R is tapply. It’s quite easy to teach beginners, by presenting its call form to them:\ntapply(what to split, how to split it,what to apply to the resulting chunks)\nHowever, for some reason Tidy advocates deeply resent this function. When the tidyverse was first developed, Prof. Roger Peng gave a thoughtful keynote talk, Teaching R to New Users – from tapply to the tidyverse, also presented as a Web page. Oddly, tapply is not mentioned in Dr. Peng’s talk or in the printed version, but the title says it all: One should teach Tidy, not tapply.\nSurprisingly, though, in making his comparison of Tidy to base-R, his base-R example is aggregate, not tapply. The complexity of aggregate function makes for an unfair comparison, A STRAW MAN; tapply is much simpler, and produces simpler code than with Dr. Peng’s aggregate version.\nBelow is the example from the Peng talk, using the built-in R dataset airquality. We find the mean ozone level by month:\ngroup_by(airquality, Month) %&gt;% \n   summarize(o3 = mean(Ozone, na.rm = TRUE))\nHere is the base-R version offered by Dr. Peng:\naggregate(airquality[, “Ozone”], \n      list(Month = airquality[, “Month”]), \n      mean, na.rm = TRUE)\nIndeed, that base-R code would be difficult for R beginners. But here is the far easier base-R code, using tapply():\ntapply(airquality$Ozone,airquality$Month,mean,na.rm=TRUE)\nThis fits clearly into our tapply call form shown above:\n\nWhat to split: Ozone\nHow to split it: by Month\nWhat to apply to the resulting chunks: mean\n\nThe Tidy version requires two function calls rather than one for base-R. The Tidy code is a bit wordier, and requires that one do an assignment (to o3). All in all, the base-R version is simpler, and thus easier for noncoder beginners."
+  },
+  {
+    "objectID": "Skeptic.html#case-study-tapply-ii",
+    "href": "Skeptic.html#case-study-tapply-ii",
+    "title": "Tidyverse Skeptic",
+    "section": "Case study: tapply (II)",
+    "text": "Case study: tapply (II)\nOf course, one can find instances in which each approach, base-R and Tidy, is simpler to use than the other. Indeed, I have strongly advocated that noncoder R learners should pick up some of both. (More on this point below.) But I think it’s worth repeating how simple it is for R learners to solve many basic problems using tapply().\nConsider this example, a bit more advanced, that I like to use to motivate linear regression models. We wish to predict human weight from height, and wish to first check approximate linearity.\nThe dataset, involving heights and weights of professional baseball players, mlb, is from my regtools package. For each height value, there are various players of that height, so we plot mean weight against height.\nBase-R:\nhtsAndWts &lt;- tapply(mlb$Weight,mlb$Height,mean)        \nplot(htsAndWts)\nTidy (plus ggplot2):\nmlb %&gt;% \n   group_by(Height) %&gt;% \n   summarize(weights = mean(Weight)) %&gt;%              \n   ggplot(aes(x=Height,y=weights)) + geom_point()                \nTwo major dplyr functions, pipes, and a somewhat sophisticated usage of ggplot2! It would be out of the question to use this example early in a Tidy course, far too much machinery to cover. But easy to do so in a course using base-R, in the first or second lesson. That should be the goal, empowering students to work on real problems, early on."
+  },
+  {
+    "objectID": "Skeptic.html#sec-tapplyiii",
+    "href": "Skeptic.html#sec-tapplyiii",
+    "title": "Tidyverse Skeptic",
+    "section": "Case study: tapply (III)",
+    "text": "Case study: tapply (III)\nFrom the article An Educator’s Perspective, by leading tidyverse instructors (more on the article later in this essay):\nThe dataset is loan data available in the openintro package.\n\nloans |&gt;\n   group_by(homeownership) |&gt;\n   summarize(\n      num_applicants = n(),\n      avg_loan_amount = mean(loan_amount)\n   ) |&gt;\n   arrange(desc(avg loan amount))\nThis uses six function calls, including to two advanced functions. By contrast, they first offer an woefully indirect base-R version using once again a straw man, aggregate, followed by – hooray! – a tapply version:\nsort(tapply(loans$loan_amount,loans$homeownership,mean))\nThis dismiss this as (a) it “returns a vector” and (b) it doesn’t include number of people in each category. Objection (a) stems from the Tidyers’ obsession with keeping Tidy analysis self-contained. Objection (b) is easily met by replacing the call to mean by\nfunction(x) c(mean(x),length(x))\nsubset(loans,annual_income &gt;= 10)"
+  }
+]

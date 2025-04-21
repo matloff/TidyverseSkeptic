@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Norm Matloff">
+
+<title>Tidyverse Skeptic</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-79108a0fc1995748cbd19a5b0e3e3e7c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#prologue-the-kiss-principle-keep-it-simple-stupid" id="toc-prologue-the-kiss-principle-keep-it-simple-stupid" class="nav-link active" data-scroll-target="#prologue-the-kiss-principle-keep-it-simple-stupid">Prologue: The KISS Principle: “Keep It Simple, Stupid”</a></li>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link" data-scroll-target="#preliminaries">Preliminaries</a>
+  <ul class="collapse">
+  <li><a href="#key-base-r-vs.-tidy-aspects" id="toc-key-base-r-vs.-tidy-aspects" class="nav-link" data-scroll-target="#key-base-r-vs.-tidy-aspects">Key base-r vs.&nbsp;Tidy aspects</a></li>
+  <li><a href="#function-notation" id="toc-function-notation" class="nav-link" data-scroll-target="#function-notation">Function notation</a></li>
+  <li><a href="#note-on-ggplot2" id="toc-note-on-ggplot2" class="nav-link" data-scroll-target="#note-on-ggplot2">Note on ggplot2</a></li>
+  <li><a href="#disclaimer-kudos-to-posit-but-they-took-a-wrong-turn" id="toc-disclaimer-kudos-to-posit-but-they-took-a-wrong-turn" class="nav-link" data-scroll-target="#disclaimer-kudos-to-posit-but-they-took-a-wrong-turn">Disclaimer: Kudos to Posit, but they took a wrong turn</a></li>
+  </ul></li>
+  <li><a href="#sec-examples" id="toc-sec-examples" class="nav-link" data-scroll-target="#sec-examples">Examples</a>
+  <ul class="collapse">
+  <li><a href="#case-study-delayed-learning-i" id="toc-case-study-delayed-learning-i" class="nav-link" data-scroll-target="#case-study-delayed-learning-i">Case study: delayed learning (I)</a></li>
+  <li><a href="#case-study-delayed-learning-ii" id="toc-case-study-delayed-learning-ii" class="nav-link" data-scroll-target="#case-study-delayed-learning-ii">Case study: delayed learning (II)</a></li>
+  <li><a href="#case-study-tapply-i" id="toc-case-study-tapply-i" class="nav-link" data-scroll-target="#case-study-tapply-i">Case study: <strong>tapply</strong> (I)</a></li>
+  <li><a href="#case-study-tapply-ii" id="toc-case-study-tapply-ii" class="nav-link" data-scroll-target="#case-study-tapply-ii">Case study: <strong>tapply</strong> (II)</a></li>
+  <li><a href="#sec-tapplyiii" id="toc-sec-tapplyiii" class="nav-link" data-scroll-target="#sec-tapplyiii">Case study: <strong>tapply</strong> (III)</a></li>
+  </ul></li>
+  <li><a href="#dogmatic-teaching-is-harmful-to-students" id="toc-dogmatic-teaching-is-harmful-to-students" class="nav-link" data-scroll-target="#dogmatic-teaching-is-harmful-to-students">Dogmatic Teaching Is Harmful to Students</a></li>
+  <li><a href="#dont-use-dont-use-brackets-dont-use-vectors-dont-use-loops-dont-use-anything-outside-tidy" id="toc-dont-use-dont-use-brackets-dont-use-vectors-dont-use-loops-dont-use-anything-outside-tidy" class="nav-link" data-scroll-target="#dont-use-dont-use-brackets-dont-use-vectors-dont-use-loops-dont-use-anything-outside-tidy">“Don’t Use ‘$’, Don’t Use Brackets, Don’t Use Vectors, Don’t Use Loops, Don’t Use Anything Outside Tidy”</a></li>
+  <li><a href="#poor-readability-unnecessary-cognitive-overload" id="toc-poor-readability-unnecessary-cognitive-overload" class="nav-link" data-scroll-target="#poor-readability-unnecessary-cognitive-overload">Poor Readability, Unnecessary Cognitive Overload</a></li>
+  <li><a href="#tidy-obstacles-to-debugging" id="toc-tidy-obstacles-to-debugging" class="nav-link" data-scroll-target="#tidy-obstacles-to-debugging">Tidy Obstacles to Debugging</a></li>
+  <li><a href="#should-we-teach-using-pipes-or-functional-composition-neither" id="toc-should-we-teach-using-pipes-or-functional-composition-neither" class="nav-link" data-scroll-target="#should-we-teach-using-pipes-or-functional-composition-neither">Should we teach using pipes or functional composition? Neither!</a></li>
+  <li><a href="#use-of-functional-programming-fp" id="toc-use-of-functional-programming-fp" class="nav-link" data-scroll-target="#use-of-functional-programming-fp">Use of Functional Programming (FP)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Tidyverse Skeptic</h1>
+<p class="subtitle lead">Why the tidyverse is not a good vehicle for teaching noncoders</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Norm Matloff </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><a href="https://heather.cs.ucdavis.edu/matloff.html">Author bio</a></p>
+<div class="callout callout-style-default callout-important callout-titled" title="Main Points">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Main Points
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>The focus of this essay is teaching R to noncoders. <strong>I believe that teaching R via the tidyverse is counterproductive for this group of learners.</strong></p></li>
+<li><p>The essay is not about teaching R to computer science students, nor is it about whether R is a good tool for experience coders (which is a matter of personal taste).</p></li>
+<li><p>In teaching almost any topic, the KISS Principle – Keep It Simple, Stupid – must take first priority. In the case of teaching R, base-R should be used.</p></li>
+<li><p>The tidyverse (“Tidy”) is more complex and abstract than base-R, hence harder to learn, directly antithetical to Tidy’s stated goals.</p></li>
+<li><p>The Tidy <em>functional programming</em> (FP) philosophy replaces straightforward, easily grasped, loops with abstract use of functions. Since functions are the most difficult aspect for noncoder R learners, FP is clearly not the right path for such learners.</p></li>
+<li><p>Debugging Tidy code is difficult, especially in the case of pipes. Yet noncoder learners are the ones who make the most mistakes, so it makes no sense to have them use a coding style that makes it difficult to track down their errors.</p></li>
+<li><p>“Testimonials” regarding Tidy are misleading. Tidy-based courses restrict coverage to a small set of operations, mainly a few <strong>dplyr</strong> verbs, producing the illusion of “success.” The students are happy and the instructor is happy, but the students are unprepared to use R productively in their work.</p></li>
+<li><p>Tidy-taught students then struggle with tasks in their daily work, trying to shoehorn a task into the Tidy framework.</p></li>
+<li><p>Moreover, there is an unwritten rule that one stay with that framework, even for something as mundane as <strong>lm</strong>. There Tidy has its own summary functions (<strong>broom</strong> and methods for <strong>augment</strong> and <strong>glimpse</strong>), to be used in lieu of <strong>summary</strong>.</p></li>
+<li><p>Accordingly, Tidy has a function for everything under the sun; <strong>dplyr</strong> alone has 297 functions! One of course need not know all of them, but when a novice R coder asks how to do X, they are referred to some specialized Tidy function for X, rather than pointing them to simpler base-R approaches. This results in cognitive overload.</p></li>
+<li><p>Those knowing only Tidy are locked out from effectively using the vast majority of statistical packages on CRAN, which require knowledge of the ‘$’ operator, vectors, subscripts, <strong>summary</strong> and so on.</p></li>
+<li><p>Using base-R as the vehicle of instruction brings students to a more skilled level, in shorter time, than does use of Tidy. My own <a href="https://github.com/matloff/fasteR">online course</a> has students doing useful operations starting in the very first lesson.</p></li>
+<li><p>Accordingly, noncoder learners should be taught a mix of base-R and Tidy, starting first with base-R, but then with some coverage of Tidy, since the latter is so popular, and of <strong>data.table</strong>, as it is so fast. “Graduates” of mixed courses are then equipped to apply whichever tool they find most convenient in any given application.</p></li>
+<li><p>Unfortunately, this middle-ground approach is unacceptable to many Tidy advocates, especially Posit.</p></li>
+</ul>
+<p>Interestingly, leading tidyverse promoters concede many of the above points.</p>
+<ul>
+<li><p>In an article by six prominent Tidy advocates (<em>An Educator’s Perspective</em>, see below), they concede that their offered base-R code is simpler (“more compact”) than their preferred Tidy code.</p></li>
+<li><p>Tidy promotes using FP instead of loops. But Hadley Wickham, inventor of the tidyverse (it was originally called the “Hadleyverse” by others), has written: “it may take a while to wrap your head around” FP.</p></li>
+<li><p>One of the most prominent R advocates, Prof.&nbsp;Roger Peng, concedes that teaching R via the tidyverse greatly limits what “graduates” of such courses can do with R, and indirectly, concedes that it gives students a false sense of accomplishment.</p>
+<blockquote class="blockquote">
+<p>[The advent of Tidy] allowed a relatively small set of tools to provide a wide range of operations when it came to data wrangling. The opinionated nature of the tools naturally limited somewhat the flexibility of how things could be done. But this reduced complexity was what made the tools so appealing to new users. There were just fewer things to learn.</p>
+</blockquote></li>
+<li><p>Tidyers agree that Tidy code, especially pipes, is harder to debug.</p></li>
+</ul>
+</div>
+</div>
+<section id="prologue-the-kiss-principle-keep-it-simple-stupid" class="level1">
+<h1>Prologue: The KISS Principle: “Keep It Simple, Stupid”</h1>
+<ul>
+<li><p>Among other things, I once was employed briefly as an instructor of English As a Second Language in San Francisco Chinatown.</p></li>
+<li><p>I taught the lowest level, ESL 50, adult immigrant students who barely knew the alphabet. The overriding principle I found is to start simply. In teaching low level ESL, one does not start with Shakespeare.</p></li>
+<li><p>The KISS Principle applies similarly to use of the tidyverse for teaching noncoders. Compared to base-R, the tidyverse (“Tidy”) is much more complex and abstract, the “Shakespeare” of R.</p></li>
+<li><p>In other words, Tidy uses unnecessarily complicated machinery, an obvious drawback for teaching beginners, and yet only equips students to perform a narrow set of operations.</p>
+<p>It would be like teaching English As a Second Language as follows: The instructor teaches the students to say “Good Morning,” by providing them with a template like,</p>
+<blockquote class="blockquote">
+<p>It is my fervent wish that you find your morning unusually fulfilling.</p>
+</blockquote>
+<p>The students would be told to substitute <em>morning</em> with <em>afternoon</em> or <em>evening</em>. But they would have no idea what the other words mean, and it would not generalize much. The students may even rave about these English “lessons,” but they won’t have learned much at all.</p></li>
+</ul>
+<p><strong>Sticking to simple concepts is the overriding principle in this document.</strong> A number of concrete examples will be presented, in <a href="#sec-examples" class="quarto-xref">Section&nbsp;3</a> and elsewhere in this document.</p>
+</section>
+<section id="preliminaries" class="level1">
+<h1>Preliminaries</h1>
+<section id="key-base-r-vs.-tidy-aspects" class="level2">
+<h2 class="anchored" data-anchor-id="key-base-r-vs.-tidy-aspects">Key base-r vs.&nbsp;Tidy aspects</h2>
+<ul>
+<li><p>By “base-R” I mean array indices, loops, if-then-else and so on.</p></li>
+<li><p>I do NOT advocate a slow, boring approach in which, for instance, one starts with “R data can be numeric, character or logical…”</p></li>
+<li><p>The main issue is how to teach R learners to do data analysis, practical stuff that they can skillfully apply.</p></li>
+<li><p>I view Tidy-based courses as characterized by</p>
+<ul>
+<li><p>focus on <strong>dplyr</strong>, <strong>purrr</strong> and pipes</p></li>
+<li><p>a ban/near ban on the use of loops, the ‘$’ sign, brackets etc.</p></li>
+</ul></li>
+</ul>
+</section>
+<section id="function-notation" class="level2">
+<h2 class="anchored" data-anchor-id="function-notation">Function notation</h2>
+<p>It is common to denote functions with parentheses, as in “The main linear models function in R is lm().” I write ‘lm’ rather than ‘lm()’, as it matters crucially when one function has another as an argument; ‘lm()’ will produce an error, a common one among beginners.</p>
+</section>
+<section id="note-on-ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="note-on-ggplot2">Note on ggplot2</h2>
+<ul>
+<li><p>Many view <strong>ggplot2</strong> as part of the tidyverse, but that is incorrect. That package predates Tidy, Posit’s marketing of Tidy as including <strong>ggplot2</strong> only came later.</p></li>
+<li><p>Hadley Wickham as stated that if he had to do it over, he would write <strong>ggplot2</strong> differently, to follow Tidy principles.</p></li>
+<li><p>This is important, since many who praise Tidy cite <strong>ggplot2</strong> as their first reason for being pro-Tidy in teaching.</p></li>
+<li><p>By the way, another excellent R graphics package is <strong>lattice</strong>. Unfortunately, lacking the heavy support of a commercial entity like Posit, <strong>lattice</strong> has not been developed nearly as much as <strong>ggplot2</strong>.</p></li>
+</ul>
+</section>
+<section id="disclaimer-kudos-to-posit-but-they-took-a-wrong-turn" class="level2">
+<h2 class="anchored" data-anchor-id="disclaimer-kudos-to-posit-but-they-took-a-wrong-turn">Disclaimer: Kudos to Posit, but they took a wrong turn</h2>
+<ul>
+<li><p>I like and admire the Posit people, including the tidyverse originator, Hadley Wickham, and have always supported them, both privately and <a href="https://matloff.wordpress.com/2018/02/22/xie-yihui-r-superstar-and-mensch/">publicly</a>.</p></li>
+<li><p>They and I have been interacting from the beginning, when the firm consisted only of founder JJ Allaire and ace developer Joe Cheng.</p></li>
+<li><p>Hadley was the internal reviewer for my book (at his request), <em>The Art of R Programming</em>, and I was one of the internal reviewers for Hadley’s <em>Advanced R</em> (2nd. ed.).</p></li>
+<li><p>Posit is to be praised for greatly expanding the size and diversity of the R community.</p></li>
+<li><p>One positive result of Posit’s role as a commercial entity is that it has subsidized major, beneficial growth of packages such as <strong>ggplot2</strong>.</p></li>
+<li><p>Nevertheless, I believe that <strong>Posit took a wrong turn when it decided to promote the tidyverse</strong> for beginning learners who have no prior coding background. Tidy makes it more difficult for noncoders to learn R, and leaves them less able to use it productively. As someone who is passionate about teaching and a longtime R enthusiast, this is quite troubling to me. Hence the document you are now reading.</p></li>
+</ul>
+</section>
+</section>
+<section id="sec-examples" class="level1 page-columns page-full">
+<h1>Examples</h1>
+<section id="case-study-delayed-learning-i" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="case-study-delayed-learning-i">Case study: delayed learning (I)</h2>
+<p>Let’s look at an example in my online R tutorial, <a href="http://github.com/matloff/fasteR"><strong>fasteR</strong></a>. Consider, for instance, an innocuous line like</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">hist</span>(Nile)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>i.e.&nbsp;drawing a simple histogram of R’s built-in Nile River dataset.</p>
+<p>This is in the very first lesson in my tutorial. Easy! By contrast, the Tidy crowd forbids use of base-R plots, insisting on using <strong>ggplot2</strong>. The latter is a great package (though again it should not be considered part of the tidyverse), but here we have a much more important goal – to give students an actual useful application of R right from the start. Tidy greatly impedes that goal.</p>
+<p>To be Tidy the instructor would have to do something like</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> dn <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(Nile)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(dn) <span class="sc">+</span> <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(Nile),dn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="page-columns page-full"><p>Here the instructor would have a ton of things to explain – packages, data frames, <strong>ggplot()</strong>, the <strong>aes</strong> argument, the role of the ‘+’ (it’s not addition here) and so on – and thus she could definitely NOT present it in the first lesson. </p><div class="no-row-height column-margin column-container"><span class="">Things would be simpler for Tidy instructors if they were to use <strong>qplot()</strong> in the <strong>ggplot2</strong> package, but the <strong>ggplot2</strong> documentation says ” ‘qplot()’ is now deprecated in order to encourage the users to learn ‘ggplot()’ as it makes it easier to create complex graphics.” Again, “Stay within the framework,” even though it’s more difficult for noncoder learners.</span></div></div>
+<p>Also in my very first lesson, I do</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">mean</span>(Nile[<span class="dv">80</span><span class="sc">:</span><span class="dv">100</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>printing the mean Nile River flow during a certain range of years. Incredibly, not only would this NOT be in a first lesson with Tidy, the students in a Tidy course may actually <em>never</em> learn how to do this. Typical Tidyers don’t consider vectors very important for learners, let alone vector subscipts.</p>
+<p>As a concrete example of this Tidy point of view, consider the book <em>Getting Started with R</em>, by Beckerman <em>et al</em>, Oxford University Press, second edition, 2017. The book makes a point of being <a href="https://twitter.com/GSwithR/status/996830294367002625">“tidyverse compliant”</a>. In 231 pages, vectors are mentioned just briefly, with no coverage of subscripts. Hadley, in his Tidy “bible,” <em>R for Data Science”, actually does cover vectors–but not until Chapter 20.</em> In <a href="#sec-tapplyiii" class="quarto-xref">Section&nbsp;3.5</a>, we will see a group of leading Tidy authors disparage some base-R code in that “it returns a vector.” Again, typical Tidy courses don’t cover vectors at all.</p>
+<p>In other words, <strong>even after one lesson, the base-R learner would be way ahead of her Tidy counterparts.</strong></p>
+</section>
+<section id="case-study-delayed-learning-ii" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-delayed-learning-ii">Case study: delayed learning (II)</h2>
+<p>A researcher tweeted in December 2019 that an introductory statistics book by Peter Dalgaard is “now obsolete,” because it uses base-R rather than Tidy. Think of what an “update” to use Tidy would involve, how much extra complexity it would impose on the students. Here is an early lesson from the book:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> thue2 <span class="ot">&lt;-</span> <span class="fu">subset</span>(thuesen,blood.glucose <span class="sc">&lt;</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This could easily be in the base-R instructor’s second lesson, if not the first. For Tidy, though, this would have to be changed to</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(dplyr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> thue2 <span class="ot">&lt;-</span> thue2 <span class="sc">%&gt;%</span> <span class="fu">filter</span>(blood.glucose <span class="sc">&lt;</span> <span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here the instructor would first have to teach the pipe operator ‘%&gt;%’, again extra complexity. And in so doing, she would probably emphasize the “left to right” flow of pipes, but the confused students would then wonder why, after that left-to-right flow, there is suddenly a right-to-left flow, with the ‘&lt;-’. (For some reason, the Tidy people don’t seem to use R’s ‘-&gt;’ op.)</p>
+<p>Again, the tidyverse is simply too complex for R learners without coding background. <strong>It slows down their learning process.</strong></p>
+</section>
+<section id="case-study-tapply-i" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-tapply-i">Case study: <strong>tapply</strong> (I)</h2>
+<p>One of the most commonly-used functions in base-R is <strong>tapply</strong>. It’s quite easy to teach beginners, by presenting its call form to them:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(what to split, how to split it,what to apply to the resulting chunks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>However, for some reason Tidy advocates deeply resent this function. When the tidyverse was first developed, Prof.&nbsp;Roger Peng gave a thoughtful keynote talk, <em>Teaching R to New Users – from tapply to the tidyverse</em>, also presented as <a href="https://simplystatistics.org/posts/2018-07-12-use-r-keynote-2018/">a Web page</a>. Oddly, <strong>tapply</strong> is not mentioned in Dr.&nbsp;Peng’s talk or in the printed version, but the title says it all: One should teach Tidy, not <strong>tapply</strong>.</p>
+<p>Surprisingly, though, in making his comparison of Tidy to base-R, his base-R example is <strong>aggregate</strong>, not <strong>tapply</strong>. The complexity of <strong>aggregate</strong> function makes for an unfair comparison, A STRAW MAN; <strong>tapply</strong> is much simpler, and produces simpler code than with Dr. Peng’s <strong>aggregate</strong> version.</p>
+<p>Below is the example from the Peng talk, using the built-in R dataset <strong>airquality</strong>. We find the mean ozone level by month:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(airquality, Month) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">o3 =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is the base-R version offered by Dr.&nbsp;Peng:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aggregate</span>(airquality[, “Ozone”], </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">list</span>(<span class="at">Month =</span> airquality[, “Month”]), </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>      mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Indeed, that base-R code would be difficult for R beginners. But here is the far easier base-R code, using <strong>tapply()</strong>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(airquality<span class="sc">$</span>Ozone,airquality<span class="sc">$</span>Month,mean,<span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This fits clearly into our <strong>tapply</strong> call form shown above:</p>
+<ul>
+<li><p>What to split: Ozone</p></li>
+<li><p>How to split it: by Month</p></li>
+<li><p>What to apply to the resulting chunks: mean</p></li>
+</ul>
+<p>The Tidy version requires two function calls rather than one for base-R. The Tidy code is a bit wordier, and requires that one do an assignment (to <strong>o3</strong>). All in all, <strong>the base-R version is simpler, and thus easier for noncoder beginners</strong>.</p>
+</section>
+<section id="case-study-tapply-ii" class="level2">
+<h2 class="anchored" data-anchor-id="case-study-tapply-ii">Case study: <strong>tapply</strong> (II)</h2>
+<p>Of course, one can find instances in which each approach, base-R and Tidy, is simpler to use than the other. Indeed, I have strongly advocated that noncoder R learners should pick up some of both. (More on this point below.) But I think it’s worth repeating how simple it is for R learners to solve many basic problems using <strong>tapply()</strong>.</p>
+<p>Consider this example, a bit more advanced, that I like to use to motivate linear regression models. We wish to predict human weight from height, and wish to first check approximate linearity.</p>
+<p>The dataset, involving heights and weights of professional baseball players, <strong>mlb</strong>, is from my <strong>regtools</strong> package. For each height value, there are various players of that height, so we plot mean weight against height.</p>
+<p>Base-R:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>htsAndWts <span class="ot">&lt;-</span> <span class="fu">tapply</span>(mlb<span class="sc">$</span>Weight,mlb<span class="sc">$</span>Height,mean)        </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(htsAndWts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tidy (plus <strong>ggplot2</strong>):</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>mlb <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(Height) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(<span class="at">weights =</span> <span class="fu">mean</span>(Weight)) <span class="sc">%&gt;%</span>              </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>Height,<span class="at">y=</span>weights)) <span class="sc">+</span> <span class="fu">geom_point</span>()                </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Two major <strong>dplyr</strong> functions, pipes, and a somewhat sophisticated usage of <strong>ggplot2</strong>! It would be out of the question to use this example early in a Tidy course, far too much machinery to cover. But easy to do so in a course using base-R, in the first or second lesson. That should be the goal, empowering students to work on real problems, early on.</p>
+</section>
+<section id="sec-tapplyiii" class="level2">
+<h2 class="anchored" data-anchor-id="sec-tapplyiii">Case study: <strong>tapply</strong> (III)</h2>
+<p>From the article <em>An Educator’s Perspective</em>, by leading tidyverse instructors (more on the article later in this essay):</p>
+<p>The dataset is loan data available in the <strong>openintro</strong> package.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>loans <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(homeownership) <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarize</span>(</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">num_applicants =</span> <span class="fu">n</span>(),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">avg_loan_amount =</span> <span class="fu">mean</span>(loan_amount)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">|&gt;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">arrange</span>(<span class="fu">desc</span>(avg loan amount))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This uses six function calls, including to two advanced functions. By contrast, they first offer an woefully indirect base-R version using once again a straw man, <strong>aggregate</strong>, followed by – hooray! – a <strong>tapply</strong> version:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">tapply</span>(loans<span class="sc">$</span>loan_amount,loans<span class="sc">$</span>homeownership,mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This dismiss this as (a) it “returns a vector” and (b) it doesn’t include number of people in each category. Objection (a) stems from the Tidyers’ obsession with keeping Tidy analysis self-contained. Objection (b) is easily met by replacing the call to <strong>mean</strong> by</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(x) <span class="fu">c</span>(<span class="fu">mean</span>(x),<span class="fu">length</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(loans,annual_income <span class="sc">&gt;=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="dogmatic-teaching-is-harmful-to-students" class="level1 page-columns page-full">
+<h1>Dogmatic Teaching Is Harmful to Students</h1>
+<ul>
+<li><p>Most people, on most issues, avoid extremes.</p></li>
+<li><p>But leading teachers of the tidyverse make it a polemic, with dogmatic calls for “purity,” with a Tidy-only approach.</p></li>
+<li><p>The “purity” view is expressed in the <a href="https://escholarship.org/uc/item/7kk4d922"><em>Educator’s Perspective</em> article</a>, written by a number of prominent Tidy advocates. (One of them even was selling <a href="https://twitter.com/ameliamn/status/1214995483577520131">“tidyverse merch”</a>.)</p></li>
+<li><p>An anti-loops mentality in particular has become the Tidy advocates’ test of whether one is a “true believer” in the Tidy philosophy. I’ve seen Twitter posts in which R learners actually apologize for using loops.</p></li>
+<li><p>That article does suggest that R courses include both the tidyverse and base-r – but with the tidyverse covered first. This of course violates the KISS principle. (I advocate teaching base-R first, then Tidy and <strong>data.table</strong>.)</p></li>
+</ul>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">The authors oppose teaching base-R and Tidy simultaneously. Yet I am not aware of anyone ever having made such a proposal.</span></div></div>
+</section>
+<section id="dont-use-dont-use-brackets-dont-use-vectors-dont-use-loops-dont-use-anything-outside-tidy" class="level1 page-columns page-full">
+<h1>“Don’t Use ‘$’, Don’t Use Brackets, Don’t Use Vectors, Don’t Use Loops, Don’t Use Anything Outside Tidy”</h1>
+<p>As with the Peng essay, the <em>Educator’s Perspective</em> article sets up a straw man, unnecessarily complicated code involving base-R’s <strong>aggregate</strong>. It is thus a fundamentally invalid basis of comparison of Tidy and base-R, but the issue of interest here is <em>why</em> they deem the code unacceptable (quoted directly from the article):</p>
+<blockquote class="blockquote">
+<ol type="1">
+<li><p>It uses the <code>~</code>, <code>$</code>, and <code>[</code> operators.</p></li>
+<li><p>It uses a magic number (<code>2</code>) to hard-code the second variable.</p></li>
+<li><p>It creates two data frames that need to be merged together.</p></li>
+<li><p>It passes the name of a function as an argument to a function.</p></li>
+</ol>
+</blockquote>
+<div class="page-columns page-full"><p>As I stated earlier, even the authors’ own <strong>tapply</strong> example does not have the issues 2, 3 and 4.</p><div class="no-row-height column-margin column-container"><span class="">I have no idea what alleged “defect” they have in mind in Objection 4.</span></div></div>
+<p>But the first is my main point anyway:</p>
+<div class="callout callout-style-default callout-important callout-titled" title="The Major Costs of Confining Code to Tidy">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The Major Costs of Confining Code to Tidy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Base-R versions, using ‘$’ etc., are typically simpler and more accessible to novice R coders, than the Tidy counterparts. (Even the <em>Educator’s Perspective’</em> authors concede that the <strong>tapply</strong> version is “more compact.”)</p>
+<p>Again, by banning constructs which would make R learners’ life easier, the Tidyers are acting directly contrary to their goal of inclusivity in the R community.</p></li>
+<li><p>The vast majority of statistical packages on CRAN make heavy use of those base-R constructs proscribed by the Tidyers.</p></li>
+</ul>
+</div>
+</div>
+<div class="page-columns page-full"><p>The article contends that use of ‘$’ is error-prone, say due to misspelling names of components. But one could make similar arguments for, say, <strong>dplyr::mutate</strong> being error-prone. Indeed,  my contention here is that:</p><div class="no-row-height column-margin column-container"><span class="">A common error among Tidy beginners is failure to reassign the result of something like <strong>mutate()</strong>.</span></div></div>
+<blockquote class="blockquote">
+<p>The simpler the code, the less chance of errors (and the greater ability to spot and fix errors when they do arise).</p>
+</blockquote>
+<p>The best solution is for instructors to warn students of potential errors of various types.</p>
+<p>Finally, as to brackets, Tidy essentially ignores vectors. Consider the following base-R code:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x[x <span class="sc">&gt;</span> <span class="dv">8</span>]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or, if preferred:</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">subset</span>(x, x <span class="sc">&gt;</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Probably the simplest way to do this in Tidy would be:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">1</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data.frame</span>(<span class="at">x=</span>x) <span class="sc">%&gt;%</span> <span class="fu">filter</span>(x <span class="sc">&gt;</span> <span class="dv">8</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>That’s a lot of machinery to implement one little vector operation – conversion to a data frame, pipes, <strong>filter</strong>.</p>
+<p>Consider this very simple example: Say we wish to add to the <strong>mtcars</strong> data a column consisting of the horsepower-to-weight ratio.</p>
+<p>In base-R, it is extremely simple:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>   mtcars<span class="sc">$</span>hwratio <span class="ot">&lt;-</span> mtcars<span class="sc">$</span>hp <span class="sc">/</span> mtcars<span class="sc">$</span>wt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Want to add a column to a data frame? Hey, just add it!</p>
+<p>But in Tidy:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>   mtcars <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">hwratio=</span>hp<span class="sc">/</span>wt) <span class="ot">-&gt;</span> mtcars</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Still not terribly complex, but again we’re invoking some machinery – piping, a function call, and reassigning to the original data frame.</p>
+</section>
+<section id="poor-readability-unnecessary-cognitive-overload" class="level1">
+<h1>Poor Readability, Unnecessary Cognitive Overload</h1>
+<p>As noted, R courses using the tidyverse often do rather little beyond their canonical</p>
+<p><em>data %&gt;% group_by %&gt;% mutate %&gt;% summarize</em></p>
+<p>paradigm. That leaves the learners less equipped to put R to practical use, compared to “graduates” of standard base-R courses.</p>
+<p>Even more important, once one gets past that simple paradigm, Tidy runs into real problems.</p>
+<p>Again, let’s use an <strong>mtcars</strong> example taken from the online help page for <strong>map</strong>: The goal is to regress miles per gallon against weight, calculating R<sup>2</sup> for each cylinder group. Here’s the Tidy solution, from the help page:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(.<span class="sc">$</span>cyl) <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt, <span class="at">data =</span> .)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(summary) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_dbl</span>(<span class="st">"r.squared"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co">#  output</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span>         <span class="dv">6</span>         <span class="dv">8</span> </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fl">0.5086326</span> <span class="fl">0.4645102</span> <span class="fl">0.4229655</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>There are several major points to note here:</p>
+<ul>
+<li><p>The R learner here must learn two different FP map functions for this particular example, actually three functions when the differing types of arguments is accounted for.</p></li>
+<li><p>This is an excellent example of Tidy’s cognitive overload problem. Actually, the tidyverse FP package, <strong>purrr</strong>, has 55 different map functions! (21 have names beginning with ‘map’, and then 34 more have that string otherwise in their names.)</p></li>
+<li><p>In fact, the online help page for <strong>do</strong> says the function is being replaced by <em>three</em> new functions, <strong>reframe</strong>, <strong>nest_by</strong> and <strong>pick</strong>. No wonder the Tidy packages are getting larger and larger!</p></li>
+<li><p>That “Tidy” code is a nightmare to read. For instance, the first ‘~’ in that first map call is highly nonintuitive. This is starkly counter to the Tidyers’ claim that Tidy is more intuitive and English-like.</p></li>
+<li><p>Tidy, in its obsession to avoid R’s standard ‘$’ symbol, is causing all kinds of chaos and confusion here.</p></li>
+</ul>
+<p>The hapless student would naturally ask, “Where does that expression ‘summary’ come from?” It would appear that <strong>map</strong> is being called on a nonexistent variable, <strong>summary</strong>. In actuality, base-R’s <strong>summary</strong> function is being called on the previous computation behind the scenes. Again, highly nonintuitive, and NOT stated in the online help page.</p>
+<p>The poor student is further baffled by the call to <strong>map_dbl</strong>. Where did that ‘r.squared’ come from? Again, Tidy is hiding the fact that <strong>summary</strong> yields an S3 object with component <strong>r.squared</strong>. Yes, for experienced programmers, sometimes it is helpful to hide the details, but not if it confuses beginners.</p>
+<p>The fact is, <strong>R beginners would be much better off writing a loop here, avoiding the conceptually more challenging FP.</strong> But even if the instructor believes the beginner <em>must</em> learn FP, the base-R version is far easier:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>lmr2 <span class="ot">&lt;-</span> <span class="cf">function</span>(mtcSubset) {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>   lmout <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> wt,<span class="at">data=</span>mtcSubset)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summary</span>(lmout)<span class="sc">$</span>r.squared</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">split</span>(mtcars,mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(u,lmr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here <strong>lmr2</strong> is defined explicitly, as opposed to the Tidy version, with its inscrutable ‘~’ within the <strong>map</strong> call.</p>
+<p><strong>Newbies should write this as a plain loop, NOT using purrr</strong> or even base-R’s FP constructs. But the Tidy promoters don’t want learners to use loops. So the instructor using Tidy simply would avoid giving students such an example, whereas it would be easy for the base-R instructor to do so.</p>
+<p><strong>Again, there is a serious problem of cognitive overload.</strong> Tidyverse students are being asked to learn a much larger volume of material. This is ironic, in that the goal in developing Tidy for teaching was to limit a course to just a few verbs. The problem is that the verbs have dozens of variants. This is clearly bad pedagogy.</p>
+<p>Tidy advocates say the uniformity of interface in all those functions makes learning them easier. Uniform <em>syntax</em> is nice, yes, but the fact remains that users must learn the <em>semantics</em> of the functions, i.e. what operations they perform. What, for example, is the difference between <strong>summarize</strong>, <strong>summarize_each</strong>, <strong>summarize_at</strong> and <strong>summarize_if</strong>? Under which circumstances should each be used? The user must sift through this.</p>
+<p>As Matt Dowle, creator of <strong>data.table</strong>, <a href="https://twitter.com/MattDowle/status/1142001162230489088">pointed out</a> about <strong>dplyr</strong>,</p>
+<blockquote class="blockquote">
+<p>It isn’t one function <strong>mutate</strong> that you combine in a pipe. It’s <strong>mutate</strong>, <strong>mutate_</strong>, <strong>mutate_all</strong>, <strong>mutate_at</strong>, <strong>mutate_each</strong>, <strong>mutate_each_</strong>, <strong>mutate_if</strong>, <strong>transmute</strong>, <strong>transmute_</strong>, <strong>transmute_all</strong>, <strong>transmute_at</strong> and <strong>transmute_if</strong>. And you’re telling me [because of consistency of the user interfaces] you don’t need a manual to learn all those?</p>
+</blockquote>
+<p>Having a common syntax thus does not compensate for this dizzying complexity. Every time a user needs some variant of an operation, she must sift through those hundreds of functions for one suited to her current need.</p>
+<p>By contrast, if the user knows base-R (not difficult), she can handle any situation with just a few simple operations. The old adage applies: “Give a man a fish, and he can eat for a day. Teach him how to fish, and he can eat for a lifetime.”</p>
+<p>Note that the above example uses the “dot notation,” used when the output of a pipe is fed into a multi-argument function. Here is the <a href="https://magrittr.tidyverse.org/reference/pipe.html">advice</a> given at the official tidyverse site:</p>
+<blockquote class="blockquote">
+<p>Placing lhs elsewhere in rhs call</p>
+<p>Often you will want lhs to the rhs call at another position than the first. For this purpose you can use the dot (.) as placeholder. For example, y %&gt;% f(x, .) is equivalent to f(x, y) and z %&gt;% f(x, y, arg = .) is equivalent to f(x, y, arg = z).</p>
+</blockquote>
+<p>This phrasing is likely beyond the comprehension of many R beginners. Seeing a few examples would help them, of course, but it is yet another example of how Tidy causes cognitive overload for learners.</p>
+<p>Tidyers also claim readability quite literally – one can read Tidy code aloud and get the meaning. Fine, but once one understands the highly intuitive meaning of <strong>tapply</strong></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(what to split, how to split it,what to apply to the resulting chunks)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>one gets exactly the same benefit. Just as, for instance, Tidyers say that ‘%&gt;%’ should be pronounced as “and then,” one can read</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tapply</span>(loans<span class="sc">$</span>loan_amount,loans<span class="sc">$</span>homeownership,mean)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>aloud as “Split the loan amount according to ownership, then call ‘mean’ on the results.”</p>
+</section>
+<section id="tidy-obstacles-to-debugging" class="level1">
+<h1>Tidy Obstacles to Debugging</h1>
+<p>Here is an example from <em>Text Mining with R</em>, by Julia Silge of Posit, and David Robinson. It’s a great introduction to the text analysis field, and I myself have found the book useful.</p>
+<p>This example, which may be found <a href="https://cran.r-project.org/web/packages/tidytext/vignettes/tidytext.html">here</a>, is a bit more involved than the previous ones, and thus better illustrates my concerns about debugging Tidy code. Courses that teach using Tidy do very well for simple examples; this one is more complex, possibly in terms of writing the code, and definitely in terms of debugging.</p>
+<p>Debugging is something I’ve given a fair amount of thought to. I even wrote a book on it, <em>The Art of Debugging</em> (NSP, 2008). As noted earlier, noncoder R learners are the ones most in need of debugging skills, as they make the most errors. Thus the example here is of high importance.</p>
+<p>The R package <strong>janeaustenr</strong> brings in full corpuses of six Austen novels:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(janeaustenr)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> books <span class="ot">&lt;-</span> <span class="fu">austen_books</span>()</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(books)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>Classes ‘tbl_df’, ‘tbl’ and <span class="st">'data.frame'</span><span class="sc">:</span>       <span class="dv">73422</span> obs. of  <span class="dv">2</span> variables<span class="sc">:</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="er">$</span> text<span class="sc">:</span> chr  <span class="st">"SENSE AND SENSIBILITY"</span> <span class="st">""</span> <span class="st">"by Jane Austen"</span> <span class="st">""</span> ...</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> book<span class="sc">:</span> Factor w<span class="sc">/</span> <span class="dv">6</span> levels <span class="st">"Sense &amp; Sensibility"</span>,..<span class="sc">:</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> <span class="dv">1</span> ...</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> books<span class="sc">$</span>text[<span class="dv">22225</span>]</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">"drink to our good journey."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The authors’ first goal is to put all the books together, one row per line of a book, with line and chapter number. Here are a couple of typical rows in the desired result:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="st">"children, the old Gentleman's days were comfort… Sense &amp; Sens…    25       1</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="st">...</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="st">"</span>As we went along, Kitty and I drew up the blind… Pride <span class="sc">&amp;</span> Prej…  <span class="dv">7398</span>      <span class="dv">39</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here is the solution given by the authors:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>original_books <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(book) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">line =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">chapter =</span> <span class="fu">cumsum</span>(<span class="fu">str_detect</span>(text, <span class="fu">regex</span>(<span class="st">"^chapter [</span><span class="sc">\\</span><span class="st">divxlc]"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A base-R version within reach of R beginners would begin with <strong>split</strong>, to group by books, followed by loop over books. A more advanced base-R coder might use FP, first with <strong>lapply</strong> and then with <strong>Reduce</strong> to concatenate the data frames.</p>
+<p>The R beginners version may be unfancy, even old-fashioned, but again suitable for beginners – especially from the point of view of debugging, a key point for noncoder R learners, as noted, and my main point in this section. Even the base-R FP version would be quite debuggable (providing the function called by <strong>lapply</strong> is named).</p>
+<p>By contrast, this example epitomizes the problems with debugging Tidy code. Suppose, for instance, that the user had accidentally typed ‘sum’ rather than ‘cumsum’ in the above code. The output would look like this:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> original_books</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>   text                    book                 line chapter</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>   <span class="sc">&lt;</span>chr<span class="sc">&gt;</span>                   <span class="er">&lt;</span>fct<span class="sc">&gt;</span>               <span class="er">&lt;</span>int<span class="sc">&gt;</span>   <span class="er">&lt;</span>int<span class="sc">&gt;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a> <span class="dv">1</span> <span class="st">"SENSE AND SENSIBILITY"</span> Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">1</span>      <span class="dv">50</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a> <span class="dv">2</span> <span class="st">""</span>                      Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">2</span>      <span class="dv">50</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a> <span class="dv">3</span> <span class="st">"by Jane Austen"</span>        Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">3</span>      <span class="dv">50</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a> <span class="dv">4</span> <span class="st">""</span>                      Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">4</span>      <span class="dv">50</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a> <span class="dv">5</span> <span class="st">"(1811)"</span>                Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">5</span>      <span class="dv">50</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a> <span class="dv">6</span> <span class="st">""</span>                      Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">6</span>      <span class="dv">50</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a> <span class="dv">7</span> <span class="st">""</span>                      Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">7</span>      <span class="dv">50</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a> <span class="dv">8</span> <span class="st">""</span>                      Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">8</span>      <span class="dv">50</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a> <span class="dv">9</span> <span class="st">""</span>                      Sense <span class="sc">&amp;</span> Sensibility     <span class="dv">9</span>      <span class="dv">50</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="st">"CHAPTER 1"</span>             Sense <span class="sc">&amp;</span> Sensibility    <span class="dv">10</span>      <span class="dv">50</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>   with <span class="dv">73</span>,<span class="dv">412</span> more rows</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The ‘chapter column’ should read 1, not 50. But there is not error message, hence no clue as to what the problem might be.</p>
+<p>If the code had not used pipes, one could use the R <strong>debug</strong> or <strong>browser</strong> functions, or the Posit IDE debugging tool. Even use of <strong>print</strong> statements, which I do not recommend in general, would still be effective if the code had been nonpiped. (Details below in the special section on pipes.) But it won’t work in the Tidy, i.e.&nbsp;piped, version.</p>
+<p>For instance, consider the code</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">debug</span>(group_by)</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(cyl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This produces</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>debugging <span class="cf">in</span><span class="sc">:</span> <span class="fu">group_by</span>(., cyl)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>debug<span class="sc">:</span> {</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">UseMethod</span>(<span class="st">"group_by"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dealing with this is far beyond the skillset of R beginners.</p>
+<p>Pipes are fundamentally unsuitable for use of debugging tools, and even just using <strong>print</strong> statements is impossible.</p>
+<p>One partial remedy is the clever <strong>pipecleaner</strong> package for debugging pipes. It works only up to a point, and is probably a bit too involved for R beginners. Most signifcantly, the package writeup also notes that</p>
+<blockquote class="blockquote">
+<p>Occasionally it is necessary to restructure code from a piped to an unpiped form.</p>
+</blockquote>
+<p>This makes it clear that pipes (both the Magrittr pipes in Tidy, and the later native pipes added to base-R), were simply not designed with debugging in mind. As the package author says, sometimes the only solution is to convert the code to ordinary unpiped form. (The package has an aid for this.)</p>
+</section>
+<section id="should-we-teach-using-pipes-or-functional-composition-neither" class="level1 page-columns page-full">
+<h1>Should we teach using pipes or functional composition? Neither!</h1>
+<p>Pipes play a central role in the Tidy paradigm. According to the Tidy advocates, the claimed alternative – function composition – is confusing for those without coding background. That point is debatable, but once again, the Tidy people are presenting us with a false choice, pipes or function composition.</p>
+<div class="page-columns page-full"><p></p><div class="no-row-height column-margin column-container"><span class="">According to a member of the R Core Group, the latter added a native pipe to R as an “olive branch” to the Tidy community, not as a statement supporting use of pipes. They also wanted to “do pipes the right way.”</span></div></div>
+<p>There is a “third way”–breaking a sequence of function calls into separate, intermediate results. In other words, instead of</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">h</span>(<span class="fu">g</span>(<span class="fu">f</span>(x)))  <span class="co"># functional composition</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">%&gt;%</span> f <span class="sc">%&gt;%</span> g <span class="sc">%&gt;%</span> h  <span class="co"># pipes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>write</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">f</span>(x)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">g</span>(a)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">h</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The Tidyers do sometimes mention this Third Way, but immediately dismiss it. Hadley, for instance, in <em>R for Data Science</em> feels that it creates “cluttered” code. Well, OK, each person has his/her own aesthetic values, but really that should pale in comparison to code writability, readability and debuggability.</p>
+<p>For example, consider the Jane Austen novels example above.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>original_books <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(book) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>      <span class="fu">mutate</span>(<span class="at">line =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">chapter =</span> <span class="fu">cumsum</span>(<span class="fu">str_detect</span>(text, <span class="fu">regex</span>(<span class="st">"^chapter [</span><span class="sc">\\</span><span class="st">divxlc]"</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))) <span class="sc">%&gt;%</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ungroup</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>A non-piped version (but still using <strong>dplyr</strong>) would be, say,</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>austens <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>booksGrouped <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="fu">group_by</span>(austens,book))</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>chapterNumbers <span class="ot">&lt;-</span> </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">cumsum</span>(<span class="fu">str_detect</span>(booksGrouped<span class="sc">$</span>text, <span class="fu">regex</span>(<span class="st">"^chapter [</span><span class="sc">\\</span><span class="st">divxlc]"</span>,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">ignore_case =</span> <span class="cn">TRUE</span>)))</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>mutated <span class="ot">&lt;-</span> <span class="fu">mutate</span>(booksGrouped,<span class="at">line =</span> <span class="fu">row_number</span>(),<span class="at">chapter=</span>chapterNumbers)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>original_books <span class="ot">&lt;-</span> <span class="fu">ungroup</span>(mutated)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now, suppose the user had accidentally typed ‘sum’ instead of ‘cumsum’. In the unpiped version, the user could run this code one line at a time, pausing to check the result at each step, either via a debugging tool or just using <strong>print</strong>. She would quickly determine that the line in which <strong>chapterNumbers</strong> is assigned is the culprit. This is the essence of debugging – first narrow down where the error arises.</p>
+<p>As noted, one could not do this with the piped version. Indeed, the user would likely convert to the non-piped version for debugging!</p>
+<p>So why not do this in the first place? I assert that it would be easier to write nonpipe code to begin with. During the writing of the code, the breaking down the overall action into simple intermediate steps make it easier for the author to plan out the trajectory of the code. Each intermediate step allows the author to “catch one’s breath.”</p>
+<p>For the same reasons, I assert that such code is easier to <em>write</em> and <em>debug</em>, but also easier for others to <em>read</em>.</p>
+<p>Isn’t this worth a little bit of clutter?</p>
+<p>Even I, with several decades of programming experience in numerous languages, almost never use functional composition (other than a nesting depth of 2). Nor do I use pipes. I use separate intermediate statements, as discussed above. It’s just clearer. And yes, worth the bit of clutter!</p>
+</section>
+<section id="use-of-functional-programming-fp" class="level1 page-columns page-full">
+<h1>Use of Functional Programming (FP)</h1>
+<p>If there is one aspect of the Tidy-vs.-base-R debate that in my opinion demonstrates the problem with Tidy, it’s that Tidy advocates want R beginners to avoid loops. Indeed, many of those advocates do not even teach loops at all.</p>
+<p>The Tidyers want R beginners to use functional programming (FP) instead of loops. But even the Tidyers agree that the concept of functions is one of the hardest for beginners to learn. <strong>Thus it makes no sense to force beginners to use the tough concept of FP in lieu of the much more natural loops approach.</strong> FP does have its place, but it should be taught as an advanced topic.</p>
+<div class="page-columns page-full"><p>It is worth noting that top university Computer Science Departments have shifted away from teaching their introductory programming courses using the FP paradigm, in favor of the more traditional Python, as they deem FP to be more abstract and challenging. If FP is tough for CS students, it makes no sense to have nonprogrammer learners of R use it.</p><div class="no-row-height column-margin column-container"><span class="">Python does include some FP operations, but this advanced material is usually not taught in first courses.</span></div></div>
+<p>Even Hadley, in <em>R for Data Science</em>, says:</p>
+<blockquote class="blockquote">
+<p>The idea of passing a function to another function is extremely powerful idea, and it’s one of the behaviours that makes R a functional programming language. It might take you a while to wrap your head around the idea, but it’s worth the investment.</p>
+</blockquote>
+<p>Again, this is arguably correct for experienced coders, but it is bad policy to ask noncoder learners of R to “wrap their heads” around advanced constructs. The KISS principle should be paramount.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
